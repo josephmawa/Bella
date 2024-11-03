@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="Adw" version="1.5" />
+  <object class="AdwAboutDialog" id="about_dialog">
+    <property name="application-icon">io.github.josephmawa.Bella</property>
+    <property name="application-name">Bella</property>
+    <property name="developer-name">Joseph Mawa</property>
+    <property name="version">0.1.0</property>
+    <property name="website">https://www.github.com/nibble0101/color-buddy</property>
+    <property name="issue-url">https://www.github.com/nibble0101/color-buddy/issues</property>
+    <property name="support-url">https://www.github.com/nibble0101/color-buddy/issues</property>
+    <property name="developers">Joseph Mawa</property>
+    <property name="artists">Joseph Mawa</property>
+    <!--
+    NOTE: Be sure to follow the formatting below
+    
+    <property name="translator-credits">Jane Doe &lt;doe@gmail.com&gt;
+        John Doe &lt;john@gmail.com&gt;
+        Tom Doe &lt;tom@gmail.com&gt;</property> 
+    -->
+    <property name="copyright">Copyright © 2024 Joseph Mawa</property>
+    <property name="license-type">gpl-3-0</property>
+  </object>
+</interface>

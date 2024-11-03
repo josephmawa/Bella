@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/josephmawa/Bella/js">
+    <file>main.js</file>
+    <file>application.js</file>
+    <file>window.js</file>
+    <file>preferences.js</file>
+    <file>confirm-delete-all.js</file>
+    <file>confirm-delete-one.js</file>
+    <file>utils/utils.js</file>
+    <file>utils/color.js</file>
+    <file>utils/saved-color.js</file>
+    <file>utils/color-names.js</file>
+    <file>utils/nearest-color.js</file>
+  </gresource>
+</gresources>

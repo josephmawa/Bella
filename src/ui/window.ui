@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.10" />
+  <requires lib="Adw" version="1.0" />
+  <template class="BellaWindow" parent="AdwApplicationWindow">
+    <property name="default-width">600</property>
+    <property name="default-height">500</property>
+    <property name="content">
+      <object class="AdwToastOverlay" id="toast_overlay">
+        <property name="child">
+          <object class="GtkStack" id="main_stack">
+            <property name="transition-type">1</property>
+            <child>
+              <object class="GtkStackPage" id="main_page">
+                <property name="name">main_page</property>
+                <property name="child">
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="AdwHeaderBar">
+                        <property name="centering-policy">1</property>
+                        <property name="title-widget">
+                          <object class="AdwWindowTitle">
+                            <property name="title">Bella</property>
+                          </object>
+                        </property>
+                        <child type="end">
+                          <object class="GtkMenuButton">
+                            <property name="icon-name">open-menu-symbolic</property>
+                            <property name="menu-model">primary_menu</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="halign">3</property>
+                        <style>
+                          <class name="margin" />
+                        </style>
+                        <child>
+                          <object class="GtkStackSwitcher" id="eye_dropper_color_picker_stack_switcher">
+                            <property name="stack">eye_dropper_color_picker_stack</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="valign">3</property>
+                            <property name="halign">3</property>
+                            <property name="vexpand">true</property>
+                            <child>
+                              <object class="GtkStack" id="eye_dropper_color_picker_stack">
+                                <property name="transition_type">crossfade</property>
+                                <child>
+                                  <object class="GtkStackPage">
+                                    <property name="name">eye_dropper_stack_page</property>
+                                    <property name="title" translatable="yes">Eye Dropper</property>
+                                    <property name="child">
+                                      <object class="GtkBox">
+                                        <style>
+                                          <class name="eye-dropper-stack-page-box" />
+                                        </style>
+                                        <property name="orientation">vertical</property>
+                                        <property name="valign">3</property>
+                                        <property name="halign">3</property>
+                                        <property name="spacing">10</property>
+                                        <child>
+                                          <object class="GtkButton" id="pick_color_button">
+                                            <property name="tooltip-text">Pick Color from screen</property>
+                                            <property name="icon-name">color-select-symbolic</property>
+                                            <style>
+                                              <class name="suggested-action" />
+                                              <class name="circular" />
+                                              <class name="pick-color-button" />
+                                            </style>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkStackPage">
+                                    <property name="name">saved_colors_stack_page</property>
+                                    <property name="title" translatable="yes">Saved Colors</property>
+                                    <property name="child">
+                                      <object class="GtkBox">
+                                        <property name="orientation">vertical</property>
+                                        <property name="valign">3</property>
+                                        <property name="halign">3</property>
+                                        <property name="vexpand">true</property>
+                                        <child>
+                                          <object class="GtkStack" id="picked_colors_stack">
+                                            <property name="transition_type">crossfade</property>
+                                            <property name="transition-type">1</property>
+                                            <child>
+                                              <object class="GtkStackPage" id="no_saved_colors_stack_page">
+                                                <property name="name">no_saved_colors_stack_page</property>
+                                                <property name="child">
+                                                  <object class="GtkBox">
+                                                    <property name="orientation">vertical</property>
+                                                    <property name="valign">3</property>
+                                                    <property name="halign">3</property>
+                                                    <property name="vexpand">true</property>
+                                                    <property name="spacing">20</property>
+                                                    <child>
+                                                      <object class="GtkImage">
+                                                        <property name="icon-name">color-select-symbolic</property>
+                                                        <property name="icon-size">large</property>
+                                                      </object>
+                                                    </child>
+                                                    <child>
+                                                      <object class="GtkLabel">
+                                                        <property name="label">You don't have any saved colors.</property>
+                                                      </object>
+                                                    </child>
+                                                  </object>
+                                                </property>
+                                              </object>
+                                            </child>
+                                            <child>
+                                              <object class="GtkStackPage" id="saved_colors_stack_page_inner">
+                                                <property name="name">saved_colors_stack_page_inner</property>
+                                                <property name="child">
+                                                  <object class="GtkBox">
+                                                    <property name="orientation">vertical</property>
+                                                    <property name="valign">3</property>
+                                                    <property name="halign">3</property>
+                                                    <property name="vexpand">true</property>
+                                                    <child>
+                                                      <object class="GtkBox">
+                                                        <property name="orientation">vertical</property>
+                                                        <property name="halign">3</property>
+                                                        <property name="valign">3</property>
+                                                        <property name="margin-start">18</property>
+                                                        <property name="margin-end">18</property>
+                                                        <property name="margin-top">18</property>
+                                                        <property name="margin-bottom">18</property>
+                                                        <property name="spacing">24</property>
+                                                        <child>
+                                                          <object class="GtkScrolledWindow">
+                                                            <property name="propagate_natural_height">true</property>
+                                                            <property name="propagate_natural_width">true</property>
+                                                            <property name="child">
+                                                              <object class="GtkColumnView" id="column_view">
+                                                                <style>
+                                                                  <class name="saved-colors-column-view" />
+                                                                  <class name="frame" />
+                                                                </style>
+                                                                <property name="single_click_activate">true</property>
+                                                                <property name="show_row_separators">true</property>
+                                                                <property name="show-column-separators">true</property>
+                                                                <property name="model">
+                                                                  <object class="GtkNoSelection" id="saved_colors_selection_model" />
+                                                                </property>
+                                                                <child>
+                                                                  <object class="GtkColumnViewColumn">
+                                                                    <property name="title" translatable="yes">Color</property>
+                                                                    <property name="factory">
+                                                                      <object class="GtkBuilderListItemFactory">
+                                                                        <property name="resource">/io/github/josephmawa/Bella/saved-color-table-columns/color.ui</property>
+                                                                      </object>
+                                                                    </property>
+                                                                  </object>
+                                                                </child>
+                                                                <child>
+                                                                  <object class="GtkColumnViewColumn">
+                                                                    <property name="title" translatable="yes">Actions</property>
+                                                                    <property name="factory">
+                                                                      <object class="GtkBuilderListItemFactory">
+                                                                        <property name="resource">/io/github/josephmawa/Bella/saved-color-table-columns/actions.ui</property>
+                                                                      </object>
+                                                                    </property>
+                                                                  </object>
+                                                                </child>
+                                                              </object>
+                                                            </property>
+                                                          </object>
+                                                        </child>
+                                                      </object>
+                                                    </child>
+                                                  </object>
+                                                </property>
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage" id="picked_color_page">
+                <property name="name">picked_color_page</property>
+                <property name="child">
+                  <object class="GtkBox" id="picked_color_box">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="AdwHeaderBar">
+                        <property name="centering-policy">1</property>
+                        <property name="title-widget">
+                          <object class="AdwWindowTitle">
+                            <property name="title">Bella</property>
+                          </object>
+                        </property>
+                        <child type="start">
+                          <object class="GtkButton" id="back_to_home_page_button">
+                            <property name="icon-name">go-next-symbolic-rtl</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox" id="display_picked_color_box_inner">
+                        <property name="orientation">vertical</property>
+                        <property name="valign">3</property>
+                        <property name="halign">3</property>
+                        <property name="vexpand">true</property>
+                        <property name="spacing">5</property>
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">18</property>
+                        <property name="margin-top">18</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="spacing">24</property>
+                        <style>
+                          <class name="margin" />
+                        </style>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="halign">3</property>
+                            <property name="valign">3</property>
+                            <property name="vexpand">true</property>
+                            <child>
+                              <object class="GtkColorDialogButton" id="colorDialogBtn">
+                                <signal
+                                  name="notify::rgba"
+                                  handler="selectColorHandler"
+                                  swapped="no"
+                                  object="BellaWindow" />
+                                <property name="dialog">
+                                  <object class="GtkColorDialog">
+                                    <property name="modal">true</property>
+                                    <property name="title" translatable="yes">Modify color or select new one</property>
+                                    <property name="with-alpha">false</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkScrolledWindow">
+                            <property name="propagate_natural_height">true</property>
+                            <property name="propagate_natural_width">true</property>
+                            <property name="child">
+                              <object class="GtkColumnView">
+                                <style>
+                                  <class name="saved-colors-column-view" />
+                                  <class name="frame" />
+                                </style>
+                                <property name="single_click_activate">true</property>
+                                <property name="show_row_separators">true</property>
+                                <property name="show-column-separators">true</property>
+                                <property name="model">
+                                  <object class="GtkNoSelection" id="selection_model" />
+                                </property>
+                                <child>
+                                  <object class="GtkColumnViewColumn">
+                                    <property name="title" translatable="yes">Color Format</property>
+                                    <property name="factory">
+                                      <object class="GtkBuilderListItemFactory">
+                                        <property name="resource">/io/github/josephmawa/Bella/color-format-table-columns/format.ui</property>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkColumnViewColumn">
+                                    <property name="title" translatable="yes">Color</property>
+                                    <property name="factory">
+                                      <object class="GtkBuilderListItemFactory">
+                                        <property name="resource">/io/github/josephmawa/Bella/color-format-table-columns/color.ui</property>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkColumnViewColumn">
+                                    <property name="title" translatable="yes">Action</property>
+                                    <property name="factory">
+                                      <object class="GtkBuilderListItemFactory">
+                                        <property name="resource">/io/github/josephmawa/Bella/color-format-table-columns/actions.ui</property>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About Bella</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

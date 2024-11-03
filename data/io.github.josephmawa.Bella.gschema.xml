@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="my-test">
+  <schema id="io.github.josephmawa.Bella" path="/io/github/josephmawa/Bella/">
+    <key name="window-width" type="i">
+      <default>600</default>
+    </key>
+    <key name="window-height" type="i">
+      <default>500</default>
+    </key>
+    <key name="window-maximized" type="b">
+      <default>false</default>
+    </key>
+    <key name="preferred-theme" type="s">
+      <choices>
+        <choice value="system" />
+        <choice value="dark" />
+        <choice value="light" />
+      </choices>
+      <default>"system"</default>
+    </key>
+    <key name="color-format" type="s">
+      <choices>
+        <choice value="name" />
+        <choice value="hex" />
+        <choice value="rgb" />
+        <choice value="rgb_percent" />
+        <choice value="hsl" />
+        <choice value="hsv" />
+      </choices>
+      <default>"rgb"</default>
+    </key>
+  </schema>
+</schemalist>

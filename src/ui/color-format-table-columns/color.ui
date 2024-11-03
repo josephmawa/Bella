@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkBox">
+        <style>
+          <class name="saved-color-list-row" />
+        </style>
+        <property name="orientation">horizontal</property>
+        <property name="halign">GTK_ALIGN_START</property>
+        <property name="valign">GTK_ALIGN_CENTER</property>
+        <property name="homogeneous">true</property>
+        <child>
+          <object class="GtkEntry">
+            <property name="editable">false</property>
+            <property name="buffer">
+              <object class="GtkEntryBuffer">
+                <binding name="text">
+                  <lookup name="color" type="Color">
+                    <lookup name="item">GtkListItem</lookup>
+                  </lookup>
+                </binding>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>

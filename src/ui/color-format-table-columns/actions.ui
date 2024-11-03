@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkBox">
+        <style>
+          <class name="saved-color-list-row" />
+        </style>
+        <property name="orientation">horizontal</property>
+        <property name="homogeneous">true</property>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="homogeneous">true</property>
+            <property name="halign">0</property>
+            <property name="valign">3</property>
+            <child>
+              <object class="GtkButton">
+                <style>
+                  <class name="suggested-action" />
+                </style>
+                <property name="tooltip-text">Copy color</property>
+                <property name="icon-name">edit-copy-symbolic</property>
+                <property name="action-target">""</property>
+                <property name="action-name">win.copy-saved-color</property>
+                <binding name="action-target">
+                  <lookup name="color_variant_type" type="Color">
+                    <lookup name="item">GtkListItem</lookup>
+                  </lookup>
+                </binding>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>

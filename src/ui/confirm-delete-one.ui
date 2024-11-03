@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.10" />
+  <requires lib="Adw" version="1.0" />
+  <template class="ConfirmDeleteOne" parent="AdwAlertDialog">
+    <property name="heading" translatable="yes">Delete saved color</property>
+    <property name="body" translatable="yes">Are you sure you want to delete this color? This action is irreversible.</property>
+    <property name="default-response">delete</property>
+    <property name="close-response">cancel</property>
+    <property name="prefer-wide-layout">false</property>
+    <responses>
+      <response id="delete" translatable="yes" appearance="destructive">_Delete</response>
+      <response id="cancel" translatable="yes" appearance="suggested">_Cancel</response>
+    </responses>
+  </template>
+</interface>

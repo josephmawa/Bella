@@ -1,0 +1,15 @@
+.margin {
+  margin: 10px;
+}
+
+.saved-colors-column-view {
+  border-radius: 10px;
+}
+
+.pick-color-button {
+  padding: 10px;
+}
+
+.preferred-color-scheme-row{
+  padding: 10px;
+}

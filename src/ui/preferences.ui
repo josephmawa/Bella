@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.10" />
+  <requires lib="Adw" version="1.0" />
+  <template class="BellaPreferencesDialog" parent="AdwPreferencesDialog">
+    <property name="content_width">300</property>
+    <property name="content_height">400</property>
+    <property name="title" translatable="yes">Preferences</property>
+    <property name="search-enabled">true</property>
+    <child>
+      <object class="AdwPreferencesPage">
+        <property name="name">preferences</property>
+        <property name="title" translatable="yes">Preferences</property>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Color Theme Settings</property>
+            <property name="description" translatable="yes">Set color theme</property>
+            <child>
+              <object class="AdwPreferencesRow">
+                <style>
+                  <class name="preferred-color-scheme-row" />
+                </style>
+                <property name="title" translatable="yes">Color theme</property>
+                <property name="title_selectable">true</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="valign">3</property>
+                    <property name="halign">0</property>
+                    <property name="hexpand">true</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">horizontal</property>
+                        <property name="valign">3</property>
+                        <property name="halign">1</property>
+                        <property name="hexpand">true</property>
+                        <child>
+                          <object class="GtkCheckButton" id="system">
+                            <property name="label" translatable="yes">System</property>
+                            <property name="active">true</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">horizontal</property>
+                        <property name="valign">3</property>
+                        <property name="halign">3</property>
+                        <property name="hexpand">true</property>
+                        <child>
+                          <object class="GtkCheckButton" id="light">
+                            <property name="label" translatable="yes">Light</property>
+                            <property name="group">system</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">horizontal</property>
+                        <property name="valign">3</property>
+                        <property name="halign">2</property>
+                        <property name="hexpand">true</property>
+                        <child>
+                          <object class="GtkCheckButton" id="dark">
+                            <property name="label" translatable="yes">Dark</property>
+                            <property name="group">system</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Color Settings</property>
+            <property name="description" translatable="yes">Saved color settings</property>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Delete Colors</property>
+                <property name="subtitle" translatable="yes">Delete all saved colors</property>
+                <property name="activatable-widget">delete-saved-colors</property>
+                <child>
+                  <object class="GtkButton" id="delete-saved-colors">
+                    <style>
+                      <class name="suggested-action" />
+                    </style>
+                    <property name="icon-name">user-trash-symbolic</property>
+                    <property name="valign">center</property>
+                    <property name="halign">center</property>
+                    <signal
+                      name="clicked"
+                      handler="deleteSavedColors"
+                      swapped="no"
+                      object="BellaPreferencesDialog" />
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwComboRow" id="colorFormatSettings">
+                <property name="title" translatable="yes">Color Format</property>
+                <property name="subtitle" translatable="yes">Select color format to display</property>
+                <property name="model">
+                  <object class="GtkStringList">
+                    <items>
+                      <item>Name</item>
+                      <item>Hex</item>
+                      <item>RGB</item>
+                      <item>RGB percent</item>
+                      <item>HSL</item>
+                      <item>HSV</item>
+                    </items>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
