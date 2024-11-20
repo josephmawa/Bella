@@ -10,6 +10,7 @@
 
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
+  <content_rating type="oars-1.1" />
 
   <description>
     <p>You can use Bella to pick color from the screen in one of the common color formats</p>
@@ -52,4 +53,11 @@
   </keywords>
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
+  <releases>
+    <release version="0.1.0" date="2024-11-20">
+      <description translate="no">
+        <p>Initial release.</p>
+      </description>
+    </release>
+  </releases>
 </component>
