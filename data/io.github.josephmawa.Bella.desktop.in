@@ -1,8 +1,10 @@
 [Desktop Entry]
 Name=Bella
+GenericName=Eye Dropper
+Comment=Pick color anywhere on your screen
 Exec=io.github.josephmawa.Bella
 Icon=io.github.josephmawa.Bella
 Terminal=false
 Type=Application
-Categories=GTK;Gnome;
+Categories=GTK;GNOME;Development;Building;Utility
 StartupNotify=true
