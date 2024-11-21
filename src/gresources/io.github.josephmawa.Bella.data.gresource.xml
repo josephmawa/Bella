@@ -31,5 +31,7 @@
     <file preprocess="xml-stripblanks" alias="scalable/actions/bella-edit-copy-symbolic.svg">icons/bella-edit-copy-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="scalable/actions/bella-user-trash-symbolic.svg">icons/bella-user-trash-symbolic.svg</file>
     <file preprocess="xml-stripblanks" alias="scalable/actions/bella-view-reveal-symbolic.svg">icons/bella-view-reveal-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-go-next-symbolic-rtl.svg">icons/bella-go-next-symbolic-rtl.svg</file>
+    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-open-menu-symbolic.svg">icons/bella-open-menu-symbolic.svg</file>
   </gresource>
 </gresources>

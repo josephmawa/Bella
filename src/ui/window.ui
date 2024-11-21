@@ -26,7 +26,7 @@
                         </property>
                         <child type="end">
                           <object class="GtkMenuButton">
-                            <property name="icon-name">open-menu-symbolic</property>
+                            <property name="icon-name">bella-open-menu-symbolic</property>
                             <property name="menu-model">primary_menu</property>
                           </object>
                         </child>
@@ -217,7 +217,7 @@
                         </property>
                         <child type="start">
                           <object class="GtkButton" id="back_to_home_page_button">
-                            <property name="icon-name">go-next-symbolic-rtl</property>
+                            <property name="icon-name">bella-go-next-symbolic-rtl</property>
                           </object>
                         </child>
                       </object>
