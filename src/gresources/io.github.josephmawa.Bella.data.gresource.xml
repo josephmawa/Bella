@@ -25,4 +25,11 @@
   <gresource prefix="/io/github/josephmawa/Bella">
     <file>styles/index.css</file>
   </gresource>
+  <!-- Resources for icons -->
+  <gresource prefix="/io/github/josephmawa/Bella/icons">
+    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-color-select-symbolic.svg">icons/bella-color-select-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-edit-copy-symbolic.svg">icons/bella-edit-copy-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-user-trash-symbolic.svg">icons/bella-user-trash-symbolic.svg</file>
+    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-view-reveal-symbolic.svg">icons/bella-view-reveal-symbolic.svg</file>
+  </gresource>
 </gresources>

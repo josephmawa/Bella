@@ -90,7 +90,7 @@
                     <style>
                       <class name="suggested-action" />
                     </style>
-                    <property name="icon-name">user-trash-symbolic</property>
+                    <property name="icon-name">bella-user-trash-symbolic</property>
                     <property name="valign">center</property>
                     <property name="halign">center</property>
                     <signal
