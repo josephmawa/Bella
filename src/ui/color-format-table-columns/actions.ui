@@ -20,7 +20,7 @@
                   <class name="suggested-action" />
                 </style>
                 <property name="tooltip-text">Copy color</property>
-                <property name="icon-name">edit-copy-symbolic</property>
+                <property name="icon-name">bella-edit-copy-symbolic</property>
                 <property name="action-target">""</property>
                 <property name="action-name">win.copy-saved-color</property>
                 <binding name="action-target">

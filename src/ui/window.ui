@@ -69,7 +69,7 @@
                                         <child>
                                           <object class="GtkButton" id="pick_color_button">
                                             <property name="tooltip-text">Pick Color from screen</property>
-                                            <property name="icon-name">color-select-symbolic</property>
+                                            <property name="icon-name">bella-color-select-symbolic</property>
                                             <style>
                                               <class name="suggested-action" />
                                               <class name="circular" />
