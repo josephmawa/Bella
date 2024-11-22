@@ -9,7 +9,6 @@
     <file>confirm-delete-one.js</file>
     <file>copy-color-format-button.js</file>
     <file>utils/utils.js</file>
-    <file>utils/color.js</file>
     <file>utils/saved-color.js</file>
     <file>utils/color-names.js</file>
     <file>utils/nearest-color.js</file>

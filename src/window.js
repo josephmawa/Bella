@@ -7,7 +7,6 @@ import Xdp from "gi://Xdp";
 import GLib from "gi://GLib";
 
 import { getColor, getHsv, colorFormats } from "./utils/utils.js";
-import { Color } from "./utils/color.js";
 import { SavedColor } from "./utils/saved-color.js";
 import { BellaPreferencesDialog } from "./preferences.js";
 import { savedColorsFile } from "./application.js";
@@ -183,11 +182,6 @@ export const BellaWindow = GObject.registerClass(
     };
 
     createActions = () => {
-      const copyColorAction = new Gio.SimpleAction({
-        name: "copy-color",
-        parameterType: GLib.VariantType.new("s"),
-      });
-
       const showPreferencesWindowAction = new Gio.SimpleAction({
         name: "preferences",
       });
@@ -210,15 +204,6 @@ export const BellaWindow = GObject.registerClass(
       const viewSavedColorAction = new Gio.SimpleAction({
         name: "view-saved-color",
         parameterType: GLib.VariantType.new("s"),
-      });
-
-      copyColorAction.connect("activate", (_, color) => {
-        const colorStr = color?.unpack();
-
-        if (colorStr) {
-          this.copyToClipboard(colorStr);
-          this.displayToast(`Copied ${colorStr} to clipoard`);
-        }
       });
 
       showPreferencesWindowAction.connect("activate", () => {
@@ -284,7 +269,6 @@ export const BellaWindow = GObject.registerClass(
       });
 
       // Window-scoped actions
-      this.add_action(copyColorAction);
       this.add_action(copySavedColorAction);
       this.add_action(deleteSavedColorAction);
       this.add_action(viewSavedColorAction);
@@ -365,9 +349,9 @@ export const BellaWindow = GObject.registerClass(
       const colorObject = getColor(scaledRgb);
       colorObject.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
 
-      // FIXME: The commented code below is before the refactor. 
+      // FIXME: The commented code below is before the refactor.
       // Fix it by checking if the color being updated is the same
-      // as the current color on the color page before updating the 
+      // as the current color on the color page before updating the
       // entire UI
 
       // const model = this._selection_model.model;
