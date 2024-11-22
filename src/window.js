@@ -7,11 +7,15 @@ import Xdp from "gi://Xdp";
 import GLib from "gi://GLib";
 
 import { getColor, getHsv, colorFormats } from "./utils/utils.js";
-import { Color } from "./utils/color.js";
 import { SavedColor } from "./utils/saved-color.js";
 import { BellaPreferencesDialog } from "./preferences.js";
 import { savedColorsFile } from "./application.js";
 import { ConfirmDeleteOne } from "./confirm-delete-one.js";
+
+// To register the CopyColorFormatButton class
+// in the GObject system before using it in the
+// window.ui builder definition
+import "./copy-color-format-button.js";
 
 const xdpPortal = Xdp.Portal.new();
 
@@ -23,11 +27,23 @@ export const BellaWindow = GObject.registerClass(
       "pick_color_button",
       "main_stack",
       "back_to_home_page_button",
-      "selection_model",
       "colorDialogBtn",
       "toast_overlay",
       "saved_colors_selection_model",
       "picked_colors_stack",
+      // Color format page
+      "hex_action_row",
+      "hex_copy_button",
+      "rgb_action_row",
+      "rgb_copy_button",
+      "rgb_percent_action_row",
+      "rgb_percent_copy_button",
+      "hsl_action_row",
+      "hsl_copy_button",
+      "hsv_action_row",
+      "hsv_copy_button",
+      "color_name_action_row",
+      "color_name_copy_button",
     ],
     Properties: {
       btn_label: GObject.ParamSpec.string(
@@ -112,7 +128,7 @@ export const BellaWindow = GObject.registerClass(
 
       // Initialize when the app starts
       this.setPreferredColorScheme();
-      this._selection_model.model = Gio.ListStore.new(Color);
+      // this._selection_model.model = Gio.ListStore.new(Color);
       this._saved_colors_selection_model.model = Gio.ListStore.new(SavedColor);
       this.toast = new Adw.Toast({ timeout: 1 });
       this.getSavedColors();
@@ -154,7 +170,9 @@ export const BellaWindow = GObject.registerClass(
 
     init = () => {
       const cssProvider = new Gtk.CssProvider();
-      cssProvider.load_from_resource("io/github/josephmawa/Bella/styles/index.css");
+      cssProvider.load_from_resource(
+        "io/github/josephmawa/Bella/styles/index.css"
+      );
 
       Gtk.StyleContext.add_provider_for_display(
         this.display,
@@ -164,11 +182,6 @@ export const BellaWindow = GObject.registerClass(
     };
 
     createActions = () => {
-      const copyColorAction = new Gio.SimpleAction({
-        name: "copy-color",
-        parameterType: GLib.VariantType.new("s"),
-      });
-
       const showPreferencesWindowAction = new Gio.SimpleAction({
         name: "preferences",
       });
@@ -191,15 +204,6 @@ export const BellaWindow = GObject.registerClass(
       const viewSavedColorAction = new Gio.SimpleAction({
         name: "view-saved-color",
         parameterType: GLib.VariantType.new("s"),
-      });
-
-      copyColorAction.connect("activate", (_, color) => {
-        const colorStr = color?.unpack();
-
-        if (colorStr) {
-          this.copyToClipboard(colorStr);
-          this.displayToast(`Copied ${colorStr} to clipoard`);
-        }
       });
 
       showPreferencesWindowAction.connect("activate", () => {
@@ -265,7 +269,6 @@ export const BellaWindow = GObject.registerClass(
       });
 
       // Window-scoped actions
-      this.add_action(copyColorAction);
       this.add_action(copySavedColorAction);
       this.add_action(deleteSavedColorAction);
       this.add_action(viewSavedColorAction);
@@ -346,20 +349,25 @@ export const BellaWindow = GObject.registerClass(
       const colorObject = getColor(scaledRgb);
       colorObject.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
 
-      const model = this._selection_model.model;
-      let isSameColor = true;
+      // FIXME: The commented code below is before the refactor.
+      // Fix it by checking if the color being updated is the same
+      // as the current color on the color page before updating the
+      // entire UI
 
-      for (let i = 0; i < model.get_n_items(); i++) {
-        const item = model.get_item(i);
-        if (item.color === colorObject[item.key]) {
-          continue;
-        }
+      // const model = this._selection_model.model;
+      // let isSameColor = true;
 
-        isSameColor = false;
-        break;
-      }
+      // for (let i = 0; i < model.get_n_items(); i++) {
+      //   const item = model.get_item(i);
+      //   if (item.color === colorObject[item.key]) {
+      //     continue;
+      //   }
 
-      if (isSameColor) return;
+      //   isSameColor = false;
+      //   break;
+      // }
+
+      // if (isSameColor) return;
 
       colorObject.id = this.visible_color_id;
       this.updatePickedColor(colorObject);
@@ -475,11 +483,11 @@ export const BellaWindow = GObject.registerClass(
       const { model } = this._saved_colors_selection_model;
       const length = model.get_n_items();
 
-      for (let idx = 0; idx < length; idx++) {
-        const item = model.get_item(idx);
+      for (let i = 0; i < length; i++) {
+        const item = model.get_item(i);
 
         if (item.id.unpack() === id) {
-          return [idx, item];
+          return [i, item];
         }
       }
 
@@ -504,15 +512,33 @@ export const BellaWindow = GObject.registerClass(
     };
 
     updatePickedColor = (pickedColor = {}) => {
-      const model = this._selection_model.model;
+      this._hex_action_row.subtitle = pickedColor.hex;
+      this._hex_copy_button.colorFormat = pickedColor.hex;
+
+      this._rgb_action_row.subtitle = pickedColor.rgb;
+      this._rgb_copy_button.colorFormat = pickedColor.rgb;
+
+      this._rgb_percent_action_row.subtitle = pickedColor.rgb_percent;
+      this._rgb_percent_copy_button.colorFormat = pickedColor.rgb_percent;
+
+      this._hsl_action_row.subtitle = pickedColor.hsl;
+      this._hsl_copy_button.colorFormat = pickedColor.hsl;
+
+      this._hsv_action_row.subtitle = pickedColor.hsv;
+      this._hsv_copy_button.colorFormat = pickedColor.hsv;
+
+      this._color_name_action_row.subtitle = pickedColor.name;
+      this._color_name_copy_button.colorFormat = pickedColor.name;
+
       const { id } = pickedColor;
       this.visible_color_id = typeof id === "string" ? id : id.unpack();
-
-      model.remove_all();
-
-      for (const { key, description } of colorFormats) {
-        model.append(new Color(description, pickedColor[key], key));
-      }
     };
+
+    copyColorFormat(copyColorFormatButton) {
+      const color = copyColorFormatButton.colorFormat;
+
+      this.copyToClipboard(color);
+      this.displayToast(`Copied ${color} to clipboard`);
+    }
   }
 );

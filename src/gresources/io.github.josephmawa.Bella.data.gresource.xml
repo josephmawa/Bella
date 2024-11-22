@@ -9,17 +9,12 @@
     <file preprocess="xml-stripblanks" alias="about-dialog.ui">ui/about-dialog.ui</file>
     <file preprocess="xml-stripblanks" alias="confirm-delete-all.ui">ui/confirm-delete-all.ui</file>
     <file preprocess="xml-stripblanks" alias="confirm-delete-one.ui">ui/confirm-delete-one.ui</file>
+    <file preprocess="xml-stripblanks" alias="copy-color-format-button.ui">ui/copy-color-format-button.ui</file>
   </gresource>
   <!-- Resources for color format table columns -->
   <gresource prefix="/io/github/josephmawa/Bella">
     <file preprocess="xml-stripblanks" alias="saved-color-table-columns/color.ui">ui/saved-color-table-columns/color.ui</file>
     <file preprocess="xml-stripblanks" alias="saved-color-table-columns/actions.ui">ui/saved-color-table-columns/actions.ui</file>
-  </gresource>
-  <!-- Resources for color format table columns -->
-  <gresource prefix="/io/github/josephmawa/Bella">
-    <file preprocess="xml-stripblanks" alias="color-format-table-columns/format.ui">ui/color-format-table-columns/format.ui</file>
-    <file preprocess="xml-stripblanks" alias="color-format-table-columns/color.ui">ui/color-format-table-columns/color.ui</file>
-    <file preprocess="xml-stripblanks" alias="color-format-table-columns/actions.ui">ui/color-format-table-columns/actions.ui</file>
   </gresource>
   <!-- Resources for css styles -->
   <gresource prefix="/io/github/josephmawa/Bella">
