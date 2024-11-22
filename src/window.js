@@ -499,11 +499,11 @@ export const BellaWindow = GObject.registerClass(
       const { model } = this._saved_colors_selection_model;
       const length = model.get_n_items();
 
-      for (let idx = 0; idx < length; idx++) {
-        const item = model.get_item(idx);
+      for (let i = 0; i < length; i++) {
+        const item = model.get_item(i);
 
         if (item.id.unpack() === id) {
-          return [idx, item];
+          return [i, item];
         }
       }
 
