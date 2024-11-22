@@ -7,6 +7,7 @@
     <file>preferences.js</file>
     <file>confirm-delete-all.js</file>
     <file>confirm-delete-one.js</file>
+    <file>copy-color-format-button.js</file>
     <file>utils/utils.js</file>
     <file>utils/color.js</file>
     <file>utils/saved-color.js</file>

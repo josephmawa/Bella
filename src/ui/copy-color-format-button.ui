@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <template class="CopyColorFormatButton" parent="GtkButton">
+    <property name="valign">center</property>
+    <property name="halign">center</property>
+    <property name="icon-name">bella-edit-copy-symbolic</property>
+    <property name="tooltip-text">Copy color</property>
+    <style>
+      <class name="suggested-action" />
+    </style>
+  </template>
+
+</interface>
