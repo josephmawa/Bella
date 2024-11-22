@@ -6,9 +6,9 @@
     <property name="application-name">Bella</property>
     <property name="developer-name">Joseph Mawa</property>
     <property name="version">0.1.0</property>
-    <property name="website">https://www.github.com/nibble0101/color-buddy</property>
-    <property name="issue-url">https://www.github.com/nibble0101/color-buddy/issues</property>
-    <property name="support-url">https://www.github.com/nibble0101/color-buddy/issues</property>
+    <property name="website">https://github.com/josephmawa/Bella</property>
+    <property name="issue-url">https://github.com/josephmawa/Bella/issues</property>
+    <property name="support-url">https://github.com/josephmawa/Bella/issues</property>
     <property name="developers">Joseph Mawa</property>
     <property name="artists">Joseph Mawa</property>
     <!--
