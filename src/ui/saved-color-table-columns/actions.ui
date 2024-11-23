@@ -20,7 +20,7 @@
                 <style>
                   <class name="suggested-action" />
                 </style>
-                <property name="tooltip-text">Copy color</property>
+                <property name="tooltip-text" translatable="yes">Copy color</property>
                 <property name="icon-name">bella-edit-copy-symbolic</property>
                 <property name="action-target">""</property>
                 <property name="action-name">win.copy-saved-color</property>
@@ -36,7 +36,7 @@
                 <style>
                   <class name="suggested-action" />
                 </style>
-                <property name="tooltip-text">Delete color</property>
+                <property name="tooltip-text" translatable="yes">Delete color</property>
                 <property name="icon-name">bella-user-trash-symbolic</property>
                 <property name="action-target">""</property>
                 <property name="action-name">win.delete-saved-color</property>
@@ -52,7 +52,7 @@
                 <style>
                   <class name="suggested-action" />
                 </style>
-                <property name="tooltip-text">View details</property>
+                <property name="tooltip-text" translatable="yes">View details</property>
                 <property name="icon-name">bella-view-reveal-symbolic</property>
                 <property name="action-target">""</property>
                 <property name="action-name">win.view-saved-color</property>
