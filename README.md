@@ -67,4 +67,4 @@ will always be free. It is released under the terms of the
 
 ## Copyright
 
-Copyright © [Joseph Mawa](https://github.com/josephmawa)
+Copyright © 2024 [Joseph Mawa](https://github.com/josephmawa)
