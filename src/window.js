@@ -218,7 +218,7 @@ export const BellaWindow = GObject.registerClass(
         if (response === "delete") {
           this._saved_colors_selection_model.model.remove_all();
           this.saveData([]);
-          this.displayToast("Deleted all saved colors");
+          this.displayToast(_("Deleted all saved colors"));
         }
       });
 
@@ -245,7 +245,7 @@ export const BellaWindow = GObject.registerClass(
           }
 
           this._saved_colors_selection_model.model.remove(idx);
-          this.displayToast("Deleted saved color successfully");
+          this.displayToast(_("Deleted saved color successfully"));
         });
 
         confirmDeleteOne.present(this);
@@ -329,8 +329,8 @@ export const BellaWindow = GObject.registerClass(
         } catch (err) {
           if (err instanceof GLib.Error) {
             if (err.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.FAILED)) {
-              console.log("Failed to pick color ");
-              this.displayToast("Failed to pick color");
+              console.log(_("Failed to pick color "));
+              this.displayToast(_("Failed to pick color"));
               return;
             }
           }
@@ -431,13 +431,13 @@ export const BellaWindow = GObject.registerClass(
             model.append(new SavedColor(pickedColor, this.color_format));
           }
         } else {
-          console.log("Failed to read saved data");
+          console.log(_("Failed to read saved data"));
         }
 
         return;
       }
 
-      console.log("File doesn't exist yet");
+      console.log(_("File doesn't exist yet"));
     };
 
     saveData = (data = []) => {
@@ -456,14 +456,14 @@ export const BellaWindow = GObject.registerClass(
         );
 
         if (success) {
-          console.log("Successfully saved picked colors to file");
+          console.log(_("Successfully saved picked colors to file"));
         } else {
-          console.log("Failed to save picked colors to file");
+          console.log(_("Failed to save picked colors to file"));
         }
       }
 
       if (fileCreationFlag === -1) {
-        console.log("An error occurred while creating directory");
+        console.log(_("An error occurred while creating directory"));
       }
     };
 

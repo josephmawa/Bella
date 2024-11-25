@@ -52,10 +52,11 @@ a PR.
 1. Download [GNOME builder](https://flathub.org/apps/org.gnome.Builder). It's the
  fastest way to get up and running.
 1. Use GNOME builder to clone this project to your local machine. The
-<kbd>Clone Repository</kbd> button is at the bottom of the Welcome screen.
+<kbd>Clone Repository</kbd> button is at the bottom of the GNOME builder Welcome
+ screen.
 1. Use the <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>Space</kbd> keyboard
-combination to run the project. You can also use the <kbd>▶</kbd> button at the top
-of the GNOME text editor.
+combination to run the project after opening it in GNOME builder. You can also
+ use the <kbd>▶</kbd> button at the top.
  <!-- markdownlint-enable no-inline-html -->
 
 ## License
@@ -66,4 +67,4 @@ will always be free. It is released under the terms of the
 
 ## Copyright
 
-Copyright © [Joseph Mawa](https://github.com/josephmawa)
+Copyright © 2024 [Joseph Mawa](https://github.com/josephmawa)
