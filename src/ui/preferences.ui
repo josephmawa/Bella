@@ -25,18 +25,18 @@
                 <child>
                   <object class="GtkBox">
                     <property name="orientation">horizontal</property>
-                    <property name="valign">3</property>
-                    <property name="halign">0</property>
+                    <property name="valign">center</property>
+                    <property name="halign">fill</property>
                     <property name="hexpand">true</property>
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">horizontal</property>
-                        <property name="valign">3</property>
-                        <property name="halign">1</property>
+                        <property name="valign">center</property>
+                        <property name="halign">start</property>
                         <property name="hexpand">true</property>
                         <child>
                           <object class="GtkCheckButton" id="system">
-                            <property name="label" translatable="yes">System</property>
+                            <property name="label" translatable="yes" context="System color theme">System</property>
                             <property name="active">true</property>
                           </object>
                         </child>
@@ -45,12 +45,12 @@
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">horizontal</property>
-                        <property name="valign">3</property>
-                        <property name="halign">3</property>
+                        <property name="valign">center</property>
+                        <property name="halign">center</property>
                         <property name="hexpand">true</property>
                         <child>
                           <object class="GtkCheckButton" id="light">
-                            <property name="label" translatable="yes">Light</property>
+                            <property name="label" translatable="yes" context="Light color theme">Light</property>
                             <property name="group">system</property>
                           </object>
                         </child>
@@ -59,12 +59,12 @@
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">horizontal</property>
-                        <property name="valign">3</property>
-                        <property name="halign">2</property>
+                        <property name="valign">center</property>
+                        <property name="halign">end</property>
                         <property name="hexpand">true</property>
                         <child>
                           <object class="GtkCheckButton" id="dark">
-                            <property name="label" translatable="yes">Dark</property>
+                            <property name="label" translatable="yes" context="Dark color theme">Dark</property>
                             <property name="group">system</property>
                           </object>
                         </child>
@@ -93,6 +93,10 @@
                     <property name="icon-name">bella-user-trash-symbolic</property>
                     <property name="valign">center</property>
                     <property name="halign">center</property>
+                    <property name="tooltip-text" translatable="yes">Delete all saved colors</property>
+                    <accessibility>
+                      <property name="label" translatable="yes" context="accessibility">Delete all saved colors</property>
+                    </accessibility>
                     <signal
                       name="clicked"
                       handler="deleteSavedColors"

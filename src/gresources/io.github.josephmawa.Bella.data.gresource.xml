@@ -3,8 +3,6 @@
   <gresource prefix="/io/github/josephmawa/Bella">
     <file preprocess="xml-stripblanks" alias="window.ui">ui/window.ui</file>
     <file preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
-    <file preprocess="xml-stripblanks" alias="color-list-view.ui">ui/color-list-view.ui</file>
-    <file preprocess="xml-stripblanks" alias="column-view.ui">ui/column-view.ui</file>
     <file preprocess="xml-stripblanks" alias="preferences.ui">ui/preferences.ui</file>
     <file preprocess="xml-stripblanks" alias="about-dialog.ui">ui/about-dialog.ui</file>
     <file preprocess="xml-stripblanks" alias="confirm-delete-all.ui">ui/confirm-delete-all.ui</file>
