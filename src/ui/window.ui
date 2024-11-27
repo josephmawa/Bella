@@ -224,64 +224,64 @@
                         <child type="start">
                           <object class="GtkButton" id="back_to_home_page_button">
                             <property name="icon-name">bella-go-next-symbolic-rtl</property>
-                            <property name="tooltip-text" translatable="yes">Back</property>
+                            <property name="tooltip-text" translatable="yes">Back to main screen</property>
                             <accessibility>
-                              <property name="label" translatable="yes" context="accessibility">Back</property>
+                              <property name="label" translatable="yes" context="accessibility">Back to main screen</property>
                             </accessibility>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkBox" id="display_picked_color_box_inner">
-                        <property name="orientation">vertical</property>
-                        <property name="valign">center</property>
-                        <property name="halign">center</property>
-                        <property name="vexpand">true</property>
-                        <property name="spacing">5</property>
-                        <property name="margin-start">18</property>
-                        <property name="margin-end">18</property>
-                        <property name="margin-top">18</property>
-                        <property name="margin-bottom">18</property>
-                        <property name="spacing">24</property>
-                        <style>
-                          <class name="margin" />
-                        </style>
-                        <child>
-                          <object class="GtkBox">
+                      <object class="GtkScrolledWindow">
+                        <property name="propagate_natural_height">true</property>
+                        <property name="propagate_natural_width">true</property>
+                        <property name="child">
+                          <object class="GtkBox" id="display_picked_color_box_inner">
                             <property name="orientation">vertical</property>
-                            <property name="halign">center</property>
                             <property name="valign">center</property>
+                            <property name="halign">center</property>
                             <property name="vexpand">true</property>
+                            <property name="spacing">5</property>
+                            <property name="margin-start">18</property>
+                            <property name="margin-end">18</property>
+                            <property name="margin-top">18</property>
+                            <property name="margin-bottom">18</property>
+                            <property name="spacing">24</property>
+                            <style>
+                              <class name="margin" />
+                            </style>
                             <child>
-                              <object class="GtkColorDialogButton" id="colorDialogBtn">
-                                <property name="tooltip-text" translatable="yes">Modify color</property>
-                                <accessibility>
-                                  <property name="label" translatable="yes" context="accessibility">Modify color</property>
-                                </accessibility>            
-                                <signal
-                                  name="notify::rgba"
-                                  handler="selectColorHandler"
-                                  swapped="no"
-                                  object="BellaWindow" />
-                                <property name="dialog">
-                                  <object class="GtkColorDialog">
-                                    <property name="modal">true</property>
-                                    <property name="title" translatable="yes">Modify color or select new one</property>
-                                    <property name="with-alpha">false</property>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="vexpand">true</property>
+                                <child>
+                                  <object class="GtkColorDialogButton" id="colorDialogBtn">
+                                    <property name="tooltip-text" translatable="yes">Modify color</property>
+                                    <accessibility>
+                                      <property name="label" translatable="yes" context="accessibility">Modify color</property>
+                                    </accessibility>
+                                    <signal
+                                      name="notify::rgba"
+                                      handler="selectColorHandler"
+                                      swapped="no"
+                                      object="BellaWindow" />
+                                    <property name="dialog">
+                                      <object class="GtkColorDialog">
+                                        <property name="modal">true</property>
+                                        <property name="title" translatable="yes">Modify color or select new one</property>
+                                        <property name="with-alpha">false</property>
+                                      </object>
+                                    </property>
                                   </object>
-                                </property>
+                                </child>
                               </object>
                             </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkScrolledWindow">
-                            <property name="propagate_natural_height">true</property>
-                            <property name="propagate_natural_width">true</property>
-                            <property name="child">
+                            <child>
                               <object class="AdwClamp">
-                                <property name="maximum-size">400</property>
+                                <property name="maximum-size">500</property>
                                 <property name="tightening-threshold">300</property>
                                 <property name="child">
                                   <object class="GtkBox">
@@ -424,9 +424,9 @@
                                   </object>
                                 </property>
                               </object>
-                            </property>
+                            </child>
                           </object>
-                        </child>
+                        </property>
                       </object>
                     </child>
                   </object>
