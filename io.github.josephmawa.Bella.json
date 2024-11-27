@@ -47,8 +47,8 @@
       "buildsystem": "meson",
       "sources": [
         {
-          "type": "git",
-          "url": "file:///home/mawa/Documents/Projects"
+          "type": "dir",
+          "path": "/home/mawa/Documents/Projects/Bella"
         }
       ],
       "config-opts": ["--libdir=lib"]
