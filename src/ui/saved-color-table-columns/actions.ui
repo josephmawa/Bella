@@ -12,8 +12,8 @@
           <object class="GtkBox">
             <property name="orientation">horizontal</property>
             <property name="homogeneous">true</property>
-            <property name="halign">0</property>
-            <property name="valign">3</property>
+            <property name="halign">fill</property>
+            <property name="valign">center</property>
             <property name="spacing">20</property>
             <child>
               <object class="GtkButton">
@@ -21,7 +21,14 @@
                   <class name="suggested-action" />
                 </style>
                 <property name="tooltip-text" translatable="yes">Copy color</property>
+                <accessibility>
+                  <property name="label" translatable="yes" context="accessibility">Copy color</property>
+                </accessibility>
                 <property name="icon-name">bella-edit-copy-symbolic</property>
+                <!-- For some reason this only works when you set an empty action-target property
+                before the real action-target containing lookup.
+                Check
+                https://discourse.gnome.org/t/type-string-for-a-string-value-obtained-from-an-expression-lookup/16219/5 -->
                 <property name="action-target">""</property>
                 <property name="action-name">win.copy-saved-color</property>
                 <binding name="action-target">
@@ -37,6 +44,9 @@
                   <class name="suggested-action" />
                 </style>
                 <property name="tooltip-text" translatable="yes">Delete color</property>
+                <accessibility>
+                  <property name="label" translatable="yes" context="accessibility">Delete color</property>
+                </accessibility>
                 <property name="icon-name">bella-user-trash-symbolic</property>
                 <property name="action-target">""</property>
                 <property name="action-name">win.delete-saved-color</property>
@@ -53,6 +63,9 @@
                   <class name="suggested-action" />
                 </style>
                 <property name="tooltip-text" translatable="yes">View details</property>
+                <accessibility>
+                  <property name="label" translatable="yes" context="accessibility">View details</property>
+                </accessibility>
                 <property name="icon-name">bella-view-reveal-symbolic</property>
                 <property name="action-target">""</property>
                 <property name="action-name">win.view-saved-color</property>

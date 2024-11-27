@@ -18,7 +18,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="AdwHeaderBar">
-                        <property name="centering-policy">1</property>
+                        <property name="centering-policy">strict</property>
                         <property name="title-widget">
                           <object class="AdwWindowTitle">
                             <property name="title">Bella</property>
@@ -28,6 +28,10 @@
                           <object class="GtkMenuButton">
                             <property name="icon-name">bella-open-menu-symbolic</property>
                             <property name="menu-model">primary_menu</property>
+                            <property name="tooltip-text" translatable="yes">Primary Menu</property>
+                            <accessibility>
+                              <property name="label" translatable="yes" context="accessibility">Primary menu</property>
+                            </accessibility>
                           </object>
                         </child>
                       </object>
@@ -35,7 +39,7 @@
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="halign">3</property>
+                        <property name="halign">center</property>
                         <style>
                           <class name="margin" />
                         </style>
@@ -47,8 +51,8 @@
                         <child>
                           <object class="GtkBox">
                             <property name="orientation">vertical</property>
-                            <property name="valign">3</property>
-                            <property name="halign">3</property>
+                            <property name="valign">center</property>
+                            <property name="halign">center</property>
                             <property name="vexpand">true</property>
                             <child>
                               <object class="GtkStack" id="eye_dropper_color_picker_stack">
@@ -63,8 +67,8 @@
                                           <class name="eye-dropper-stack-page-box" />
                                         </style>
                                         <property name="orientation">vertical</property>
-                                        <property name="valign">3</property>
-                                        <property name="halign">3</property>
+                                        <property name="valign">center</property>
+                                        <property name="halign">center</property>
                                         <property name="spacing">10</property>
                                         <child>
                                           <object class="GtkButton" id="pick_color_button">
@@ -75,6 +79,9 @@
                                               <class name="circular" />
                                               <class name="pick-color-button" />
                                             </style>
+                                            <accessibility>
+                                              <property name="label" translatable="yes" context="accessibility">Pick color from screen</property>
+                                            </accessibility>
                                           </object>
                                         </child>
                                       </object>
@@ -88,21 +95,20 @@
                                     <property name="child">
                                       <object class="GtkBox">
                                         <property name="orientation">vertical</property>
-                                        <property name="valign">3</property>
-                                        <property name="halign">3</property>
+                                        <property name="valign">center</property>
+                                        <property name="halign">center</property>
                                         <property name="vexpand">true</property>
                                         <child>
                                           <object class="GtkStack" id="picked_colors_stack">
                                             <property name="transition_type">crossfade</property>
-                                            <property name="transition-type">1</property>
                                             <child>
                                               <object class="GtkStackPage" id="no_saved_colors_stack_page">
                                                 <property name="name">no_saved_colors_stack_page</property>
                                                 <property name="child">
                                                   <object class="GtkBox">
                                                     <property name="orientation">vertical</property>
-                                                    <property name="valign">3</property>
-                                                    <property name="halign">3</property>
+                                                    <property name="valign">center</property>
+                                                    <property name="halign">center</property>
                                                     <property name="vexpand">true</property>
                                                     <property name="spacing">20</property>
                                                     <child>
@@ -126,14 +132,14 @@
                                                 <property name="child">
                                                   <object class="GtkBox">
                                                     <property name="orientation">vertical</property>
-                                                    <property name="valign">3</property>
-                                                    <property name="halign">3</property>
+                                                    <property name="valign">center</property>
+                                                    <property name="halign">center</property>
                                                     <property name="vexpand">true</property>
                                                     <child>
                                                       <object class="GtkBox">
                                                         <property name="orientation">vertical</property>
-                                                        <property name="halign">3</property>
-                                                        <property name="valign">3</property>
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">center</property>
                                                         <property name="margin-start">18</property>
                                                         <property name="margin-end">18</property>
                                                         <property name="margin-top">18</property>
@@ -209,7 +215,7 @@
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="AdwHeaderBar">
-                        <property name="centering-policy">1</property>
+                        <property name="centering-policy">strict</property>
                         <property name="title-widget">
                           <object class="AdwWindowTitle">
                             <property name="title">Bella</property>
@@ -218,58 +224,64 @@
                         <child type="start">
                           <object class="GtkButton" id="back_to_home_page_button">
                             <property name="icon-name">bella-go-next-symbolic-rtl</property>
-                            <property name="tooltip-text" translatable="yes">Back</property>
+                            <property name="tooltip-text" translatable="yes">Back to main screen</property>
+                            <accessibility>
+                              <property name="label" translatable="yes" context="accessibility">Back to main screen</property>
+                            </accessibility>
                           </object>
                         </child>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkBox" id="display_picked_color_box_inner">
-                        <property name="orientation">vertical</property>
-                        <property name="valign">3</property>
-                        <property name="halign">3</property>
-                        <property name="vexpand">true</property>
-                        <property name="spacing">5</property>
-                        <property name="margin-start">18</property>
-                        <property name="margin-end">18</property>
-                        <property name="margin-top">18</property>
-                        <property name="margin-bottom">18</property>
-                        <property name="spacing">24</property>
-                        <style>
-                          <class name="margin" />
-                        </style>
-                        <child>
-                          <object class="GtkBox">
+                      <object class="GtkScrolledWindow">
+                        <property name="propagate_natural_height">true</property>
+                        <property name="propagate_natural_width">true</property>
+                        <property name="child">
+                          <object class="GtkBox" id="display_picked_color_box_inner">
                             <property name="orientation">vertical</property>
-                            <property name="halign">3</property>
-                            <property name="valign">3</property>
+                            <property name="valign">center</property>
+                            <property name="halign">center</property>
                             <property name="vexpand">true</property>
+                            <property name="spacing">5</property>
+                            <property name="margin-start">18</property>
+                            <property name="margin-end">18</property>
+                            <property name="margin-top">18</property>
+                            <property name="margin-bottom">18</property>
+                            <property name="spacing">24</property>
+                            <style>
+                              <class name="margin" />
+                            </style>
                             <child>
-                              <object class="GtkColorDialogButton" id="colorDialogBtn">
-                                <property name="tooltip-text" translatable="yes">Modify color</property>
-                                <signal
-                                  name="notify::rgba"
-                                  handler="selectColorHandler"
-                                  swapped="no"
-                                  object="BellaWindow" />
-                                <property name="dialog">
-                                  <object class="GtkColorDialog">
-                                    <property name="modal">true</property>
-                                    <property name="title" translatable="yes">Modify color or select new one</property>
-                                    <property name="with-alpha">false</property>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="vexpand">true</property>
+                                <child>
+                                  <object class="GtkColorDialogButton" id="colorDialogBtn">
+                                    <property name="tooltip-text" translatable="yes">Modify color</property>
+                                    <accessibility>
+                                      <property name="label" translatable="yes" context="accessibility">Modify color</property>
+                                    </accessibility>
+                                    <signal
+                                      name="notify::rgba"
+                                      handler="selectColorHandler"
+                                      swapped="no"
+                                      object="BellaWindow" />
+                                    <property name="dialog">
+                                      <object class="GtkColorDialog">
+                                        <property name="modal">true</property>
+                                        <property name="title" translatable="yes">Modify color or select new one</property>
+                                        <property name="with-alpha">false</property>
+                                      </object>
+                                    </property>
                                   </object>
-                                </property>
+                                </child>
                               </object>
                             </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkScrolledWindow">
-                            <property name="propagate_natural_height">true</property>
-                            <property name="propagate_natural_width">true</property>
-                            <property name="child">
+                            <child>
                               <object class="AdwClamp">
-                                <property name="maximum-size">400</property>
+                                <property name="maximum-size">500</property>
                                 <property name="tightening-threshold">300</property>
                                 <property name="child">
                                   <object class="GtkBox">
@@ -283,7 +295,7 @@
                                         <property name="description" translatable="yes">Common color modes</property>
                                         <child>
                                           <object class="AdwActionRow" id="hex_action_row">
-                                            <property name="title">Hex</property>
+                                            <property name="title" translatable="yes">Hex</property>
                                             <property name="subtitle">#007ACC</property>
                                             <style>
                                               <class name="property" />
@@ -303,7 +315,7 @@
                                         </child>
                                         <child>
                                           <object class="AdwActionRow" id="rgb_action_row">
-                                            <property name="title">RGB</property>
+                                            <property name="title" translatable="yes">RGB</property>
                                             <property name="subtitle">rgb(0, 122, 204)</property>
                                             <style>
                                               <class name="property" />
@@ -323,7 +335,7 @@
                                         </child>
                                         <child>
                                           <object class="AdwActionRow" id="rgb_percent_action_row">
-                                            <property name="title">RGB Percent</property>
+                                            <property name="title" translatable="yes">RGB Percent</property>
                                             <property name="subtitle">rgb(0%, 48%, 80%)</property>
                                             <style>
                                               <class name="property" />
@@ -343,7 +355,7 @@
                                         </child>
                                         <child>
                                           <object class="AdwActionRow" id="hsl_action_row">
-                                            <property name="title">HSL</property>
+                                            <property name="title" translatable="yes">HSL</property>
                                             <property name="subtitle">hsl(204, 100%, 40%)</property>
                                             <style>
                                               <class name="property" />
@@ -363,7 +375,7 @@
                                         </child>
                                         <child>
                                           <object class="AdwActionRow" id="hsv_action_row">
-                                            <property name="title">HSV</property>
+                                            <property name="title" translatable="yes">HSV</property>
                                             <property name="subtitle">hsv(204, 100%, 80%)</property>
                                             <style>
                                               <class name="property" />
@@ -389,7 +401,7 @@
                                         <property name="description" translatable="yes">The closest color name</property>
                                         <child>
                                           <object class="AdwActionRow" id="color_name_action_row">
-                                            <property name="title">Name</property>
+                                            <property name="title" translatable="yes">Name</property>
                                             <property name="subtitle">darkslategray</property>
                                             <style>
                                               <class name="property" />
@@ -412,9 +424,9 @@
                                   </object>
                                 </property>
                               </object>
-                            </property>
+                            </child>
                           </object>
-                        </child>
+                        </property>
                       </object>
                     </child>
                   </object>
