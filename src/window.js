@@ -228,44 +228,54 @@ export const BellaWindow = GObject.registerClass(
         preferencesWindow.present(this);
       });
 
-      deleteSavedColorsAction.connect("activate", (_, alertDialogResponse) => {
-        const response = alertDialogResponse?.unpack();
+      deleteSavedColorsAction.connect(
+        "activate",
+        (_deleteSavedColorsAction, alertDialogResponse) => {
+          const response = alertDialogResponse?.unpack();
 
-        if (response === "delete") {
-          this._saved_colors_selection_model.model.remove_all();
-          this.saveData([]);
-          this.displayToast(_("Deleted all saved colors"));
-        }
-      });
-
-      copySavedColorAction.connect("activate", (_, savedColor) => {
-        const color = savedColor?.unpack();
-
-        if (color) {
-          this.copyToClipboard(color);
-          this.displayToast(`Copied ${color} to clipboard`);
-        }
-      });
-
-      deleteSavedColorAction.connect("activate", (_, colorId) => {
-        const confirmDeleteOne = new ConfirmDeleteOne();
-
-        confirmDeleteOne.connect("response", (actionDialog, response) => {
-          if (response === "cancel") return;
-
-          const id = colorId?.unpack();
-          const [idx, item] = this.getItem(id);
-
-          if (idx === null) {
-            throw new Error(`id: ${id} is non-existent`);
+          if (response === "delete") {
+            this._saved_colors_selection_model.model.remove_all();
+            this.saveData([]);
+            this.displayToast(_("Deleted all saved colors"));
           }
+        }
+      );
 
-          this._saved_colors_selection_model.model.remove(idx);
-          this.displayToast(_("Deleted saved color successfully"));
-        });
+      copySavedColorAction.connect(
+        "activate",
+        (_copySavedColorAction, savedColor) => {
+          const color = savedColor?.unpack();
 
-        confirmDeleteOne.present(this);
-      });
+          if (color) {
+            this.copyToClipboard(color);
+            // Translators: Do NOT translate %s. It is a placeholder.
+            this.displayToast(_("Copied %s to clipboard").format(color));
+          }
+        }
+      );
+
+      deleteSavedColorAction.connect(
+        "activate",
+        (_deleteSavedColorAction, colorId) => {
+          const confirmDeleteOne = new ConfirmDeleteOne();
+
+          confirmDeleteOne.connect("response", (actionDialog, response) => {
+            if (response === "cancel") return;
+
+            const id = colorId?.unpack();
+            const [idx, item] = this.getItem(id);
+
+            if (idx === null) {
+              throw new Error(`id: ${id} is non-existent`);
+            }
+
+            this._saved_colors_selection_model.model.remove(idx);
+            this.displayToast(_("Deleted saved color successfully"));
+          });
+
+          confirmDeleteOne.present(this);
+        }
+      );
 
       viewSavedColorAction.connect("activate", (_, colorId) => {
         const id = colorId?.unpack();
@@ -345,7 +355,7 @@ export const BellaWindow = GObject.registerClass(
         } catch (err) {
           if (err instanceof GLib.Error) {
             if (err.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.FAILED)) {
-              console.log(_("Failed to pick color "));
+              console.log("Failed to pick color");
               this.displayToast(_("Failed to pick color"));
               return;
             }
@@ -474,12 +484,12 @@ export const BellaWindow = GObject.registerClass(
         if (success) {
           console.log(_("Successfully saved picked colors to file"));
         } else {
-          console.log(_("Failed to save picked colors to file"));
+          console.log("Failed to save picked colors to file");
         }
       }
 
       if (fileCreationFlag === -1) {
-        console.log(_("An error occurred while creating directory"));
+        console.log("An error occurred while creating directory");
       }
     };
 
@@ -554,7 +564,8 @@ export const BellaWindow = GObject.registerClass(
       const color = copyColorFormatButton.colorFormat;
 
       this.copyToClipboard(color);
-      this.displayToast(`Copied ${color} to clipboard`);
+      // Translators: Do NOT translate %s. It is a placeholder.
+      this.displayToast(_("Copied %s to clipboard").format(color));
     }
   }
 );
