@@ -31,6 +31,7 @@ export const BellaWindow = GObject.registerClass(
       "toast_overlay",
       "saved_colors_selection_model",
       "picked_colors_stack",
+      "column_view",
       // Color format page
       "hex_action_row",
       "hex_copy_button",
@@ -80,6 +81,7 @@ export const BellaWindow = GObject.registerClass(
     constructor(application) {
       super({ application });
       this.init();
+      this.centerColumnTitle();
 
       this._pick_color_button.connect("clicked", this.clickHandler);
       this._back_to_home_page_button.connect(
@@ -179,6 +181,20 @@ export const BellaWindow = GObject.registerClass(
         cssProvider,
         Gtk.STYLE_PROVIDER_PRIORITY_USER
       );
+    };
+
+    centerColumnTitle = () => {
+      try {
+        const colorColumnViewTitle = this._column_view
+          ?.get_first_child()
+          ?.get_first_child();
+        const actionsColumnViewTitle = colorColumnViewTitle?.get_next_sibling();
+
+        colorColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
+        actionsColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
     createActions = () => {
