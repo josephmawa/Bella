@@ -104,7 +104,7 @@
                                             <child>
                                               <object class="GtkImage">
                                                 <property name="icon-name">bella-item-list-symbolic</property>
-                                                <property name="pixel-size">80</property>
+                                                <property name="pixel-size">84</property>
                                               </object>
                                             </child>
                                             <child>
@@ -203,7 +203,7 @@
                         <child type="start">
                           <object class="GtkButton" id="back_to_home_page_button">
                             <property name="icon-name">bella-go-next-symbolic-rtl</property>
-                            <property name="tooltip-text" translatable="yes">Back to main screen</property>
+                            <property name="tooltip-text" translatable="yes" context="Navigate back to the main screen">Back</property>
                             <accessibility>
                               <property name="label" translatable="yes" context="accessibility">Back to main screen</property>
                             </accessibility>
