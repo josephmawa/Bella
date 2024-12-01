@@ -9,8 +9,8 @@
     <property name="close-response">cancel</property>
     <property name="prefer-wide-layout">false</property>
     <responses>
-      <response id="delete" translatable="yes" appearance="destructive">_Delete</response>
-      <response id="cancel" translatable="yes" appearance="suggested">_Cancel</response>
+      <response id="delete" translatable="yes" appearance="destructive">Delete</response>
+      <response id="cancel" translatable="yes" appearance="suggested">Cancel</response>
     </responses>
   </template>
 </interface>

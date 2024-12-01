@@ -103,14 +103,14 @@
                                             <property name="spacing">10</property>
                                             <child>
                                               <object class="GtkImage">
-                                                <property name="icon-name">bella-item-list-symbolic</property>
+                                                <property name="icon-name">bella-folder-symbolic</property>
                                                 <property name="pixel-size">84</property>
                                               </object>
                                             </child>
                                             <child>
                                               <object class="GtkLabel">
                                                 <property name="use-markup">true</property>
-                                                <property name="label" translatable="yes">&lt;span font-size=&quot;xx-large&quot;&gt;No saved color&lt;/span&gt;</property>
+                                                <property name="label" translatable="yes">&lt;span font-size=&quot;xx-large&quot; font-weight=&quot;bold&quot;&gt;No Saved Color&lt;/span&gt;</property>
                                               </object>
                                             </child>
                                           </object>
