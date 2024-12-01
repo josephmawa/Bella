@@ -110,7 +110,7 @@
                                             <child>
                                               <object class="GtkLabel">
                                                 <property name="use-markup">true</property>
-                                                <property name="label" translatable="yes">&lt;big&gt;No saved color&lt;/big&gt;</property>
+                                                <property name="label" translatable="yes">&lt;span font-size=&quot;xx-large&quot;&gt;No saved color&lt;/span&gt;</property>
                                               </object>
                                             </child>
                                           </object>
