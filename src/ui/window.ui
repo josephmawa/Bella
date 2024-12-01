@@ -9,7 +9,7 @@
       <object class="AdwToastOverlay" id="toast_overlay">
         <property name="child">
           <object class="GtkStack" id="main_stack">
-            <property name="transition-type">1</property>
+            <property name="transition-type">crossfade</property>
             <child>
               <object class="GtkStackPage" id="main_page">
                 <property name="name">main_page</property>
@@ -39,152 +39,132 @@
                     <child>
                       <object class="GtkBox">
                         <property name="orientation">vertical</property>
-                        <property name="halign">center</property>
+                        <property name="vexpand">true</property>
                         <style>
                           <class name="margin" />
                         </style>
                         <child>
-                          <object class="GtkStackSwitcher" id="eye_dropper_color_picker_stack_switcher">
-                            <property name="stack">eye_dropper_color_picker_stack</property>
+                          <object class="GtkBox">
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <child>
+                              <object class="GtkStackSwitcher" id="eye_dropper_color_picker_stack_switcher">
+                                <property name="stack">eye_dropper_color_picker_stack</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkBox">
-                            <property name="orientation">vertical</property>
-                            <property name="valign">center</property>
-                            <property name="halign">center</property>
+                          <object class="GtkStack" id="eye_dropper_color_picker_stack">
+                            <property name="transition_type">crossfade</property>
                             <property name="vexpand">true</property>
                             <child>
-                              <object class="GtkStack" id="eye_dropper_color_picker_stack">
-                                <property name="transition_type">crossfade</property>
-                                <child>
-                                  <object class="GtkStackPage">
-                                    <property name="name">eye_dropper_stack_page</property>
-                                    <property name="title" translatable="yes">Eye Dropper</property>
-                                    <property name="child">
-                                      <object class="GtkBox">
+                              <object class="GtkStackPage">
+                                <property name="name">eye_dropper_stack_page</property>
+                                <property name="title" translatable="yes">Eye Dropper</property>
+                                <property name="child">
+                                  <object class="GtkBox">
+                                    <property name="orientation">vertical</property>
+                                    <property name="valign">center</property>
+                                    <property name="halign">center</property>
+                                    <child>
+                                      <object class="GtkButton" id="pick_color_button">
+                                        <property name="tooltip-text" translatable="yes">Pick Color from screen</property>
+                                        <property name="icon-name">bella-color-select-symbolic</property>
                                         <style>
-                                          <class name="eye-dropper-stack-page-box" />
+                                          <class name="suggested-action" />
+                                          <class name="circular" />
+                                          <class name="pick-color-button" />
                                         </style>
-                                        <property name="orientation">vertical</property>
-                                        <property name="valign">center</property>
-                                        <property name="halign">center</property>
-                                        <property name="spacing">10</property>
-                                        <child>
-                                          <object class="GtkButton" id="pick_color_button">
-                                            <property name="tooltip-text" translatable="yes">Pick Color from screen</property>
-                                            <property name="icon-name">bella-color-select-symbolic</property>
-                                            <style>
-                                              <class name="suggested-action" />
-                                              <class name="circular" />
-                                              <class name="pick-color-button" />
-                                            </style>
-                                            <accessibility>
-                                              <property name="label" translatable="yes" context="accessibility">Pick color from screen</property>
-                                            </accessibility>
-                                          </object>
-                                        </child>
+                                        <accessibility>
+                                          <property name="label" translatable="yes" context="accessibility">Pick color from screen</property>
+                                        </accessibility>
                                       </object>
-                                    </property>
+                                    </child>
                                   </object>
-                                </child>
-                                <child>
-                                  <object class="GtkStackPage">
-                                    <property name="name">saved_colors_stack_page</property>
-                                    <property name="title" translatable="yes">Saved Colors</property>
-                                    <property name="child">
-                                      <object class="GtkBox">
-                                        <property name="orientation">vertical</property>
-                                        <property name="valign">center</property>
-                                        <property name="halign">center</property>
-                                        <property name="vexpand">true</property>
-                                        <child>
-                                          <object class="GtkStack" id="picked_colors_stack">
-                                            <property name="transition_type">crossfade</property>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkStackPage">
+                                <property name="name">saved_colors_stack_page</property>
+                                <property name="title" translatable="yes">Saved Colors</property>
+                                <property name="child">
+                                  <object class="GtkStack" id="picked_colors_stack">
+                                    <property name="transition_type">crossfade</property>
+                                    <child>
+                                      <object class="GtkStackPage" id="no_saved_colors_stack_page">
+                                        <property name="name">no_saved_colors_stack_page</property>
+                                        <property name="child">
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <property name="valign">center</property>
+                                            <property name="halign">center</property>
+                                            <property name="spacing">10</property>
                                             <child>
-                                              <object class="GtkStackPage" id="no_saved_colors_stack_page">
-                                                <property name="name">no_saved_colors_stack_page</property>
-                                                <property name="child">
-                                                  <object class="GtkBox">
-                                                    <property name="orientation">vertical</property>
-                                                    <property name="valign">center</property>
-                                                    <property name="halign">center</property>
-                                                    <property name="vexpand">true</property>
-                                                    <property name="spacing">20</property>
-                                                    <child>
-                                                      <object class="GtkImage">
-                                                        <property name="icon-name">bella-color-select-symbolic</property>
-                                                        <property name="icon-size">large</property>
-                                                      </object>
-                                                    </child>
-                                                    <child>
-                                                      <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">You don't have any saved colors.</property>
-                                                      </object>
-                                                    </child>
-                                                  </object>
-                                                </property>
+                                              <object class="GtkImage">
+                                                <property name="icon-name">bella-item-list-symbolic</property>
+                                                <property name="pixel-size">84</property>
                                               </object>
                                             </child>
                                             <child>
-                                              <object class="GtkStackPage" id="saved_colors_stack_page_inner">
-                                                <property name="name">saved_colors_stack_page_inner</property>
+                                              <object class="GtkLabel">
+                                                <property name="use-markup">true</property>
+                                                <property name="label" translatable="yes">&lt;big&gt;No saved color&lt;/big&gt;</property>
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkStackPage" id="saved_colors_stack_page_inner">
+                                        <property name="name">saved_colors_stack_page_inner</property>
+                                        <property name="child">
+                                          <object class="GtkBox">
+                                            <property name="orientation">vertical</property>
+                                            <property name="halign">center</property>
+                                            <property name="valign">center</property>
+                                            <property name="margin-start">18</property>
+                                            <property name="margin-end">18</property>
+                                            <property name="margin-top">18</property>
+                                            <property name="margin-bottom">18</property>
+                                            <property name="spacing">24</property>
+                                            <child>
+                                              <object class="GtkScrolledWindow">
+                                                <property name="propagate_natural_height">true</property>
+                                                <property name="propagate_natural_width">true</property>
                                                 <property name="child">
-                                                  <object class="GtkBox">
-                                                    <property name="orientation">vertical</property>
-                                                    <property name="valign">center</property>
-                                                    <property name="halign">center</property>
-                                                    <property name="vexpand">true</property>
+                                                  <object class="GtkColumnView" id="column_view">
+                                                    <style>
+                                                      <class name="saved-colors-column-view" />
+                                                      <class name="frame" />
+                                                    </style>
+                                                    <property name="single-click-activate">true</property>
+                                                    <property name="show-row-separators">true</property>
+                                                    <property name="show-column-separators">true</property>
+                                                    <property name="reorderable">false</property>
+                                                    <property name="model">
+                                                      <object class="GtkNoSelection" id="saved_colors_selection_model" />
+                                                    </property>
                                                     <child>
-                                                      <object class="GtkBox">
-                                                        <property name="orientation">vertical</property>
-                                                        <property name="halign">center</property>
-                                                        <property name="valign">center</property>
-                                                        <property name="margin-start">18</property>
-                                                        <property name="margin-end">18</property>
-                                                        <property name="margin-top">18</property>
-                                                        <property name="margin-bottom">18</property>
-                                                        <property name="spacing">24</property>
-                                                        <child>
-                                                          <object class="GtkScrolledWindow">
-                                                            <property name="propagate_natural_height">true</property>
-                                                            <property name="propagate_natural_width">true</property>
-                                                            <property name="child">
-                                                              <object class="GtkColumnView" id="column_view">
-                                                                <style>
-                                                                  <class name="saved-colors-column-view" />
-                                                                  <class name="frame" />
-                                                                </style>
-                                                                <property name="single_click_activate">true</property>
-                                                                <property name="show_row_separators">true</property>
-                                                                <property name="show-column-separators">true</property>
-                                                                <property name="model">
-                                                                  <object class="GtkNoSelection" id="saved_colors_selection_model" />
-                                                                </property>
-                                                                <child>
-                                                                  <object class="GtkColumnViewColumn">
-                                                                    <property name="title" translatable="yes">Color</property>
-                                                                    <property name="factory">
-                                                                      <object class="GtkBuilderListItemFactory">
-                                                                        <property name="resource">/io/github/josephmawa/Bella/saved-color-table-columns/color.ui</property>
-                                                                      </object>
-                                                                    </property>
-                                                                  </object>
-                                                                </child>
-                                                                <child>
-                                                                  <object class="GtkColumnViewColumn">
-                                                                    <property name="title" translatable="yes">Actions</property>
-                                                                    <property name="factory">
-                                                                      <object class="GtkBuilderListItemFactory">
-                                                                        <property name="resource">/io/github/josephmawa/Bella/saved-color-table-columns/actions.ui</property>
-                                                                      </object>
-                                                                    </property>
-                                                                  </object>
-                                                                </child>
-                                                              </object>
-                                                            </property>
+                                                      <object class="GtkColumnViewColumn">
+                                                        <property name="title" translatable="yes">Color</property>
+                                                        <property name="factory">
+                                                          <object class="GtkBuilderListItemFactory">
+                                                            <property name="resource">/io/github/josephmawa/Bella/saved-color-table-columns/color.ui</property>
                                                           </object>
-                                                        </child>
+                                                        </property>
+                                                      </object>
+                                                    </child>
+                                                    <child>
+                                                      <object class="GtkColumnViewColumn">
+                                                        <property name="title" translatable="yes">Actions</property>
+                                                        <property name="factory">
+                                                          <object class="GtkBuilderListItemFactory">
+                                                            <property name="resource">/io/github/josephmawa/Bella/saved-color-table-columns/actions.ui</property>
+                                                          </object>
+                                                        </property>
                                                       </object>
                                                     </child>
                                                   </object>
@@ -192,11 +172,11 @@
                                               </object>
                                             </child>
                                           </object>
-                                        </child>
+                                        </property>
                                       </object>
-                                    </property>
+                                    </child>
                                   </object>
-                                </child>
+                                </property>
                               </object>
                             </child>
                           </object>
@@ -224,7 +204,7 @@
                         <child type="start">
                           <object class="GtkButton" id="back_to_home_page_button">
                             <property name="icon-name">bella-go-next-symbolic-rtl</property>
-                            <property name="tooltip-text" translatable="yes">Back to main screen</property>
+                            <property name="tooltip-text" translatable="yes" context="Navigate back to the main screen">Back</property>
                             <accessibility>
                               <property name="label" translatable="yes" context="accessibility">Back to main screen</property>
                             </accessibility>
@@ -234,15 +214,14 @@
                     </child>
                     <child>
                       <object class="GtkScrolledWindow">
-                        <property name="propagate_natural_height">true</property>
-                        <property name="propagate_natural_width">true</property>
+                        <property name="propagate-natural-height">true</property>
+                        <property name="propagate-natural-width">true</property>
                         <property name="child">
                           <object class="GtkBox" id="display_picked_color_box_inner">
                             <property name="orientation">vertical</property>
                             <property name="valign">center</property>
                             <property name="halign">center</property>
                             <property name="vexpand">true</property>
-                            <property name="spacing">5</property>
                             <property name="margin-start">18</property>
                             <property name="margin-end">18</property>
                             <property name="margin-top">18</property>
@@ -296,7 +275,6 @@
                                         <child>
                                           <object class="AdwActionRow" id="hex_action_row">
                                             <property name="title" translatable="yes">Hex</property>
-                                            <property name="subtitle">#007ACC</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -316,7 +294,6 @@
                                         <child>
                                           <object class="AdwActionRow" id="rgb_action_row">
                                             <property name="title" translatable="yes">RGB</property>
-                                            <property name="subtitle">rgb(0, 122, 204)</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -336,7 +313,6 @@
                                         <child>
                                           <object class="AdwActionRow" id="rgb_percent_action_row">
                                             <property name="title" translatable="yes">RGB Percent</property>
-                                            <property name="subtitle">rgb(0%, 48%, 80%)</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -356,7 +332,6 @@
                                         <child>
                                           <object class="AdwActionRow" id="hsl_action_row">
                                             <property name="title" translatable="yes">HSL</property>
-                                            <property name="subtitle">hsl(204, 100%, 40%)</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -376,7 +351,6 @@
                                         <child>
                                           <object class="AdwActionRow" id="hsv_action_row">
                                             <property name="title" translatable="yes">HSV</property>
-                                            <property name="subtitle">hsv(204, 100%, 80%)</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -402,7 +376,6 @@
                                         <child>
                                           <object class="AdwActionRow" id="color_name_action_row">
                                             <property name="title" translatable="yes">Name</property>
-                                            <property name="subtitle">darkslategray</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -441,15 +414,15 @@
   <menu id="primary_menu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="label" translatable="yes">Preferences</attribute>
         <attribute name="action">app.preferences</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_About Bella</attribute>
+        <attribute name="label" translatable="yes">About Bella</attribute>
         <attribute name="action">app.about</attribute>
       </item>
     </section>

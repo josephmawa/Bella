@@ -31,6 +31,7 @@ export const BellaWindow = GObject.registerClass(
       "toast_overlay",
       "saved_colors_selection_model",
       "picked_colors_stack",
+      "column_view",
       // Color format page
       "hex_action_row",
       "hex_copy_button",
@@ -80,6 +81,7 @@ export const BellaWindow = GObject.registerClass(
     constructor(application) {
       super({ application });
       this.init();
+      this.centerColumnTitle();
 
       this._pick_color_button.connect("clicked", this.clickHandler);
       this._back_to_home_page_button.connect(
@@ -181,6 +183,20 @@ export const BellaWindow = GObject.registerClass(
       );
     };
 
+    centerColumnTitle = () => {
+      try {
+        const colorColumnViewTitle = this._column_view
+          ?.get_first_child()
+          ?.get_first_child();
+        const actionsColumnViewTitle = colorColumnViewTitle?.get_next_sibling();
+
+        colorColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
+        actionsColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     createActions = () => {
       const showPreferencesWindowAction = new Gio.SimpleAction({
         name: "preferences",
@@ -212,51 +228,62 @@ export const BellaWindow = GObject.registerClass(
         preferencesWindow.present(this);
       });
 
-      deleteSavedColorsAction.connect("activate", (_, alertDialogResponse) => {
-        const response = alertDialogResponse?.unpack();
+      deleteSavedColorsAction.connect(
+        "activate",
+        (_deleteSavedColorsAction, alertDialogResponse) => {
+          const response = alertDialogResponse?.unpack();
 
-        if (response === "delete") {
-          this._saved_colors_selection_model.model.remove_all();
-          this.saveData([]);
-          this.displayToast(_("Deleted all saved colors"));
-        }
-      });
-
-      copySavedColorAction.connect("activate", (_, savedColor) => {
-        const color = savedColor?.unpack();
-
-        if (color) {
-          this.copyToClipboard(color);
-          this.displayToast(`Copied ${color} to clipboard`);
-        }
-      });
-
-      deleteSavedColorAction.connect("activate", (_, colorId) => {
-        const confirmDeleteOne = new ConfirmDeleteOne();
-
-        confirmDeleteOne.connect("response", (actionDialog, response) => {
-          if (response === "cancel") return;
-
-          const id = colorId?.unpack();
-          const [idx, item] = this.getItem(id);
-
-          if (idx === null) {
-            throw new Error(`id: ${id} is non-existent`);
+          if (response === "delete") {
+            this._saved_colors_selection_model.model.remove_all();
+            this.saveData([]);
+            this.displayToast(_("Deleted all saved colors"));
           }
+        }
+      );
 
-          this._saved_colors_selection_model.model.remove(idx);
-          this.displayToast(_("Deleted saved color successfully"));
-        });
+      copySavedColorAction.connect(
+        "activate",
+        (_copySavedColorAction, savedColor) => {
+          const color = savedColor?.unpack();
 
-        confirmDeleteOne.present(this);
-      });
+          if (color) {
+            this.copyToClipboard(color);
+            // Translators: Do NOT translate %s. It is a placeholder.
+            this.displayToast(_("Copied %s to clipboard").format(color));
+          }
+        }
+      );
+
+      deleteSavedColorAction.connect(
+        "activate",
+        (_deleteSavedColorAction, colorId) => {
+          const confirmDeleteOne = new ConfirmDeleteOne();
+
+          confirmDeleteOne.connect("response", (actionDialog, response) => {
+            if (response === "cancel") return;
+
+            const id = colorId?.unpack();
+            const [idx, item] = this.getItem(id);
+
+            if (idx === null) {
+              throw new Error(`id: ${id} is non-existent`);
+            }
+
+            this._saved_colors_selection_model.model.remove(idx);
+            this.displayToast(_("Deleted saved color successfully"));
+          });
+
+          confirmDeleteOne.present(this);
+        }
+      );
 
       viewSavedColorAction.connect("activate", (_, colorId) => {
         const id = colorId?.unpack();
         const [idx, item] = this.getItem(id);
 
         if (idx === null) {
-          throw new Error(`id: ${id} is non-existent`);
+          // Translators: Do NOT translate %s. It is a placeholder.
+          throw new Error(_("id: %s doesn't existent").format(id));
         }
 
         this.updatePickedColor(item);
@@ -329,7 +356,6 @@ export const BellaWindow = GObject.registerClass(
         } catch (err) {
           if (err instanceof GLib.Error) {
             if (err.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.FAILED)) {
-              console.log(_("Failed to pick color "));
               this.displayToast(_("Failed to pick color"));
               return;
             }
@@ -538,7 +564,8 @@ export const BellaWindow = GObject.registerClass(
       const color = copyColorFormatButton.colorFormat;
 
       this.copyToClipboard(color);
-      this.displayToast(`Copied ${color} to clipboard`);
+      // Translators: Do NOT translate %s. It is a placeholder.
+      this.displayToast(_("Copied %s to clipboard").format(color));
     }
   }
 );
