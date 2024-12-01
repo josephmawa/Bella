@@ -6,14 +6,14 @@
   <developer id="io.github.josephmawa">
     <name translate="no">Joseph Mawa</name>
   </developer>
-  <summary>Pick color from the screen in any format</summary>
+  <summary>Pick color from the screen</summary>
 
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <content_rating type="oars-1.1" />
 
   <description>
-    <p>Pick color from the screen and save it in one of the common color formats</p>
+    <p>Pick color from anywhere on your screen and save it in one of the common color formats</p>
     <p>Below are the main features of Bella:</p>
     <ul>
       <li>Pick color from the screen</li>
@@ -27,19 +27,19 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/eye-dropper-view-dark.png</image>
-      <caption>Bella eye dropper view dark theme</caption>
+      <caption>Eye dropper view in dark theme</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/eye-dropper-view-light.png</image>
-      <caption>Bella eye dropper view light theme</caption>
+      <caption>Eye dropper view in light theme</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/list-view-dark.png</image>
-      <caption>Bella color picker list view dark theme</caption>
+      <caption>Color list view in dark theme</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/list-view-light.png</image>
-      <caption>Bella color picker list view light theme</caption>
+      <caption>Color list view in light theme</caption>
     </screenshot>
   </screenshots>
   <categories>
