@@ -282,7 +282,8 @@ export const BellaWindow = GObject.registerClass(
         const [idx, item] = this.getItem(id);
 
         if (idx === null) {
-          throw new Error(`id: ${id} is non-existent`);
+          // Translators: Do NOT translate %s. It is a placeholder.
+          throw new Error(_("id: %s doesn't existent").format(id));
         }
 
         this.updatePickedColor(item);
@@ -355,7 +356,6 @@ export const BellaWindow = GObject.registerClass(
         } catch (err) {
           if (err instanceof GLib.Error) {
             if (err.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.FAILED)) {
-              console.log("Failed to pick color");
               this.displayToast(_("Failed to pick color"));
               return;
             }
@@ -484,12 +484,12 @@ export const BellaWindow = GObject.registerClass(
         if (success) {
           console.log(_("Successfully saved picked colors to file"));
         } else {
-          console.log("Failed to save picked colors to file");
+          console.log(_("Failed to save picked colors to file"));
         }
       }
 
       if (fileCreationFlag === -1) {
-        console.log("An error occurred while creating directory");
+        console.log(_("An error occurred while creating directory"));
       }
     };
 
