@@ -6,20 +6,20 @@
   <developer id="io.github.josephmawa">
     <name translate="no">Joseph Mawa</name>
   </developer>
-  <summary>Pick color from the screen</summary>
+  <summary>Pick a color from the screen</summary>
 
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <content_rating type="oars-1.1" />
 
   <description>
-    <p>Pick color from anywhere on your screen and save it in one of the common color formats.</p>
+    <p>Pick a color from anywhere on your screen and save it in one of the common color formats.</p>
     <p>Below are the main features of Bella:</p>
     <ul>
-      <li>Pick color from the screen</li>
+      <li>Pick a color from the screen</li>
       <li>Save the picked color</li>
       <li>Modify the picked color</li>
-      <li>Switch to dark, light or system mode</li>
+      <li>Switch to dark, light, or system mode</li>
     </ul>
   </description>
   <url type="bugtracker">https://github.com/josephmawa/Bella/issues</url>
@@ -69,9 +69,9 @@
       <description translate="no">
         <ul>
           <li>Update UI</li>
-          <li>Fix gettext bug</li>
+          <li>Fix translation bug</li>
           <li>Add brand color</li>
-          <li>Sorten app description</li>
+          <li>Shorten app summary</li>
           <li>Update screenshots</li>
         </ul>
       </description>
