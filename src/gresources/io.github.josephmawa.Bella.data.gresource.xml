@@ -4,7 +4,6 @@
     <file preprocess="xml-stripblanks" alias="window.ui">ui/window.ui</file>
     <file preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
     <file preprocess="xml-stripblanks" alias="preferences.ui">ui/preferences.ui</file>
-    <file preprocess="xml-stripblanks" alias="about-dialog.ui">ui/about-dialog.ui</file>
     <file preprocess="xml-stripblanks" alias="confirm-delete-all.ui">ui/confirm-delete-all.ui</file>
     <file preprocess="xml-stripblanks" alias="confirm-delete-one.ui">ui/confirm-delete-one.ui</file>
     <file preprocess="xml-stripblanks" alias="copy-color-format-button.ui">ui/copy-color-format-button.ui</file>

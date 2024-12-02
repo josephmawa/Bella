@@ -10,6 +10,11 @@ imports.package.init({
   datadir: "@datadir@",
 });
 
+globalThis.__APPLICATION_NAME__ = "@PACKAGE_NAME@";
+
+pkg.initGettext();
+pkg.initFormat();
+
 const { main } = await import("resource://@resource_path@/js/main.js");
 const exit_code = await main([programInvocationName, ...programArgs]);
 exit(exit_code);

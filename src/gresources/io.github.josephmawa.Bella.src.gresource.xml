@@ -3,6 +3,7 @@
   <gresource prefix="/io/github/josephmawa/Bella/js">
     <file>main.js</file>
     <file>application.js</file>
+    <file>about-dialog.js</file>
     <file>window.js</file>
     <file>preferences.js</file>
     <file>confirm-delete-all.js</file>

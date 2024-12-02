@@ -1,13 +1,10 @@
 import GObject from "gi://GObject";
 import Gio from "gi://Gio";
-import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
 import GLib from "gi://GLib";
 
 import { BellaWindow } from "./window.js";
-
-pkg.initGettext();
-pkg.initFormat();
+import { getAboutDialog } from "./about-dialog.js";
 
 export const savedColorsFile = Gio.File.new_for_path(
   GLib.build_filenamev([
@@ -50,11 +47,7 @@ export const BellaApplication = GObject.registerClass(
     };
 
     showAbout = () => {
-      const builder = Gtk.Builder.new_from_resource(
-        "/io/github/josephmawa/Bella/about-dialog.ui"
-      );
-
-      const aboutDialog = builder.get_object("about_dialog");
+      const aboutDialog = getAboutDialog();
       aboutDialog.present(this.active_window);
     };
   }
