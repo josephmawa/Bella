@@ -110,7 +110,7 @@
                                             <child>
                                               <object class="GtkLabel">
                                                 <property name="use-markup">true</property>
-                                                <property name="label" translatable="yes">&lt;span font-size=&quot;xx-large&quot; font-weight=&quot;bold&quot;&gt;No Saved Color&lt;/span&gt;</property>
+                                                <property name="label" translatable="yes" context="Translators: Only translate the text 'No Saved Color'">&lt;span font-size=&quot;xx-large&quot; font-weight=&quot;bold&quot;&gt;No Saved Color&lt;/span&gt;</property>
                                               </object>
                                             </child>
                                           </object>
@@ -274,7 +274,7 @@
                                         <property name="description" translatable="yes">Common color modes</property>
                                         <child>
                                           <object class="AdwActionRow" id="hex_action_row">
-                                            <property name="title" translatable="yes">Hex</property>
+                                            <property name="title" translatable="yes" context="Hexadecimal color format">Hex</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -293,7 +293,7 @@
                                         </child>
                                         <child>
                                           <object class="AdwActionRow" id="rgb_action_row">
-                                            <property name="title" translatable="yes">RGB</property>
+                                            <property name="title" translatable="yes" context="RGB color format">RGB</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -312,7 +312,7 @@
                                         </child>
                                         <child>
                                           <object class="AdwActionRow" id="rgb_percent_action_row">
-                                            <property name="title" translatable="yes">RGB Percent</property>
+                                            <property name="title" translatable="yes" context="RGB Percent color format">RGB Percent</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -331,7 +331,7 @@
                                         </child>
                                         <child>
                                           <object class="AdwActionRow" id="hsl_action_row">
-                                            <property name="title" translatable="yes">HSL</property>
+                                            <property name="title" translatable="yes" context="HSL color format">HSL</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -350,7 +350,7 @@
                                         </child>
                                         <child>
                                           <object class="AdwActionRow" id="hsv_action_row">
-                                            <property name="title" translatable="yes">HSV</property>
+                                            <property name="title" translatable="yes" context="HSV color format">HSV</property>
                                             <style>
                                               <class name="property" />
                                             </style>
@@ -375,7 +375,7 @@
                                         <property name="description" translatable="yes">The closest color name</property>
                                         <child>
                                           <object class="AdwActionRow" id="color_name_action_row">
-                                            <property name="title" translatable="yes">Name</property>
+                                            <property name="title" translatable="yes" context="Color name">Name</property>
                                             <style>
                                               <class name="property" />
                                             </style>
