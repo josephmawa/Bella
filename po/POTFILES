@@ -2,6 +2,7 @@ data/io.github.josephmawa.Bella.desktop.in
 data/io.github.josephmawa.Bella.metainfo.xml.in
 data/io.github.josephmawa.Bella.gschema.xml
 
+src/about-dialog.js
 src/application.js
 src/confirm-delete-all.js
 src/confirm-delete-one.js
@@ -10,7 +11,6 @@ src/main.js
 src/preferences.js
 src/window.js
 
-src/ui/about-dialog.ui
 src/ui/confirm-delete-all.ui
 src/ui/confirm-delete-one.ui
 src/ui/copy-color-format-button.ui

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-02 11:39+0300\n"
+"POT-Creation-Date: 2024-12-02 13:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -308,22 +308,27 @@ msgid "Common color modes"
 msgstr ""
 
 #: src/ui/window.ui:277
+msgctxt "Hexadecimal color format"
 msgid "Hex"
 msgstr ""
 
 #: src/ui/window.ui:296
+msgctxt "RGB color format"
 msgid "RGB"
 msgstr ""
 
 #: src/ui/window.ui:315
+msgctxt "RGB Percent color format"
 msgid "RGB Percent"
 msgstr ""
 
 #: src/ui/window.ui:334
+msgctxt "HSL color format"
 msgid "HSL"
 msgstr ""
 
 #: src/ui/window.ui:353
+msgctxt "HSV color format"
 msgid "HSV"
 msgstr ""
 
@@ -336,6 +341,7 @@ msgid "The closest color name"
 msgstr ""
 
 #: src/ui/window.ui:378
+msgctxt "Color name"
 msgid "Name"
 msgstr ""
 
