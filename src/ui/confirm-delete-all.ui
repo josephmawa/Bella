@@ -8,8 +8,8 @@
     <property name="default-response">delete</property>
     <property name="close-response">cancel</property>
     <responses>
-      <response id="delete" translatable="yes" appearance="destructive">_Delete</response>
-      <response id="cancel" translatable="yes" appearance="suggested">_Cancel</response>
+      <response id="delete" translatable="yes" appearance="destructive">Delete</response>
+      <response id="cancel" translatable="yes" appearance="suggested">Cancel</response>
     </responses>
     <signal
       name="response"

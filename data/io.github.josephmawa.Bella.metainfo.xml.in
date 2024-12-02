@@ -13,7 +13,7 @@
   <content_rating type="oars-1.1" />
 
   <description>
-    <p>Pick color from anywhere on your screen and save it in one of the common color formats</p>
+    <p>Pick color from anywhere on your screen and save it in one of the common color formats.</p>
     <p>Below are the main features of Bella:</p>
     <ul>
       <li>Pick color from the screen</li>
@@ -24,6 +24,12 @@
   </description>
   <url type="bugtracker">https://github.com/josephmawa/Bella/issues</url>
   <url type="homepage">https://github.com/josephmawa/Bella</url>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#d1dee6</color>
+    <color type="primary" scheme_preference="dark">#433d43</color>
+  </branding>
+  
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/eye-dropper-view-dark.png</image>
