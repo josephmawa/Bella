@@ -29,7 +29,7 @@
     <color type="primary" scheme_preference="light">#d1dee6</color>
     <color type="primary" scheme_preference="dark">#433d43</color>
   </branding>
-  
+
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/eye-dropper-view-dark.png</image>
@@ -63,6 +63,17 @@
     <release version="0.1.0" date="2024-11-20">
       <description translate="no">
         <p>Initial release.</p>
+      </description>
+    </release>
+    <release version="0.1.1" date="2024-12-2">
+      <description translate="no">
+        <ul>
+          <li>Update UI</li>
+          <li>Fix gettext bug</li>
+          <li>Add brand color</li>
+          <li>Sorten app description</li>
+          <li>Update screenshots</li>
+        </ul>
       </description>
     </release>
   </releases>
