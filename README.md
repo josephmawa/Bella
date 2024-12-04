@@ -3,7 +3,12 @@
   <img src="./data/icons/hicolor/scalable/apps/io.github.josephmawa.Bella.svg" alt="Bella" width="128" height="128"/>
 </div>
 <h1 align="center">Bella</h1>
-<p align="center">Pick color from anywhere on your sceen</p>
+<p align="center"><b>Pick color from anywhere on your sceen</b></p>
+<div align="center">
+  <a href="https://flathub.org/apps/io.github.josephmawa.Bella">
+    <img width="240" alt="Get it on Flathub" src="https://flathub.org/api/badge?locale=en"/>
+  </a>
+</div>
 <p align="center">
   <img src="./screenshots/eye-dropper-view-dark.png" alt="Bella eye dropper view dark theme" width="637" height="667"/>
 </p>
