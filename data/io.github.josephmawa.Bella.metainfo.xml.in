@@ -31,7 +31,15 @@
   </branding>
 
   <screenshots>
-    <screenshot type="default">
+   <screenshot type="default">
+      <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/details-view-dark.png</image>
+      <caption>Details view in dark theme</caption>
+    </screenshot>
+   <screenshot>
+      <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/details-view-light.png</image>
+      <caption>Details view in light theme</caption>
+    </screenshot>
+    <screenshot>
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/eye-dropper-view-dark.png</image>
       <caption>Eye dropper view in dark theme</caption>
     </screenshot>

@@ -10,27 +10,27 @@
   </a>
 </div>
 <p align="center">
-  <img src="./screenshots/eye-dropper-view-dark.png" alt="Bella eye dropper view dark theme" width="637" height="667"/>
+  <img src="./screenshots/eye-dropper-view-dark.png" alt="Bella eye dropper view dark theme" width="566" height="691"/>
 </p>
 <div align="center">
   <details>
     <summary>More screenshots</summary>
     <p>
-      <img src="./screenshots/eye-dropper-view-light.png" alt="Bella eye dropper view light theme" width="637" height="667"/>
+      <img src="./screenshots/eye-dropper-view-light.png" alt="Bella eye dropper view light theme" width="566" height="691"/>
     </p>
     <p>
-      <img src="./screenshots/list-view-light.png" alt="Bella color picker list view light theme" width="637" height="667"/>
+      <img src="./screenshots/list-view-light.png" alt="Bella color picker list view light theme" width="566" height="691"/>
     </p>
     <p>
-      <img src="./screenshots/details-view-dark.png" alt="Bella color picker details view dark theme" width="637" height="667"/>
+      <img src="./screenshots/details-view-dark.png" alt="Bella color picker details view dark theme" width="566" height="691"/>
     </p>
     <p>
-      <img src="./screenshots/details-view-light.png" alt="Bella color picker details view light theme" width="637" height="667"/>
+      <img src="./screenshots/details-view-light.png" alt="Bella color picker details view light theme" width="566" height="691"/>
     </p>
   </details>
 </div>
 <p align="center">
-  <img src="./screenshots/list-view-dark.png" alt="Bella list view light theme" width="637" height="667"/>
+  <img src="./screenshots/list-view-dark.png" alt="Bella list view light theme" width="566" height="691"/>
 </p>
 
 <!-- markdownlint-enable -->
