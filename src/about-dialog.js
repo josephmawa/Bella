@@ -6,6 +6,7 @@ const aboutParams = {
   application_icon: pkg.name,
   version: pkg.version,
   license_type: Gtk.License.LGPL_3_0,
+  presentation_mode: Adw.DialogPresentationMode.FLOATING,
   developer_name: "Joseph Mawa",
   developers: ["Joseph Mawa"],
   artists: ["Joseph Mawa"],
