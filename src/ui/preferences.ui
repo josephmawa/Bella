@@ -114,12 +114,12 @@
                 <property name="model">
                   <object class="GtkStringList">
                     <items>
-                      <item>Name</item>
-                      <item>Hex</item>
-                      <item>RGB</item>
-                      <item>RGB Percent</item>
-                      <item>HSL</item>
-                      <item>HSV</item>
+                      <item translatable="yes">Name</item>
+                      <item translatable="yes">Hex</item>
+                      <item translatable="yes">RGB</item>
+                      <item translatable="yes">RGB Percent</item>
+                      <item translatable="yes">HSL</item>
+                      <item translatable="yes">HSV</item>
                     </items>
                   </object>
                 </property>
