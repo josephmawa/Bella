@@ -68,6 +68,14 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+    <release version="0.1.2" date="2024-12-9">
+      <description translate="no">
+        <ul>
+          <li>Fix dialog bug</li>
+          <li>Update screenshots</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.1" date="2024-12-2">
       <description translate="no">
         <ul>
