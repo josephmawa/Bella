@@ -1,8 +1,9 @@
 import Adw from "gi://Adw";
 import GObject from "gi://GObject";
 import Gio from "gi://Gio";
+import Gtk from "gi://Gtk";
 import { ConfirmDeleteAll } from "./confirm-delete-all.js";
-import { colorFormats } from "./utils/utils.js";
+import { colorFormats } from "./utils/color-formats.js";
 
 export const BellaPreferencesDialog = GObject.registerClass(
   {
@@ -29,6 +30,8 @@ export const BellaPreferencesDialog = GObject.registerClass(
   class BellaPreferencesDialog extends Adw.PreferencesDialog {
     constructor(options = {}) {
       super(options);
+
+      this.setColorFormatModel();
 
       this.settings = Gio.Settings.new("io.github.josephmawa.Bella");
       this.settings.bind(
@@ -126,5 +129,10 @@ export const BellaPreferencesDialog = GObject.registerClass(
       const confirmDeleteAll = new ConfirmDeleteAll();
       confirmDeleteAll.present(this);
     }
+
+    setColorFormatModel = () => {
+      const _colorFormats = colorFormats.map(({ description }) => description);
+      this._colorFormatSettings.model = Gtk.StringList.new(_colorFormats);
+    };
   }
 );
