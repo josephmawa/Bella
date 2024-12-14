@@ -72,13 +72,3 @@ export function round(number, decimalPlaces = 0) {
   const multiple = Math.pow(10, decimalPlaces);
   return Math.round(number * multiple) / multiple;
 }
-
-
-export const colorFormats = [
-  { key: "name", description: "Name" },
-  { key: "hex", description: "Hex" },
-  { key: "rgb", description: "RGB" },
-  { key: "rgb_percent", description: "RGB Percent" },
-  { key: "hsl", description: "HSL" },
-  { key: "hsv", description: "HSV" },
-];

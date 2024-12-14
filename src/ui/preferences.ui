@@ -111,18 +111,6 @@
               <object class="AdwComboRow" id="colorFormatSettings">
                 <property name="title" translatable="yes">Color Format</property>
                 <property name="subtitle" translatable="yes">Select color format to display</property>
-                <property name="model">
-                  <object class="GtkStringList">
-                    <items>
-                      <item>Name</item>
-                      <item>Hex</item>
-                      <item>RGB</item>
-                      <item>RGB Percent</item>
-                      <item>HSL</item>
-                      <item>HSV</item>
-                    </items>
-                  </object>
-                </property>
               </object>
             </child>
           </object>

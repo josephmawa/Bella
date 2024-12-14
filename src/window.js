@@ -6,7 +6,8 @@ import Gio from "gi://Gio";
 import Xdp from "gi://Xdp";
 import GLib from "gi://GLib";
 
-import { getColor, getHsv, colorFormats } from "./utils/utils.js";
+import { getColor, getHsv } from "./utils/utils.js";
+import { colorFormats } from "./utils/color-formats.js";
 import { SavedColor } from "./utils/saved-color.js";
 import { BellaPreferencesDialog } from "./preferences.js";
 import { savedColorsFile } from "./application.js";

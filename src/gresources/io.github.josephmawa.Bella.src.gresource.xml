@@ -13,5 +13,6 @@
     <file>utils/saved-color.js</file>
     <file>utils/color-names.js</file>
     <file>utils/nearest-color.js</file>
+    <file>utils/color-formats.js</file>
   </gresource>
 </gresources>
