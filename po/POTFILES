@@ -10,6 +10,7 @@ src/copy-color-format-button.js
 src/main.js
 src/preferences.js
 src/window.js
+src/utils/color-formats.js
 
 src/ui/confirm-delete-all.ui
 src/ui/confirm-delete-one.ui
