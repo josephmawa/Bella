@@ -56,15 +56,6 @@
       <caption>Color list view in light theme</caption>
     </screenshot>
   </screenshots>
-  <categories>
-    <category>Development</category>
-  </categories>
-  <keywords>
-    <keyword>color</keyword>
-    <keyword>color picker</keyword>
-    <keyword>eye dropper</keyword>
-    <keyword>development</keyword>
-  </keywords>
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
