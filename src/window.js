@@ -333,19 +333,10 @@ export const BellaWindow = GObject.registerClass(
             scaledRgb[i] = gVariant.get_child_value(i).get_double();
           }
 
-          const { name, rgb, rgb_percent, hex, hsl } = getColor(scaledRgb);
-          const hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
-
-          const pickedColor = {
-            id: GLib.uuid_string_random(),
-            name,
-            hex,
-            rgb,
-            rgb_percent,
-            hsv,
-            hsl,
-          };
-
+          const pickedColor = getColor(scaledRgb);
+          pickedColor.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
+          pickedColor.id = GLib.uuid_string_random();
+         
           this.updatePickedColor(pickedColor);
           this.addNewColor(pickedColor);
 
