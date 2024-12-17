@@ -40,6 +40,7 @@ export const BellaApplication = GObject.registerClass(
       });
       this.add_action(quitAction);
       this.set_accels_for_action("app.quit", ["<primary>q"]);
+      this.set_accels_for_action("app.preferences", ["<primary>comma"]);
 
       const aboutAction = new Gio.SimpleAction({ name: "about" });
       aboutAction.connect("activate", this.showAbout);
