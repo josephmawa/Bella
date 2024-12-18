@@ -249,7 +249,6 @@ export const BellaWindow = GObject.registerClass(
 
           if (color) {
             this.copyToClipboard(color);
-            // Translators: Do NOT translate %s. It is a placeholder.
             this.displayToast(_("Copied %s to clipboard").format(color));
           }
         }
@@ -283,7 +282,6 @@ export const BellaWindow = GObject.registerClass(
         const [idx, item] = this.getItem(id);
 
         if (idx === null) {
-          // Translators: Do NOT translate %s. It is a placeholder.
           throw new Error(_("id: %s doesn't existent").format(id));
         }
 
@@ -556,7 +554,6 @@ export const BellaWindow = GObject.registerClass(
       const color = copyColorFormatButton.colorFormat;
 
       this.copyToClipboard(color);
-      // Translators: Do NOT translate %s. It is a placeholder.
       this.displayToast(_("Copied %s to clipboard").format(color));
     }
   }
