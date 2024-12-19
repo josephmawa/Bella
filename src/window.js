@@ -234,8 +234,14 @@ export const BellaWindow = GObject.registerClass(
         (_deleteSavedColorsAction, alertDialogResponse) => {
           const response = alertDialogResponse?.unpack();
 
+          const model = this._saved_colors_selection_model.model;
+
+          // Nothing to delete. Consider making the 'delete all saved colors'
+          // button inactive in the future if there are no items left
+          if (model.get_n_items() === 0) return;
+
           if (response === "delete") {
-            this._saved_colors_selection_model.model.remove_all();
+            model.remove_all();
             this.saveData([]);
             this.displayToast(_("Deleted all saved colors"));
           }
@@ -269,8 +275,15 @@ export const BellaWindow = GObject.registerClass(
               throw new Error(`id: ${id} is non-existent`);
             }
 
-            this._saved_colors_selection_model.model.remove(idx);
-            this.displayToast(_("Deleted saved color successfully"));
+            const model = this._saved_colors_selection_model.model;
+            model.remove(idx);
+
+            // Only display toast if there are items in the model otherwise the
+            // view will switch automatically to "No Saved Color". That's
+            // enough to indicate that the operation was a success.
+            if (model.get_n_items() > 0) {
+              this.displayToast(_("Deleted saved color successfully"));
+            }
           });
 
           confirmDeleteOne.present(this);
@@ -334,7 +347,7 @@ export const BellaWindow = GObject.registerClass(
           const pickedColor = getColor(scaledRgb);
           pickedColor.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
           pickedColor.id = GLib.uuid_string_random();
-         
+
           this.updatePickedColor(pickedColor);
           this.addNewColor(pickedColor);
 
