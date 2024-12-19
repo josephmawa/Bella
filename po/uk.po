@@ -1,0 +1,385 @@
+# Ukrainian translation for Bella.
+# Copyright (C) 2024 THE Bella'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Bella package.
+# volkov <volkovissocool@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Bella\n"
+"Report-Msgid-Bugs-To: https://github.com/josephmawa/Bella/issues\n"
+"POT-Creation-Date: 2024-12-02 13:58+0300\n"
+"PO-Revision-Date: 2024-12-18 14:49+0200\n"
+"Last-Translator: volkov <volkovissocool@gmail.com>\n"
+"Language-Team: volkov <volkovissocool@gmail.com>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: data/io.github.josephmawa.Bella.desktop.in:3
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:5
+msgid "Bella"
+msgstr "Белла"
+
+#: data/io.github.josephmawa.Bella.desktop.in:4 src/ui/window.ui:64
+msgid "Eye Dropper"
+msgstr "Піпетка"
+
+#: data/io.github.josephmawa.Bella.desktop.in:5
+msgid "Pick color anywhere on your screen"
+msgstr "Оберіть колір з екрану"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.josephmawa.Bella.desktop.in:12
+msgid "Color;Dropper;Eye;Picker;Pick;"
+msgstr "Color;Dropper;Eye;Picker;Pick;колір;піпетка;обрати;цвіт;барви;"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:9
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:19
+msgid "Pick color from the screen"
+msgstr "Оберіть колір з екрану"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:16
+msgid ""
+"Pick color from anywhere on your screen and save it in one of the common "
+"color formats."
+msgstr ""
+"Оберіть колір з будь-якої точки вашого екрану та збережіть його у одному з "
+"поширених форматів кольорів."
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:17
+msgid "Below are the main features of Bella:"
+msgstr "Знизу перераховані головні можливості Белли:"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:20
+msgid "Save the picked color"
+msgstr "Збереження обраного кольору"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:21
+msgid "Modify the picked color"
+msgstr "Зміна обраного кольору"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:22
+msgid "Switch to dark, light or system mode"
+msgstr "Перемикання додатку на темний, світлий і системні стилі"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:36
+msgid "Eye dropper view in dark theme"
+msgstr "Перегляд піпетки у темному стилі"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:40
+msgid "Eye dropper view in light theme"
+msgstr "Перегляд піпетки у світлому стилі"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:44
+msgid "Color list view in dark theme"
+msgstr "Перегляд списку кольорів у темному стилі"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:48
+msgid "Color list view in light theme"
+msgstr "Перегляд списку кольорів у світлому стилі"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:55
+msgid "color"
+msgstr "колір"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:56
+msgid "color picker"
+msgstr "піпетка"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:57
+msgid "eye dropper"
+msgstr "піпетка"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:58
+msgid "development"
+msgstr "розробка"
+
+#: src/window.js:239
+msgid "Deleted all saved colors"
+msgstr "Видалити усі збережені кольори"
+
+#. Translators: Do NOT translate %s. It is a placeholder.
+#: src/window.js:252 src/window.js:568
+#, javascript-format
+msgid "Copied %s to clipboard"
+msgstr "Скопійовано %s у буфер обміну"
+
+#: src/window.js:273
+msgid "Deleted saved color successfully"
+msgstr "Успішно видалено збережені кольори"
+
+#. Translators: Do NOT translate %s. It is a placeholder.
+#: src/window.js:286
+#, javascript-format
+msgid "id: %s doesn't existent"
+msgstr "ідентифікатор: %s не існує"
+
+#: src/window.js:359
+msgid "Failed to pick color"
+msgstr "Не вадлося обрати колір"
+
+#: src/window.js:460
+msgid "Failed to read saved data"
+msgstr "Не вдалося прочитату збережені дані"
+
+#: src/window.js:466
+msgid "File doesn't exist yet"
+msgstr "Файл ще не існує"
+
+#: src/window.js:485
+msgid "Successfully saved picked colors to file"
+msgstr "Успішно збережено обрані кольори у файл"
+
+#: src/window.js:487
+msgid "Failed to save picked colors to file"
+msgstr "Не вдалося зберегти обрані кольори у файл"
+
+#: src/window.js:492
+msgid "An error occurred while creating directory"
+msgstr "При створенні теки сталася помилка"
+
+#: src/ui/confirm-delete-all.ui:6
+msgid "Delete saved colors"
+msgstr "Видалити збережені кольори"
+
+#: src/ui/confirm-delete-all.ui:7
+msgid ""
+"Are you sure you want to delete all the saved colors? This action is "
+"irreversible."
+msgstr ""
+"Ви впевнені, що бажаєте видалити усі збережені кольори? Цю дію неможливо "
+"скасувати."
+
+#: src/ui/confirm-delete-all.ui:11 src/ui/confirm-delete-one.ui:12
+msgid "Delete"
+msgstr "Видалити"
+
+#: src/ui/confirm-delete-all.ui:12 src/ui/confirm-delete-one.ui:13
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: src/ui/confirm-delete-one.ui:6
+msgid "Delete saved color"
+msgstr "Видалити збережений колір"
+
+#: src/ui/confirm-delete-one.ui:7
+msgid ""
+"Are you sure you want to delete this color? This action is irreversible."
+msgstr ""
+"Ви впевнені, що бажаєте видалити цей колір? Цю дію неможливо скасувати."
+
+#: src/ui/copy-color-format-button.ui:8
+#: src/ui/saved-color-table-columns/actions.ui:23
+msgid "Copy color"
+msgstr "Скопіювати колір"
+
+#: src/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Загальні"
+
+#: src/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Показати клавіатурні скорочення"
+
+#: src/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Вийти"
+
+#: src/ui/preferences.ui:8 src/ui/preferences.ui:13 src/ui/window.ui:417
+msgid "Preferences"
+msgstr "Налаштування"
+
+#: src/ui/preferences.ui:16
+msgid "Color Theme Settings"
+msgstr "Налаштування стилю додатка"
+
+#: src/ui/preferences.ui:17
+msgid "Set color theme"
+msgstr "Обрати стиль"
+
+#: src/ui/preferences.ui:23
+msgid "Color theme"
+msgstr "Стиль додатку"
+
+#: src/ui/preferences.ui:39
+msgctxt "System color theme"
+msgid "System"
+msgstr "Системний"
+
+#: src/ui/preferences.ui:53
+msgctxt "Light color theme"
+msgid "Light"
+msgstr "Світлий"
+
+#: src/ui/preferences.ui:67
+msgctxt "Dark color theme"
+msgid "Dark"
+msgstr "Темний"
+
+#: src/ui/preferences.ui:81
+msgid "Color Settings"
+msgstr "Налаштування кольору"
+
+#: src/ui/preferences.ui:82
+msgid "Saved color settings"
+msgstr "Налаштування збереженого кольору"
+
+#: src/ui/preferences.ui:85
+msgid "Delete Colors"
+msgstr "Видалити кольори"
+
+#: src/ui/preferences.ui:86 src/ui/preferences.ui:96
+msgid "Delete all saved colors"
+msgstr "Видалити усі збережені кольори"
+
+#: src/ui/preferences.ui:98
+msgctxt "accessibility"
+msgid "Delete all saved colors"
+msgstr "Видалити усі збережені кольори"
+
+#: src/ui/preferences.ui:111 src/ui/window.ui:273
+msgid "Color Format"
+msgstr "Формат кольору"
+
+#: src/ui/preferences.ui:112
+msgid "Select color format to display"
+msgstr "Оберіть формат кольору для відображення"
+
+#: src/ui/window.ui:31
+msgid "Primary Menu"
+msgstr "Головне меню"
+
+#: src/ui/window.ui:33
+msgctxt "accessibility"
+msgid "Primary menu"
+msgstr "Головне меню"
+
+#: src/ui/window.ui:72
+msgid "Pick Color from screen"
+msgstr "Оберіть колір з екрану"
+
+#: src/ui/window.ui:80
+msgctxt "accessibility"
+msgid "Pick color from screen"
+msgstr "Обрати колір з екрану"
+
+#: src/ui/window.ui:91
+msgid "Saved Colors"
+msgstr "Збережені кольори"
+
+#: src/ui/window.ui:113
+msgctxt "Translators: Only translate the text 'No Saved Color'"
+msgid "<span font-size=\"xx-large\" font-weight=\"bold\">No Saved Color</span>"
+msgstr ""
+"<span font-size=\"xx-large\" font-weight=\"bold\">Немає збереженого кольору</"
+"span>"
+
+#: src/ui/window.ui:152
+msgid "Color"
+msgstr "Колір"
+
+#: src/ui/window.ui:162
+msgid "Actions"
+msgstr "Дії"
+
+#: src/ui/window.ui:207
+msgctxt "Navigate back to the main screen"
+msgid "Back"
+msgstr "Назад"
+
+#: src/ui/window.ui:209
+msgctxt "accessibility"
+msgid "Back to main screen"
+msgstr "Повернутися у головне меню"
+
+#: src/ui/window.ui:241
+msgid "Modify color"
+msgstr "Змінити колір"
+
+#: src/ui/window.ui:243
+msgctxt "accessibility"
+msgid "Modify color"
+msgstr "Змінити колір"
+
+#: src/ui/window.ui:253
+msgid "Modify color or select new one"
+msgstr "Змінити колір або обрати новий"
+
+#: src/ui/window.ui:274
+msgid "Common color modes"
+msgstr "Поширені режими кольорів"
+
+#: src/ui/window.ui:277
+msgctxt "Hexadecimal color format"
+msgid "Hex"
+msgstr "Шістнадцятирічний"
+
+#: src/ui/window.ui:296
+msgctxt "RGB color format"
+msgid "RGB"
+msgstr ""
+
+#: src/ui/window.ui:315
+msgctxt "RGB Percent color format"
+msgid "RGB Percent"
+msgstr "Процент RGB"
+
+#: src/ui/window.ui:334
+msgctxt "HSL color format"
+msgid "HSL"
+msgstr ""
+
+#: src/ui/window.ui:353
+msgctxt "HSV color format"
+msgid "HSV"
+msgstr ""
+
+#: src/ui/window.ui:374
+msgid "Color Name"
+msgstr "Назва кольору"
+
+#: src/ui/window.ui:375
+msgid "The closest color name"
+msgstr "Назва найближчого кольору"
+
+#: src/ui/window.ui:378
+msgctxt "Color name"
+msgid "Name"
+msgstr "Назва"
+
+#: src/ui/window.ui:421
+msgid "Keyboard Shortcuts"
+msgstr "Клавіатурні скорочення"
+
+#: src/ui/window.ui:425
+msgid "About Bella"
+msgstr "Про Беллу"
+
+#: src/ui/saved-color-table-columns/actions.ui:25
+msgctxt "accessibility"
+msgid "Copy color"
+msgstr "Скопіювати колір"
+
+#: src/ui/saved-color-table-columns/actions.ui:46
+msgid "Delete color"
+msgstr "Видалити колір"
+
+#: src/ui/saved-color-table-columns/actions.ui:48
+msgctxt "accessibility"
+msgid "Delete color"
+msgstr "Видалити колір"
+
+#: src/ui/saved-color-table-columns/actions.ui:65
+msgid "View details"
+msgstr "Переглянути подробиці"
+
+#: src/ui/saved-color-table-columns/actions.ui:67
+msgctxt "accessibility"
+msgid "View details"
+msgstr "Переглянути подробиці"
