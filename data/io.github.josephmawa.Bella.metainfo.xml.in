@@ -59,6 +59,15 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+   <release version="0.1.3" date="2024-12-22">
+      <description translate="no">
+        <ul>
+          <li>Add Turkish translation</li>
+          <li>Add Ukrainian translation</li>
+          <li>Add Russian translation</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.2" date="2024-12-9">
       <description translate="no">
         <ul>
