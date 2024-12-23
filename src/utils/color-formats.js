@@ -29,4 +29,9 @@ export const colorFormats = [
     // HSV color format
     description: _("HSV"),
   },
+  {
+    key: "cmyk",
+    // CMYK color format
+    description: _("CMYK"),
+  },
 ];

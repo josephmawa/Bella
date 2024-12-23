@@ -367,6 +367,25 @@
                                             </child>
                                           </object>
                                         </child>
+                                        <child>
+                                          <object class="AdwActionRow" id="cmyk_action_row">
+                                            <property name="title" translatable="yes" context="CMYK color format">CMYK</property>
+                                            <style>
+                                              <class name="property" />
+                                            </style>
+                                            <child>
+                                              <object class="CopyColorFormatButton" id="cmyk_copy_button">
+                                                <property name="colorFormat">cmyk(0%, 0%, 0%, 100%)</property>
+                                                <signal
+                                                  name="clicked"
+                                                  handler="copyColorFormat"
+                                                  swapped="no"
+                                                  object="BellaWindow"
+                                                />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                     <child>
