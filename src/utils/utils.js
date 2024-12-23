@@ -18,7 +18,7 @@ export function getColor(scaledRgb) {
 
   const hsl = rgbToHsl(scaledRgb);
   const name = nearestColor(rgb, colorNames);
-  const cymk = rgbToCmyk(scaledRgb);
+  const cmyk = rgbToCmyk(scaledRgb);
 
   return {
     name: name?.name ?? "Unknown",
@@ -26,7 +26,7 @@ export function getColor(scaledRgb) {
     rgb: `rgb(${rgb.join(", ")})`,
     hsl: `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`,
     rgb_percent: `rgb(${rgb_percent.join(", ")})`,
-    cymk: `cymk(${cymk.join("%, ")}%)`,
+    cmyk: `cmyk(${cmyk.join("%, ")}%)`,
   };
 }
 

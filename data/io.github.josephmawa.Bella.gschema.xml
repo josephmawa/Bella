@@ -26,6 +26,7 @@
         <choice value="rgb_percent" />
         <choice value="hsl" />
         <choice value="hsv" />
+        <choice value="cmyk" />
       </choices>
       <default>"rgb"</default>
     </key>
