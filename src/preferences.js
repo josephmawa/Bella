@@ -133,6 +133,14 @@ export const BellaPreferencesDialog = GObject.registerClass(
     setColorFormatModel = () => {
       const _colorFormats = colorFormats.map(({ description }) => description);
       this._colorFormatSettings.model = Gtk.StringList.new(_colorFormats);
+
+      const propExpression = Gtk.PropertyExpression.new(
+        Gtk.StringObject,
+        null,
+        "string"
+      );
+
+      this._colorFormatSettings.expression = propExpression;
     };
   }
 );

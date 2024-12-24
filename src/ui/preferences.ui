@@ -109,6 +109,7 @@
             </child>
             <child>
               <object class="AdwComboRow" id="colorFormatSettings">
+                <property name="enable-search">true</property>
                 <property name="title" translatable="yes">Color Format</property>
                 <property name="subtitle" translatable="yes">Select color format to display</property>
               </object>
