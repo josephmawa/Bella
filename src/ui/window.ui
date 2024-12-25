@@ -28,6 +28,7 @@
                           <object class="GtkMenuButton">
                             <property name="icon-name">bella-open-menu-symbolic</property>
                             <property name="menu-model">primary_menu</property>
+                            <property name="primary">true</property>
                             <property name="tooltip-text" translatable="yes">Primary Menu</property>
                             <accessibility>
                               <property name="label" translatable="yes" context="accessibility">Primary menu</property>
