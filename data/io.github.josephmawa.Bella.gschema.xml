@@ -27,6 +27,7 @@
         <choice value="hsl" />
         <choice value="hsv" />
         <choice value="cmyk" />
+        <choice value="hwb" />
       </choices>
       <default>"rgb"</default>
     </key>

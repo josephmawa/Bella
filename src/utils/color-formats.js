@@ -34,4 +34,9 @@ export const colorFormats = [
     // CMYK color format
     description: _("CMYK"),
   },
+  {
+    key: "hwb",
+    // HWB color format
+    description: _("HWB"),
+  },
 ];

@@ -48,6 +48,8 @@ export const BellaWindow = GObject.registerClass(
       "cmyk_copy_button",
       "color_name_action_row",
       "color_name_copy_button",
+      "hwb_action_row",
+      "hwb_copy_button"
     ],
     Properties: {
       btn_label: GObject.ParamSpec.string(
@@ -350,6 +352,8 @@ export const BellaWindow = GObject.registerClass(
           pickedColor.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
           pickedColor.id = GLib.uuid_string_random();
 
+          console.log(pickedColor);
+
           this.updatePickedColor(pickedColor);
           this.addNewColor(pickedColor);
 
@@ -560,6 +564,9 @@ export const BellaWindow = GObject.registerClass(
 
       this._cmyk_action_row.subtitle = pickedColor.cmyk;
       this._cmyk_copy_button.colorFormat = pickedColor.cmyk;
+
+      this._hwb_action_row.subtitle = pickedColor.hwb;
+      this._hwb_copy_button.colorFormat = pickedColor.hwb;
 
       this._color_name_action_row.subtitle = pickedColor.name;
       this._color_name_copy_button.colorFormat = pickedColor.name;

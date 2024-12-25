@@ -386,6 +386,25 @@
                                             </child>
                                           </object>
                                         </child>
+                                        <child>
+                                          <object class="AdwActionRow" id="hwb_action_row">
+                                            <property name="title" translatable="yes" context="HWB color format">HWB</property>
+                                            <style>
+                                              <class name="property" />
+                                            </style>
+                                            <child>
+                                              <object class="CopyColorFormatButton" id="hwb_copy_button">
+                                                <property name="colorFormat">cmyk(0%, 0%, 0%, 100%)</property>
+                                                <signal
+                                                  name="clicked"
+                                                  handler="copyColorFormat"
+                                                  swapped="no"
+                                                  object="BellaWindow"
+                                                />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                     <child>

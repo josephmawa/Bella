@@ -19,6 +19,7 @@ export function getColor(scaledRgb) {
   const hsl = rgbToHsl(scaledRgb);
   const name = nearestColor(rgb, colorNames);
   const cmyk = rgbToCmyk(scaledRgb);
+  const hwb = rgbToHwb(scaledRgb);
 
   return {
     name: name?.name ?? "Unknown",
@@ -27,6 +28,7 @@ export function getColor(scaledRgb) {
     hsl: `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`,
     rgb_percent: `rgb(${rgb_percent.join(", ")})`,
     cmyk: `cmyk(${cmyk.join("%, ")}%)`,
+    hwb: `hwb(${hwb[0]}, ${hwb[1]}%, ${hwb[2]}%)`,
   };
 }
 
@@ -92,5 +94,39 @@ export function rgbToCmyk([red, green, blue]) {
     round(magenta * 100),
     round(yellow * 100),
     round(key * 100),
+  ];
+}
+
+function rgbToHwb(normalizedRgb) {
+  const [red, green, blue] = normalizedRgb;
+
+  const minimum = Math.min(...normalizedRgb);
+  const maximum = Math.max(...normalizedRgb);
+  const delta = maximum - minimum;
+
+  let hue;
+
+  // https://stackoverflow.com/questions/588004/is-floating-point-math-broken
+  if (delta <= Number.EPSILON) {
+    hue = 0;
+  } else if (maximum === red) {
+    hue = 60 * (((green - blue) / delta) % 6);
+  } else if (maximum === green) {
+    hue = 60 * ((blue - red) / delta + 2);
+  } else if (maximum === blue) {
+    hue = 60 * ((red - green) / delta + 4);
+  } else {
+    throw new Error(
+      `${maximum} isn't equal to any of ${normalizedRgb.join(",")} `
+    );
+  }
+
+  const whiteness = minimum;
+  const blackness = 1 - maximum;
+
+  return [
+    Math.round(hue),
+    Math.round(whiteness * 100),
+    Math.round(blackness * 100),
   ];
 }
