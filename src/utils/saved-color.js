@@ -69,6 +69,27 @@ export const SavedColor = GObject.registerClass(
         GObject.ParamFlags.READWRITE,
         ""
       ),
+      xyz: GObject.ParamSpec.string(
+        "xyz",
+        "Xyz",
+        "Picked color in XYZ format",
+        GObject.ParamFlags.READWRITE,
+        ""
+      ),
+      hwb: GObject.ParamSpec.string(
+        "lab",
+        "Lab",
+        "Picked color in LAB format",
+        GObject.ParamFlags.READWRITE,
+        ""
+      ),
+      hwb: GObject.ParamSpec.string(
+        "lch",
+        "Lch",
+        "Picked color in LCH format",
+        GObject.ParamFlags.READWRITE,
+        ""
+      ),
       preferredColorFormat: GObject.ParamSpec.string(
         "preferredColorFormat",
         "preferred_color_format",
@@ -89,17 +110,18 @@ export const SavedColor = GObject.registerClass(
   class SavedColor extends GObject.Object {
     constructor(pickedColor = {}, preferredColorFormat) {
       super();
-
-      const { id, name, hex, rgb, rgb_percent, hsl, hsv, cmyk, hwb } = pickedColor;
-      this.id = GLib.Variant.new_string(id);
-      this.name = name;
-      this.hex = hex;
-      this.rgb = rgb;
-      this.rgb_percent = rgb_percent;
-      this.hsl = hsl;
-      this.hsv = hsv;
-      this.cmyk = cmyk;
-      this.hwb = hwb;
+      this.id = GLib.Variant.new_string(pickedColor.id);
+      this.name = pickedColor.name;
+      this.hex = pickedColor.hex;
+      this.rgb = pickedColor.rgb;
+      this.rgb_percent = pickedColor.rgb_percent;
+      this.hsl = pickedColor.hsl;
+      this.hsv = pickedColor.hsv;
+      this.cmyk = pickedColor.cmyk;
+      this.hwb = pickedColor.hwb;
+      this.xyz = pickedColor.xyz;
+      this.lab = pickedColor.lab;
+      this.lch = pickedColor.lch;
       this.preferredColorFormat = pickedColor[preferredColorFormat];
       this.preferredColorFormatCopy = GLib.Variant.new_string(
         pickedColor[preferredColorFormat]

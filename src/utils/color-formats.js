@@ -39,4 +39,19 @@ export const colorFormats = [
     // HWB color format
     description: _("HWB"),
   },
+  {
+    key: "xyz",
+    // XYZ color format
+    description: _("XYZ"),
+  },
+  {
+    key: "lab",
+    // CIE-L*ab color format
+    description: _("CIE-L*ab"),
+  },
+  {
+    key: "lch",
+    // CIE-Lch color format
+    description: _("CIE-Lch"),
+  },
 ];

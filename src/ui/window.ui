@@ -406,6 +406,63 @@
                                             </child>
                                           </object>
                                         </child>
+                                        <child>
+                                          <object class="AdwActionRow" id="xyz_action_row">
+                                            <property name="title" translatable="yes" context="XYZ color format">XYZ</property>
+                                            <style>
+                                              <class name="property" />
+                                            </style>
+                                            <child>
+                                              <object class="CopyColorFormatButton" id="xyz_copy_button">
+                                                <property name="colorFormat">cmyk(0%, 0%, 0%, 100%)</property>
+                                                <signal
+                                                  name="clicked"
+                                                  handler="copyColorFormat"
+                                                  swapped="no"
+                                                  object="BellaWindow"
+                                                />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="AdwActionRow" id="lab_action_row">
+                                            <property name="title" translatable="yes" context="CIE-L*ab color format">CIE-L*ab</property>
+                                            <style>
+                                              <class name="property" />
+                                            </style>
+                                            <child>
+                                              <object class="CopyColorFormatButton" id="lab_copy_button">
+                                                <property name="colorFormat">cmyk(0%, 0%, 0%, 100%)</property>
+                                                <signal
+                                                  name="clicked"
+                                                  handler="copyColorFormat"
+                                                  swapped="no"
+                                                  object="BellaWindow"
+                                                />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="AdwActionRow" id="lch_action_row">
+                                            <property name="title" translatable="yes" context="CIE-Lch color format">CIE-Lch</property>
+                                            <style>
+                                              <class name="property" />
+                                            </style>
+                                            <child>
+                                              <object class="CopyColorFormatButton" id="lch_copy_button">
+                                                <property name="colorFormat">cmyk(0%, 0%, 0%, 100%)</property>
+                                                <signal
+                                                  name="clicked"
+                                                  handler="copyColorFormat"
+                                                  swapped="no"
+                                                  object="BellaWindow"
+                                                />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                     <child>

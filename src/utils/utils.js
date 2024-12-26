@@ -4,7 +4,7 @@ import { nearestColor } from "./nearest-color.js";
 export function getColor(scaledRgb) {
   const rgb = [],
     hex = [],
-    rgb_percent = [];
+    rgbPercent = [];
 
   for (const value of scaledRgb) {
     rgb.push(round(value * 255));
@@ -13,7 +13,7 @@ export function getColor(scaledRgb) {
         .toString(16)
         .padStart(2, "0")
     );
-    rgb_percent.push(`${round(value * 100)}%`);
+    rgbPercent.push(`${round(value * 100)}%`);
   }
 
   const hsl = rgbToHsl(scaledRgb);
@@ -34,7 +34,7 @@ export function getColor(scaledRgb) {
     hex: `#${hex.join("").toUpperCase()}`,
     rgb: `rgb(${rgb.join(", ")})`,
     hsl: `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`,
-    rgb_percent: `rgb(${rgb_percent.join(", ")})`,
+    rgb_percent: `rgb(${rgbPercent.join(", ")})`,
     cmyk: `cmyk(${cmyk.join("%, ")}%)`,
     hwb: `hwb(${hwb[0]}, ${hwb[1]}%, ${hwb[2]}%)`,
     xyz: `XYZ(${xyzRounded.join(", ")})`,
@@ -155,7 +155,7 @@ function rgbToXYZ(normalizedRgb) {
   const Y = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
   const Z = 0.0193 * red + 0.1192 * green + 0.9505 * blue;
 
-  return [X, Y, Z].map(value => value * 100);
+  return [X, Y, Z].map((value) => value * 100);
 }
 
 const D65 = [95.047, 100, 108.883];
@@ -176,36 +176,11 @@ function labToLch(lab) {
   const [l, a, b] = lab;
 
   const c = Math.sqrt(a * a + b * b);
-  const h = abToHue(a, b);
+  let h = (Math.atan2(b, a) * 180) / Math.PI;
+
+  if (h < 0) h += 360;
+
   return [l, c, h];
 }
 
-function abToHue(a, b) {
-  if (a >= 0 && b === 0) {
-    return 0;
-  }
-  if (a < 0 && b === 0) {
-    return 180;
-  }
-  if (a === 0 && b > 0) {
-    return 90;
-  }
-  if (a === 0 && b < 0) {
-    return 270;
-  }
 
-  let xBias;
-
-  if (a > 0 && b > 0) {
-    xBias = 0;
-  } else if (a < 0) {
-    xBias = 180;
-  } else if (a > 0 && b < 0) {
-    xBias = 360;
-  }
-  return radiansToDegrees(Math.atan(b / a)) + xBias;
-}
-
-function radiansToDegrees(radians) {
-  return radians * (180 / Math.PI);
-}

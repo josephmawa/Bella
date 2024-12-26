@@ -46,10 +46,16 @@ export const BellaWindow = GObject.registerClass(
       "hsv_copy_button",
       "cmyk_action_row",
       "cmyk_copy_button",
+      "hwb_action_row",
+      "hwb_copy_button",
+      "xyz_action_row",
+      "xyz_copy_button",
+      "lab_action_row",
+      "lab_copy_button",
+      "lch_action_row",
+      "lch_copy_button",
       "color_name_action_row",
       "color_name_copy_button",
-      "hwb_action_row",
-      "hwb_copy_button"
     ],
     Properties: {
       btn_label: GObject.ParamSpec.string(
@@ -567,6 +573,15 @@ export const BellaWindow = GObject.registerClass(
 
       this._hwb_action_row.subtitle = pickedColor.hwb;
       this._hwb_copy_button.colorFormat = pickedColor.hwb;
+
+      this._xyz_action_row.subtitle = pickedColor.xyz;
+      this._xyz_copy_button.colorFormat = pickedColor.xyz;
+
+      this._lab_action_row.subtitle = pickedColor.lab;
+      this._lab_copy_button.colorFormat = pickedColor.lab;
+
+      this._lch_action_row.subtitle = pickedColor.lch;
+      this._lch_copy_button.colorFormat = pickedColor.lch;
 
       this._color_name_action_row.subtitle = pickedColor.name;
       this._color_name_copy_button.colorFormat = pickedColor.name;
