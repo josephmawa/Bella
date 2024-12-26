@@ -11,7 +11,7 @@
             <property name="title" translatable="yes" context="shortcut window">General</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Open Primary Menu</property>
+                <property name="title" translatable="yes" context="shortcut window">Open Menu</property>
                 <property name="accelerator">F10</property>
               </object>
             </child>
@@ -31,6 +31,40 @@
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Quit</property>
                 <property name="action-name">app.quit</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes" context="shortcut window">Navigation</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Back</property>
+                <property name="action-name">win.back</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Switch to Eye Dropper</property>
+                <property name="accelerator">&lt;Alt&gt;E</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Switch to Saved Colors</property>
+                <property name="accelerator">&lt;Alt&gt;S</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes" context="shortcut window">Eye Dropper</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Pick Color</property>
+                <property name="action-name">win.pick-color</property>
               </object>
             </child>
           </object>

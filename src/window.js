@@ -25,9 +25,8 @@ export const BellaWindow = GObject.registerClass(
     GTypeName: "BellaWindow",
     Template: "resource:///io/github/josephmawa/Bella/window.ui",
     InternalChildren: [
-      "pick_color_button",
       "main_stack",
-      "back_to_home_page_button",
+      "eye_dropper_saved_color_stack",
       "colorDialogBtn",
       "toast_overlay",
       "saved_colors_selection_model",
@@ -93,12 +92,6 @@ export const BellaWindow = GObject.registerClass(
       super({ application });
       this.init();
       this.centerColumnTitle();
-
-      this._pick_color_button.connect("clicked", this.clickHandler);
-      this._back_to_home_page_button.connect(
-        "clicked",
-        this.backToHomePageHandler
-      );
 
       this.settings = Gio.Settings.new("io.github.josephmawa.Bella");
       this.settings.bind(
@@ -233,6 +226,19 @@ export const BellaWindow = GObject.registerClass(
         parameterType: GLib.VariantType.new("s"),
       });
 
+      const backToMainPageAction = new Gio.SimpleAction({ name: "back" });
+      const pickColorAction = new Gio.SimpleAction({ name: "pick-color" });
+
+      const setEyeDropperStackPageAction = new Gio.SimpleAction({
+        name: "set_eye_dropper_stack_page",
+        parameterType: GLib.VariantType.new("s"),
+      });
+
+      const setSavedColorStackPageAction = new Gio.SimpleAction({
+        name: "set_saved_colors_stack_page",
+        parameterType: GLib.VariantType.new("s"),
+      });
+
       showPreferencesWindowAction.connect("activate", () => {
         const preferencesWindow = new BellaPreferencesDialog();
 
@@ -317,10 +323,37 @@ export const BellaWindow = GObject.registerClass(
         this._colorDialogBtn.set_rgba(color);
       });
 
+      backToMainPageAction.connect("activate", () => {
+        this._main_stack.visible_child_name = "main_page";
+        this.visible_color_id = "";
+      });
+
+      pickColorAction.connect("activate", this.pickColorHandler);
+
+      setEyeDropperStackPageAction.connect("activate", (actionObj, params) => {
+        const visibleChildName = params?.unpack();
+        if (visibleChildName) {
+          this._eye_dropper_saved_color_stack.visible_child_name =
+            visibleChildName;
+        }
+      });
+
+      setSavedColorStackPageAction.connect("activate", (actionObj, params) => {
+        const visibleChildName = params?.unpack();
+        if (visibleChildName) {
+          this._eye_dropper_saved_color_stack.visible_child_name =
+            visibleChildName;
+        }
+      });
+
       // Window-scoped actions
       this.add_action(copySavedColorAction);
       this.add_action(deleteSavedColorAction);
       this.add_action(viewSavedColorAction);
+      this.add_action(backToMainPageAction);
+      this.add_action(pickColorAction);
+      this.add_action(setEyeDropperStackPageAction);
+      this.add_action(setSavedColorStackPageAction);
 
       // Application-scoped actions
       this.application.add_action(deleteSavedColorsAction);
@@ -330,7 +363,7 @@ export const BellaWindow = GObject.registerClass(
       globalThis.deleteSavedColorsAction = deleteSavedColorsAction;
     };
 
-    clickHandler = () => {
+    pickColorHandler = () => {
       const cancellable = Gio.Cancellable.new();
 
       /**
@@ -357,8 +390,6 @@ export const BellaWindow = GObject.registerClass(
           const pickedColor = getColor(scaledRgb);
           pickedColor.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
           pickedColor.id = GLib.uuid_string_random();
-
-          console.log(pickedColor);
 
           this.updatePickedColor(pickedColor);
           this.addNewColor(pickedColor);
@@ -414,11 +445,6 @@ export const BellaWindow = GObject.registerClass(
       this.updatePickedColor(colorObject);
       this.updateSavedColor(colorObject);
     }
-
-    backToHomePageHandler = () => {
-      this._main_stack.visible_child_name = "main_page";
-      this.visible_color_id = "";
-    };
 
     setPreferredColorScheme = () => {
       const preferredColorScheme = this.settings.get_string("preferred-theme");
