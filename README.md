@@ -1,3 +1,4 @@
+<!-- markdownlint-disable -->
 <div align="center">
   <img src="./data/icons/hicolor/scalable/apps/io.github.josephmawa.Bella.svg" alt="Bella" width="128" height="128"/>
 </div>
@@ -6,7 +7,10 @@
 <div align="center">
   <a href="https://flathub.org/apps/io.github.josephmawa.Bella">
     <img width="240" alt="Get it on Flathub" src="https://flathub.org/api/badge?locale=en"/>
-@@ -14,7 +14,7 @@
+  </a>
+</div>
+<p align="center">
+  <img src="./screenshots/eye-dropper-view-dark.png" alt="Bella eye dropper view dark theme" width="566" height="691"/>
 </p>
 <div align="center">
   <details>
@@ -14,7 +18,21 @@
     <p>
       <img src="./screenshots/eye-dropper-view-light.png" alt="Bella eye dropper view light theme" width="566" height="691"/>
     </p>
-@@ -36,46 +36,46 @@
+    <p>
+      <img src="./screenshots/list-view-light.png" alt="Bella color picker list view light theme" width="566" height="691"/>
+    </p>
+    <p>
+      <img src="./screenshots/details-view-dark.png" alt="Bella color picker details view dark theme" width="566" height="691"/>
+    </p>
+    <p>
+      <img src="./screenshots/details-view-light.png" alt="Bella color picker details view light theme" width="566" height="691"/>
+    </p>
+  </details>
+</div>
+<p align="center">
+  <img src="./screenshots/list-view-dark.png" alt="Bella list view light theme" width="566" height="691"/>
+</p>
+
 <!-- markdownlint-enable -->
 <!-- markdownlint-disable headings -->
 
@@ -61,7 +79,3 @@ will always be free. It is released under the terms of the
 ## Copyright
 
 Copyright © 2024 [Joseph Mawa](https://github.com/josephmawa)
-
-## Direitos autorais
-
-Direitos autorais © 2024 [Joseph Mawa](https://github.com/josephmawa)
