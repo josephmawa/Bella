@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/github/josephmawa/Bella">
-    <file preprocess="xml-stripblanks" alias="window.ui">ui/window.ui</file>
-    <file preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
-    <file preprocess="xml-stripblanks" alias="preferences.ui">ui/preferences.ui</file>
-    <file preprocess="xml-stripblanks" alias="confirm-delete-all.ui">ui/confirm-delete-all.ui</file>
-    <file preprocess="xml-stripblanks" alias="confirm-delete-one.ui">ui/confirm-delete-one.ui</file>
-    <file preprocess="xml-stripblanks" alias="copy-color-format-button.ui">ui/copy-color-format-button.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="window.ui">ui/window.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="preferences.ui">ui/preferences.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="confirm-delete-all.ui">ui/confirm-delete-all.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="confirm-delete-one.ui">ui/confirm-delete-one.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="copy-color-format-button.ui">ui/copy-color-format-button.ui</file>
   </gresource>
   <!-- Resources for color format table columns -->
   <gresource prefix="/io/github/josephmawa/Bella">
-    <file preprocess="xml-stripblanks" alias="saved-color-table-columns/color.ui">ui/saved-color-table-columns/color.ui</file>
-    <file preprocess="xml-stripblanks" alias="saved-color-table-columns/actions.ui">ui/saved-color-table-columns/actions.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="saved-color-table-columns/color.ui">ui/saved-color-table-columns/color.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="saved-color-table-columns/actions.ui">ui/saved-color-table-columns/actions.ui</file>
   </gresource>
   <!-- Resources for css styles -->
   <gresource prefix="/io/github/josephmawa/Bella">
-    <file>styles/index.css</file>
+    <file compressed="true">styles/index.css</file>
   </gresource>
   <!-- Resources for icons -->
   <gresource prefix="/io/github/josephmawa/Bella/icons">
-    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-color-select-symbolic.svg">icons/bella-color-select-symbolic.svg</file>
-    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-edit-copy-symbolic.svg">icons/bella-edit-copy-symbolic.svg</file>
-    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-user-trash-symbolic.svg">icons/bella-user-trash-symbolic.svg</file>
-    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-view-reveal-symbolic.svg">icons/bella-view-reveal-symbolic.svg</file>
-    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-go-next-symbolic-rtl.svg">icons/bella-go-next-symbolic-rtl.svg</file>
-    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-open-menu-symbolic.svg">icons/bella-open-menu-symbolic.svg</file>
-    <file preprocess="xml-stripblanks" alias="scalable/actions/bella-folder-symbolic.svg">icons/bella-folder-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="scalable/actions/bella-color-select-symbolic.svg">icons/bella-color-select-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="scalable/actions/bella-edit-copy-symbolic.svg">icons/bella-edit-copy-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="scalable/actions/bella-user-trash-symbolic.svg">icons/bella-user-trash-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="scalable/actions/bella-view-reveal-symbolic.svg">icons/bella-view-reveal-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="scalable/actions/bella-go-next-symbolic-rtl.svg">icons/bella-go-next-symbolic-rtl.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="scalable/actions/bella-open-menu-symbolic.svg">icons/bella-open-menu-symbolic.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="scalable/actions/bella-folder-symbolic.svg">icons/bella-folder-symbolic.svg</file>
   </gresource>
 </gresources>

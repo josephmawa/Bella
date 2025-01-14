@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/github/josephmawa/Bella/js">
-    <file>main.js</file>
-    <file>application.js</file>
-    <file>about-dialog.js</file>
-    <file>window.js</file>
-    <file>preferences.js</file>
-    <file>confirm-delete-all.js</file>
-    <file>confirm-delete-one.js</file>
-    <file>copy-color-format-button.js</file>
-    <file>utils/utils.js</file>
-    <file>utils/saved-color.js</file>
-    <file>utils/color-names.js</file>
-    <file>utils/nearest-color.js</file>
-    <file>utils/color-formats.js</file>
+    <file compressed="true">main.js</file>
+    <file compressed="true">application.js</file>
+    <file compressed="true">about-dialog.js</file>
+    <file compressed="true">window.js</file>
+    <file compressed="true">preferences.js</file>
+    <file compressed="true">confirm-delete-all.js</file>
+    <file compressed="true">confirm-delete-one.js</file>
+    <file compressed="true">copy-color-format-button.js</file>
+    <file compressed="true">utils/utils.js</file>
+    <file compressed="true">utils/saved-color.js</file>
+    <file compressed="true">utils/color-names.js</file>
+    <file compressed="true">utils/nearest-color.js</file>
+    <file compressed="true">utils/color-formats.js</file>
   </gresource>
 </gresources>
