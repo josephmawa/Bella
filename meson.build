@@ -1,5 +1,5 @@
 project('Bella',
-          version: '0.1.3',
+          version: '0.1.4',
     meson_version: '>= 1.5.2',
   default_options: [ 'warning_level=2', 'werror=false', ],
 )

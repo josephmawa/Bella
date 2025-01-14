@@ -13,7 +13,8 @@ const aboutParams = {
   copyright: "Copyright © 2024 Joseph Mawa",
   // The opening and closing backticks shouldn't be on separate lines
   translator_credits: `Sabri Ünal
-  volkov`,
+  volkov
+  John Peter Sa`,
   website: "https://github.com/josephmawa/Bella",
   issue_url: "https://github.com/josephmawa/Bella/issues",
   support_url: "https://github.com/josephmawa/Bella/issues",

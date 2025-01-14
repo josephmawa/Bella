@@ -59,6 +59,15 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+   <release version="0.1.4" date="2025-01-14">
+      <description translate="no">
+        <ul>
+          <li>Add keyboard shortcuts</li>
+          <li>Add more color formats</li>
+          <li>Add Brazilian Portuguese translation</li>
+        </ul>
+      </description>
+    </release>
    <release version="0.1.3" date="2024-12-22">
       <description translate="no">
         <ul>
