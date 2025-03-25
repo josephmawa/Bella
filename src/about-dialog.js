@@ -1,8 +1,16 @@
 import Adw from "gi://Adw?version=1";
 import Gtk from "gi://Gtk";
 
+const URL = "https://github.com/josephmawa/Bella";
+const translators = [
+  "Sabri Ünal",
+  "volkov",
+  "John Peter Sa",
+  "Heimen Stoffels",
+];
+
 const aboutParams = {
-  application_name: globalThis.__APPLICATION_NAME__,
+  application_name: APP_NAME,
   application_icon: pkg.name,
   version: pkg.version,
   license_type: Gtk.License.LGPL_3_0,
@@ -11,13 +19,10 @@ const aboutParams = {
   developers: ["Joseph Mawa"],
   artists: ["Joseph Mawa"],
   copyright: "Copyright © 2024 Joseph Mawa",
-  // The opening and closing backticks shouldn't be on separate lines
-  translator_credits: `Sabri Ünal
-  volkov
-  John Peter Sa`,
-  website: "https://github.com/josephmawa/Bella",
-  issue_url: "https://github.com/josephmawa/Bella/issues",
-  support_url: "https://github.com/josephmawa/Bella/issues",
+  translator_credits: translators.join("\n"),
+  website: URL,
+  issue_url: URL + "/issues",
+  support_url: URL + "/issues",
 };
 
 export const getAboutDialog = () => {

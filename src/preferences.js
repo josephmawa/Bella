@@ -8,7 +8,7 @@ import { colorFormats } from "./utils/color-formats.js";
 export const BellaPreferencesDialog = GObject.registerClass(
   {
     GTypeName: "BellaPreferencesDialog",
-    Template: "resource:///io/github/josephmawa/Bella/preferences.ui",
+    Template: getResourceUri("preferences.ui"),
     InternalChildren: ["system", "dark", "light", "colorFormatSettings"],
     Properties: {
       theme: GObject.ParamSpec.string(
@@ -33,7 +33,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
 
       this.setColorFormatModel();
 
-      this.settings = Gio.Settings.new("io.github.josephmawa.Bella");
+      this.settings = Gio.Settings.new(pkg.name);
       this.settings.bind(
         "preferred-theme",
         this,

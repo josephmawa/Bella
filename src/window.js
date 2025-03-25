@@ -23,7 +23,7 @@ const xdpPortal = Xdp.Portal.new();
 export const BellaWindow = GObject.registerClass(
   {
     GTypeName: "BellaWindow",
-    Template: "resource:///io/github/josephmawa/Bella/window.ui",
+    Template: getResourceUri("window.ui"),
     InternalChildren: [
       "main_stack",
       "eye_dropper_saved_color_stack",
@@ -93,7 +93,7 @@ export const BellaWindow = GObject.registerClass(
       this.init();
       this.centerColumnTitle();
 
-      this.settings = Gio.Settings.new("io.github.josephmawa.Bella");
+      this.settings = Gio.Settings.new(pkg.name);
       this.settings.bind(
         "window-width",
         this,
@@ -176,9 +176,7 @@ export const BellaWindow = GObject.registerClass(
 
     init = () => {
       const cssProvider = new Gtk.CssProvider();
-      cssProvider.load_from_resource(
-        "io/github/josephmawa/Bella/styles/index.css"
-      );
+      cssProvider.load_from_resource(getResourcePath("styles/index.css"));
 
       Gtk.StyleContext.add_provider_for_display(
         this.display,

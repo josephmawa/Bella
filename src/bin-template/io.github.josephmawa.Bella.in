@@ -10,7 +10,16 @@ imports.package.init({
   datadir: "@datadir@",
 });
 
-globalThis.__APPLICATION_NAME__ = "@PACKAGE_NAME@";
+globalThis.APP_NAME = "@PACKAGE_NAME@";
+
+globalThis.getResourceUri = (resource) => {
+  return "resource://@resource_path@/" + resource;
+};
+
+globalThis.getResourcePath = (resource) => {
+  return "@resource_path@/" + resource;
+};
+
 
 pkg.initGettext();
 pkg.initFormat();
