@@ -1,7 +1,7 @@
 import Adw from "gi://Adw?version=1";
 import Gtk from "gi://Gtk";
 
-const URL = "https://github.com/josephmawa/Bella";
+const GITHUB_URL = "https://github.com/josephmawa/Bella";
 const translators = [
   "Sabri Ünal",
   "volkov",
@@ -20,9 +20,9 @@ const aboutParams = {
   artists: ["Joseph Mawa"],
   copyright: "Copyright © 2024 Joseph Mawa",
   translator_credits: translators.join("\n"),
-  website: URL,
-  issue_url: URL + "/issues",
-  support_url: URL + "/issues",
+  website: GITHUB_URL,
+  issue_url: GITHUB_URL + "/issues",
+  support_url: GITHUB_URL + "/issues",
 };
 
 export const getAboutDialog = () => {
