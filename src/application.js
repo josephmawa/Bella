@@ -23,6 +23,10 @@ export const BellaApplication = GObject.registerClass(
       });
 
       this.initActions();
+      this.connect("shutdown", () => {
+        console.log("Shutting down");
+        console.log(GLib.get_user_config_dir())
+      });
     }
 
     vfunc_activate() {
