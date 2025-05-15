@@ -59,6 +59,15 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+   <release version="0.1.5" date="2025-05-15">
+      <description translate="no">
+        <ul>
+          <li>Display Hex color in lowercase</li>
+          <li>Upgrade to GNOME runtime version 48</li>
+          <li>Upgrade Libportal to version 0.9.1</li>
+        </ul>
+      </description>
+    </release>
    <release version="0.1.4" date="2025-01-14">
       <description translate="no">
         <ul>
