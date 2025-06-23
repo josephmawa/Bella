@@ -1,5 +1,5 @@
-import GObject from "gi://GObject";
 import GLib from "gi://GLib";
+import GObject from "gi://GObject";
 
 export const SavedColor = GObject.registerClass(
   {

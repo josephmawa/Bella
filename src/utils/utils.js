@@ -183,4 +183,35 @@ function labToLch(lab) {
   return [l, c, h];
 }
 
+/**
+ * Source: https://github.com/csstools/postcss-plugins/blob/main/packages/color-helpers/src/conversions/xyz-to-oklab.ts
+ */
 
+const XYZtoLMS = [
+  0.819022437996703, 0.3619062600528904, -0.1288737815209879,
+  0.0329836539323885, 0.9292868615863434, 0.0361446663506424,
+  0.0481771893596242, 0.2642395317527308, 0.6335478284694309,
+];
+const LMStoOKLab = [
+  0.210454268309314, 0.7936177747023054, -0.0040720430116193,
+  1.9779985324311684, -2.4285922420485799, 0.450593709617411,
+  0.0259040424655478, 0.7827717124575296, -0.8086757549230774,
+];
+
+function multiplyMatrices(a, b) {
+  return [
+    a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+    a[3] * b[0] + a[4] * b[1] + a[5] * b[2],
+    a[6] * b[0] + a[7] * b[1] + a[8] * b[2],
+  ];
+}
+
+function XYZToOKLab(XYZ) {
+  const LMS = multiplyMatrices(XYZtoLMS, XYZ);
+
+  return multiplyMatrices(LMStoOKLab, [
+    Math.cbrt(LMS[0]),
+    Math.cbrt(LMS[1]),
+    Math.cbrt(LMS[2]),
+  ]);
+}
