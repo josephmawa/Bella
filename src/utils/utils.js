@@ -215,3 +215,16 @@ function XYZToOKLab(XYZ) {
     Math.cbrt(LMS[2]),
   ]);
 }
+
+/**
+ * Source: https://github.com/csstools/postcss-plugins/blob/main/packages/color-helpers/src/conversions/oklab-to-oklch.ts
+ */
+
+function OKLabToOKLCH(OKLab) {
+  const hue = (Math.atan2(OKLab[2], OKLab[1]) * 180) / Math.PI;
+  return [
+    OKLab[0],
+    Math.sqrt(OKLab[1] ** 2 + OKLab[2] ** 2),
+    hue >= 0 ? hue : hue + 360,
+  ];
+}
