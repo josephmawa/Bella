@@ -1,10 +1,10 @@
-import GObject from "gi://GObject";
-import Gtk from "gi://Gtk?version=4.0";
 import Adw from "gi://Adw";
 import Gdk from "gi://Gdk";
 import Gio from "gi://Gio";
 import Xdp from "gi://Xdp";
 import GLib from "gi://GLib";
+import GObject from "gi://GObject";
+import Gtk from "gi://Gtk?version=4.0";
 
 import { getColor, getHsv } from "./utils/utils.js";
 import { colorFormats } from "./utils/color-formats.js";
@@ -13,9 +13,11 @@ import { BellaPreferencesDialog } from "./preferences.js";
 import { savedColorsFile } from "./application.js";
 import { ConfirmDeleteOne } from "./confirm-delete-one.js";
 
-// To register the CopyColorFormatButton class
-// in the GObject system before using it in the
-// window.ui builder definition
+/**
+ * Register the CopyColorFormatButton class
+ * in the GObject system before using it in
+ * the window.ui builder definition.
+ */
 import "./copy-color-format-button.js";
 
 const xdpPortal = Xdp.Portal.new();
@@ -418,26 +420,6 @@ export const BellaWindow = GObject.registerClass(
 
       const colorObject = getColor(scaledRgb);
       colorObject.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
-
-      // FIXME: The commented code below is before the refactor.
-      // Fix it by checking if the color being updated is the same
-      // as the current color on the color page before updating the
-      // entire UI
-
-      // const model = this._selection_model.model;
-      // let isSameColor = true;
-
-      // for (let i = 0; i < model.get_n_items(); i++) {
-      //   const item = model.get_item(i);
-      //   if (item.color === colorObject[item.key]) {
-      //     continue;
-      //   }
-
-      //   isSameColor = false;
-      //   break;
-      // }
-
-      // if (isSameColor) return;
 
       colorObject.id = this.visible_color_id;
       this.updatePickedColor(colorObject);
