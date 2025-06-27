@@ -161,7 +161,7 @@ export const BellaWindow = GObject.registerClass(
     }
 
     vfunc_close_request() {
-      const { model } = this._saved_colors_selection_model;
+      const model = this._saved_colors_selection_model.model;
       const length = model.get_n_items();
 
       const pickedColors = [];
@@ -173,10 +173,8 @@ export const BellaWindow = GObject.registerClass(
         for (const { key } of colorFormats) {
           pickedColor[key] = item[key];
         }
-
         pickedColors.push(pickedColor);
       }
-
       this.saveData(pickedColors);
     }
 
@@ -206,111 +204,98 @@ export const BellaWindow = GObject.registerClass(
     };
 
     createActions = () => {
-      const showPreferencesWindowAction = new Gio.SimpleAction({
-        name: "preferences",
-      });
+      const showPrefsWin = Gio.SimpleAction.new("preferences", null);
 
-      const deleteSavedColorsAction = new Gio.SimpleAction({
-        name: "delete-saved-colors",
-        parameterType: GLib.VariantType.new("s"),
-      });
+      const delSavedColors = Gio.SimpleAction.new(
+        "delete-saved-colors",
+        GLib.VariantType.new("s")
+      );
 
-      const copySavedColorAction = new Gio.SimpleAction({
-        name: "copy-saved-color",
-        parameterType: GLib.VariantType.new("s"),
-      });
+      const copySavedCol = Gio.SimpleAction.new(
+        "copy-saved-color",
+        GLib.VariantType.new("s")
+      );
 
-      const deleteSavedColorAction = new Gio.SimpleAction({
-        name: "delete-saved-color",
-        parameterType: GLib.VariantType.new("s"),
-      });
+      const delSavedColor = Gio.SimpleAction.new(
+        "delete-saved-color",
+        GLib.VariantType.new("s")
+      );
 
-      const viewSavedColorAction = new Gio.SimpleAction({
-        name: "view-saved-color",
-        parameterType: GLib.VariantType.new("s"),
-      });
+      const viewSavedColor = Gio.SimpleAction.new(
+        "view-saved-color",
+        GLib.VariantType.new("s")
+      );
 
-      const backToMainPageAction = new Gio.SimpleAction({ name: "back" });
-      const pickColorAction = new Gio.SimpleAction({ name: "pick-color" });
+      const backToMainPage = Gio.SimpleAction.new("back", null);
+      const pickColor = Gio.SimpleAction.new("pick-color", null);
 
-      const setEyeDropperStackPageAction = new Gio.SimpleAction({
-        name: "set_eye_dropper_stack_page",
-        parameterType: GLib.VariantType.new("s"),
-      });
+      const setEyeDropperStackPage = Gio.SimpleAction.new(
+        "set_eye_dropper_stack_page",
+        GLib.VariantType.new("s")
+      );
 
-      const setSavedColorStackPageAction = new Gio.SimpleAction({
-        name: "set_saved_colors_stack_page",
-        parameterType: GLib.VariantType.new("s"),
-      });
+      const setSavedColorStackPage = Gio.SimpleAction.new(
+        "set_saved_colors_stack_page",
+        GLib.VariantType.new("s")
+      );
 
-      showPreferencesWindowAction.connect("activate", () => {
+      showPrefsWin.connect("activate", () => {
         const preferencesWindow = new BellaPreferencesDialog();
-
         preferencesWindow.present(this);
       });
 
-      deleteSavedColorsAction.connect(
-        "activate",
-        (_deleteSavedColorsAction, alertDialogResponse) => {
-          const response = alertDialogResponse?.unpack();
+      delSavedColors.connect("activate", (action, alertDialogResponse) => {
+        const response = alertDialogResponse?.unpack();
+        const model = this._saved_colors_selection_model.model;
+
+        // Nothing to delete. Consider making the 'delete all saved colors'
+        // button inactive in the future if there are no items left
+        if (model.get_n_items() === 0) return;
+
+        if (response === "delete") {
+          model.remove_all();
+          this.saveData([]);
+          this.displayToast(_("Deleted all saved colors"));
+        }
+      });
+
+      copySavedCol.connect("activate", (_copySavedColorAction, savedColor) => {
+        const color = savedColor?.unpack();
+
+        if (color) {
+          this.copyToClipboard(color);
+          this.displayToast(_("Copied %s to clipboard").format(color));
+        }
+      });
+
+      delSavedColor.connect("activate", (_deleteSavedColorAction, colorId) => {
+        const confirmDeleteOne = new ConfirmDeleteOne();
+
+        confirmDeleteOne.connect("response", (actionDialog, response) => {
+          if (response === "cancel") return;
+
+          const id = colorId?.unpack();
+          const [idx, item] = this.getItem(id);
+
+          if (idx === null) {
+            throw new Error(`id: ${id} is non-existent`);
+          }
 
           const model = this._saved_colors_selection_model.model;
+          model.remove(idx);
 
-          // Nothing to delete. Consider making the 'delete all saved colors'
-          // button inactive in the future if there are no items left
-          if (model.get_n_items() === 0) return;
-
-          if (response === "delete") {
-            model.remove_all();
-            this.saveData([]);
-            this.displayToast(_("Deleted all saved colors"));
+          // Only display toast if there are items in the model otherwise the
+          // view will switch automatically to "No Saved Color". That's
+          // enough to indicate that the operation was a success.
+          if (model.get_n_items() > 0) {
+            this.displayToast(_("Deleted saved color successfully"));
           }
-        }
-      );
+        });
 
-      copySavedColorAction.connect(
-        "activate",
-        (_copySavedColorAction, savedColor) => {
-          const color = savedColor?.unpack();
+        confirmDeleteOne.present(this);
+      });
 
-          if (color) {
-            this.copyToClipboard(color);
-            this.displayToast(_("Copied %s to clipboard").format(color));
-          }
-        }
-      );
-
-      deleteSavedColorAction.connect(
-        "activate",
-        (_deleteSavedColorAction, colorId) => {
-          const confirmDeleteOne = new ConfirmDeleteOne();
-
-          confirmDeleteOne.connect("response", (actionDialog, response) => {
-            if (response === "cancel") return;
-
-            const id = colorId?.unpack();
-            const [idx, item] = this.getItem(id);
-
-            if (idx === null) {
-              throw new Error(`id: ${id} is non-existent`);
-            }
-
-            const model = this._saved_colors_selection_model.model;
-            model.remove(idx);
-
-            // Only display toast if there are items in the model otherwise the
-            // view will switch automatically to "No Saved Color". That's
-            // enough to indicate that the operation was a success.
-            if (model.get_n_items() > 0) {
-              this.displayToast(_("Deleted saved color successfully"));
-            }
-          });
-
-          confirmDeleteOne.present(this);
-        }
-      );
-
-      viewSavedColorAction.connect("activate", (_, colorId) => {
+      viewSavedColor.connect("activate", (_, colorId) => {
         const id = colorId?.unpack();
         const [idx, item] = this.getItem(id);
 
@@ -327,14 +312,14 @@ export const BellaWindow = GObject.registerClass(
         this._colorDialogBtn.set_rgba(color);
       });
 
-      backToMainPageAction.connect("activate", () => {
+      backToMainPage.connect("activate", () => {
         this._main_stack.visible_child_name = "main_page";
         this.visible_color_id = "";
       });
 
-      pickColorAction.connect("activate", this.pickColorHandler);
+      pickColor.connect("activate", this.pickColorHandler);
 
-      setEyeDropperStackPageAction.connect("activate", (actionObj, params) => {
+      setEyeDropperStackPage.connect("activate", (actionObj, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
           this._eye_dropper_saved_color_stack.visible_child_name =
@@ -342,7 +327,7 @@ export const BellaWindow = GObject.registerClass(
         }
       });
 
-      setSavedColorStackPageAction.connect("activate", (actionObj, params) => {
+      setSavedColorStackPage.connect("activate", (actionObj, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
           this._eye_dropper_saved_color_stack.visible_child_name =
@@ -351,20 +336,20 @@ export const BellaWindow = GObject.registerClass(
       });
 
       // Window-scoped actions
-      this.add_action(copySavedColorAction);
-      this.add_action(deleteSavedColorAction);
-      this.add_action(viewSavedColorAction);
-      this.add_action(backToMainPageAction);
-      this.add_action(pickColorAction);
-      this.add_action(setEyeDropperStackPageAction);
-      this.add_action(setSavedColorStackPageAction);
+      this.add_action(copySavedCol);
+      this.add_action(delSavedColor);
+      this.add_action(viewSavedColor);
+      this.add_action(backToMainPage);
+      this.add_action(pickColor);
+      this.add_action(setEyeDropperStackPage);
+      this.add_action(setSavedColorStackPage);
 
       // Application-scoped actions
-      this.application.add_action(deleteSavedColorsAction);
-      this.application.add_action(showPreferencesWindowAction);
+      this.application.add_action(delSavedColors);
+      this.application.add_action(showPrefsWin);
 
       // Add it to gloabThis so that it is triggered from a modal
-      globalThis.deleteSavedColorsAction = deleteSavedColorsAction;
+      globalThis.deleteSavedColorsAction = delSavedColors;
     };
 
     pickColorHandler = () => {
