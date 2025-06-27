@@ -96,68 +96,15 @@ export const BellaWindow = GObject.registerClass(
   class BellaWindow extends Adw.ApplicationWindow {
     constructor(application) {
       super({ application });
-      this.init();
-      this.centerColumnTitle();
-
-      this.settings = Gio.Settings.new(pkg.name);
-      this.settings.bind(
-        "window-width",
-        this,
-        "default-width",
-        Gio.SettingsBindFlags.DEFAULT
-      );
-      this.settings.bind(
-        "window-height",
-        this,
-        "default-height",
-        Gio.SettingsBindFlags.DEFAULT
-      );
-      this.settings.bind(
-        "window-maximized",
-        this,
-        "maximized",
-        Gio.SettingsBindFlags.DEFAULT
-      );
-
-      this.settings.bind(
-        "color-format",
-        this,
-        "color_format",
-        Gio.SettingsBindFlags.GET
-      );
-
-      // Color theme settings
-      this.settings.connect(
-        "changed::preferred-theme",
-        this.setPreferredColorScheme
-      );
-
-      // Color format settings
-      this.settings.connect("changed::color-format", this.updateColorFormat);
-
-      // Create actions
+      this.loadStyles();
+      this.createModel();
+      this.createToast();
+      this.bindProperty();
+      this.bindSettings();
       this.createActions();
-
-      // Initialize when the app starts
-      this.setPreferredColorScheme();
-      // this._selection_model.model = Gio.ListStore.new(Color);
-      this._saved_colors_selection_model.model = Gio.ListStore.new(SavedColor);
-      this.toast = new Adw.Toast({ timeout: 1 });
+      this.seColorScheme();
       this.getSavedColors();
-
-      this._saved_colors_selection_model.model.bind_property_full(
-        "n_items",
-        this._picked_colors_stack,
-        "visible-child-name",
-        GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
-        (_, numItems) => {
-          const visiblePage = numItems
-            ? "saved_colors_stack_page_inner"
-            : "no_saved_colors_stack_page";
-          return [true, visiblePage];
-        },
-        null
-      );
+      this.centerColumnTitle();
     }
 
     vfunc_close_request() {
@@ -178,14 +125,69 @@ export const BellaWindow = GObject.registerClass(
       this.saveData(pickedColors);
     }
 
-    init = () => {
+    loadStyles = () => {
       const cssProvider = new Gtk.CssProvider();
-      cssProvider.load_from_resource(getResourcePath("styles/index.css"));
+      cssProvider.load_from_resource(getResourcePath("index.css"));
 
       Gtk.StyleContext.add_provider_for_display(
         this.display,
         cssProvider,
         Gtk.STYLE_PROVIDER_PRIORITY_USER
+      );
+    };
+
+    createModel = () => {
+      const model = Gio.ListStore.new(SavedColor);
+      this._saved_colors_selection_model.model = model;
+    };
+
+    bindSettings = () => {
+      if (!this.settings) {
+        this.settings = Gio.Settings.new(pkg.name);
+      }
+      this.settings.bind(
+        "window-width",
+        this,
+        "default-width",
+        Gio.SettingsBindFlags.DEFAULT
+      );
+      this.settings.bind(
+        "window-height",
+        this,
+        "default-height",
+        Gio.SettingsBindFlags.DEFAULT
+      );
+      this.settings.bind(
+        "window-maximized",
+        this,
+        "maximized",
+        Gio.SettingsBindFlags.DEFAULT
+      );
+      this.settings.bind(
+        "color-format",
+        this,
+        "color_format",
+        Gio.SettingsBindFlags.GET
+      );
+
+      this.settings.connect("changed::preferred-theme", this.seColorScheme);
+      this.settings.connect("changed::color-format", this.updateColorFormat);
+    };
+
+    bindProperty = () => {
+      const model = this._saved_colors_selection_model.model;
+      model.bind_property_full(
+        "n_items",
+        this._picked_colors_stack,
+        "visible-child-name",
+        GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
+        (binding, numItems) => {
+          const visiblePage = numItems
+            ? "saved_colors_stack_page_inner"
+            : "no_saved_colors_stack_page";
+          return [true, visiblePage];
+        },
+        null
       );
     };
 
@@ -261,7 +263,6 @@ export const BellaWindow = GObject.registerClass(
 
       copySavedCol.connect("activate", (_copySavedColorAction, savedColor) => {
         const color = savedColor?.unpack();
-
         if (color) {
           this.copyToClipboard(color);
           this.displayToast(_("Copied %s to clipboard").format(color));
@@ -319,7 +320,7 @@ export const BellaWindow = GObject.registerClass(
 
       pickColor.connect("activate", this.pickColorHandler);
 
-      setEyeDropperStackPage.connect("activate", (actionObj, params) => {
+      setEyeDropperStackPage.connect("activate", (action, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
           this._eye_dropper_saved_color_stack.visible_child_name =
@@ -415,7 +416,7 @@ export const BellaWindow = GObject.registerClass(
       this.updateSavedColor(colorObject);
     }
 
-    setPreferredColorScheme = () => {
+    seColorScheme = () => {
       const preferredColorScheme = this.settings.get_string("preferred-theme");
       const { DEFAULT, FORCE_LIGHT, FORCE_DARK } = Adw.ColorScheme;
       let colorScheme = DEFAULT;
@@ -469,11 +470,9 @@ export const BellaWindow = GObject.registerClass(
         } else {
           console.log(_("Failed to read saved data"));
         }
-
-        return;
+      } else {
+        console.log(_("File doesn't exist yet"));
       }
-
-      console.log(_("File doesn't exist yet"));
     };
 
     saveData = (data = []) => {
@@ -503,6 +502,10 @@ export const BellaWindow = GObject.registerClass(
       }
     };
 
+    createToast = (timeout = 1) => {
+      this.toast = new Adw.Toast({ timeout });
+    };
+
     displayToast = (message) => {
       this.toast.dismiss();
       this.toast.title = message;
@@ -516,29 +519,24 @@ export const BellaWindow = GObject.registerClass(
     };
 
     getItem = (id) => {
-      const { model } = this._saved_colors_selection_model;
-      const length = model.get_n_items();
-
-      for (let i = 0; i < length; i++) {
+      const model = this._saved_colors_selection_model.model;
+      for (let i = 0; i < model.n_items; i++) {
         const item = model.get_item(i);
-
         if (item.id.unpack() === id) {
           return [i, item];
         }
       }
-
       return [null, null];
     };
 
     addNewColor = (pickedColor = {}) => {
-      const { model } = this._saved_colors_selection_model;
+      const model = this._saved_colors_selection_model.model;
       model.append(new SavedColor(pickedColor, this.color_format));
     };
 
     updateSavedColor = (pickedColor = {}) => {
       const model = this._saved_colors_selection_model.model;
-
-      for (let i = 0; i < model.get_n_items(); i++) {
+      for (let i = 0; i < model.n_items; i++) {
         const item = model.get_item(i);
         if (item.id.unpack() === pickedColor.id) {
           const newColor = new SavedColor(pickedColor, this.color_format);
@@ -593,7 +591,6 @@ export const BellaWindow = GObject.registerClass(
 
     copyColorFormat(copyColorFormatButton) {
       const color = copyColorFormatButton.colorFormat;
-
       this.copyToClipboard(color);
       this.displayToast(_("Copied %s to clipboard").format(color));
     }
