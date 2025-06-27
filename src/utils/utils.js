@@ -22,12 +22,18 @@ export function getColor(scaledRgb) {
   const hwb = rgbToHwb(scaledRgb);
 
   const XYZ = rgbToXYZ(scaledRgb);
-  const lab = xyzToLab(XYZ);
+  const okLab = XYZToOKLab(XYZ);
+  const okLch = OKLabToOKLCH(okLab);
+  const lab = xyzToLab(XYZ.map((value) => value * 100));
   const lch = labToLch(lab);
 
-  const xyzRounded = XYZ.map((value) => round(value));
+  okLab[0] = okLab[0] * 100;
+
+  const xyzRounded = XYZ.map((value) => round(value * 100));
   const labRounded = lab.map((value) => round(value));
   const lchRounded = lch.map((value) => round(value));
+  const okLabRounded = okLab.map((value) => round(value));
+  const okLchRounded = okLch.map((value) => round(value));
 
   return {
     name: name?.name ?? "Unknown",
@@ -40,6 +46,8 @@ export function getColor(scaledRgb) {
     xyz: `XYZ(${xyzRounded.join(", ")})`,
     lab: `lab(${labRounded.join(", ")})`,
     lch: `lch(${lchRounded.join(", ")})`,
+    oklab: `oklab(${okLabRounded[0]}% ${okLabRounded.slice(1).join(" ")})`,
+    oklch: `oklch(${okLchRounded[0]}% ${okLchRounded.slice(1).join(" ")})`,
   };
 }
 
@@ -155,7 +163,7 @@ function rgbToXYZ(normalizedRgb) {
   const Y = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
   const Z = 0.0193 * red + 0.1192 * green + 0.9505 * blue;
 
-  return [X, Y, Z].map((value) => value * 100);
+  return [X, Y, Z];
 }
 
 const D65 = [95.047, 100, 108.883];

@@ -55,6 +55,10 @@ export const BellaWindow = GObject.registerClass(
       "lab_copy_button",
       "lch_action_row",
       "lch_copy_button",
+      "oklab_action_row",
+      "oklab_copy_button",
+      "oklch_action_row",
+      "oklch_copy_button",
       "color_name_action_row",
       "color_name_copy_button",
     ],
@@ -588,6 +592,12 @@ export const BellaWindow = GObject.registerClass(
 
       this._lch_action_row.subtitle = pickedColor.lch;
       this._lch_copy_button.colorFormat = pickedColor.lch;
+
+      this._oklab_action_row.subtitle = pickedColor.oklab;
+      this._oklab_copy_button.colorFormat = pickedColor.oklab;
+
+      this._oklch_action_row.subtitle = pickedColor.oklch;
+      this._oklch_copy_button.colorFormat = pickedColor.oklch;
 
       this._color_name_action_row.subtitle = pickedColor.name;
       this._color_name_copy_button.colorFormat = pickedColor.name;

@@ -54,4 +54,14 @@ export const colorFormats = [
     // CIE-Lch color format
     description: _("CIE-Lch"),
   },
+  {
+    key: "oklab",
+    // OKLAB color format
+    description: _("OKLAB"),
+  },
+  {
+    key: "oklch",
+    // OKLCH color format
+    description: _("OKLCH"),
+  },
 ];

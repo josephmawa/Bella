@@ -483,6 +483,44 @@
                                             </child>
                                           </object>
                                         </child>
+                                        <child>
+                                          <object class="AdwActionRow" id="oklab_action_row">
+                                            <property name="title" translatable="yes" context="OKLAB color format">OKLAB</property>
+                                            <style>
+                                              <class name="property" />
+                                            </style>
+                                            <child>
+                                              <object class="CopyColorFormatButton" id="oklab_copy_button">
+                                                <property name="colorFormat">cmyk(0%, 0%, 0%, 100%)</property>
+                                                <signal
+                                                  name="clicked"
+                                                  handler="copyColorFormat"
+                                                  swapped="no"
+                                                  object="BellaWindow"
+                                                />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="AdwActionRow" id="oklch_action_row">
+                                            <property name="title" translatable="yes" context="CIE-Lch color format">OKLCH</property>
+                                            <style>
+                                              <class name="property" />
+                                            </style>
+                                            <child>
+                                              <object class="CopyColorFormatButton" id="oklch_copy_button">
+                                                <property name="colorFormat">cmyk(0%, 0%, 0%, 100%)</property>
+                                                <signal
+                                                  name="clicked"
+                                                  handler="copyColorFormat"
+                                                  swapped="no"
+                                                  object="BellaWindow"
+                                                />
+                                              </object>
+                                            </child>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                     <child>

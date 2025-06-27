@@ -76,17 +76,31 @@ export const SavedColor = GObject.registerClass(
         GObject.ParamFlags.READWRITE,
         ""
       ),
-      hwb: GObject.ParamSpec.string(
+      lab: GObject.ParamSpec.string(
         "lab",
         "Lab",
         "Picked color in LAB format",
         GObject.ParamFlags.READWRITE,
         ""
       ),
-      hwb: GObject.ParamSpec.string(
+      lch: GObject.ParamSpec.string(
         "lch",
         "Lch",
         "Picked color in LCH format",
+        GObject.ParamFlags.READWRITE,
+        ""
+      ),
+      oklab: GObject.ParamSpec.string(
+        "oklab",
+        "OKLAB",
+        "Picked color in OKLAB format",
+        GObject.ParamFlags.READWRITE,
+        ""
+      ),
+      oklch: GObject.ParamSpec.string(
+        "oklch",
+        "OKLCH",
+        "Picked color in OKLCH format",
         GObject.ParamFlags.READWRITE,
         ""
       ),
@@ -122,6 +136,8 @@ export const SavedColor = GObject.registerClass(
       this.xyz = pickedColor.xyz;
       this.lab = pickedColor.lab;
       this.lch = pickedColor.lch;
+      this.oklab = pickedColor.oklab;
+      this.oklch = pickedColor.oklch;
       this.preferredColorFormat = pickedColor[preferredColorFormat];
       this.preferredColorFormatCopy = GLib.Variant.new_string(
         pickedColor[preferredColorFormat]
