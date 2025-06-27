@@ -6,9 +6,9 @@
     <file compressed="true">about.js</file>
     <file compressed="true">window.js</file>
     <file compressed="true">prefs.js</file>
-    <file compressed="true">confirm-delete-all.js</file>
-    <file compressed="true">confirm-delete-one.js</file>
-    <file compressed="true">copy-color-format-button.js</file>
+    <file compressed="true">delete-all.js</file>
+    <file compressed="true">delete-one.js</file>
+    <file compressed="true">copy-color-button.js</file>
     <file compressed="true">utils/utils.js</file>
     <file compressed="true">utils/saved-color.js</file>
     <file compressed="true">utils/color-names.js</file>

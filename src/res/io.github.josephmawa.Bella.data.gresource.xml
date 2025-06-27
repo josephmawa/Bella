@@ -4,14 +4,14 @@
     <file compressed="true" preprocess="xml-stripblanks" alias="window.ui">ui/window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="prefs.ui">ui/prefs.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks" alias="confirm-delete-all.ui">ui/confirm-delete-all.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks" alias="confirm-delete-one.ui">ui/confirm-delete-one.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks" alias="copy-color-format-button.ui">ui/copy-color-format-button.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="delete-all.ui">ui/delete-all.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="delete-one.ui">ui/delete-one.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="copy-color-button.ui">ui/copy-color-button.ui</file>
   </gresource>
   <!-- Resources for color format table columns -->
   <gresource prefix="/io/github/josephmawa/Bella">
-    <file compressed="true" preprocess="xml-stripblanks" alias="saved-color-table-columns/color.ui">ui/saved-color-table-columns/color.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks" alias="saved-color-table-columns/actions.ui">ui/saved-color-table-columns/actions.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="columns/color.ui">ui/columns/color.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="columns/actions.ui">ui/columns/actions.ui</file>
   </gresource>
   <!-- Resources for css styles -->
   <gresource prefix="/io/github/josephmawa/Bella">

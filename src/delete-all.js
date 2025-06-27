@@ -5,7 +5,7 @@ import GLib from "gi://GLib";
 export const ConfirmDeleteAll = GObject.registerClass(
   {
     GTypeName: "ConfirmDeleteAll",
-    Template: getResourceUri("confirm-delete-all.ui"),
+    Template: getResourceUri("delete-all.ui"),
   },
   class ConfirmDeleteAll extends Adw.AlertDialog {
     constructor() {

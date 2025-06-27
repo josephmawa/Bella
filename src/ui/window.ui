@@ -173,7 +173,7 @@
                                                         <property name="title" translatable="yes">Color</property>
                                                         <property name="factory">
                                                           <object class="GtkBuilderListItemFactory">
-                                                            <property name="resource">/io/github/josephmawa/Bella/saved-color-table-columns/color.ui</property>
+                                                            <property name="resource">/io/github/josephmawa/Bella/columns/color.ui</property>
                                                           </object>
                                                         </property>
                                                       </object>
@@ -183,7 +183,7 @@
                                                         <property name="title" translatable="yes">Actions</property>
                                                         <property name="factory">
                                                           <object class="GtkBuilderListItemFactory">
-                                                            <property name="resource">/io/github/josephmawa/Bella/saved-color-table-columns/actions.ui</property>
+                                                            <property name="resource">/io/github/josephmawa/Bella/columns/actions.ui</property>
                                                           </object>
                                                         </property>
                                                       </object>

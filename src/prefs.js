@@ -1,8 +1,8 @@
 import Adw from "gi://Adw";
-import GObject from "gi://GObject";
 import Gio from "gi://Gio";
 import Gtk from "gi://Gtk";
-import { ConfirmDeleteAll } from "./confirm-delete-all.js";
+import GObject from "gi://GObject";
+import { ConfirmDeleteAll } from "./delete-all.js";
 import { colorFormats } from "./utils/color-formats.js";
 
 export const BellaPreferencesDialog = GObject.registerClass(

@@ -6,19 +6,19 @@ import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 
-import { getColor, getHsv } from "./utils/utils.js";
-import { colorFormats } from "./utils/color-formats.js";
-import { SavedColor } from "./utils/saved-color.js";
-import { BellaPreferencesDialog } from "./prefs.js";
 import { savedColorsFile } from "./app.js";
-import { ConfirmDeleteOne } from "./confirm-delete-one.js";
+import { ConfirmDeleteOne } from "./delete-one.js";
+import { SavedColor } from "./utils/saved-color.js";
+import { getColor, getHsv } from "./utils/utils.js";
+import { BellaPreferencesDialog } from "./prefs.js";
+import { colorFormats } from "./utils/color-formats.js";
 
 /**
- * Register the CopyColorFormatButton class
- * in the GObject system before using it in
- * the window.ui builder definition.
+ * Register the CopyColorButton class
+ * in the GObject system before using it
+ * in the window.ui builder definition.
  */
-import "./copy-color-format-button.js";
+import "./copy-color-button.js";
 
 const xdpPortal = Xdp.Portal.new();
 

@@ -4,7 +4,7 @@ import Gtk from "gi://Gtk";
 export const CopyColorFormatButton = GObject.registerClass(
   {
     GTypeName: "CopyColorFormatButton",
-    Template: getResourceUri("copy-color-format-button.ui"),
+    Template: getResourceUri("copy-color-button.ui"),
     Properties: {
       theme: GObject.ParamSpec.string(
         "colorFormat",
