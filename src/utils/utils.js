@@ -22,12 +22,18 @@ export function getColor(scaledRgb) {
   const hwb = rgbToHwb(scaledRgb);
 
   const XYZ = rgbToXYZ(scaledRgb);
-  const lab = xyzToLab(XYZ);
+  const okLab = XYZToOKLab(XYZ);
+  const okLch = OKLabToOKLCH(okLab);
+  const lab = xyzToLab(XYZ.map((value) => value * 100));
   const lch = labToLch(lab);
 
-  const xyzRounded = XYZ.map((value) => round(value));
+  okLab[0] = okLab[0] * 100;
+
+  const xyzRounded = XYZ.map((value) => round(value * 100));
   const labRounded = lab.map((value) => round(value));
   const lchRounded = lch.map((value) => round(value));
+  const okLabRounded = okLab.map((value) => round(value));
+  const okLchRounded = okLch.map((value) => round(value));
 
   return {
     name: name?.name ?? "Unknown",
@@ -40,6 +46,8 @@ export function getColor(scaledRgb) {
     xyz: `XYZ(${xyzRounded.join(", ")})`,
     lab: `lab(${labRounded.join(", ")})`,
     lch: `lch(${lchRounded.join(", ")})`,
+    oklab: `oklab(${okLabRounded[0]}% ${okLabRounded.slice(1).join(" ")})`,
+    oklch: `oklch(${okLchRounded[0]}% ${okLchRounded.slice(1).join(" ")})`,
   };
 }
 
@@ -155,7 +163,7 @@ function rgbToXYZ(normalizedRgb) {
   const Y = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
   const Z = 0.0193 * red + 0.1192 * green + 0.9505 * blue;
 
-  return [X, Y, Z].map((value) => value * 100);
+  return [X, Y, Z];
 }
 
 const D65 = [95.047, 100, 108.883];
@@ -183,4 +191,48 @@ function labToLch(lab) {
   return [l, c, h];
 }
 
+/**
+ * Source: https://github.com/csstools/postcss-plugins/blob/main/packages/color-helpers/src/conversions/xyz-to-oklab.ts
+ */
 
+const XYZtoLMS = [
+  0.819022437996703, 0.3619062600528904, -0.1288737815209879,
+  0.0329836539323885, 0.9292868615863434, 0.0361446663506424,
+  0.0481771893596242, 0.2642395317527308, 0.6335478284694309,
+];
+const LMStoOKLab = [
+  0.210454268309314, 0.7936177747023054, -0.0040720430116193,
+  1.9779985324311684, -2.4285922420485799, 0.450593709617411,
+  0.0259040424655478, 0.7827717124575296, -0.8086757549230774,
+];
+
+function multiplyMatrices(a, b) {
+  return [
+    a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+    a[3] * b[0] + a[4] * b[1] + a[5] * b[2],
+    a[6] * b[0] + a[7] * b[1] + a[8] * b[2],
+  ];
+}
+
+function XYZToOKLab(XYZ) {
+  const LMS = multiplyMatrices(XYZtoLMS, XYZ);
+
+  return multiplyMatrices(LMStoOKLab, [
+    Math.cbrt(LMS[0]),
+    Math.cbrt(LMS[1]),
+    Math.cbrt(LMS[2]),
+  ]);
+}
+
+/**
+ * Source: https://github.com/csstools/postcss-plugins/blob/main/packages/color-helpers/src/conversions/oklab-to-oklch.ts
+ */
+
+function OKLabToOKLCH(OKLab) {
+  const hue = (Math.atan2(OKLab[2], OKLab[1]) * 180) / Math.PI;
+  return [
+    OKLab[0],
+    Math.sqrt(OKLab[1] ** 2 + OKLab[2] ** 2),
+    hue >= 0 ? hue : hue + 360,
+  ];
+}

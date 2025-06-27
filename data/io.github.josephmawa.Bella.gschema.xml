@@ -31,6 +31,8 @@
         <choice value="xyz" />
         <choice value="lab" />
         <choice value="lch" />
+        <choice value="oklab" />
+        <choice value="oklch" />
       </choices>
       <default>"rgb"</default>
     </key>
