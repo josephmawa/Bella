@@ -2,10 +2,10 @@
 <gresources>
   <gresource prefix="/io/github/josephmawa/Bella/js">
     <file compressed="true">main.js</file>
-    <file compressed="true">application.js</file>
-    <file compressed="true">about-dialog.js</file>
+    <file compressed="true">app.js</file>
+    <file compressed="true">about.js</file>
     <file compressed="true">window.js</file>
-    <file compressed="true">preferences.js</file>
+    <file compressed="true">prefs.js</file>
     <file compressed="true">confirm-delete-all.js</file>
     <file compressed="true">confirm-delete-one.js</file>
     <file compressed="true">copy-color-format-button.js</file>

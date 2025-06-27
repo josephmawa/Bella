@@ -1,7 +1,7 @@
 pkgdatadir = join_paths(get_option('datadir'), meson.project_name())
 gnome = import('gnome')
 
-src_gresource_file_path = 'gresources' / 'io.github.josephmawa.Bella.src.gresource.xml'
+src_gresource_file_path = 'res' / 'io.github.josephmawa.Bella.src.gresource.xml'
 src_res = gnome.compile_resources( 'io.github.josephmawa.Bella.src',
   src_gresource_file_path,
   gresource_bundle: true,
@@ -9,7 +9,7 @@ src_res = gnome.compile_resources( 'io.github.josephmawa.Bella.src',
   install_dir: pkgdatadir,
 )
 
-data_gresource_file_path = 'gresources' / 'io.github.josephmawa.Bella.data.gresource.xml'
+data_gresource_file_path = 'res' / 'io.github.josephmawa.Bella.data.gresource.xml'
 data_res = gnome.compile_resources('io.github.josephmawa.Bella.data',
   data_gresource_file_path,
   gresource_bundle: true,
@@ -26,7 +26,7 @@ bin_template_file_config_data.set('libdir', join_paths(get_option('prefix'), get
 bin_template_file_config_data.set('datadir', join_paths(get_option('prefix'), get_option('datadir')))
 bin_template_file_config_data.set('resource_path', '/io/github/josephmawa/Bella')
 
-bin_template_file_path = 'bin-template' / 'io.github.josephmawa.Bella.in'
+bin_template_file_path = 'bin' / 'io.github.josephmawa.Bella.in'
 configure_file(
   input: bin_template_file_path,
   output: 'io.github.josephmawa.Bella',

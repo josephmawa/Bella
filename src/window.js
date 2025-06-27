@@ -9,8 +9,8 @@ import Gtk from "gi://Gtk?version=4.0";
 import { getColor, getHsv } from "./utils/utils.js";
 import { colorFormats } from "./utils/color-formats.js";
 import { SavedColor } from "./utils/saved-color.js";
-import { BellaPreferencesDialog } from "./preferences.js";
-import { savedColorsFile } from "./application.js";
+import { BellaPreferencesDialog } from "./prefs.js";
+import { savedColorsFile } from "./app.js";
 import { ConfirmDeleteOne } from "./confirm-delete-one.js";
 
 /**

@@ -2,8 +2,8 @@
 <gresources>
   <gresource prefix="/io/github/josephmawa/Bella">
     <file compressed="true" preprocess="xml-stripblanks" alias="window.ui">ui/window.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help-overlay.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks" alias="preferences.ui">ui/preferences.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="prefs.ui">ui/prefs.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="confirm-delete-all.ui">ui/confirm-delete-all.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="confirm-delete-one.ui">ui/confirm-delete-one.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="copy-color-format-button.ui">ui/copy-color-format-button.ui</file>
@@ -15,7 +15,7 @@
   </gresource>
   <!-- Resources for css styles -->
   <gresource prefix="/io/github/josephmawa/Bella">
-    <file compressed="true" alias="index.css">styles/index.css</file>
+    <file compressed="true" alias="index.css">css/index.css</file>
   </gresource>
   <!-- Resources for icons -->
   <gresource prefix="/io/github/josephmawa/Bella/icons">

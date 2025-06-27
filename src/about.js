@@ -18,7 +18,7 @@ const aboutParams = {
   developer_name: "Joseph Mawa",
   developers: ["Joseph Mawa"],
   artists: ["Joseph Mawa"],
-  copyright: "Copyright © 2024 Joseph Mawa",
+  copyright: "© 2024 Joseph Mawa",
   translator_credits: translators.join("\n"),
   website: GITHUB_URL,
   issue_url: GITHUB_URL + "/issues",

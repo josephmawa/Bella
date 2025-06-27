@@ -4,7 +4,6 @@
   <requires lib="Adw" version="1.5" />
   <template class="BellaPreferencesDialog" parent="AdwPreferencesDialog">
     <property name="content_width">300</property>
-    <property name="content_height">400</property>
     <property name="title" translatable="yes">Preferences</property>
     <property name="search-enabled">true</property>
     <property name="presentation-mode">floating</property>
