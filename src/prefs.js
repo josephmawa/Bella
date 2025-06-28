@@ -2,9 +2,9 @@ import Adw from "gi://Adw";
 import Gio from "gi://Gio";
 import Gtk from "gi://Gtk";
 import GObject from "gi://GObject";
+import { settings } from "./utils/utils.js";
 import { ConfirmDeleteAll } from "./delete-all.js";
 import { colorFormats } from "./utils/color-formats.js";
-import { settings } from "./utils/utils.js";
 
 export const BellaPreferencesDialog = GObject.registerClass(
   {
@@ -44,9 +44,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
           );
 
           if (!colorFormatObject) {
-            throw new Error(
-              "Mismatch between color keys in the settings and in colorFormats array"
-            );
+            throw new Error(`${key} isn't in color formats`);
           }
 
           const model = this._colorFormatSettings.model;
@@ -70,9 +68,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
             );
 
             if (!colorFormatObject) {
-              throw new Error(
-                "Mismatch between color format settings and colorFormats array"
-              );
+              throw new Error("Selected option isn't in color formats");
             }
             return [true, colorFormatObject.key];
           }
@@ -95,7 +91,6 @@ export const BellaPreferencesDialog = GObject.registerClass(
         null,
         "string"
       );
-
       this._colorFormatSettings.expression = expression;
     };
   }

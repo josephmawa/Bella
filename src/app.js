@@ -1,7 +1,7 @@
-import GObject from "gi://GObject";
 import Gio from "gi://Gio";
 import Adw from "gi://Adw";
 import GLib from "gi://GLib";
+import GObject from "gi://GObject";
 
 import { BellaWindow } from "./window.js";
 import { getAboutDialog } from "./about.js";

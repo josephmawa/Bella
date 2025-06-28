@@ -1,5 +1,5 @@
-import Adw from "gi://Adw?version=1";
 import Gtk from "gi://Gtk";
+import Adw from "gi://Adw?version=1";
 
 const GITHUB_URL = "https://github.com/josephmawa/Bella";
 const translators = [

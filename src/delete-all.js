@@ -1,6 +1,6 @@
 import Adw from "gi://Adw";
-import GObject from "gi://GObject";
 import GLib from "gi://GLib";
+import GObject from "gi://GObject";
 
 export const ConfirmDeleteAll = GObject.registerClass(
   {

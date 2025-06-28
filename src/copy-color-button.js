@@ -1,5 +1,5 @@
-import GObject from "gi://GObject";
 import Gtk from "gi://Gtk";
+import GObject from "gi://GObject";
 
 export const CopyColorFormatButton = GObject.registerClass(
   {

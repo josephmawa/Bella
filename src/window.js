@@ -8,10 +8,10 @@ import Gtk from "gi://Gtk?version=4.0";
 
 import { savedColorsFile } from "./app.js";
 import { ConfirmDeleteOne } from "./delete-one.js";
-import { SavedColor } from "./utils/saved-color.js";
-import { getColor, getHsv, settings } from "./utils/utils.js";
 import { BellaPreferencesDialog } from "./prefs.js";
+import { SavedColor } from "./utils/saved-color.js";
 import { colorFormats } from "./utils/color-formats.js";
+import { getColor, getHsv, settings } from "./utils/utils.js";
 
 /**
  * Register the CopyColorButton class
