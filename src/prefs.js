@@ -4,20 +4,14 @@ import Gtk from "gi://Gtk";
 import GObject from "gi://GObject";
 import { ConfirmDeleteAll } from "./delete-all.js";
 import { colorFormats } from "./utils/color-formats.js";
+import { settings } from "./utils/utils.js";
 
 export const BellaPreferencesDialog = GObject.registerClass(
   {
     GTypeName: "BellaPreferencesDialog",
     Template: getResourceUri("prefs.ui"),
-    InternalChildren: ["system", "dark", "light", "colorFormatSettings"],
+    InternalChildren: ["colorFormatSettings"],
     Properties: {
-      theme: GObject.ParamSpec.string(
-        "theme",
-        "Theme",
-        "Preferred theme",
-        GObject.ParamFlags.READWRITE,
-        ""
-      ),
       colorFormat: GObject.ParamSpec.string(
         "colorFormat",
         "color_format",
@@ -32,47 +26,11 @@ export const BellaPreferencesDialog = GObject.registerClass(
       super(options);
 
       this.setColorFormatModel();
-
-      this.settings = Gio.Settings.new(pkg.name);
-      this.settings.bind(
-        "preferred-theme",
-        this,
-        "theme",
-        Gio.SettingsBindFlags.DEFAULT
-      );
-
-      this.settings.bind(
+      settings.bind(
         "color-format",
         this,
         "colorFormat",
         Gio.SettingsBindFlags.DEFAULT
-      );
-
-      this.bind_property_full(
-        "theme",
-        this._system,
-        "active",
-        GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE,
-        (_, theme) => [true, theme === "system"],
-        (_, theme) => [theme, "system"]
-      );
-
-      this.bind_property_full(
-        "theme",
-        this._light,
-        "active",
-        GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE,
-        (_, theme) => [true, theme === "light"],
-        (_, theme) => [theme, "light"]
-      );
-
-      this.bind_property_full(
-        "theme",
-        this._dark,
-        "active",
-        GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE,
-        (_, theme) => [true, theme === "dark"],
-        (_, theme) => [theme, "dark"]
       );
 
       this.bind_property_full(
@@ -113,13 +71,11 @@ export const BellaPreferencesDialog = GObject.registerClass(
 
             if (!colorFormatObject) {
               throw new Error(
-                "There is a mismatch between color descriptions in the color format settings model and colorFormats array"
+                "Mismatch between color format settings and colorFormats array"
               );
             }
-
             return [true, colorFormatObject.key];
           }
-
           return [false, "rgb"];
         }
       );
@@ -134,13 +90,13 @@ export const BellaPreferencesDialog = GObject.registerClass(
       const _colorFormats = colorFormats.map(({ description }) => description);
       this._colorFormatSettings.model = Gtk.StringList.new(_colorFormats);
 
-      const propExpression = Gtk.PropertyExpression.new(
+      const expression = Gtk.PropertyExpression.new(
         Gtk.StringObject,
         null,
         "string"
       );
 
-      this._colorFormatSettings.expression = propExpression;
+      this._colorFormatSettings.expression = expression;
     };
   }
 );

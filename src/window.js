@@ -9,7 +9,7 @@ import Gtk from "gi://Gtk?version=4.0";
 import { savedColorsFile } from "./app.js";
 import { ConfirmDeleteOne } from "./delete-one.js";
 import { SavedColor } from "./utils/saved-color.js";
-import { getColor, getHsv } from "./utils/utils.js";
+import { getColor, getHsv, settings } from "./utils/utils.js";
 import { BellaPreferencesDialog } from "./prefs.js";
 import { colorFormats } from "./utils/color-formats.js";
 
@@ -102,7 +102,7 @@ export const BellaWindow = GObject.registerClass(
       this.bindProperty();
       this.bindSettings();
       this.createActions();
-      this.seColorScheme();
+      this.setColorScheme();
       this.getSavedColors();
       this.centerColumnTitle();
     }
@@ -140,36 +140,33 @@ export const BellaWindow = GObject.registerClass(
     };
 
     bindSettings = () => {
-      if (!this.settings) {
-        this.settings = Gio.Settings.new(pkg.name);
-      }
-      this.settings.bind(
+      settings.bind(
         "window-width",
         this,
         "default-width",
         Gio.SettingsBindFlags.DEFAULT
       );
-      this.settings.bind(
+      settings.bind(
         "window-height",
         this,
         "default-height",
         Gio.SettingsBindFlags.DEFAULT
       );
-      this.settings.bind(
+      settings.bind(
         "window-maximized",
         this,
         "maximized",
         Gio.SettingsBindFlags.DEFAULT
       );
-      this.settings.bind(
+      settings.bind(
         "color-format",
         this,
         "color_format",
         Gio.SettingsBindFlags.GET
       );
 
-      this.settings.connect("changed::preferred-theme", this.seColorScheme);
-      this.settings.connect("changed::color-format", this.updateColorFormat);
+      settings.connect("changed::color-scheme", this.setColorScheme);
+      settings.connect("changed::color-format", this.updateColorFormat);
     };
 
     bindProperty = () => {
@@ -259,18 +256,18 @@ export const BellaWindow = GObject.registerClass(
         }
       });
 
-      copySavedCol.connect("activate", (_copySavedColorAction, savedColor) => {
+      copySavedCol.connect("activate", (action, savedColor) => {
         const color = savedColor?.unpack();
         if (color) {
           this.copyToClipboard(color);
-          this.displayToast(_("Copied %s to clipboard").format(color));
+          this.displayToast(_("Copied %s").format(color));
         }
       });
 
-      delSavedColor.connect("activate", (_deleteSavedColorAction, colorId) => {
+      delSavedColor.connect("activate", (action, colorId) => {
         const confirmDeleteOne = new ConfirmDeleteOne();
 
-        confirmDeleteOne.connect("response", (actionDialog, response) => {
+        confirmDeleteOne.connect("response", (dialog, response) => {
           if (response === "cancel") return;
 
           const id = colorId?.unpack();
@@ -283,18 +280,20 @@ export const BellaWindow = GObject.registerClass(
           const model = this._saved_colors_selection_model.model;
           model.remove(idx);
 
-          // Only display toast if there are items in the model otherwise the
-          // view will switch automatically to "No Saved Color". That's
-          // enough to indicate that the operation was a success.
+          /**
+           * Only display toast if there are items in the model otherwise the
+           * view will switch automatically to "No Saved Color". That's
+           * enough to indicate that the operation was a success.
+           */
           if (model.n_items > 0) {
-            this.displayToast(_("Deleted saved color successfully"));
+            this.displayToast(_("Deleted color"));
           }
         });
 
         confirmDeleteOne.present(this);
       });
 
-      viewSavedColor.connect("activate", (_, colorId) => {
+      viewSavedColor.connect("activate", (action, colorId) => {
         const id = colorId?.unpack();
         const [idx, item] = this.getItem(id);
 
@@ -326,7 +325,7 @@ export const BellaWindow = GObject.registerClass(
         }
       });
 
-      setSavedColorStackPage.connect("activate", (actionObj, params) => {
+      setSavedColorStackPage.connect("activate", (action, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
           this._eye_dropper_saved_color_stack.visible_child_name =
@@ -334,7 +333,6 @@ export const BellaWindow = GObject.registerClass(
         }
       });
 
-      // Window-scoped actions
       this.add_action(copySavedCol);
       this.add_action(delSavedColor);
       this.add_action(viewSavedColor);
@@ -343,11 +341,11 @@ export const BellaWindow = GObject.registerClass(
       this.add_action(setEyeDropperStackPage);
       this.add_action(setSavedColorStackPage);
 
-      // Application-scoped actions
       this.application.add_action(delSavedColors);
       this.application.add_action(showPrefsWin);
+      this.application.add_action(settings.create_action("color-scheme"));
 
-      // Add it to gloabThis so that it is triggered from a modal
+      /* Add to gloabThis so that it is triggered from a modal */
       globalThis.deleteSavedColorsAction = delSavedColors;
     };
 
@@ -414,24 +412,9 @@ export const BellaWindow = GObject.registerClass(
       this.updateSavedColor(colorObject);
     }
 
-    seColorScheme = () => {
-      const preferredColorScheme = this.settings.get_string("preferred-theme");
-      const { DEFAULT, FORCE_LIGHT, FORCE_DARK } = Adw.ColorScheme;
-      let colorScheme = DEFAULT;
-
-      if (preferredColorScheme === "system") {
-        colorScheme = DEFAULT;
-      }
-
-      if (preferredColorScheme === "light") {
-        colorScheme = FORCE_LIGHT;
-      }
-
-      if (preferredColorScheme === "dark") {
-        colorScheme = FORCE_DARK;
-      }
-
-      this.application.get_style_manager().color_scheme = colorScheme;
+    setColorScheme = () => {
+      const styleManager = this.application.style_manager;
+      styleManager.set_color_scheme(settings.get_int("color-scheme"));
     };
 
     updateColorFormat = () => {
@@ -590,7 +573,7 @@ export const BellaWindow = GObject.registerClass(
     copyColorFormat(copyColorFormatButton) {
       const color = copyColorFormatButton.colorFormat;
       this.copyToClipboard(color);
-      this.displayToast(_("Copied %s to clipboard").format(color));
+      this.displayToast(_("Copied %s").format(color));
     }
   }
 );
