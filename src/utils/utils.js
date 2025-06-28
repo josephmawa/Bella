@@ -1,5 +1,8 @@
+import Gio from "gi://Gio";
 import { colorNames } from "./color-names.js";
 import { nearestColor } from "./nearest-color.js";
+
+export const settings = Gio.Settings.new(pkg.name);
 
 export function getColor(scaledRgb) {
   const rgb = [],
