@@ -109,12 +109,10 @@ export const BellaWindow = GObject.registerClass(
 
     vfunc_close_request() {
       const model = this._saved_colors_selection_model.model;
-      const length = model.get_n_items();
-
       const pickedColors = [];
 
-      for (let idx = 0; idx < length; idx++) {
-        const item = model.get_item(idx);
+      for (let i = 0; i < model.n_items; i++) {
+        const item = model.get_item(i);
         const pickedColor = { id: item.id.unpack() };
 
         for (const { key } of colorFormats) {
@@ -252,7 +250,7 @@ export const BellaWindow = GObject.registerClass(
 
         // Nothing to delete. Consider making the 'delete all saved colors'
         // button inactive in the future if there are no items left
-        if (model.get_n_items() === 0) return;
+        if (model.n_items === 0) return;
 
         if (response === "delete") {
           model.remove_all();
@@ -288,7 +286,7 @@ export const BellaWindow = GObject.registerClass(
           // Only display toast if there are items in the model otherwise the
           // view will switch automatically to "No Saved Color". That's
           // enough to indicate that the operation was a success.
-          if (model.get_n_items() > 0) {
+          if (model.n_items > 0) {
             this.displayToast(_("Deleted saved color successfully"));
           }
         });
@@ -439,7 +437,7 @@ export const BellaWindow = GObject.registerClass(
     updateColorFormat = () => {
       const model = this._saved_colors_selection_model.model;
 
-      for (let i = 0; i < model.get_n_items(); i++) {
+      for (let i = 0; i < model.n_items; i++) {
         const item = model.get_item(i);
         const itemClone = { id: item.id.unpack() };
 
