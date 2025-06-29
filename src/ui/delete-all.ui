@@ -12,10 +12,5 @@
       <response id="delete" translatable="yes" appearance="destructive">Delete</response>
       <response id="cancel" translatable="yes" appearance="suggested">Cancel</response>
     </responses>
-    <signal
-      name="response"
-      handler="responseHandler"
-      swapped="no"
-      object="ConfirmDeleteAll" />
   </template>
 </interface>
