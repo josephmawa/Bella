@@ -9,6 +9,8 @@
     <file compressed="true">delete-all.js</file>
     <file compressed="true">delete-one.js</file>
     <file compressed="true">copy-color-button.js</file>
+    <file compressed="true">utils/formats.js</file>
+    <file compressed="true">utils/gobjects.js</file>
     <file compressed="true">utils/utils.js</file>
     <file compressed="true">utils/saved-color.js</file>
     <file compressed="true">utils/color-names.js</file>

@@ -1,4 +1,7 @@
 import Gio from "gi://Gio";
+import Gtk from "gi://Gtk";
+import GLib from "gi://GLib";
+
 import { colorNames } from "./color-names.js";
 import { nearestColor } from "./nearest-color.js";
 
@@ -20,6 +23,7 @@ export function getColor(scaledRgb) {
   }
 
   const hsl = rgbToHsl(scaledRgb);
+  const hsv = Gtk.rgb_to_hsv(...scaledRgb);
   const name = nearestColor(rgb, colorNames);
   const cmyk = rgbToCmyk(scaledRgb);
   const hwb = rgbToHwb(scaledRgb);
@@ -39,10 +43,12 @@ export function getColor(scaledRgb) {
   const okLchRounded = okLch.map((value) => round(value));
 
   return {
+    id: GLib.uuid_string_random(),
     name: name?.name ?? "Unknown",
     hex: `#${hex.join("")}`,
     rgb: `rgb(${rgb.join(", ")})`,
     hsl: `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`,
+    hsv: getHsv(hsv),
     rgb_percent: `rgb(${rgbPercent.join(", ")})`,
     cmyk: `cmyk(${cmyk.join("%, ")}%)`,
     hwb: `hwb(${hwb[0]}, ${hwb[1]}%, ${hwb[2]}%)`,
