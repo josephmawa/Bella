@@ -8,6 +8,7 @@ import Gtk from "gi://Gtk?version=4.0";
 
 import { savedColorsFile } from "./app.js";
 import { ConfirmDeleteOne } from "./delete-one.js";
+import { ConfirmDeleteAll } from "./delete-all.js";
 import { BellaPreferencesDialog } from "./prefs.js";
 import { SavedColor } from "./utils/saved-color.js";
 import { colorFormats } from "./utils/color-formats.js";
@@ -252,7 +253,7 @@ export const BellaWindow = GObject.registerClass(
 
         /**
          * These bindings will create as many signal handlers as
-         * there are bound itmes. Investigate if this is efficient.
+         * there are bound items. Investigate its efficiency.
          */
         const copyButton = hBox.get_first_child();
         copyButton?.connect("clicked", (button) => {
@@ -266,7 +267,7 @@ export const BellaWindow = GObject.registerClass(
 
         const viewButton = hBox.get_last_child();
         viewButton?.connect("clicked", (button) => {
-          this.viewColor(button, color.id);
+          this.viewColor(button, color);
         });
       });
 
@@ -279,7 +280,7 @@ export const BellaWindow = GObject.registerClass(
       this._column_view.append_column(colorColumn);
       this._column_view.append_column(actionsColumn);
 
-      /** These should be called after creating ColumnView */
+      /** Call this after creating ColumnView */
       this.bindModel();
       this.centerColumnTitle();
     };
@@ -290,19 +291,36 @@ export const BellaWindow = GObject.registerClass(
     };
 
     deleteColor = (button, id) => {
-      const model = this._column_view.model.model;
-      for (let i = 0; i < model.n_items; i++) {
-        const item = model.get_item(i);
-        if (item.id === id) {
-          model.remove(i);
-          this.displayToast(_("Deleted %s").format(item.displayed_format));
-          break;
+      const confirmDeleteOne = new ConfirmDeleteOne();
+      confirmDeleteOne.connect("response", (dialog, response) => {
+        if (response === "cancel") return;
+
+        const model = this._column_view.model.model;
+
+        for (let i = 0; i < model.n_items; i++) {
+          const item = model.get_item(i);
+          if (item.id === id) {
+            model.remove(i);
+            break;
+          }
         }
-      }
+        /**
+         * Only display toast if there are items in the model otherwise the
+         * view will switch automatically to "No Saved Color". That's
+         * enough to indicate that the operation was a success.
+         */
+        if (model.n_items > 0) {
+          this.displayToast(_("Deleted color"));
+        }
+      });
+      confirmDeleteOne.present(this);
     };
 
-    viewColor = (button, id) => {
-      console.log("Viewing ", id);
+    viewColor = (button, color) => {
+      const result = Color.copyProperties(color, this.visible_color);
+      if (result) {
+        this._main_stack.visible_child_name = "picked_color_page";
+      }
     };
 
     bindSettings = () => {
@@ -369,18 +387,13 @@ export const BellaWindow = GObject.registerClass(
     createActions = () => {
       const showPrefsWin = Gio.SimpleAction.new("preferences", null);
 
-      const delSavedColors = Gio.SimpleAction.new(
+      const deleteSavedColors = Gio.SimpleAction.new(
         "delete-saved-colors",
-        GLib.VariantType.new("s")
+        null
       );
 
       const copySavedCol = Gio.SimpleAction.new(
         "copy-saved-color",
-        GLib.VariantType.new("s")
-      );
-
-      const delSavedColor = Gio.SimpleAction.new(
-        "delete-saved-color",
         GLib.VariantType.new("s")
       );
 
@@ -407,19 +420,25 @@ export const BellaWindow = GObject.registerClass(
         preferencesWindow.present(this);
       });
 
-      delSavedColors.connect("activate", (action, alertDialogResponse) => {
-        const response = alertDialogResponse?.unpack();
-        const model = this._saved_colors_selection_model.model;
+      deleteSavedColors.connect("activate", () => {
+        const confirmDeleteAll = new ConfirmDeleteAll();
 
-        // Nothing to delete. Consider making the 'delete all saved colors'
-        // button inactive in the future if there are no items left
-        if (model.n_items === 0) return;
+        confirmDeleteAll.connect("response", (dialog, response) => {
+          if (response === "cancel") return;
 
-        if (response === "delete") {
-          model.remove_all();
-          this.saveData([]);
-          this.displayToast(_("Deleted all saved colors"));
-        }
+          const model = this._column_view.model.model;
+          /**
+           * Nothing to delete. Consider making the 'delete all saved colors'
+           * button inactive if there are no items left.
+           */
+          if (model.n_items === 0) return;
+          if (response === "delete") {
+            model.remove_all();
+            this.saveData([]);
+            this.displayToast(_("Deleted saved colors"));
+          }
+        });
+        confirmDeleteAll.present(this);
       });
 
       copySavedCol.connect("activate", (action, savedColor) => {
@@ -428,35 +447,6 @@ export const BellaWindow = GObject.registerClass(
           this.copyToClipboard(color);
           this.displayToast(_("Copied %s").format(color));
         }
-      });
-
-      delSavedColor.connect("activate", (action, colorId) => {
-        const confirmDeleteOne = new ConfirmDeleteOne();
-
-        confirmDeleteOne.connect("response", (dialog, response) => {
-          if (response === "cancel") return;
-
-          const id = colorId?.unpack();
-          const [idx, item] = this.getItem(id);
-
-          if (idx === null) {
-            throw new Error(`id: ${id} is non-existent`);
-          }
-
-          const model = this._saved_colors_selection_model.model;
-          model.remove(idx);
-
-          /**
-           * Only display toast if there are items in the model otherwise the
-           * view will switch automatically to "No Saved Color". That's
-           * enough to indicate that the operation was a success.
-           */
-          if (model.n_items > 0) {
-            this.displayToast(_("Deleted color"));
-          }
-        });
-
-        confirmDeleteOne.present(this);
       });
 
       viewSavedColor.connect("activate", (action, colorId) => {
@@ -499,20 +489,16 @@ export const BellaWindow = GObject.registerClass(
         }
       });
 
+      this.add_action(pickColor);
       this.add_action(copySavedCol);
-      this.add_action(delSavedColor);
       this.add_action(viewSavedColor);
       this.add_action(backToMainPage);
-      this.add_action(pickColor);
       this.add_action(setEyeDropperStackPage);
       this.add_action(setSavedColorStackPage);
 
-      this.application.add_action(delSavedColors);
       this.application.add_action(showPrefsWin);
+      this.application.add_action(deleteSavedColors);
       this.application.add_action(settings.create_action("color-scheme"));
-
-      /* Add to gloabThis so that it is triggered from a modal */
-      globalThis.deleteSavedColorsAction = delSavedColors;
     };
 
     pickColorHandler = () => {
@@ -577,6 +563,8 @@ export const BellaWindow = GObject.registerClass(
     };
 
     updateColorFormat = () => {
+      console.log("Updating color format...");
+      return;
       const model = this._saved_colors_selection_model.model;
 
       for (let i = 0; i < model.n_items; i++) {
@@ -684,11 +672,5 @@ export const BellaWindow = GObject.registerClass(
         }
       }
     };
-
-    copyColorFormat(copyColorFormatButton) {
-      const color = copyColorFormatButton.colorFormat;
-      this.copyToClipboard(color);
-      this.displayToast(_("Copied %s").format(color));
-    }
   }
 );

@@ -93,9 +93,8 @@
               <object class="AdwActionRow">
                 <property name="title" translatable="yes">Delete Colors</property>
                 <property name="subtitle" translatable="yes">Delete all saved colors</property>
-                <property name="activatable-widget">delete-saved-colors</property>
                 <child>
-                  <object class="GtkButton" id="delete-saved-colors">
+                  <object class="GtkButton">
                     <style>
                       <class name="suggested-action" />
                     </style>
@@ -106,17 +105,13 @@
                     <accessibility>
                       <property name="label" translatable="yes" context="accessibility">Delete all saved colors</property>
                     </accessibility>
-                    <signal
-                      name="clicked"
-                      handler="deleteSavedColors"
-                      swapped="no"
-                      object="BellaPreferencesDialog" />
+                    <property name="action-name">app.delete-saved-colors</property>
                   </object>
                 </child>
               </object>
             </child>
             <child>
-              <object class="AdwComboRow" id="colorFormatSettings">
+              <object class="AdwComboRow" id="color_format_settings">
                 <property name="enable-search">true</property>
                 <property name="title" translatable="yes">Color Format</property>
                 <property name="subtitle" translatable="yes">Select color format to display</property>

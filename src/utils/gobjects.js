@@ -44,5 +44,12 @@ export const Color = GObject.registerClass(
         }
       }
     }
+
+    static copyProperties(source, destination) {
+      for (const { key } of colorProps) {
+        destination[key] = source[key];
+      }
+      return true;
+    }
   }
 );
