@@ -10,8 +10,9 @@ import { savedColorsFile } from "./app.js";
 import { ConfirmDeleteOne } from "./delete-one.js";
 import { ConfirmDeleteAll } from "./delete-all.js";
 import { BellaPreferencesDialog } from "./prefs.js";
-import { getColor, getHsv, settings } from "./utils/utils.js";
+import { CopyColorButton } from "./copy-color-button.js";
 import { Color, colorProps } from "./utils/gobjects.js";
+import { getColor, getHsv, settings } from "./utils/utils.js";
 
 const actionButtons = [
   {
@@ -111,14 +112,7 @@ export const BellaWindow = GObject.registerClass(
       });
 
       for (const { key, description } of bindProps) {
-        const button = new Gtk.Button({
-          icon_name: "bella-edit-copy-symbolic",
-          valign: Gtk.Align.CENTER,
-          halign: Gtk.Align.END,
-          tooltip_text: _("Copy color"),
-          css_classes: ["suggested-action"],
-        });
-
+        const button = new CopyColorButton();
         button.connect("clicked", () => {
           this.copyToClipboard(this.visible_color[key]);
           this.displayToast(_("Copied %s").format(this.visible_color[key]));
@@ -145,14 +139,7 @@ export const BellaWindow = GObject.registerClass(
         throw new Error("name not found in color props");
       }
 
-      const button = new Gtk.Button({
-        icon_name: "bella-edit-copy-symbolic",
-        valign: Gtk.Align.CENTER,
-        halign: Gtk.Align.END,
-        tooltip_text: _("Copy color"),
-        css_classes: ["suggested-action"],
-      });
-
+      const button = new CopyColorButton();
       button.connect("clicked", () => {
         this.copyToClipboard(this.visible_color.name);
         this.displayToast(_("Copied %s").format(this.visible_color.name));
@@ -170,6 +157,7 @@ export const BellaWindow = GObject.registerClass(
         "subtitle",
         GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE
       );
+      
       this._color_name_pref_group.add(actionRow);
     };
 
