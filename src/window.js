@@ -59,33 +59,12 @@ export const BellaWindow = GObject.registerClass(
       "color_format_pref_group",
     ],
     Properties: {
-      btn_label: GObject.ParamSpec.string(
-        "btn_label",
-        "btnLabel",
-        "A simple button label",
-        GObject.ParamFlags.READWRITE,
-        ""
-      ),
       color_format: GObject.ParamSpec.string(
         "color_format",
         "colorFormat",
         "Selected color format",
         GObject.ParamFlags.READWRITE,
         ""
-      ),
-      visible_color_id: GObject.ParamSpec.string(
-        "visible_color_id",
-        "visibleColorId",
-        "Id of the color visible on the details page",
-        GObject.ParamFlags.READWRITE,
-        ""
-      ),
-      settings: GObject.ParamSpec.object(
-        "settings",
-        "Settings",
-        "The main window settings",
-        GObject.ParamFlags.READWRITE,
-        Gio.Settings
       ),
       visible_color: GObject.ParamSpec.object(
         "visible_color",
@@ -127,7 +106,7 @@ export const BellaWindow = GObject.registerClass(
       }
 
       object.id = GLib.uuid_string_random();
-      object.displayed_format = "rgb"; // Get this from settings
+      object.displayed_format = this.color_format;
       this.visible_color = new Color(object);
 
       const bindProps = colorProps.filter(({ key }) => {
@@ -149,7 +128,8 @@ export const BellaWindow = GObject.registerClass(
         });
 
         button.connect("clicked", () => {
-          console.log(key);
+          this.copyToClipboard(this.visible_color[key]);
+          this.displayToast(_("Copied %s").format(this.visible_color[key]));
         });
 
         const actionRow = new Adw.ActionRow({
@@ -182,7 +162,8 @@ export const BellaWindow = GObject.registerClass(
       });
 
       button.connect("clicked", () => {
-        console.log(nameProp.key);
+        this.copyToClipboard(this.visible_color.name);
+        this.displayToast(_("Copied %s").format(this.visible_color.name));
       });
 
       const actionRow = new Adw.ActionRow({
@@ -204,8 +185,12 @@ export const BellaWindow = GObject.registerClass(
       const model = Gtk.NoSelection.new(Gio.ListStore.new(Color));
       this._column_view.model = model;
 
+      /**
+       * We could've obtained colorFormat from this.color_format
+       * but this method is executed before this.color_format
+       * is bound to its corresponding settings.
+       */
       const colorFormat = settings.get_string("color-format");
-
       const savedColors = this.getSavedColors();
       for (const { id, srgb } of savedColors) {
         const rgb = srgb.split(",").map((c) => +c);
@@ -444,7 +429,6 @@ export const BellaWindow = GObject.registerClass(
 
       backToMainPage.connect("activate", () => {
         this._main_stack.visible_child_name = "main_page";
-        this.visible_color_id = "";
       });
 
       pickColor.connect("activate", this.pickColorHandler);
@@ -499,10 +483,8 @@ export const BellaWindow = GObject.registerClass(
             this.visible_color[prop] = color[prop];
           }
 
-          const colorFormat = settings.get_string("color-format");
-
           this._column_view.model.model.append(
-            new Color({ ...color, displayed_format: color[colorFormat] })
+            new Color({ ...color, displayed_format: color[this.color_format] })
           );
           this._main_stack.visible_child_name = "picked_color_page";
 
@@ -540,11 +522,9 @@ export const BellaWindow = GObject.registerClass(
 
     updateColorFormat = () => {
       const model = this._column_view.model.model;
-      const colorFormat = settings.get_string("color-format");
-
       for (let i = 0; i < model.n_items; i++) {
         const item = model.get_item(i);
-        item.displayed_format = item[colorFormat];
+        item.displayed_format = item[this.color_format];
       }
     };
 
@@ -640,17 +620,6 @@ export const BellaWindow = GObject.registerClass(
       const clipboard = this.display.get_clipboard();
       const contentProvider = Gdk.ContentProvider.new_for_value(text);
       clipboard.set_content(contentProvider);
-    };
-
-    updateSavedColor = (pickedColor = {}) => {
-      const model = this._saved_colors_selection_model.model;
-      for (let i = 0; i < model.n_items; i++) {
-        const item = model.get_item(i);
-        if (item.id.unpack() === pickedColor.id) {
-          const newColor = new SavedColor(pickedColor, this.color_format);
-          model.splice(i, 1, [newColor]);
-        }
-      }
     };
   }
 );
