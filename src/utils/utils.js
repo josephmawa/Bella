@@ -47,6 +47,7 @@ export function getColor(scaledRgb) {
     name: name?.name ?? "Unknown",
     hex: `#${hex.join("")}`,
     rgb: `rgb(${rgb.join(", ")})`,
+    srgb: scaledRgb.join(","),
     hsl: `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`,
     hsv: getHsv(hsv),
     rgb_percent: `rgb(${rgbPercent.join(", ")})`,

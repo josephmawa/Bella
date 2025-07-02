@@ -4,6 +4,7 @@ import { settings } from "./utils.js";
 
 const moreProps = [
   { key: "id", blurb: "Unique color id" },
+  { key: "srgb", blurb: "RGB in floating point format" },
   { key: "displayed_format", blurb: "Displayed color format" },
 ];
 export const colorProps = [...formats, ...moreProps];

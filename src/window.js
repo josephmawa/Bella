@@ -21,13 +21,6 @@ import { Color, colorProps } from "./utils/gobjects.js";
  * in the window.ui builder definition.
  */
 import "./copy-color-button.js";
-
-const testColor = [0.20784313725490197, 0.5176470588235295, 0.8941176470588236];
-const pickedColor = getColor(testColor);
-pickedColor.hsv = getHsv(Gtk.rgb_to_hsv(...testColor));
-pickedColor.id = GLib.uuid_string_random();
-pickedColor.displayed_format = pickedColor.rgb;
-
 const actionButtons = [
   {
     iconName: "bella-edit-copy-symbolic",
@@ -44,6 +37,12 @@ const actionButtons = [
 ];
 
 const xdpPortal = Xdp.Portal.new();
+const filePath = GLib.build_filenamev([
+  GLib.get_user_data_dir(),
+  "colors",
+  "data.json",
+]);
+const colorsFile = Gio.File.new_for_path(filePath);
 
 export const BellaWindow = GObject.registerClass(
   {
@@ -104,10 +103,10 @@ export const BellaWindow = GObject.registerClass(
       this.createModel();
       this.createToast();
       this.bindSettings();
+      this.deleteColors();
       this.createActions();
       this.setColorScheme();
       this.createColorPage();
-      // this.getSavedColors();
     }
 
     loadStyles = () => {
@@ -132,7 +131,12 @@ export const BellaWindow = GObject.registerClass(
       this.visible_color = new Color(object);
 
       const bindProps = colorProps.filter(({ key }) => {
-        return key !== "id" && key !== "name" && key !== "displayed_format";
+        return (
+          key !== "id" &&
+          key !== "srgb" &&
+          key !== "name" &&
+          key !== "displayed_format"
+        );
       });
 
       for (const { key, description } of bindProps) {
@@ -200,8 +204,19 @@ export const BellaWindow = GObject.registerClass(
       const model = Gtk.NoSelection.new(Gio.ListStore.new(Color));
       this._column_view.model = model;
 
-      for (let i = 0; i < 10; i++) {
-        model.model.append(new Color({ ...pickedColor }));
+      const colorFormat = settings.get_string("color-format");
+
+      const savedColors = this.getSavedColors();
+      for (const { id, srgb } of savedColors) {
+        const rgb = srgb.split(",").map((c) => +c);
+        const color = getColor(rgb);
+        model.model.append(
+          new Color({
+            ...color,
+            id,
+            displayed_format: color[colorFormat],
+          })
+        );
       }
 
       const colorFactory = new Gtk.SignalListItemFactory();
@@ -386,30 +401,16 @@ export const BellaWindow = GObject.registerClass(
 
     createActions = () => {
       const showPrefsWin = Gio.SimpleAction.new("preferences", null);
-
       const deleteSavedColors = Gio.SimpleAction.new(
         "delete-saved-colors",
         null
       );
-
-      const copySavedCol = Gio.SimpleAction.new(
-        "copy-saved-color",
-        GLib.VariantType.new("s")
-      );
-
-      const viewSavedColor = Gio.SimpleAction.new(
-        "view-saved-color",
-        GLib.VariantType.new("s")
-      );
-
       const backToMainPage = Gio.SimpleAction.new("back", null);
       const pickColor = Gio.SimpleAction.new("pick-color", null);
-
       const setEyeDropperStackPage = Gio.SimpleAction.new(
         "set_eye_dropper_stack_page",
         GLib.VariantType.new("s")
       );
-
       const setSavedColorStackPage = Gio.SimpleAction.new(
         "set_saved_colors_stack_page",
         GLib.VariantType.new("s")
@@ -441,31 +442,6 @@ export const BellaWindow = GObject.registerClass(
         confirmDeleteAll.present(this);
       });
 
-      copySavedCol.connect("activate", (action, savedColor) => {
-        const color = savedColor?.unpack();
-        if (color) {
-          this.copyToClipboard(color);
-          this.displayToast(_("Copied %s").format(color));
-        }
-      });
-
-      viewSavedColor.connect("activate", (action, colorId) => {
-        const id = colorId?.unpack();
-        const [idx, item] = this.getItem(id);
-
-        if (idx === null) {
-          throw new Error(_("id: %s doesn't existent").format(id));
-        }
-
-        this.updatePickedColor(item);
-        this._main_stack.visible_child_name = "picked_color_page";
-
-        const color = new Gdk.RGBA();
-        color.parse(item.rgb);
-
-        this._colorDialogBtn.set_rgba(color);
-      });
-
       backToMainPage.connect("activate", () => {
         this._main_stack.visible_child_name = "main_page";
         this.visible_color_id = "";
@@ -490,8 +466,6 @@ export const BellaWindow = GObject.registerClass(
       });
 
       this.add_action(pickColor);
-      this.add_action(copySavedCol);
-      this.add_action(viewSavedColor);
       this.add_action(backToMainPage);
       this.add_action(setEyeDropperStackPage);
       this.add_action(setSavedColorStackPage);
@@ -525,11 +499,17 @@ export const BellaWindow = GObject.registerClass(
             this.visible_color[prop] = color[prop];
           }
 
+          const colorFormat = settings.get_string("color-format");
+
+          this._column_view.model.model.append(
+            new Color({ ...color, displayed_format: color[colorFormat] })
+          );
           this._main_stack.visible_child_name = "picked_color_page";
 
           const rgba = new Gdk.RGBA();
-          rgba.parse(pickedColor.rgb);
+          rgba.parse(color.rgb);
           this._colorDialogBtn.set_rgba(rgba);
+          this.saveData();
         } catch (err) {
           if (err instanceof GLib.Error) {
             if (err.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.FAILED)) {
@@ -551,10 +531,6 @@ export const BellaWindow = GObject.registerClass(
 
       const colorObject = getColor(scaledRgb);
       colorObject.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
-
-      // colorObject.id = this.visible_color_id;
-      // this.updatePickedColor(colorObject);
-      // this.updateSavedColor(colorObject);
     }
 
     setColorScheme = () => {
@@ -563,70 +539,90 @@ export const BellaWindow = GObject.registerClass(
     };
 
     updateColorFormat = () => {
-      console.log("Updating color format...");
-      return;
-      const model = this._saved_colors_selection_model.model;
+      const model = this._column_view.model.model;
+      const colorFormat = settings.get_string("color-format");
 
       for (let i = 0; i < model.n_items; i++) {
         const item = model.get_item(i);
-        const itemClone = { id: item.id.unpack() };
+        item.displayed_format = item[colorFormat];
+      }
+    };
 
-        for (const { key } of colorFormats) {
-          itemClone[key] = item[key];
+    deleteColors = () => {
+      try {
+        const filePath = savedColorsFile.get_path();
+        const innerDir = savedColorsFile.get_parent()?.get_path();
+        const outerDir = savedColorsFile.get_parent()?.get_parent()?.get_path();
+        if (GLib.file_test(filePath, GLib.FileTest.EXISTS)) {
+          savedColorsFile.delete(null);
+          GLib.rmdir(innerDir);
+          GLib.rmdir(outerDir);
+          return [filePath, innerDir, outerDir].every((path) => {
+            return !GLib.file_test(path, GLib.FileTest.EXISTS);
+          });
+        } else {
+          [innerDir, outerDir].forEach((path) => {
+            if (GLib.file_test(path, GLib.FileTest.EXISTS)) {
+              GLib.rmdir(path);
+            }
+          });
+
+          return [filePath, innerDir, outerDir].every((path) => {
+            return !GLib.file_test(path, GLib.FileTest.EXISTS);
+          });
         }
-
-        model.splice(i, 1, [new SavedColor(itemClone, this.color_format)]);
+      } catch (error) {
+        console.log(error);
+        return false;
       }
     };
 
     getSavedColors = () => {
-      const filePath = savedColorsFile.get_path();
-      const fileExists = GLib.file_test(filePath, GLib.FileTest.EXISTS);
+      try {
+        const filePath = colorsFile.get_path();
+        if (!GLib.file_test(filePath, GLib.FileTest.EXISTS)) return [];
 
-      if (fileExists) {
-        const [success, arrBuff] = GLib.file_get_contents(filePath);
+        const [success, buffer] = GLib.file_get_contents(filePath);
+        if (!success) return [];
 
-        if (success) {
-          const decoder = new TextDecoder("utf-8");
-          const pickedColors = JSON.parse(decoder.decode(arrBuff));
-
-          const { model } = this._saved_colors_selection_model;
-
-          for (const pickedColor of pickedColors) {
-            model.append(new SavedColor(pickedColor, this.color_format));
-          }
-        } else {
-          console.log(_("Failed to read saved data"));
-        }
-      } else {
-        console.log(_("File doesn't exist yet"));
+        return JSON.parse(new TextDecoder().decode(buffer));
+      } catch (error) {
+        console.log(error);
+        return [];
       }
     };
 
-    saveData = (data = []) => {
-      const fileCreationFlag = GLib.mkdir_with_parents(
-        savedColorsFile.get_parent().get_path(),
-        0o777 // File permission, ugo+rwx, in numeric mode
-      );
-
-      if (fileCreationFlag === 0) {
-        const [success, tag] = savedColorsFile.replace_contents(
-          JSON.stringify(data),
-          null,
-          false,
-          Gio.FileCreateFlags.REPLACE_DESTINATION,
-          null
-        );
-
-        if (success) {
-          console.log(_("Successfully saved picked colors to file"));
-        } else {
-          console.log(_("Failed to save picked colors to file"));
+    saveData = () => {
+      try {
+        const data = [];
+        const model = this._column_view.model.model;
+        for (let i = 0; i < model.n_items; i++) {
+          const item = model.get_item(i);
+          data.push({ id: item.id, srgb: item.srgb });
         }
-      }
 
-      if (fileCreationFlag === -1) {
-        console.log(_("An error occurred while creating directory"));
+        const path = colorsFile.get_parent().get_path();
+        /* 0o777 is file permission, ugo+rwx, in numeric mode */
+        const flag = GLib.mkdir_with_parents(path, 0o777);
+        if (flag === -1) {
+          throw new Error("Failed to save color");
+        }
+
+        if (flag === 0) {
+          const [success] = colorsFile.replace_contents(
+            JSON.stringify(data),
+            null,
+            false,
+            Gio.FileCreateFlags.REPLACE_DESTINATION,
+            null
+          );
+
+          if (!success) {
+            throw new Error("Failed to save color");
+          }
+        }
+      } catch (error) {
+        console.log(error);
       }
     };
 
@@ -644,22 +640,6 @@ export const BellaWindow = GObject.registerClass(
       const clipboard = this.display.get_clipboard();
       const contentProvider = Gdk.ContentProvider.new_for_value(text);
       clipboard.set_content(contentProvider);
-    };
-
-    getItem = (id) => {
-      const model = this._saved_colors_selection_model.model;
-      for (let i = 0; i < model.n_items; i++) {
-        const item = model.get_item(i);
-        if (item.id.unpack() === id) {
-          return [i, item];
-        }
-      }
-      return [null, null];
-    };
-
-    addNewColor = (pickedColor = {}) => {
-      const model = this._saved_colors_selection_model.model;
-      model.append(new SavedColor(pickedColor, this.color_format));
     };
 
     updateSavedColor = (pickedColor = {}) => {
