@@ -1,5 +1,6 @@
 import GObject from "gi://GObject";
-import { formats } from "./formats.js";
+import { formats } from "./color-formats.js";
+/** Consider binding color-format to displayed_format here */
 import { settings } from "./utils.js";
 
 const moreProps = [

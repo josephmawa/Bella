@@ -10,17 +10,9 @@ import { savedColorsFile } from "./app.js";
 import { ConfirmDeleteOne } from "./delete-one.js";
 import { ConfirmDeleteAll } from "./delete-all.js";
 import { BellaPreferencesDialog } from "./prefs.js";
-import { SavedColor } from "./utils/saved-color.js";
-import { colorFormats } from "./utils/color-formats.js";
 import { getColor, getHsv, settings } from "./utils/utils.js";
 import { Color, colorProps } from "./utils/gobjects.js";
 
-/**
- * Register the CopyColorButton class
- * in the GObject system before using it
- * in the window.ui builder definition.
- */
-import "./copy-color-button.js";
 const actionButtons = [
   {
     iconName: "bella-edit-copy-symbolic",

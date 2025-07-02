@@ -3,7 +3,7 @@ import Gio from "gi://Gio";
 import Gtk from "gi://Gtk";
 import GObject from "gi://GObject";
 import { settings } from "./utils/utils.js";
-import { colorFormats } from "./utils/color-formats.js";
+import { formats } from "./utils/color-formats.js";
 
 export const BellaPreferencesDialog = GObject.registerClass(
   {
@@ -38,7 +38,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
         "selected",
         GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE,
         (_, colorFormat) => {
-          const colorFormatObject = colorFormats.find(
+          const colorFormatObject = formats.find(
             ({ key }) => key === colorFormat
           );
 
@@ -62,7 +62,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
             this._color_format_settings.model.get_item(selected);
 
           if (stringObject?.string) {
-            const colorFormatObject = colorFormats.find(
+            const colorFormatObject = formats.find(
               ({ description }) => description === stringObject?.string
             );
 
@@ -77,7 +77,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
     }
 
     setColorFormatModel = () => {
-      const _colorFormats = colorFormats.map(({ description }) => description);
+      const _colorFormats = formats.map(({ description }) => description);
       this._color_format_settings.model = Gtk.StringList.new(_colorFormats);
 
       const expression = Gtk.PropertyExpression.new(
