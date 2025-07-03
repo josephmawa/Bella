@@ -36,6 +36,8 @@ const filePath = GLib.build_filenamev([
   "data.json",
 ]);
 const colorsFile = Gio.File.new_for_path(filePath);
+/** Tracking ColorDialogButton notify::rgba signal ID */
+const signalId = { id: null };
 
 export const BellaWindow = GObject.registerClass(
   {
@@ -44,7 +46,7 @@ export const BellaWindow = GObject.registerClass(
     InternalChildren: [
       "main_stack",
       "eye_dropper_saved_color_stack",
-      "colorDialogBtn",
+      "color_dialog_button",
       "toast_overlay",
       "picked_colors_stack",
       "column_view",
@@ -79,6 +81,7 @@ export const BellaWindow = GObject.registerClass(
       this.createActions();
       this.setColorScheme();
       this.createColorPage();
+      this.connectMainStack();
     }
 
     loadStyles = () => {
@@ -157,7 +160,7 @@ export const BellaWindow = GObject.registerClass(
         "subtitle",
         GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE
       );
-      
+
       this._color_name_pref_group.add(actionRow);
     };
 
@@ -299,6 +302,8 @@ export const BellaWindow = GObject.registerClass(
     viewColor = (button, color) => {
       const result = Color.copyProperties(color, this.visible_color);
       if (result) {
+        this.setColorDialogButtonRgba(color.rgb);
+        /** Switch page after setting the ColorDialogButton RGB */
         this._main_stack.visible_child_name = "picked_color_page";
       }
     };
@@ -331,6 +336,24 @@ export const BellaWindow = GObject.registerClass(
 
       settings.connect("changed::color-scheme", this.setColorScheme);
       settings.connect("changed::color-format", this.updateColorFormat);
+    };
+
+    connectMainStack = () => {
+      this._main_stack.connect("notify::visible-child-name", () => {
+        const visibleChildName = this._main_stack.visible_child_name;
+        if (visibleChildName === "picked_color_page") {
+          signalId.id = this._color_dialog_button.connect(
+            "notify::rgba",
+            this.selectColorHandler
+          );
+          return;
+        }
+
+        if (visibleChildName === "main_page") {
+          this._color_dialog_button.disconnect(signalId.id);
+          signalId.id = null;
+        }
+      });
     };
 
     bindModel = () => {
@@ -466,11 +489,9 @@ export const BellaWindow = GObject.registerClass(
           this._column_view.model.model.append(
             new Color({ ...color, displayed_format: color[this.color_format] })
           );
+          this.setColorDialogButtonRgba(color.rgb);
+          /** Switch page after setting the ColorDialogButton RGB */
           this._main_stack.visible_child_name = "picked_color_page";
-
-          const rgba = new Gdk.RGBA();
-          rgba.parse(color.rgb);
-          this._colorDialogBtn.set_rgba(rgba);
           this.saveData();
         } catch (err) {
           if (err instanceof GLib.Error) {
@@ -484,16 +505,46 @@ export const BellaWindow = GObject.registerClass(
       });
     };
 
-    selectColorHandler(colorDialogBtn) {
-      const scaledRgb = [
-        colorDialogBtn.rgba.red,
-        colorDialogBtn.rgba.green,
-        colorDialogBtn.rgba.blue,
-      ];
+    setColorDialogButtonRgba = (rgb) => {
+      const rgba = new Gdk.RGBA();
+      rgba.parse(rgb);
+      this._color_dialog_button.set_rgba(rgba);
+    };
 
-      const colorObject = getColor(scaledRgb);
-      colorObject.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
-    }
+    selectColorHandler = (dialogButton) => {
+      const rgba = dialogButton.rgba;
+      const rgb = [rgba.red, rgba.green, rgba.blue];
+      const colorId = this.visible_color.id;
+
+      const model = this._column_view.model;
+      let searchItem = null;
+
+      for (let i = 0; i < model.n_items; i++) {
+        const item = model.get_item(i);
+        if (item.id === colorId) {
+          searchItem = item;
+          break;
+        }
+      }
+
+      if (!searchItem) {
+        throw new Error("Search Item is null");
+      }
+
+      const color = getColor(rgb);
+      /** getColor generates a new ID. It must be reset to the original ID */
+      color.id = colorId;
+      color.displayed_format = color[this.color_format];
+
+      const updateListItem = Color.copyProperties(color, searchItem);
+      const updateVisibleColor = Color.copyProperties(
+        color,
+        this.visible_color
+      );
+      if (updateListItem && updateVisibleColor) {
+        this.saveData();
+      }
+    };
 
     setColorScheme = () => {
       const styleManager = this.application.style_manager;

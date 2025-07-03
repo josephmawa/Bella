@@ -235,16 +235,11 @@
                                 <property name="valign">center</property>
                                 <property name="vexpand">true</property>
                                 <child>
-                                  <object class="GtkColorDialogButton" id="colorDialogBtn">
+                                  <object class="GtkColorDialogButton" id="color_dialog_button">
                                     <property name="tooltip-text" translatable="yes">Modify color</property>
                                     <accessibility>
                                       <property name="label" translatable="yes" context="accessibility">Modify color</property>
                                     </accessibility>
-                                    <signal
-                                      name="notify::rgba"
-                                      handler="selectColorHandler"
-                                      swapped="no"
-                                      object="BellaWindow" />
                                     <property name="dialog">
                                       <object class="GtkColorDialog">
                                         <property name="modal">true</property>
