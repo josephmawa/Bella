@@ -1,21 +1,12 @@
 import Gtk from "gi://Gtk";
 import GObject from "gi://GObject";
 
-export const CopyColorFormatButton = GObject.registerClass(
+export const CopyColorButton = GObject.registerClass(
   {
-    GTypeName: "CopyColorFormatButton",
+    GTypeName: "CopyColorButton",
     Template: getResourceUri("copy-color-button.ui"),
-    Properties: {
-      theme: GObject.ParamSpec.string(
-        "colorFormat",
-        "color_fomat",
-        "Color format",
-        GObject.ParamFlags.READWRITE,
-        ""
-      ),
-    },
   },
-  class CopyColorFormatButton extends Gtk.Button {
+  class CopyColorButton extends Gtk.Button {
     constructor() {
       super();
     }

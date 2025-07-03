@@ -8,19 +8,36 @@ import Gtk from "gi://Gtk?version=4.0";
 
 import { savedColorsFile } from "./app.js";
 import { ConfirmDeleteOne } from "./delete-one.js";
+import { ConfirmDeleteAll } from "./delete-all.js";
 import { BellaPreferencesDialog } from "./prefs.js";
-import { SavedColor } from "./utils/saved-color.js";
-import { colorFormats } from "./utils/color-formats.js";
+import { CopyColorButton } from "./copy-color-button.js";
+import { Color, colorProps } from "./utils/gobjects.js";
 import { getColor, getHsv, settings } from "./utils/utils.js";
 
-/**
- * Register the CopyColorButton class
- * in the GObject system before using it
- * in the window.ui builder definition.
- */
-import "./copy-color-button.js";
+const actionButtons = [
+  {
+    iconName: "bella-edit-copy-symbolic",
+    tooltipText: _("Copy color"),
+  },
+  {
+    iconName: "bella-user-trash-symbolic",
+    tooltipText: _("Delete color"),
+  },
+  {
+    iconName: "bella-view-reveal-symbolic",
+    tooltipText: _("View details"),
+  },
+];
 
 const xdpPortal = Xdp.Portal.new();
+const filePath = GLib.build_filenamev([
+  GLib.get_user_data_dir(),
+  "colors",
+  "data.json",
+]);
+const colorsFile = Gio.File.new_for_path(filePath);
+/** Tracking ColorDialogButton notify::rgba signal ID */
+const signalId = { id: null };
 
 export const BellaWindow = GObject.registerClass(
   {
@@ -28,48 +45,15 @@ export const BellaWindow = GObject.registerClass(
     Template: getResourceUri("window.ui"),
     InternalChildren: [
       "main_stack",
-      "eye_dropper_saved_color_stack",
-      "colorDialogBtn",
-      "toast_overlay",
-      "saved_colors_selection_model",
-      "picked_colors_stack",
       "column_view",
-      // Color format page
-      "hex_action_row",
-      "hex_copy_button",
-      "rgb_action_row",
-      "rgb_copy_button",
-      "rgb_percent_action_row",
-      "rgb_percent_copy_button",
-      "hsl_action_row",
-      "hsl_copy_button",
-      "hsv_action_row",
-      "hsv_copy_button",
-      "cmyk_action_row",
-      "cmyk_copy_button",
-      "hwb_action_row",
-      "hwb_copy_button",
-      "xyz_action_row",
-      "xyz_copy_button",
-      "lab_action_row",
-      "lab_copy_button",
-      "lch_action_row",
-      "lch_copy_button",
-      "oklab_action_row",
-      "oklab_copy_button",
-      "oklch_action_row",
-      "oklch_copy_button",
-      "color_name_action_row",
-      "color_name_copy_button",
+      "toast_overlay",
+      "saved_colors_stack",
+      "color_picker_stack",
+      "color_dialog_button",
+      "color_name_pref_group",
+      "color_format_pref_group",
     ],
     Properties: {
-      btn_label: GObject.ParamSpec.string(
-        "btn_label",
-        "btnLabel",
-        "A simple button label",
-        GObject.ParamFlags.READWRITE,
-        ""
-      ),
       color_format: GObject.ParamSpec.string(
         "color_format",
         "colorFormat",
@@ -77,19 +61,12 @@ export const BellaWindow = GObject.registerClass(
         GObject.ParamFlags.READWRITE,
         ""
       ),
-      visible_color_id: GObject.ParamSpec.string(
-        "visible_color_id",
-        "visibleColorId",
-        "Id of the color visible on the details page",
+      visible_color: GObject.ParamSpec.object(
+        "visible_color",
+        "visibleColor",
+        "Color formats to display on picked color page",
         GObject.ParamFlags.READWRITE,
-        ""
-      ),
-      settings: GObject.ParamSpec.object(
-        "settings",
-        "Settings",
-        "The main window settings",
-        GObject.ParamFlags.READWRITE,
-        Gio.Settings
+        Color
       ),
     },
   },
@@ -99,28 +76,12 @@ export const BellaWindow = GObject.registerClass(
       this.loadStyles();
       this.createModel();
       this.createToast();
-      this.bindProperty();
       this.bindSettings();
+      this.deleteColors();
       this.createActions();
       this.setColorScheme();
-      this.getSavedColors();
-      this.centerColumnTitle();
-    }
-
-    vfunc_close_request() {
-      const model = this._saved_colors_selection_model.model;
-      const pickedColors = [];
-
-      for (let i = 0; i < model.n_items; i++) {
-        const item = model.get_item(i);
-        const pickedColor = { id: item.id.unpack() };
-
-        for (const { key } of colorFormats) {
-          pickedColor[key] = item[key];
-        }
-        pickedColors.push(pickedColor);
-      }
-      this.saveData(pickedColors);
+      this.createColorPage();
+      this.connectMainStack();
     }
 
     loadStyles = () => {
@@ -134,9 +95,217 @@ export const BellaWindow = GObject.registerClass(
       );
     };
 
+    createColorPage = () => {
+      const object = {};
+      for (const { key } of colorProps) {
+        object[key] = "";
+      }
+
+      object.id = GLib.uuid_string_random();
+      object.displayed_format = this.color_format;
+      this.visible_color = new Color(object);
+
+      const bindProps = colorProps.filter(({ key }) => {
+        return (
+          key !== "id" &&
+          key !== "srgb" &&
+          key !== "name" &&
+          key !== "displayed_format"
+        );
+      });
+
+      for (const { key, description } of bindProps) {
+        const button = new CopyColorButton();
+        button.connect("clicked", () => {
+          this.copyToClipboard(this.visible_color[key]);
+          this.displayToast(_("Copied %s").format(this.visible_color[key]));
+        });
+
+        const actionRow = new Adw.ActionRow({
+          title: description,
+          css_classes: ["property"],
+        });
+        actionRow.add_suffix(button);
+
+        this.visible_color.bind_property(
+          key,
+          actionRow,
+          "subtitle",
+          GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE
+        );
+
+        this._color_format_pref_group.add(actionRow);
+      }
+
+      const nameProp = colorProps.find(({ key }) => key === "name");
+      if (!nameProp) {
+        throw new Error("name not found in color props");
+      }
+
+      const button = new CopyColorButton();
+      button.connect("clicked", () => {
+        this.copyToClipboard(this.visible_color.name);
+        this.displayToast(_("Copied %s").format(this.visible_color.name));
+      });
+
+      const actionRow = new Adw.ActionRow({
+        title: nameProp.description,
+        css_classes: ["property"],
+      });
+      actionRow.add_suffix(button);
+
+      this.visible_color.bind_property(
+        nameProp.key,
+        actionRow,
+        "subtitle",
+        GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE
+      );
+
+      this._color_name_pref_group.add(actionRow);
+    };
+
     createModel = () => {
-      const model = Gio.ListStore.new(SavedColor);
-      this._saved_colors_selection_model.model = model;
+      const model = Gtk.NoSelection.new(Gio.ListStore.new(Color));
+      this._column_view.model = model;
+
+      /**
+       * We could've obtained colorFormat from this.color_format
+       * but this method is executed before this.color_format
+       * is bound to its corresponding settings.
+       */
+      const colorFormat = settings.get_string("color-format");
+      const savedColors = this.getSavedColors();
+      for (const { id, srgb } of savedColors) {
+        const rgb = srgb.split(",").map((c) => +c);
+        const color = getColor(rgb);
+        model.model.append(
+          new Color({
+            ...color,
+            id,
+            displayed_format: color[colorFormat],
+          })
+        );
+      }
+
+      const colorFactory = new Gtk.SignalListItemFactory();
+      const actionsFactory = new Gtk.SignalListItemFactory();
+
+      colorFactory.connect("setup", (factory, listItem) => {
+        listItem.child = new Gtk.Box({
+          halign: Gtk.Align.START,
+          valign: Gtk.Align.CENTER,
+          homogeneous: true,
+        });
+        listItem.child.append(new Gtk.Entry({ editable: false }));
+      });
+
+      actionsFactory.connect("setup", (factory, listItem) => {
+        listItem.child = new Gtk.Box({
+          halign: Gtk.Align.START,
+          valign: Gtk.Align.CENTER,
+          homogeneous: true,
+          spacing: 20,
+        });
+
+        for (const { iconName, tooltipText } of actionButtons) {
+          const button = new Gtk.Button({
+            icon_name: iconName,
+            tooltip_text: tooltipText,
+            css_classes: ["suggested-action"],
+          });
+          listItem.child.append(button);
+        }
+      });
+
+      colorFactory.connect("bind", (factory, listItem) => {
+        const hBox = listItem.child;
+        const color = listItem.item;
+
+        const buffer = hBox?.get_first_child()?.buffer;
+        color.bind_property(
+          "displayed_format",
+          buffer,
+          "text",
+          GObject.BindingFlags.SYNC_CREATE
+        );
+      });
+
+      actionsFactory.connect("bind", (factory, listItem) => {
+        const hBox = listItem.child;
+        const color = listItem.item;
+
+        /**
+         * These bindings will create as many signal handlers as
+         * there are bound items. Investigate its efficiency.
+         */
+        const copyButton = hBox.get_first_child();
+        copyButton?.connect("clicked", (button) => {
+          this.copyColor(button, color.displayed_format);
+        });
+
+        const deleteButton = copyButton.get_next_sibling();
+        deleteButton?.connect("clicked", (button) => {
+          this.deleteColor(button, color.id);
+        });
+
+        const viewButton = hBox.get_last_child();
+        viewButton?.connect("clicked", (button) => {
+          this.viewColor(button, color);
+        });
+      });
+
+      const colorColumn = Gtk.ColumnViewColumn.new(_("Color"), colorFactory);
+      const actionsColumn = Gtk.ColumnViewColumn.new(
+        _("Actions"),
+        actionsFactory
+      );
+
+      this._column_view.append_column(colorColumn);
+      this._column_view.append_column(actionsColumn);
+
+      /** Call this after creating ColumnView */
+      this.bindModel();
+      this.centerColumnTitle();
+    };
+
+    copyColor = (button, color) => {
+      this.copyToClipboard(color);
+      this.displayToast(_("Copied %s").format(color));
+    };
+
+    deleteColor = (button, id) => {
+      const confirmDeleteOne = new ConfirmDeleteOne();
+      confirmDeleteOne.connect("response", (dialog, response) => {
+        if (response === "cancel") return;
+
+        const model = this._column_view.model.model;
+
+        for (let i = 0; i < model.n_items; i++) {
+          const item = model.get_item(i);
+          if (item.id === id) {
+            model.remove(i);
+            break;
+          }
+        }
+        /**
+         * Only display toast if there are items in the model otherwise the
+         * view will switch automatically to "No Saved Color". That's
+         * enough to indicate that the operation was a success.
+         */
+        if (model.n_items > 0) {
+          this.displayToast(_("Deleted color"));
+        }
+      });
+      confirmDeleteOne.present(this);
+    };
+
+    viewColor = (button, color) => {
+      const result = Color.copyProperties(color, this.visible_color);
+      if (result) {
+        this.setColorDialogButtonRgba(color.rgb);
+        /** Switch page after setting the ColorDialogButton RGB */
+        this._main_stack.visible_child_name = "color_format_page";
+      }
     };
 
     bindSettings = () => {
@@ -169,17 +338,35 @@ export const BellaWindow = GObject.registerClass(
       settings.connect("changed::color-format", this.updateColorFormat);
     };
 
-    bindProperty = () => {
-      const model = this._saved_colors_selection_model.model;
+    connectMainStack = () => {
+      this._main_stack.connect("notify::visible-child-name", () => {
+        const visibleChildName = this._main_stack.visible_child_name;
+        if (visibleChildName === "color_format_page") {
+          signalId.id = this._color_dialog_button.connect(
+            "notify::rgba",
+            this.selectColorHandler
+          );
+          return;
+        }
+
+        if (visibleChildName === "main_page") {
+          this._color_dialog_button.disconnect(signalId.id);
+          signalId.id = null;
+        }
+      });
+    };
+
+    bindModel = () => {
+      const model = this._column_view.model.model;
       model.bind_property_full(
         "n_items",
-        this._picked_colors_stack,
+        this._saved_colors_stack,
         "visible-child-name",
         GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
         (binding, numItems) => {
           const visiblePage = numItems
-            ? "saved_colors_stack_page_inner"
-            : "no_saved_colors_stack_page";
+            ? "saved_color_list_stack_page"
+            : "no_saved_color_stack_page";
           return [true, visiblePage];
         },
         null
@@ -202,35 +389,16 @@ export const BellaWindow = GObject.registerClass(
 
     createActions = () => {
       const showPrefsWin = Gio.SimpleAction.new("preferences", null);
-
-      const delSavedColors = Gio.SimpleAction.new(
+      const deleteSavedColors = Gio.SimpleAction.new(
         "delete-saved-colors",
-        GLib.VariantType.new("s")
+        null
       );
-
-      const copySavedCol = Gio.SimpleAction.new(
-        "copy-saved-color",
-        GLib.VariantType.new("s")
-      );
-
-      const delSavedColor = Gio.SimpleAction.new(
-        "delete-saved-color",
-        GLib.VariantType.new("s")
-      );
-
-      const viewSavedColor = Gio.SimpleAction.new(
-        "view-saved-color",
-        GLib.VariantType.new("s")
-      );
-
       const backToMainPage = Gio.SimpleAction.new("back", null);
       const pickColor = Gio.SimpleAction.new("pick-color", null);
-
       const setEyeDropperStackPage = Gio.SimpleAction.new(
         "set_eye_dropper_stack_page",
         GLib.VariantType.new("s")
       );
-
       const setSavedColorStackPage = Gio.SimpleAction.new(
         "set_saved_colors_stack_page",
         GLib.VariantType.new("s")
@@ -241,78 +409,29 @@ export const BellaWindow = GObject.registerClass(
         preferencesWindow.present(this);
       });
 
-      delSavedColors.connect("activate", (action, alertDialogResponse) => {
-        const response = alertDialogResponse?.unpack();
-        const model = this._saved_colors_selection_model.model;
+      deleteSavedColors.connect("activate", () => {
+        const confirmDeleteAll = new ConfirmDeleteAll();
 
-        // Nothing to delete. Consider making the 'delete all saved colors'
-        // button inactive in the future if there are no items left
-        if (model.n_items === 0) return;
-
-        if (response === "delete") {
-          model.remove_all();
-          this.saveData([]);
-          this.displayToast(_("Deleted all saved colors"));
-        }
-      });
-
-      copySavedCol.connect("activate", (action, savedColor) => {
-        const color = savedColor?.unpack();
-        if (color) {
-          this.copyToClipboard(color);
-          this.displayToast(_("Copied %s").format(color));
-        }
-      });
-
-      delSavedColor.connect("activate", (action, colorId) => {
-        const confirmDeleteOne = new ConfirmDeleteOne();
-
-        confirmDeleteOne.connect("response", (dialog, response) => {
+        confirmDeleteAll.connect("response", (dialog, response) => {
           if (response === "cancel") return;
 
-          const id = colorId?.unpack();
-          const [idx, item] = this.getItem(id);
-
-          if (idx === null) {
-            throw new Error(`id: ${id} is non-existent`);
-          }
-
-          const model = this._saved_colors_selection_model.model;
-          model.remove(idx);
-
+          const model = this._column_view.model.model;
           /**
-           * Only display toast if there are items in the model otherwise the
-           * view will switch automatically to "No Saved Color". That's
-           * enough to indicate that the operation was a success.
+           * Nothing to delete. Consider making the 'delete all saved colors'
+           * button inactive if there are no items left.
            */
-          if (model.n_items > 0) {
-            this.displayToast(_("Deleted color"));
+          if (model.n_items === 0) return;
+          if (response === "delete") {
+            model.remove_all();
+            this.saveData([]);
+            this.displayToast(_("Deleted saved colors"));
           }
         });
-
-        confirmDeleteOne.present(this);
-      });
-
-      viewSavedColor.connect("activate", (action, colorId) => {
-        const id = colorId?.unpack();
-        const [idx, item] = this.getItem(id);
-
-        if (idx === null) {
-          throw new Error(_("id: %s doesn't existent").format(id));
-        }
-
-        this.updatePickedColor(item);
-        this._main_stack.visible_child_name = "picked_color_page";
-
-        const color = new Gdk.RGBA();
-        color.parse(item.rgb);
-
-        this._colorDialogBtn.set_rgba(color);
+        confirmDeleteAll.present(this);
       });
 
       backToMainPage.connect("activate", () => {
         this._main_stack.visible_child_name = "main_page";
-        this.visible_color_id = "";
       });
 
       pickColor.connect("activate", this.pickColorHandler);
@@ -320,7 +439,7 @@ export const BellaWindow = GObject.registerClass(
       setEyeDropperStackPage.connect("activate", (action, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
-          this._eye_dropper_saved_color_stack.visible_child_name =
+          this._color_picker_stack.visible_child_name =
             visibleChildName;
         }
       });
@@ -328,25 +447,19 @@ export const BellaWindow = GObject.registerClass(
       setSavedColorStackPage.connect("activate", (action, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
-          this._eye_dropper_saved_color_stack.visible_child_name =
+          this._color_picker_stack.visible_child_name =
             visibleChildName;
         }
       });
 
-      this.add_action(copySavedCol);
-      this.add_action(delSavedColor);
-      this.add_action(viewSavedColor);
-      this.add_action(backToMainPage);
       this.add_action(pickColor);
+      this.add_action(backToMainPage);
       this.add_action(setEyeDropperStackPage);
       this.add_action(setSavedColorStackPage);
 
-      this.application.add_action(delSavedColors);
       this.application.add_action(showPrefsWin);
+      this.application.add_action(deleteSavedColors);
       this.application.add_action(settings.create_action("color-scheme"));
-
-      /* Add to gloabThis so that it is triggered from a modal */
-      globalThis.deleteSavedColorsAction = delSavedColors;
     };
 
     pickColorHandler = () => {
@@ -366,25 +479,20 @@ export const BellaWindow = GObject.registerClass(
       xdpPortal.pick_color(null, cancellable, (source_object, result) => {
         try {
           const gVariant = xdpPortal.pick_color_finish(result);
+          const rgb = gVariant?.deepUnpack();
+          const color = getColor(rgb);
 
-          const scaledRgb = [0, 0, 0];
-
-          for (let i = 0; i < scaledRgb.length; i++) {
-            scaledRgb[i] = gVariant.get_child_value(i).get_double();
+          for (const prop in color) {
+            this.visible_color[prop] = color[prop];
           }
 
-          const pickedColor = getColor(scaledRgb);
-          pickedColor.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
-          pickedColor.id = GLib.uuid_string_random();
-
-          this.updatePickedColor(pickedColor);
-          this.addNewColor(pickedColor);
-
-          this._main_stack.visible_child_name = "picked_color_page";
-          const color = new Gdk.RGBA();
-          color.parse(pickedColor.rgb);
-
-          this._colorDialogBtn.set_rgba(color);
+          this._column_view.model.model.append(
+            new Color({ ...color, displayed_format: color[this.color_format] })
+          );
+          this.setColorDialogButtonRgba(color.rgb);
+          /** Switch page after setting the ColorDialogButton RGB */
+          this._main_stack.visible_child_name = "color_format_page";
+          this.saveData();
         } catch (err) {
           if (err instanceof GLib.Error) {
             if (err.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.FAILED)) {
@@ -397,20 +505,46 @@ export const BellaWindow = GObject.registerClass(
       });
     };
 
-    selectColorHandler(colorDialogBtn) {
-      const scaledRgb = [
-        colorDialogBtn.rgba.red,
-        colorDialogBtn.rgba.green,
-        colorDialogBtn.rgba.blue,
-      ];
+    setColorDialogButtonRgba = (rgb) => {
+      const rgba = new Gdk.RGBA();
+      rgba.parse(rgb);
+      this._color_dialog_button.set_rgba(rgba);
+    };
 
-      const colorObject = getColor(scaledRgb);
-      colorObject.hsv = getHsv(Gtk.rgb_to_hsv(...scaledRgb));
+    selectColorHandler = (dialogButton) => {
+      const rgba = dialogButton.rgba;
+      const rgb = [rgba.red, rgba.green, rgba.blue];
+      const colorId = this.visible_color.id;
 
-      colorObject.id = this.visible_color_id;
-      this.updatePickedColor(colorObject);
-      this.updateSavedColor(colorObject);
-    }
+      const model = this._column_view.model;
+      let searchItem = null;
+
+      for (let i = 0; i < model.n_items; i++) {
+        const item = model.get_item(i);
+        if (item.id === colorId) {
+          searchItem = item;
+          break;
+        }
+      }
+
+      if (!searchItem) {
+        throw new Error("Search Item is null");
+      }
+
+      const color = getColor(rgb);
+      /** getColor generates a new ID. It must be reset to the original ID */
+      color.id = colorId;
+      color.displayed_format = color[this.color_format];
+
+      const updateListItem = Color.copyProperties(color, searchItem);
+      const updateVisibleColor = Color.copyProperties(
+        color,
+        this.visible_color
+      );
+      if (updateListItem && updateVisibleColor) {
+        this.saveData();
+      }
+    };
 
     setColorScheme = () => {
       const styleManager = this.application.style_manager;
@@ -418,68 +552,88 @@ export const BellaWindow = GObject.registerClass(
     };
 
     updateColorFormat = () => {
-      const model = this._saved_colors_selection_model.model;
-
+      const model = this._column_view.model.model;
       for (let i = 0; i < model.n_items; i++) {
         const item = model.get_item(i);
-        const itemClone = { id: item.id.unpack() };
+        item.displayed_format = item[this.color_format];
+      }
+    };
 
-        for (const { key } of colorFormats) {
-          itemClone[key] = item[key];
+    deleteColors = () => {
+      try {
+        const filePath = savedColorsFile.get_path();
+        const innerDir = savedColorsFile.get_parent()?.get_path();
+        const outerDir = savedColorsFile.get_parent()?.get_parent()?.get_path();
+        if (GLib.file_test(filePath, GLib.FileTest.EXISTS)) {
+          savedColorsFile.delete(null);
+          GLib.rmdir(innerDir);
+          GLib.rmdir(outerDir);
+          return [filePath, innerDir, outerDir].every((path) => {
+            return !GLib.file_test(path, GLib.FileTest.EXISTS);
+          });
+        } else {
+          [innerDir, outerDir].forEach((path) => {
+            if (GLib.file_test(path, GLib.FileTest.EXISTS)) {
+              GLib.rmdir(path);
+            }
+          });
+
+          return [filePath, innerDir, outerDir].every((path) => {
+            return !GLib.file_test(path, GLib.FileTest.EXISTS);
+          });
         }
-
-        model.splice(i, 1, [new SavedColor(itemClone, this.color_format)]);
+      } catch (error) {
+        console.log(error);
+        return false;
       }
     };
 
     getSavedColors = () => {
-      const filePath = savedColorsFile.get_path();
-      const fileExists = GLib.file_test(filePath, GLib.FileTest.EXISTS);
+      try {
+        const filePath = colorsFile.get_path();
+        if (!GLib.file_test(filePath, GLib.FileTest.EXISTS)) return [];
 
-      if (fileExists) {
-        const [success, arrBuff] = GLib.file_get_contents(filePath);
+        const [success, buffer] = GLib.file_get_contents(filePath);
+        if (!success) return [];
 
-        if (success) {
-          const decoder = new TextDecoder("utf-8");
-          const pickedColors = JSON.parse(decoder.decode(arrBuff));
-
-          const { model } = this._saved_colors_selection_model;
-
-          for (const pickedColor of pickedColors) {
-            model.append(new SavedColor(pickedColor, this.color_format));
-          }
-        } else {
-          console.log(_("Failed to read saved data"));
-        }
-      } else {
-        console.log(_("File doesn't exist yet"));
+        return JSON.parse(new TextDecoder().decode(buffer));
+      } catch (error) {
+        console.log(error);
+        return [];
       }
     };
 
-    saveData = (data = []) => {
-      const fileCreationFlag = GLib.mkdir_with_parents(
-        savedColorsFile.get_parent().get_path(),
-        0o777 // File permission, ugo+rwx, in numeric mode
-      );
-
-      if (fileCreationFlag === 0) {
-        const [success, tag] = savedColorsFile.replace_contents(
-          JSON.stringify(data),
-          null,
-          false,
-          Gio.FileCreateFlags.REPLACE_DESTINATION,
-          null
-        );
-
-        if (success) {
-          console.log(_("Successfully saved picked colors to file"));
-        } else {
-          console.log(_("Failed to save picked colors to file"));
+    saveData = () => {
+      try {
+        const data = [];
+        const model = this._column_view.model.model;
+        for (let i = 0; i < model.n_items; i++) {
+          const item = model.get_item(i);
+          data.push({ id: item.id, srgb: item.srgb });
         }
-      }
 
-      if (fileCreationFlag === -1) {
-        console.log(_("An error occurred while creating directory"));
+        const path = colorsFile.get_parent().get_path();
+        /* 0o777 is file permission, ugo+rwx, in numeric mode */
+        const flag = GLib.mkdir_with_parents(path, 0o777);
+        if (flag === -1) {
+          throw new Error("Failed to save color");
+        }
+
+        if (flag === 0) {
+          const [success] = colorsFile.replace_contents(
+            JSON.stringify(data),
+            null,
+            false,
+            Gio.FileCreateFlags.REPLACE_DESTINATION,
+            null
+          );
+
+          if (!success) {
+            throw new Error("Failed to save color");
+          }
+        }
+      } catch (error) {
+        console.log(error);
       }
     };
 
@@ -498,82 +652,5 @@ export const BellaWindow = GObject.registerClass(
       const contentProvider = Gdk.ContentProvider.new_for_value(text);
       clipboard.set_content(contentProvider);
     };
-
-    getItem = (id) => {
-      const model = this._saved_colors_selection_model.model;
-      for (let i = 0; i < model.n_items; i++) {
-        const item = model.get_item(i);
-        if (item.id.unpack() === id) {
-          return [i, item];
-        }
-      }
-      return [null, null];
-    };
-
-    addNewColor = (pickedColor = {}) => {
-      const model = this._saved_colors_selection_model.model;
-      model.append(new SavedColor(pickedColor, this.color_format));
-    };
-
-    updateSavedColor = (pickedColor = {}) => {
-      const model = this._saved_colors_selection_model.model;
-      for (let i = 0; i < model.n_items; i++) {
-        const item = model.get_item(i);
-        if (item.id.unpack() === pickedColor.id) {
-          const newColor = new SavedColor(pickedColor, this.color_format);
-          model.splice(i, 1, [newColor]);
-        }
-      }
-    };
-
-    updatePickedColor = (pickedColor = {}) => {
-      this._hex_action_row.subtitle = pickedColor.hex;
-      this._hex_copy_button.colorFormat = pickedColor.hex;
-
-      this._rgb_action_row.subtitle = pickedColor.rgb;
-      this._rgb_copy_button.colorFormat = pickedColor.rgb;
-
-      this._rgb_percent_action_row.subtitle = pickedColor.rgb_percent;
-      this._rgb_percent_copy_button.colorFormat = pickedColor.rgb_percent;
-
-      this._hsl_action_row.subtitle = pickedColor.hsl;
-      this._hsl_copy_button.colorFormat = pickedColor.hsl;
-
-      this._hsv_action_row.subtitle = pickedColor.hsv;
-      this._hsv_copy_button.colorFormat = pickedColor.hsv;
-
-      this._cmyk_action_row.subtitle = pickedColor.cmyk;
-      this._cmyk_copy_button.colorFormat = pickedColor.cmyk;
-
-      this._hwb_action_row.subtitle = pickedColor.hwb;
-      this._hwb_copy_button.colorFormat = pickedColor.hwb;
-
-      this._xyz_action_row.subtitle = pickedColor.xyz;
-      this._xyz_copy_button.colorFormat = pickedColor.xyz;
-
-      this._lab_action_row.subtitle = pickedColor.lab;
-      this._lab_copy_button.colorFormat = pickedColor.lab;
-
-      this._lch_action_row.subtitle = pickedColor.lch;
-      this._lch_copy_button.colorFormat = pickedColor.lch;
-
-      this._oklab_action_row.subtitle = pickedColor.oklab;
-      this._oklab_copy_button.colorFormat = pickedColor.oklab;
-
-      this._oklch_action_row.subtitle = pickedColor.oklch;
-      this._oklch_copy_button.colorFormat = pickedColor.oklch;
-
-      this._color_name_action_row.subtitle = pickedColor.name;
-      this._color_name_copy_button.colorFormat = pickedColor.name;
-
-      const { id } = pickedColor;
-      this.visible_color_id = typeof id === "string" ? id : id.unpack();
-    };
-
-    copyColorFormat(copyColorFormatButton) {
-      const color = copyColorFormatButton.colorFormat;
-      this.copyToClipboard(color);
-      this.displayToast(_("Copied %s").format(color));
-    }
   }
 );

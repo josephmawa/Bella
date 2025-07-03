@@ -3,18 +3,17 @@ import Gio from "gi://Gio";
 import Gtk from "gi://Gtk";
 import GObject from "gi://GObject";
 import { settings } from "./utils/utils.js";
-import { ConfirmDeleteAll } from "./delete-all.js";
-import { colorFormats } from "./utils/color-formats.js";
+import { formats } from "./utils/color-formats.js";
 
 export const BellaPreferencesDialog = GObject.registerClass(
   {
     GTypeName: "BellaPreferencesDialog",
     Template: getResourceUri("prefs.ui"),
-    InternalChildren: ["colorFormatSettings"],
+    InternalChildren: ["color_format_settings"],
     Properties: {
-      colorFormat: GObject.ParamSpec.string(
-        "colorFormat",
+      color_format: GObject.ParamSpec.string(
         "color_format",
+        "color-format",
         "Color format",
         GObject.ParamFlags.READWRITE,
         ""
@@ -29,17 +28,17 @@ export const BellaPreferencesDialog = GObject.registerClass(
       settings.bind(
         "color-format",
         this,
-        "colorFormat",
+        "color_format",
         Gio.SettingsBindFlags.DEFAULT
       );
 
       this.bind_property_full(
-        "colorFormat",
-        this._colorFormatSettings,
+        "color_format",
+        this._color_format_settings,
         "selected",
         GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE,
         (_, colorFormat) => {
-          const colorFormatObject = colorFormats.find(
+          const colorFormatObject = formats.find(
             ({ key }) => key === colorFormat
           );
 
@@ -47,7 +46,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
             throw new Error(`${key} isn't in color formats`);
           }
 
-          const model = this._colorFormatSettings.model;
+          const model = this._color_format_settings.model;
 
           for (let i = 0; i < model.get_n_items(); i++) {
             const stringObject = model.get_item(i);
@@ -60,10 +59,10 @@ export const BellaPreferencesDialog = GObject.registerClass(
         },
         (_, selected) => {
           const stringObject =
-            this._colorFormatSettings.model.get_item(selected);
+            this._color_format_settings.model.get_item(selected);
 
           if (stringObject?.string) {
-            const colorFormatObject = colorFormats.find(
+            const colorFormatObject = formats.find(
               ({ description }) => description === stringObject?.string
             );
 
@@ -77,21 +76,16 @@ export const BellaPreferencesDialog = GObject.registerClass(
       );
     }
 
-    deleteSavedColors() {
-      const confirmDeleteAll = new ConfirmDeleteAll();
-      confirmDeleteAll.present(this);
-    }
-
     setColorFormatModel = () => {
-      const _colorFormats = colorFormats.map(({ description }) => description);
-      this._colorFormatSettings.model = Gtk.StringList.new(_colorFormats);
+      const _colorFormats = formats.map(({ description }) => description);
+      this._color_format_settings.model = Gtk.StringList.new(_colorFormats);
 
       const expression = Gtk.PropertyExpression.new(
         Gtk.StringObject,
         null,
         "string"
       );
-      this._colorFormatSettings.expression = expression;
+      this._color_format_settings.expression = expression;
     };
   }
 );
