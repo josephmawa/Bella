@@ -117,6 +117,20 @@
                 <property name="subtitle" translatable="yes">Select color format to display</property>
               </object>
             </child>
+            <child>
+              <object class="AdwSpinRow" id="precision_spin_row">
+                <property name="title" translatable="yes">Precision</property>
+                <property name="subtitle" translatable="yes">Color precision</property>
+                <property name="adjustment">
+                  <object class="GtkAdjustment">
+                    <property name="lower">0</property>
+                    <property name="upper">10</property>
+                    <property name="value">5</property>
+                    <property name="step-increment">1</property>
+                  </object>
+                </property>
+              </object>
+            </child>
           </object>
         </child>
       </object>

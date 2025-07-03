@@ -9,7 +9,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
   {
     GTypeName: "BellaPreferencesDialog",
     Template: getResourceUri("prefs.ui"),
-    InternalChildren: ["color_format_settings"],
+    InternalChildren: ["color_format_settings", "precision_spin_row"],
     Properties: {
       color_format: GObject.ParamSpec.string(
         "color_format",
@@ -29,6 +29,12 @@ export const BellaPreferencesDialog = GObject.registerClass(
         "color-format",
         this,
         "color_format",
+        Gio.SettingsBindFlags.DEFAULT
+      );
+      settings.bind(
+        "precision",
+        this._precision_spin_row.adjustment,
+        "value",
         Gio.SettingsBindFlags.DEFAULT
       );
 
