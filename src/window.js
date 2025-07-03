@@ -304,7 +304,7 @@ export const BellaWindow = GObject.registerClass(
       if (result) {
         this.setColorDialogButtonRgba(color.rgb);
         /** Switch page after setting the ColorDialogButton RGB */
-        this._main_stack.visible_child_name = "picked_color_page";
+        this._main_stack.visible_child_name = "color_format_page";
       }
     };
 
@@ -341,7 +341,7 @@ export const BellaWindow = GObject.registerClass(
     connectMainStack = () => {
       this._main_stack.connect("notify::visible-child-name", () => {
         const visibleChildName = this._main_stack.visible_child_name;
-        if (visibleChildName === "picked_color_page") {
+        if (visibleChildName === "color_format_page") {
           signalId.id = this._color_dialog_button.connect(
             "notify::rgba",
             this.selectColorHandler
@@ -491,7 +491,7 @@ export const BellaWindow = GObject.registerClass(
           );
           this.setColorDialogButtonRgba(color.rgb);
           /** Switch page after setting the ColorDialogButton RGB */
-          this._main_stack.visible_child_name = "picked_color_page";
+          this._main_stack.visible_child_name = "color_format_page";
           this.saveData();
         } catch (err) {
           if (err instanceof GLib.Error) {

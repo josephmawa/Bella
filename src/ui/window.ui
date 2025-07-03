@@ -186,8 +186,8 @@
               </object>
             </child>
             <child>
-              <object class="GtkStackPage" id="picked_color_page">
-                <property name="name">picked_color_page</property>
+              <object class="GtkStackPage" id="color_format_page">
+                <property name="name">color_format_page</property>
                 <property name="child">
                   <object class="GtkBox" id="picked_color_box">
                     <property name="orientation">vertical</property>
@@ -200,7 +200,7 @@
                           </object>
                         </property>
                         <child type="start">
-                          <object class="GtkButton" id="back_to_home_page_button">
+                          <object class="GtkButton">
                             <property name="icon-name">bella-go-next-symbolic-rtl</property>
                             <property name="tooltip-text" translatable="yes" context="Navigate back to the main screen">Back</property>
                             <property name="action-name">win.back</property>
