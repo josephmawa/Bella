@@ -8,9 +8,11 @@
     <property name="content">
       <object class="AdwToastOverlay" id="toast_overlay">
         <property name="child">
+          <!-- Main Stack -->
           <object class="GtkStack" id="main_stack">
             <property name="transition-type">crossfade</property>
             <child>
+              <!-- Main Page -->
               <object class="GtkStackPage" id="main_page">
                 <property name="name">main_page</property>
                 <property name="child">
@@ -49,14 +51,15 @@
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <child>
-                              <object class="GtkStackSwitcher" id="eye_dropper_color_picker_stack_switcher">
-                                <property name="stack">eye_dropper_saved_color_stack</property>
+                              <object class="GtkStackSwitcher">
+                                <property name="stack">color_picker_stack</property>
                               </object>
                             </child>
                           </object>
                         </child>
                         <child>
-                          <object class="GtkStack" id="eye_dropper_saved_color_stack">
+                          <!-- Color Picker Stack -->
+                          <object class="GtkStack" id="color_picker_stack">
                             <property name="transition_type">crossfade</property>
                             <property name="vexpand">true</property>
                             <child>
@@ -79,6 +82,7 @@
                               </object>
                             </child>
                             <child>
+                              <!-- Eye Dropper Stack Page -->
                               <object class="GtkStackPage">
                                 <property name="name">eye_dropper_stack_page</property>
                                 <property name="title" translatable="yes">Eye Dropper</property>
@@ -107,15 +111,18 @@
                               </object>
                             </child>
                             <child>
+                              <!-- Saved Colors Stack Page -->
                               <object class="GtkStackPage">
                                 <property name="name">saved_colors_stack_page</property>
                                 <property name="title" translatable="yes">Saved Colors</property>
                                 <property name="child">
-                                  <object class="GtkStack" id="picked_colors_stack">
+                                  <!-- Saved Colors Stack -->
+                                  <object class="GtkStack" id="saved_colors_stack">
                                     <property name="transition_type">crossfade</property>
                                     <child>
-                                      <object class="GtkStackPage" id="no_saved_colors_stack_page">
-                                        <property name="name">no_saved_colors_stack_page</property>
+                                      <!-- No Saved Color Page -->
+                                      <object class="GtkStackPage">
+                                        <property name="name">no_saved_color_stack_page</property>
                                         <property name="child">
                                           <object class="GtkBox">
                                             <property name="orientation">vertical</property>
@@ -139,8 +146,9 @@
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkStackPage" id="saved_colors_stack_page_inner">
-                                        <property name="name">saved_colors_stack_page_inner</property>
+                                      <object class="GtkStackPage" >
+                                        <!-- Saved Color List Stack Page -->
+                                        <property name="name">saved_color_list_stack_page</property>
                                         <property name="child">
                                           <object class="GtkBox">
                                             <property name="orientation">vertical</property>
@@ -186,10 +194,11 @@
               </object>
             </child>
             <child>
+              <!-- Color Format Stack Page -->
               <object class="GtkStackPage" id="color_format_page">
                 <property name="name">color_format_page</property>
                 <property name="child">
-                  <object class="GtkBox" id="picked_color_box">
+                  <object class="GtkBox">
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="AdwHeaderBar">

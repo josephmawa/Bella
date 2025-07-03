@@ -45,11 +45,11 @@ export const BellaWindow = GObject.registerClass(
     Template: getResourceUri("window.ui"),
     InternalChildren: [
       "main_stack",
-      "eye_dropper_saved_color_stack",
-      "color_dialog_button",
-      "toast_overlay",
-      "picked_colors_stack",
       "column_view",
+      "toast_overlay",
+      "saved_colors_stack",
+      "color_picker_stack",
+      "color_dialog_button",
       "color_name_pref_group",
       "color_format_pref_group",
     ],
@@ -360,13 +360,13 @@ export const BellaWindow = GObject.registerClass(
       const model = this._column_view.model.model;
       model.bind_property_full(
         "n_items",
-        this._picked_colors_stack,
+        this._saved_colors_stack,
         "visible-child-name",
         GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
         (binding, numItems) => {
           const visiblePage = numItems
-            ? "saved_colors_stack_page_inner"
-            : "no_saved_colors_stack_page";
+            ? "saved_color_list_stack_page"
+            : "no_saved_color_stack_page";
           return [true, visiblePage];
         },
         null
@@ -439,7 +439,7 @@ export const BellaWindow = GObject.registerClass(
       setEyeDropperStackPage.connect("activate", (action, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
-          this._eye_dropper_saved_color_stack.visible_child_name =
+          this._color_picker_stack.visible_child_name =
             visibleChildName;
         }
       });
@@ -447,7 +447,7 @@ export const BellaWindow = GObject.registerClass(
       setSavedColorStackPage.connect("activate", (action, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
-          this._eye_dropper_saved_color_stack.visible_child_name =
+          this._color_picker_stack.visible_child_name =
             visibleChildName;
         }
       });
