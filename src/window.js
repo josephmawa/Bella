@@ -12,7 +12,7 @@ import { ConfirmDeleteAll } from "./delete-all.js";
 import { BellaPreferencesDialog } from "./prefs.js";
 import { CopyColorButton } from "./copy-color-button.js";
 import { Color, colorProps } from "./utils/gobjects.js";
-import { getColor, getHsv, settings } from "./utils/utils.js";
+import { settings } from "./utils/utils.js";
 
 const actionButtons = [
   {
@@ -96,14 +96,15 @@ export const BellaWindow = GObject.registerClass(
     };
 
     createColorPage = () => {
-      const object = {};
-      for (const { key } of colorProps) {
-        object[key] = "";
-      }
+      // const object = {};
+      // for (const { key } of colorProps) {
+      //   object[key] = "";
+      // }
 
-      object.id = GLib.uuid_string_random();
-      object.displayed_format = this.color_format;
-      this.visible_color = new Color(object);
+      // const srgb = "0.0,0.0,0.0";
+      // const id = GLib.uuid_string_random();
+      // object.displayed_format = this.color_format;
+      this.visible_color = new Color();
 
       const bindProps = colorProps.filter(({ key }) => {
         return (
@@ -173,18 +174,9 @@ export const BellaWindow = GObject.registerClass(
        * but this method is executed before this.color_format
        * is bound to its corresponding settings.
        */
-      const colorFormat = settings.get_string("color-format");
       const savedColors = this.getSavedColors();
       for (const { id, srgb } of savedColors) {
-        const rgb = srgb.split(",").map((c) => +c);
-        const color = getColor(rgb);
-        model.model.append(
-          new Color({
-            ...color,
-            id,
-            displayed_format: color[colorFormat],
-          })
-        );
+        model.model.append(new Color({ id, srgb }));
       }
 
       const colorFactory = new Gtk.SignalListItemFactory();
@@ -439,16 +431,14 @@ export const BellaWindow = GObject.registerClass(
       setEyeDropperStackPage.connect("activate", (action, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
-          this._color_picker_stack.visible_child_name =
-            visibleChildName;
+          this._color_picker_stack.visible_child_name = visibleChildName;
         }
       });
 
       setSavedColorStackPage.connect("activate", (action, params) => {
         const visibleChildName = params?.unpack();
         if (visibleChildName) {
-          this._color_picker_stack.visible_child_name =
-            visibleChildName;
+          this._color_picker_stack.visible_child_name = visibleChildName;
         }
       });
 
@@ -480,15 +470,15 @@ export const BellaWindow = GObject.registerClass(
         try {
           const gVariant = xdpPortal.pick_color_finish(result);
           const rgb = gVariant?.deepUnpack();
-          const color = getColor(rgb);
+       
+          const color = new Color({ srgb: rgb.join(",") });
 
-          for (const prop in color) {
-            this.visible_color[prop] = color[prop];
+          this._column_view.model.model.append(color);
+          const flag = Color.copyProperties(color, this.visible_color);
+          if (!flag) {
+            throw new Error("Failed to copy properties");
           }
 
-          this._column_view.model.model.append(
-            new Color({ ...color, displayed_format: color[this.color_format] })
-          );
           this.setColorDialogButtonRgba(color.rgb);
           /** Switch page after setting the ColorDialogButton RGB */
           this._main_stack.visible_child_name = "color_format_page";
@@ -531,17 +521,8 @@ export const BellaWindow = GObject.registerClass(
         throw new Error("Search Item is null");
       }
 
-      const color = getColor(rgb);
-      /** getColor generates a new ID. It must be reset to the original ID */
-      color.id = colorId;
-      color.displayed_format = color[this.color_format];
-
-      const updateListItem = Color.copyProperties(color, searchItem);
-      const updateVisibleColor = Color.copyProperties(
-        color,
-        this.visible_color
-      );
-      if (updateListItem && updateVisibleColor) {
+      const flag = item.updateColor(rgb.join(","));
+      if (flag) {
         this.saveData();
       }
     };
