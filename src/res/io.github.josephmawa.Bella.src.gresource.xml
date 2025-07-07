@@ -14,7 +14,6 @@
     <file compressed="true">utils/color-formats.js</file>
     <file compressed="true">utils/color-names.js</file>
     <file compressed="true">utils/gobjects.js</file>
-    <file compressed="true">utils/nearest-color.js</file>
     <file compressed="true">utils/utils.js</file>
   </gresource>
 </gresources>
