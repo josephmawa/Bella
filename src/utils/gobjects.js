@@ -51,13 +51,13 @@ export const Color = GObject.registerClass(
     Properties,
   },
   class Color extends GObject.Object {
-    #floatRGB = [0, 0, 0];
+    #floatRGB = [0.0, 0.0, 0.0];
     #precision = 0;
     constructor({ id, srgb } = {}) {
       super();
 
       if (!srgb) {
-        srgb = "0.0,0.0,0.0";
+        srgb = [0.0, 0.0, 0.0];
       }
       if (!id) {
         id = GLib.uuid_string_random();
@@ -65,7 +65,7 @@ export const Color = GObject.registerClass(
       this.id = id;
       this.srgb = srgb;
 
-      this.#floatRGB = parseRGB(srgb);
+      this.#floatRGB = Array.isArray(srgb) ? srgb : parseRGB(srgb);
       this.#precision = settings.get_int("precision");
 
       this.calculateFormats();
@@ -82,9 +82,14 @@ export const Color = GObject.registerClass(
       this.calcHsl();
       this.calcHwb();
       this.calcXYZ();
+      this.calcSRGB();
       this.calcCYMK();
       /** This should be called last */
       this.updateColorFormat();
+    };
+
+    calcSRGB = () => {
+      this.srgb = this.#floatRGB.join(",");
     };
 
     calcHex = () => {
@@ -199,9 +204,7 @@ export const Color = GObject.registerClass(
       } else if (maximum === blue) {
         hue = 60 * ((red - green) / delta + 4);
       } else {
-        throw new Error(
-          `${maximum} isn't equal to any of ${this.#floatRGB.join(",")}`
-        );
+        throw new Error("Failed to convert to Hwb format");
       }
 
       const whiteness = minimum;
@@ -271,8 +274,8 @@ export const Color = GObject.registerClass(
       const clone = [...OKLab];
 
       clone[0] = clone[0] * 100;
-      const [ok, ...lab] = clone.map((value) => round(value, this.#precision));
-      this.oklab = `oklab(${ok}% ${lab.join(" ")})`;
+      const [l, ...ab] = clone.map((value) => round(value, this.#precision));
+      this.oklab = `oklab(${l}% ${ab.join(" ")})`;
 
       this.calcOKLCH([...OKLab]);
     };
@@ -285,8 +288,9 @@ export const Color = GObject.registerClass(
         hue >= 0 ? hue : hue + 360,
       ];
 
-      const [ok, ...lch] = OKLCH.map((value) => round(value, this.#precision));
-      this.oklch = `oklch(${ok}% ${lch.join(" ")})`;
+      OKLCH[0] = OKLCH[0] * 100;
+      const [l, ...ch] = OKLCH.map((value) => round(value, this.#precision));
+      this.oklch = `oklch(${l}% ${ch.join(" ")})`;
     };
 
     updateColorFormat = () => {
@@ -294,7 +298,7 @@ export const Color = GObject.registerClass(
     };
 
     updateColor = (srgb) => {
-      this.#floatRGB = parseRGB(srgb);
+      this.#floatRGB = Array.isArray(srgb) ? srgb : parseRGB(srgb);
       this.calculateFormats();
       return true;
     };

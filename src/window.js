@@ -7,12 +7,12 @@ import GObject from "gi://GObject";
 import Gtk from "gi://Gtk?version=4.0";
 
 import { savedColorsFile } from "./app.js";
+import { settings } from "./utils/utils.js";
 import { ConfirmDeleteOne } from "./delete-one.js";
 import { ConfirmDeleteAll } from "./delete-all.js";
 import { BellaPreferencesDialog } from "./prefs.js";
 import { CopyColorButton } from "./copy-color-button.js";
 import { Color, colorProps } from "./utils/gobjects.js";
-import { settings } from "./utils/utils.js";
 
 const actionButtons = [
   {
@@ -96,14 +96,6 @@ export const BellaWindow = GObject.registerClass(
     };
 
     createColorPage = () => {
-      // const object = {};
-      // for (const { key } of colorProps) {
-      //   object[key] = "";
-      // }
-
-      // const srgb = "0.0,0.0,0.0";
-      // const id = GLib.uuid_string_random();
-      // object.displayed_format = this.color_format;
       this.visible_color = new Color();
 
       const bindProps = colorProps.filter(({ key }) => {
@@ -415,7 +407,7 @@ export const BellaWindow = GObject.registerClass(
           if (model.n_items === 0) return;
           if (response === "delete") {
             model.remove_all();
-            this.saveData([]);
+            this.saveData();
             this.displayToast(_("Deleted saved colors"));
           }
         });
@@ -469,9 +461,9 @@ export const BellaWindow = GObject.registerClass(
       xdpPortal.pick_color(null, cancellable, (source_object, result) => {
         try {
           const gVariant = xdpPortal.pick_color_finish(result);
-          const rgb = gVariant?.deepUnpack();
-       
-          const color = new Color({ srgb: rgb.join(",") });
+          const srgb = gVariant?.deepUnpack();
+
+          const color = new Color({ srgb });
 
           this._column_view.model.model.append(color);
           const flag = Color.copyProperties(color, this.visible_color);
@@ -521,8 +513,9 @@ export const BellaWindow = GObject.registerClass(
         throw new Error("Search Item is null");
       }
 
-      const flag = item.updateColor(rgb.join(","));
-      if (flag) {
+      const flagA = searchItem.updateColor(rgb);
+      const flagB = this.visible_color.updateColor(rgb);
+      if (flagA && flagB) {
         this.saveData();
       }
     };
