@@ -116,6 +116,9 @@ export const BellaWindow = GObject.registerClass(
 
         const actionRow = new Adw.ActionRow({
           title: description,
+          title_lines: 1,
+          subtitle_lines: 1,
+          subtitle_selectable: true,
           css_classes: ["property"],
         });
         actionRow.add_suffix(button);
@@ -143,6 +146,9 @@ export const BellaWindow = GObject.registerClass(
 
       const actionRow = new Adw.ActionRow({
         title: nameProp.description,
+        title_lines: 1,
+        subtitle_lines: 1,
+        subtitle_selectable: true,
         css_classes: ["property"],
       });
       actionRow.add_suffix(button);
@@ -268,6 +274,7 @@ export const BellaWindow = GObject.registerClass(
           const item = model.get_item(i);
           if (item.id === id) {
             model.remove(i);
+            this.saveData();
             break;
           }
         }

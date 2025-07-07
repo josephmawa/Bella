@@ -10,11 +10,11 @@ import {
   settings,
   XYZtoLMS,
   LMStoOKLab,
+  nearestColor,
   multiplyMatrices,
 } from "./utils.js";
 
 import { colorNames } from "./color-names.js";
-import { nearestColor } from "./nearest-color.js";
 
 const moreProps = [
   { key: "id", blurb: "Unique color id" },
