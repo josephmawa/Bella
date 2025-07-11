@@ -119,7 +119,7 @@ export const BellaWindow = GObject.registerClass(
           title_lines: 1,
           subtitle_lines: 1,
           subtitle_selectable: true,
-          css_classes: ["property"],
+          css_classes: ["property", "monospace"],
         });
         actionRow.add_suffix(button);
 
@@ -149,7 +149,7 @@ export const BellaWindow = GObject.registerClass(
         title_lines: 1,
         subtitle_lines: 1,
         subtitle_selectable: true,
-        css_classes: ["property"],
+        css_classes: ["property", "monospace"],
       });
       actionRow.add_suffix(button);
 

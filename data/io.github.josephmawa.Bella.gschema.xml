@@ -16,7 +16,7 @@
     </key>
     <key name="precision" type="i">
       <range min="0" max="10" />
-      <default>5</default>
+      <default>2</default>
     </key>
     <key name="color-format" type="s">
       <choices>
