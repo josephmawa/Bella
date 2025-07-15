@@ -59,6 +59,15 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+   <release version="0.1.6" date="2025-07-15">
+      <description translate="no">
+        <ul>
+          <li>Add Oklab color format</li>
+          <li>Add Oklch color format</li>
+          <li>Add precision settings</li>
+        </ul>
+      </description>
+    </release>
    <release version="0.1.5" date="2025-05-15">
       <description translate="no">
         <ul>
