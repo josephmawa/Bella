@@ -25,5 +25,5 @@ src/ui/prefs.ui
 src/ui/window.ui
 
 # src/columns/*.ui
-src/ui/columns/actions.ui
-src/ui/columns/color.ui
+# src/ui/columns/actions.ui
+# src/ui/columns/color.ui
