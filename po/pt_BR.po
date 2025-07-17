@@ -8,22 +8,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-15 12:36-0300\n"
-"PO-Revision-Date: 2025-01-15 12:41-0300\n"
-"Last-Translator: johnpetersa <johnppetersa@gmail.com>\n"
+"POT-Creation-Date: 2025-07-16 21:26-0300\n"
+"PO-Revision-Date: 2025-07-16 21:34-0300\n"
+"Last-Translator: John peter sa <johnppetersa@gmail.com>\n"
 "Language-Team: johnpetersa <johnppetersa@gmail.com>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: data/io.github.josephmawa.Bella.desktop.in:2
 #: data/io.github.josephmawa.Bella.metainfo.xml.in:5
 msgid "Bella"
 msgstr "Bela"
 
-#: data/io.github.josephmawa.Bella.desktop.in:3 src/ui/window.ui:84
+#: data/io.github.josephmawa.Bella.desktop.in:3 src/ui/window.ui:88
 msgid "Eye Dropper"
 msgstr "Conta-gotas"
 
@@ -39,12 +39,10 @@ msgstr ""
 
 #: data/io.github.josephmawa.Bella.metainfo.xml.in:9
 #: data/io.github.josephmawa.Bella.metainfo.xml.in:19
-#, fuzzy
 msgid "Pick a color from the screen"
-msgstr "Escolha a cor na tela"
+msgstr "Escolha uma cor na tela"
 
 #: data/io.github.josephmawa.Bella.metainfo.xml.in:16
-#, fuzzy
 msgid ""
 "Pick a color from anywhere on your screen and save it in one of the common "
 "color formats."
@@ -65,7 +63,6 @@ msgid "Modify the picked color"
 msgstr "Modificar a cor escolhida"
 
 #: data/io.github.josephmawa.Bella.metainfo.xml.in:22
-#, fuzzy
 msgid "Switch to dark, light, or system mode"
 msgstr "Alternar para o modo escuro, claro ou sistema"
 
@@ -93,114 +90,190 @@ msgstr "Visualização de lista de cores no tema escuro"
 msgid "Color list view in light theme"
 msgstr "Visualização de lista de cores no tema claro"
 
-#: src/window.js:262
-msgid "Deleted all saved colors"
-msgstr "Apagou todas as cores salvas"
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:65
+msgid "Add Oklab color format"
+msgstr "Adicionar formato de cor Oklab"
 
-#: src/window.js:274 src/window.js:623
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:66
+msgid "Add Oklch color format"
+msgstr "Adicionar formato de cor Oklch"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:67
+msgid "Add precision settings"
+msgstr "Adicionar configurações de precisão"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:74
+msgid "Display Hex color in lowercase"
+msgstr "Exibir cor hexadecimal em letras minúsculas"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:75
+msgid "Upgrade to GNOME runtime version 48"
+msgstr "Atualizar para a versão 48 do GNOME Runtime"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:76
+msgid "Upgrade Libportal to version 0.9.1"
+msgstr "Atualize o Libportal para a versão 0.9.1"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:83
+msgid "Add keyboard shortcuts"
+msgstr "Adicionar atalhos de teclado"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:84
+msgid "Add more color formats"
+msgstr "Adicionar mais formatos de cores"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:85
+msgid "Add Brazilian Portuguese translation"
+msgstr "Adicionar tradução para o português do Brasil"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:92
+msgid "Add Turkish translation"
+msgstr "Adicionar tradução turca"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:93
+msgid "Add Ukrainian translation"
+msgstr "Adicionar tradução ucraniana"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:94
+msgid "Add Russian translation"
+msgstr "Adicionar tradução para o russo"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:101
+msgid "Fix dialog bug"
+msgstr "Corrigir bug de diálogo"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:102
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:113
+msgid "Update screenshots"
+msgstr "Atualizar capturas de tela"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:109
+msgid "Update UI"
+msgstr "Atualizar IU"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:110
+msgid "Fix translation bug"
+msgstr "Corrigir bug de tradução"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:111
+msgid "Add brand color"
+msgstr "Adicionar cor da marca"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:112
+msgid "Shorten app summary"
+msgstr "Encurtar o resumo do aplicativo"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:119
+msgid "Initial release."
+msgstr "Lançamento inicial."
+
+#: src/window.js:20 src/ui/copy-color-button.ui:8
+msgid "Copy color"
+msgstr "Copiar cor"
+
+#: src/window.js:24
+msgid "Delete color"
+msgstr "Excluir cor"
+
+#: src/window.js:28
+msgid "View details"
+msgstr "Ver detalhes"
+
+#: src/window.js:114 src/window.js:144 src/window.js:263
 #, javascript-format
-msgid "Copied %s to clipboard"
-msgstr "Copiou %s para a área de transferência"
+msgid "Copied %s"
+msgstr "%s copiados"
 
-#: src/window.js:301
-msgid "Deleted saved color successfully"
-msgstr "Cor salva excluída com sucesso"
+#: src/window.js:247
+msgid "Color"
+msgstr "Cor"
 
-#: src/window.js:314
-#, javascript-format
-msgid "id: %s doesn't existent"
-msgstr "id: %s não existe"
+#: src/window.js:249
+msgid "Actions"
+msgstr "Ações"
 
-#: src/window.js:405
+#: src/window.js:287
+msgid "Deleted color"
+msgstr "Cor excluída"
+
+#: src/window.js:418
+msgid "Deleted saved colors"
+msgstr "Cores salvas excluídas"
+
+#: src/window.js:488
 msgid "Failed to pick color"
 msgstr "Falha ao escolher a cor"
 
-#: src/window.js:501
-msgid "Failed to read saved data"
-msgstr "Falha ao ler os dados salvos"
-
-#: src/window.js:507
-msgid "File doesn't exist yet"
-msgstr "O arquivo ainda não existe"
-
-#: src/window.js:526
-msgid "Successfully saved picked colors to file"
-msgstr "As cores selecionadas foram salvas com sucesso no arquivo"
-
-#: src/window.js:528
-msgid "Failed to save picked colors to file"
-msgstr "Falha ao salvar as cores selecionadas no arquivo"
-
-#: src/window.js:533
-msgid "An error occurred while creating directory"
-msgstr "Ocorreu um erro ao criar o diretório"
-
 #. Color name
 #: src/utils/color-formats.js:5
-#, fuzzy
 msgid "Name"
 msgstr "Nome"
 
 #. Hexadecimal color format
-#: src/utils/color-formats.js:10
-#, fuzzy
+#: src/utils/color-formats.js:11
 msgid "Hex"
 msgstr "Hex"
 
 #. RGB color format
-#: src/utils/color-formats.js:15
-#, fuzzy
+#: src/utils/color-formats.js:17
 msgid "RGB"
 msgstr "RGB"
 
 #. RGB Percent color format
-#: src/utils/color-formats.js:20
-#, fuzzy
+#: src/utils/color-formats.js:23
 msgid "RGB Percent"
 msgstr "Porcentagem RGB"
 
 #. HSL color format
-#: src/utils/color-formats.js:25
-#, fuzzy
+#: src/utils/color-formats.js:29
 msgid "HSL"
 msgstr "HSL"
 
 #. HSV color format
-#: src/utils/color-formats.js:30
-#, fuzzy
+#: src/utils/color-formats.js:35
 msgid "HSV"
 msgstr "HSV"
 
 #. CMYK color format
-#: src/utils/color-formats.js:35
+#: src/utils/color-formats.js:41
 msgid "CMYK"
 msgstr "CMYK"
 
 #. HWB color format
-#: src/utils/color-formats.js:40
+#: src/utils/color-formats.js:47
 msgid "HWB"
 msgstr "HWB"
 
 #. XYZ color format
-#: src/utils/color-formats.js:45
+#: src/utils/color-formats.js:53
 msgid "XYZ"
 msgstr "XYZ"
 
 #. CIE-L*ab color format
-#: src/utils/color-formats.js:50
+#: src/utils/color-formats.js:59
 msgid "CIE-L*ab"
 msgstr "CIE-L*ab"
 
 #. CIE-Lch color format
-#: src/utils/color-formats.js:55
+#: src/utils/color-formats.js:65
 msgid "CIE-Lch"
 msgstr "CIE-Lch"
 
-#: src/ui/confirm-delete-all.ui:6
+#. OKLAB color format
+#: src/utils/color-formats.js:71
+msgid "OKLAB"
+msgstr "OKLAB"
+
+#. OKLCH color format
+#: src/utils/color-formats.js:77
+msgid "OKLCH"
+msgstr "OKLCH"
+
+#: src/ui/delete-all.ui:6
 msgid "Delete saved colors"
 msgstr "Excluir cores salvas"
 
-#: src/ui/confirm-delete-all.ui:7
+#: src/ui/delete-all.ui:7
 msgid ""
 "Are you sure you want to delete all the saved colors? This action is "
 "irreversible."
@@ -208,303 +281,301 @@ msgstr ""
 "Tem certeza de que deseja apagar todas as cores salvas? Esta ação é "
 "irreversível."
 
-#: src/ui/confirm-delete-all.ui:12 src/ui/confirm-delete-one.ui:13
+#: src/ui/delete-all.ui:12 src/ui/delete-one.ui:13
 msgid "Delete"
 msgstr "Excluir"
 
-#: src/ui/confirm-delete-all.ui:13 src/ui/confirm-delete-one.ui:14
+#: src/ui/delete-all.ui:13 src/ui/delete-one.ui:14
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/ui/confirm-delete-one.ui:6
+#: src/ui/delete-one.ui:6
 msgid "Delete saved color"
 msgstr "Excluir cor salva"
 
-#: src/ui/confirm-delete-one.ui:7
+#: src/ui/delete-one.ui:7
 msgid ""
 "Are you sure you want to delete this color? This action is irreversible."
 msgstr "Tem certeza de que deseja excluir esta cor? Esta ação é irreversível."
 
-#: src/ui/copy-color-format-button.ui:8
-#: src/ui/saved-color-table-columns/actions.ui:23
-msgid "Copy color"
-msgstr "Copiar cor"
-
-#: src/ui/help-overlay.ui:11
+#: src/ui/help.ui:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Em geral"
 
-#: src/ui/help-overlay.ui:14
+#: src/ui/help.ui:14
 msgctxt "shortcut window"
 msgid "Open Menu"
 msgstr "Abrir menu"
 
-#: src/ui/help-overlay.ui:20
+#: src/ui/help.ui:20
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostrar atalhos"
 
-#: src/ui/help-overlay.ui:26
-#, fuzzy
+#: src/ui/help.ui:26
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Preferências"
+msgstr "Mostrar preferências"
 
-#: src/ui/help-overlay.ui:32
+#: src/ui/help.ui:32
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Desistir"
 
-#: src/ui/help-overlay.ui:40
+#: src/ui/help.ui:40
 msgctxt "shortcut window"
 msgid "Navigation"
 msgstr "Navegação"
 
-#: src/ui/help-overlay.ui:43
+#: src/ui/help.ui:43
 msgctxt "shortcut window"
 msgid "Back"
 msgstr "Voltar"
 
-#: src/ui/help-overlay.ui:49
-#, fuzzy
+#: src/ui/help.ui:49
 msgctxt "shortcut window"
 msgid "Switch to Eye Dropper"
-msgstr "Conta-gotas"
+msgstr "Mudar para conta-gotas"
 
-#: src/ui/help-overlay.ui:55
-#, fuzzy
+#: src/ui/help.ui:55
 msgctxt "shortcut window"
 msgid "Switch to Saved Colors"
-msgstr "Cores salvas"
+msgstr "Mudar para cores salvas"
 
-#: src/ui/help-overlay.ui:63
+#: src/ui/help.ui:63
 msgctxt "shortcut window"
 msgid "Eye Dropper"
 msgstr "Conta-gotas"
 
-#: src/ui/help-overlay.ui:66
-#, fuzzy
+#: src/ui/help.ui:66
 msgctxt "shortcut window"
 msgid "Pick Color"
-msgstr "Cor"
+msgstr "Escolha a cor"
 
-#: src/ui/preferences.ui:8 src/ui/preferences.ui:14 src/ui/window.ui:534
+#: src/ui/prefs.ui:7 src/ui/prefs.ui:13 src/ui/window.ui:305
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/ui/preferences.ui:17
+#: src/ui/prefs.ui:16
 msgid "Color Theme Settings"
 msgstr "Configurações do tema de cores"
 
-#: src/ui/preferences.ui:18
+#: src/ui/prefs.ui:17
 msgid "Set color theme"
 msgstr "Definir tema de cor"
 
-#: src/ui/preferences.ui:24
+#: src/ui/prefs.ui:23
 msgid "Color theme"
 msgstr "Tema de cores"
 
-#: src/ui/preferences.ui:40
+#: src/ui/prefs.ui:39
 msgctxt "System color theme"
 msgid "System"
 msgstr "Sistema"
 
-#: src/ui/preferences.ui:54
+#: src/ui/prefs.ui:56
 msgctxt "Light color theme"
 msgid "Light"
 msgstr "Claro"
 
-#: src/ui/preferences.ui:68
+#: src/ui/prefs.ui:73
 msgctxt "Dark color theme"
 msgid "Dark"
 msgstr "Escuro"
 
-#: src/ui/preferences.ui:82
+#: src/ui/prefs.ui:90
 msgid "Color Settings"
 msgstr "Configurações de cor"
 
-#: src/ui/preferences.ui:83
+#: src/ui/prefs.ui:91
 msgid "Saved color settings"
 msgstr "Configurações de cores salvas"
 
-#: src/ui/preferences.ui:86
+#: src/ui/prefs.ui:94
 msgid "Delete Colors"
 msgstr "Excluir cores"
 
-#: src/ui/preferences.ui:87 src/ui/preferences.ui:97
+#: src/ui/prefs.ui:95 src/ui/prefs.ui:104
 msgid "Delete all saved colors"
 msgstr "Excluir todas as cores salvas"
 
-#: src/ui/preferences.ui:99
+#: src/ui/prefs.ui:106
 msgctxt "accessibility"
 msgid "Delete all saved colors"
 msgstr "Excluir todas as cores salvas"
 
-#: src/ui/preferences.ui:113 src/ui/window.ui:295
+#: src/ui/prefs.ui:116 src/ui/window.ui:275
 msgid "Color Format"
 msgstr "Formato de cor"
 
-#: src/ui/preferences.ui:114
+#: src/ui/prefs.ui:117
 msgid "Select color format to display"
 msgstr "Selecione o formato de cor para exibir"
 
-#: src/ui/window.ui:32
+#: src/ui/prefs.ui:122
+msgid "Precision"
+msgstr "Precisão"
+
+#: src/ui/prefs.ui:123
+msgid "Color precision"
+msgstr "Precisão de cor"
+
+#: src/ui/window.ui:34
 msgid "Primary Menu"
 msgstr "Menu Principal"
 
-#: src/ui/window.ui:34
+#: src/ui/window.ui:36
 msgctxt "accessibility"
 msgid "Primary menu"
 msgstr "Menu principal"
 
-#: src/ui/window.ui:92
+#: src/ui/window.ui:96
 msgid "Pick Color from screen"
 msgstr "Escolha a cor na tela"
 
-#: src/ui/window.ui:101
+#: src/ui/window.ui:105
 msgctxt "accessibility"
 msgid "Pick color from screen"
 msgstr "Escolha a cor na tela"
 
-#: src/ui/window.ui:112
+#: src/ui/window.ui:117
 msgid "Saved Colors"
 msgstr "Cores salvas"
 
-#: src/ui/window.ui:134
+#: src/ui/window.ui:141
 msgctxt "Translators: Only translate the text 'No Saved Color'"
 msgid "<span font-size=\"xx-large\">No Saved Color</span>"
 msgstr ""
 "<span font-size=\"xx-large\" font-weight=\"bold\">Nenhuma cor salva</span>"
 
-#: src/ui/window.ui:173
-msgid "Color"
-msgstr "Cor"
-
-#: src/ui/window.ui:183
-msgid "Actions"
-msgstr "Ações"
-
-#: src/ui/window.ui:228
+#: src/ui/window.ui:214
 msgctxt "Navigate back to the main screen"
 msgid "Back"
 msgstr "Voltar"
 
-#: src/ui/window.ui:231
+#: src/ui/window.ui:217
 msgctxt "accessibility"
 msgid "Back to main screen"
 msgstr "Voltar para a tela principal"
 
-#: src/ui/window.ui:263
+#: src/ui/window.ui:248
 msgid "Modify color"
 msgstr "Modificar cor"
 
-#: src/ui/window.ui:265
+#: src/ui/window.ui:250
 msgctxt "accessibility"
 msgid "Modify color"
 msgstr "Modificar cor"
 
-#: src/ui/window.ui:275
+#: src/ui/window.ui:255
 msgid "Modify color or select new one"
 msgstr "Modifique a cor ou selecione uma nova"
 
-#: src/ui/window.ui:296
+#: src/ui/window.ui:276
 msgid "Common color modes"
 msgstr "Modos de cores comuns"
 
-#: src/ui/window.ui:299
-msgctxt "Hexadecimal color format"
-msgid "Hex"
-msgstr "Hex"
-
-#: src/ui/window.ui:318
-msgctxt "RGB color format"
-msgid "RGB"
-msgstr "RGB"
-
-#: src/ui/window.ui:337
-msgctxt "RGB Percent color format"
-msgid "RGB Percent"
-msgstr "Porcentagem RGB"
-
-#: src/ui/window.ui:356
-msgctxt "HSL color format"
-msgid "HSL"
-msgstr "HSL"
-
-#: src/ui/window.ui:375
-msgctxt "HSV color format"
-msgid "HSV"
-msgstr "HSV"
-
-#: src/ui/window.ui:394
-msgctxt "CMYK color format"
-msgid "CMYK"
-msgstr "CMYK"
-
-#: src/ui/window.ui:413
-msgctxt "HWB color format"
-msgid "HWB"
-msgstr "HWB"
-
-#: src/ui/window.ui:432
-msgctxt "XYZ color format"
-msgid "XYZ"
-msgstr "XYZ"
-
-#: src/ui/window.ui:451
-msgctxt "CIE-L*ab color format"
-msgid "CIE-L*ab"
-msgstr "CIE-L*ab"
-
-#: src/ui/window.ui:470
-msgctxt "CIE-Lch color format"
-msgid "CIE-Lch"
-msgstr "CIE-Lch"
-
-#: src/ui/window.ui:491
+#: src/ui/window.ui:281
 msgid "Color Name"
 msgstr "Nome da cor"
 
-#: src/ui/window.ui:492
+#: src/ui/window.ui:282
 msgid "The closest color name"
 msgstr "O nome da cor mais próximo"
 
-#: src/ui/window.ui:495
-msgctxt "Color name"
-msgid "Name"
-msgstr "Nome"
-
-#: src/ui/window.ui:538
+#: src/ui/window.ui:309
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
-#: src/ui/window.ui:542
+#: src/ui/window.ui:313
 msgid "About Bella"
 msgstr "Sobre Bella"
 
-#: src/ui/saved-color-table-columns/actions.ui:25
-msgctxt "accessibility"
-msgid "Copy color"
-msgstr "Copiar cor"
+#~ msgid "Deleted all saved colors"
+#~ msgstr "Apagou todas as cores salvas"
 
-#: src/ui/saved-color-table-columns/actions.ui:46
-msgid "Delete color"
-msgstr "Excluir cor"
+#, javascript-format
+#~ msgid "Copied %s to clipboard"
+#~ msgstr "Copiou %s para a área de transferência"
 
-#: src/ui/saved-color-table-columns/actions.ui:48
-msgctxt "accessibility"
-msgid "Delete color"
-msgstr "Excluir cor"
+#~ msgid "Deleted saved color successfully"
+#~ msgstr "Cor salva excluída com sucesso"
 
-#: src/ui/saved-color-table-columns/actions.ui:65
-msgid "View details"
-msgstr "Ver detalhes"
+#, javascript-format
+#~ msgid "id: %s doesn't existent"
+#~ msgstr "id: %s não existe"
 
-#: src/ui/saved-color-table-columns/actions.ui:67
-msgctxt "accessibility"
-msgid "View details"
-msgstr "Ver detalhes"
+#~ msgid "Failed to read saved data"
+#~ msgstr "Falha ao ler os dados salvos"
+
+#~ msgid "File doesn't exist yet"
+#~ msgstr "O arquivo ainda não existe"
+
+#~ msgid "Successfully saved picked colors to file"
+#~ msgstr "As cores selecionadas foram salvas com sucesso no arquivo"
+
+#~ msgid "Failed to save picked colors to file"
+#~ msgstr "Falha ao salvar as cores selecionadas no arquivo"
+
+#~ msgid "An error occurred while creating directory"
+#~ msgstr "Ocorreu um erro ao criar o diretório"
+
+#~ msgctxt "Hexadecimal color format"
+#~ msgid "Hex"
+#~ msgstr "Hex"
+
+#~ msgctxt "RGB color format"
+#~ msgid "RGB"
+#~ msgstr "RGB"
+
+#~ msgctxt "RGB Percent color format"
+#~ msgid "RGB Percent"
+#~ msgstr "Porcentagem RGB"
+
+#~ msgctxt "HSL color format"
+#~ msgid "HSL"
+#~ msgstr "HSL"
+
+#~ msgctxt "HSV color format"
+#~ msgid "HSV"
+#~ msgstr "HSV"
+
+#~ msgctxt "CMYK color format"
+#~ msgid "CMYK"
+#~ msgstr "CMYK"
+
+#~ msgctxt "HWB color format"
+#~ msgid "HWB"
+#~ msgstr "HWB"
+
+#~ msgctxt "XYZ color format"
+#~ msgid "XYZ"
+#~ msgstr "XYZ"
+
+#~ msgctxt "CIE-L*ab color format"
+#~ msgid "CIE-L*ab"
+#~ msgstr "CIE-L*ab"
+
+#~ msgctxt "CIE-Lch color format"
+#~ msgid "CIE-Lch"
+#~ msgstr "CIE-Lch"
+
+#~ msgctxt "Color name"
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgctxt "accessibility"
+#~ msgid "Copy color"
+#~ msgstr "Copiar cor"
+
+#~ msgctxt "accessibility"
+#~ msgid "Delete color"
+#~ msgstr "Excluir cor"
+
+#~ msgctxt "accessibility"
+#~ msgid "View details"
+#~ msgstr "Ver detalhes"
 
 #~ msgid "color"
 #~ msgstr "cor"
