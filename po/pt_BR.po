@@ -1,15 +1,9 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Bella package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-17 10:10-0300\n"
-"PO-Revision-Date: 2025-07-17 11:32-0300\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-07-17 11:59-0300\n"
 "Last-Translator: John peter sa <johnppetersa@gmail.com>\n"
 "Language-Team: johnpetersa <johnppetersa@gmail.com>\n"
 "Language: pt_BR\n"
@@ -18,262 +12,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#: data/io.github.josephmawa.Bella.desktop.in:2
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:5
-msgid "Bella"
-msgstr "Bela"
+msgid "About Bella"
+msgstr "Sobre Bela"
 
-#: data/io.github.josephmawa.Bella.desktop.in:3 src/ui/window.ui:88
-msgid "Eye Dropper"
-msgstr "Conta-gotas"
-
-#: data/io.github.josephmawa.Bella.desktop.in:4
-msgid "Pick color anywhere on your screen"
-msgstr "Escolha uma cor em qualquer lugar da tela"
-
-#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.josephmawa.Bella.desktop.in:11
-msgid "Color;Dropper;Eye;Picker;Pick;"
-msgstr ""
-"Color;Dropper;Eye;Picker;Pick;Cor; Conta-gotas; Olho; Seletor; Escolha;"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:9
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:19
-msgid "Pick a color from the screen"
-msgstr "Escolha uma cor na tela"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:16
-msgid ""
-"Pick a color from anywhere on your screen and save it in one of the common "
-"color formats."
-msgstr ""
-"Escolha uma cor de qualquer lugar na tela e salve-a em um dos formatos de "
-"cor comuns."
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:17
-msgid "Below are the main features of Bella:"
-msgstr "Abaixo estão as principais características do Bella:"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:20
-msgid "Save the picked color"
-msgstr "Salve a cor escolhida"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:21
-msgid "Modify the picked color"
-msgstr "Modificar a cor escolhida"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:22
-msgid "Switch to dark, light, or system mode"
-msgstr "Alternar para o modo escuro, claro ou sistema"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:36
-msgid "Details view in dark theme"
-msgstr "Visualização de lista de cores no tema escuro"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:40
-msgid "Details view in light theme"
-msgstr "Visualização de lista de cores no tema claro"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:44
-msgid "Eye dropper view in dark theme"
-msgstr "Visualização do conta-gotas no tema escuro"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:48
-msgid "Eye dropper view in light theme"
-msgstr "Visualização do conta-gotas no tema claro"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:52
-msgid "Color list view in dark theme"
-msgstr "Visualização de lista de cores no tema escuro"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:56
-msgid "Color list view in light theme"
-msgstr "Visualização de lista de cores no tema claro"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:65
-msgid "Add Oklab color format"
-msgstr "Adicionar formato de cor Oklab"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:66
-msgid "Add Oklch color format"
-msgstr "Adicionar formato de cor Oklch"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:67
-msgid "Add precision settings"
-msgstr "Adicionar configurações de precisão"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:74
-msgid "Display Hex color in lowercase"
-msgstr "Exibir cor hexadecimal em letras minúsculas"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:75
-msgid "Upgrade to GNOME runtime version 48"
-msgstr "Atualizar para a versão 48 do GNOME Runtime"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:76
-msgid "Upgrade Libportal to version 0.9.1"
-msgstr "Atualize o Libportal para a versão 0.9.1"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:83
-msgid "Add keyboard shortcuts"
-msgstr "Adicionar atalhos de teclado"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:84
-msgid "Add more color formats"
-msgstr "Adicionar mais formatos de cores"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:85
-msgid "Add Brazilian Portuguese translation"
-msgstr "Adicionar tradução para o português do Brasil"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:92
-msgid "Add Turkish translation"
-msgstr "Adicionar tradução turca"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:93
-msgid "Add Ukrainian translation"
-msgstr "Adicionar tradução ucraniana"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:94
-msgid "Add Russian translation"
-msgstr "Adicionar tradução para o russo"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:101
-msgid "Fix dialog bug"
-msgstr "Corrigir bug de diálogo"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:102
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:113
-msgid "Update screenshots"
-msgstr "Atualizar capturas de tela"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:109
-msgid "Update UI"
-msgstr "Atualizar IU"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:110
-msgid "Fix translation bug"
-msgstr "Corrigir bug de tradução"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:111
-msgid "Add brand color"
-msgstr "Adicionar cor da marca"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:112
-msgid "Shorten app summary"
-msgstr "Encurtar o resumo do aplicativo"
-
-#: data/io.github.josephmawa.Bella.metainfo.xml.in:119
-msgid "Initial release."
-msgstr "Lançamento inicial."
-
-#: src/window.js:20 src/ui/copy-color-button.ui:8
-msgid "Copy color"
-msgstr "Copiar cor"
-
-#: src/window.js:24
-msgid "Delete color"
-msgstr "Excluir cor"
-
-#: src/window.js:28
-msgid "View details"
-msgstr "Ver detalhes"
-
-#: src/window.js:114 src/window.js:144 src/window.js:263
-#, javascript-format
-msgid "Copied %s"
-msgstr "%s copiados"
-
-#: src/window.js:247
-msgid "Color"
-msgstr "Cor"
-
-#: src/window.js:249
 msgid "Actions"
 msgstr "Ações"
 
-#: src/window.js:287
-msgid "Deleted color"
-msgstr "Cor excluída"
+msgid "Add Brazilian Portuguese translation"
+msgstr "Adicionar tradução para o português do Brasil"
 
-#: src/window.js:418
-msgid "Deleted saved colors"
-msgstr "Cores salvas excluídas"
+msgid "Add Oklab color format"
+msgstr "Adicionar formato de cor Oklab"
 
-#: src/window.js:488
-msgid "Failed to pick color"
-msgstr "Falha ao escolher a cor"
+msgid "Add Oklch color format"
+msgstr "Adicionar formato de cor Oklch"
 
-#. Color name
-#: src/utils/color-formats.js:5
-msgid "Name"
-msgstr "Nome"
+msgid "Add Russian translation"
+msgstr "Adicionar tradução para o russo"
 
-#. Hexadecimal color format
-#: src/utils/color-formats.js:11
-msgid "Hex"
-msgstr "Hex"
+msgid "Add Turkish translation"
+msgstr "Adicionar tradução turca"
 
-#. RGB color format
-#: src/utils/color-formats.js:17
-msgid "RGB"
-msgstr "RGB"
+msgid "Add Ukrainian translation"
+msgstr "Adicionar tradução ucraniana"
 
-#. RGB Percent color format
-#: src/utils/color-formats.js:23
-msgid "RGB Percent"
-msgstr "Porcentagem RGB"
+msgid "Add brand color"
+msgstr "Adicionar cor da marca"
 
-#. HSL color format
-#: src/utils/color-formats.js:29
-msgid "HSL"
-msgstr "HSL"
+msgid "Add keyboard shortcuts"
+msgstr "Adicionar atalhos de teclado"
 
-#. HSV color format
-#: src/utils/color-formats.js:35
-msgid "HSV"
-msgstr "HSV"
+msgid "Add more color formats"
+msgstr "Adicionar mais formatos de cores"
 
-#. CMYK color format
-#: src/utils/color-formats.js:41
-msgid "CMYK"
-msgstr "CMYK"
+msgid "Add precision settings"
+msgstr "Adicionar configurações de precisão"
 
-#. HWB color format
-#: src/utils/color-formats.js:47
-msgid "HWB"
-msgstr "HWB"
-
-#. XYZ color format
-#: src/utils/color-formats.js:53
-msgid "XYZ"
-msgstr "XYZ"
-
-#. CIE-L*ab color format
-#: src/utils/color-formats.js:59
-msgid "CIE-L*ab"
-msgstr "CIE-L*ab"
-
-#. CIE-Lch color format
-#: src/utils/color-formats.js:65
-msgid "CIE-Lch"
-msgstr "CIE-Lch"
-
-#. OKLAB color format
-#: src/utils/color-formats.js:71
-msgid "OKLAB"
-msgstr "OKLAB"
-
-#. OKLCH color format
-#: src/utils/color-formats.js:77
-msgid "OKLCH"
-msgstr "OKLCH"
-
-#: src/ui/delete-all.ui:6
-msgid "Delete saved colors"
-msgstr "Excluir cores salvas"
-
-#: src/ui/delete-all.ui:7
 msgid ""
 "Are you sure you want to delete all the saved colors? This action is "
 "irreversible."
@@ -281,902 +55,753 @@ msgstr ""
 "Tem certeza de que deseja apagar todas as cores salvas? Esta ação é "
 "irreversível."
 
-#: src/ui/delete-all.ui:12 src/ui/delete-one.ui:13
-msgid "Delete"
-msgstr "Excluir"
-
-#: src/ui/delete-all.ui:13 src/ui/delete-one.ui:14
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: src/ui/delete-one.ui:6
-msgid "Delete saved color"
-msgstr "Excluir cor salva"
-
-#: src/ui/delete-one.ui:7
 msgid ""
 "Are you sure you want to delete this color? This action is irreversible."
 msgstr "Tem certeza de que deseja excluir esta cor? Esta ação é irreversível."
 
-#: src/ui/help.ui:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Em geral"
+msgid "Bella"
+msgstr "Bela"
 
-#: src/ui/help.ui:14
-msgctxt "shortcut window"
-msgid "Open Menu"
-msgstr "Abrir menu"
+msgid "Below are the main features of Bella:"
+msgstr "Abaixo estão as principais características do Bela:"
 
-#: src/ui/help.ui:20
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Mostrar atalhos"
+msgid "CIE-L*ab"
+msgstr "CIE-L*ab"
 
-#: src/ui/help.ui:26
-msgctxt "shortcut window"
-msgid "Show Preferences"
-msgstr "Mostrar preferências"
+msgid "CIE-Lch"
+msgstr "CIE-Lch"
 
-#: src/ui/help.ui:32
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Desistir"
+msgid "CMYK"
+msgstr "CMYK"
 
-#: src/ui/help.ui:40
-msgctxt "shortcut window"
-msgid "Navigation"
-msgstr "Navegação"
+msgid "Cancel"
+msgstr "Cancelar"
 
-#: src/ui/help.ui:43
-msgctxt "shortcut window"
-msgid "Back"
-msgstr "Voltar"
+msgid "Color"
+msgstr "Cor"
 
-#: src/ui/help.ui:49
-msgctxt "shortcut window"
-msgid "Switch to Eye Dropper"
-msgstr "Mudar para conta-gotas"
+msgid "Color Format"
+msgstr "Formato de cor"
 
-#: src/ui/help.ui:55
-msgctxt "shortcut window"
-msgid "Switch to Saved Colors"
-msgstr "Mudar para cores salvas"
+msgid "Color Name"
+msgstr "Nome da cor"
 
-#: src/ui/help.ui:63
-msgctxt "shortcut window"
-msgid "Eye Dropper"
-msgstr "Conta-gotas"
+msgid "Color Settings"
+msgstr "Configurações de cor"
 
-#: src/ui/help.ui:66
-msgctxt "shortcut window"
-msgid "Pick Color"
-msgstr "Escolha a cor"
-
-#: src/ui/prefs.ui:7 src/ui/prefs.ui:13 src/ui/window.ui:305
-msgid "Preferences"
-msgstr "Preferências"
-
-#: src/ui/prefs.ui:16
 msgid "Color Theme Settings"
 msgstr "Configurações do tema de cores"
 
-#: src/ui/prefs.ui:17
-msgid "Set color theme"
-msgstr "Definir tema de cor"
+msgid "Color list view in dark theme"
+msgstr "Visualização de lista de cores no tema escuro"
 
-#: src/ui/prefs.ui:23
+msgid "Color list view in light theme"
+msgstr "Visualização de lista de cores no tema claro"
+
+msgid "Color precision"
+msgstr "Precisão de cor"
+
 msgid "Color theme"
 msgstr "Tema de cores"
 
-#: src/ui/prefs.ui:39
-msgctxt "System color theme"
-msgid "System"
-msgstr "Sistema"
+msgid "Color;Dropper;Eye;Picker;Pick;"
+msgstr ""
+"Color;Dropper;Eye;Picker;Pick;Cor; Conta-gotas; Olho; Seletor; Escolha;"
 
-#: src/ui/prefs.ui:56
-msgctxt "Light color theme"
-msgid "Light"
-msgstr "Claro"
+msgid "Common color modes"
+msgstr "Modos de cores comuns"
 
-#: src/ui/prefs.ui:73
+msgid "Copied %s"
+msgstr "%s copiados"
+
+msgid "Copy color"
+msgstr "Copiar cor"
+
 msgctxt "Dark color theme"
 msgid "Dark"
 msgstr "Escuro"
 
-#: src/ui/prefs.ui:90
-msgid "Color Settings"
-msgstr "Configurações de cor"
+msgid "Delete"
+msgstr "Excluir"
 
-#: src/ui/prefs.ui:91
-msgid "Saved color settings"
-msgstr "Configurações de cores salvas"
-
-#: src/ui/prefs.ui:94
 msgid "Delete Colors"
 msgstr "Excluir cores"
 
-#: src/ui/prefs.ui:95 src/ui/prefs.ui:104
 msgid "Delete all saved colors"
 msgstr "Excluir todas as cores salvas"
 
-#: src/ui/prefs.ui:106
-msgctxt "accessibility"
-msgid "Delete all saved colors"
-msgstr "Excluir todas as cores salvas"
+msgid "Delete color"
+msgstr "Excluir cor"
 
-#: src/ui/prefs.ui:116 src/ui/window.ui:275
-msgid "Color Format"
-msgstr "Formato de cor"
+msgid "Delete saved color"
+msgstr "Excluir cor salva"
 
-#: src/ui/prefs.ui:117
-msgid "Select color format to display"
-msgstr "Selecione o formato de cor para exibir"
+msgid "Delete saved colors"
+msgstr "Excluir cores salvas"
 
-#: src/ui/prefs.ui:122
-msgid "Precision"
-msgstr "Precisão"
+msgid "Deleted color"
+msgstr "Cor excluída"
 
-#: src/ui/prefs.ui:123
-msgid "Color precision"
-msgstr "Precisão de cor"
+msgid "Deleted saved colors"
+msgstr "Cores salvas excluídas"
 
-#: src/ui/window.ui:34
-msgid "Primary Menu"
-msgstr "Menu Principal"
+msgid "Details view in dark theme"
+msgstr "Visualização de lista de cores no tema escuro"
 
-#: src/ui/window.ui:36
-msgctxt "accessibility"
-msgid "Primary menu"
-msgstr "Menu principal"
+msgid "Details view in light theme"
+msgstr "Visualização de lista de cores no tema claro"
 
-#: src/ui/window.ui:96
+msgid "Display Hex color in lowercase"
+msgstr "Exibir cor hexadecimal em letras minúsculas"
+
+msgid "Eye Dropper"
+msgstr "Conta-gotas"
+
+msgid "Eye dropper view in dark theme"
+msgstr "Visualização do conta-gotas no tema escuro"
+
+msgid "Eye dropper view in light theme"
+msgstr "Visualização do conta-gotas no tema claro"
+
+msgid "Failed to pick color"
+msgstr "Falha ao escolher a cor"
+
+msgid "Fix dialog bug"
+msgstr "Corrigir bug de diálogo"
+
+msgid "Fix translation bug"
+msgstr "Corrigir bug de tradução"
+
+msgid "HSL"
+msgstr "HSL"
+
+msgid "HSV"
+msgstr "HSV"
+
+msgid "HWB"
+msgstr "HWB"
+
+msgid "Hex"
+msgstr "Hex"
+
+msgid "Initial release."
+msgstr "Lançamento inicial."
+
+msgid "Keyboard Shortcuts"
+msgstr "Atalhos de teclado"
+
+msgctxt "Light color theme"
+msgid "Light"
+msgstr "Claro"
+
+msgid "Modify color"
+msgstr "Modificar cor"
+
+msgid "Modify color or select new one"
+msgstr "Modifique a cor ou selecione uma nova"
+
+msgid "Modify the picked color"
+msgstr "Modificar a cor escolhida"
+
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "Navigate back to the main screen"
+msgid "Back"
+msgstr "Voltar"
+
+msgid "OKLAB"
+msgstr "OKLAB"
+
+msgid "OKLCH"
+msgstr "OKLCH"
+
 msgid "Pick Color from screen"
 msgstr "Escolha a cor na tela"
 
-#: src/ui/window.ui:105
-msgctxt "accessibility"
-msgid "Pick color from screen"
-msgstr "Escolha a cor na tela"
+msgid ""
+"Pick a color from anywhere on your screen and save it in one of the common "
+"color formats."
+msgstr ""
+"Escolha uma cor de qualquer lugar na tela e salve-a em um dos formatos de "
+"cor comuns."
 
-#: src/ui/window.ui:117
+msgid "Pick a color from the screen"
+msgstr "Escolha uma cor na tela"
+
+msgid "Pick color anywhere on your screen"
+msgstr "Escolha uma cor em qualquer lugar da tela"
+
+msgid "Precision"
+msgstr "Precisão"
+
+msgid "Preferences"
+msgstr "Preferências"
+
+msgid "Primary Menu"
+msgstr "Menu Principal"
+
+msgid "RGB"
+msgstr "RGB"
+
+msgid "RGB Percent"
+msgstr "Porcentagem RGB"
+
+msgid "Save the picked color"
+msgstr "Salve a cor escolhida"
+
 msgid "Saved Colors"
 msgstr "Cores salvas"
 
-#: src/ui/window.ui:141
+msgid "Saved color settings"
+msgstr "Configurações de cores salvas"
+
+msgid "Select color format to display"
+msgstr "Selecione o formato de cor para exibir"
+
+msgid "Set color theme"
+msgstr "Definir tema de cor"
+
+msgid "Shorten app summary"
+msgstr "Encurtar o resumo do aplicativo"
+
+msgid "Switch to dark, light, or system mode"
+msgstr "Alternar para o modo escuro, claro ou sistema"
+
+msgctxt "System color theme"
+msgid "System"
+msgstr "Sistema"
+
+msgid "The closest color name"
+msgstr "O nome da cor mais próximo"
+
 msgctxt "Translators: Only translate the text 'No Saved Color'"
 msgid "<span font-size=\"xx-large\">No Saved Color</span>"
 msgstr ""
 "<span font-size=\"xx-large\" font-weight=\"bold\">Nenhuma cor salva</span>"
 
-#: src/ui/window.ui:214
-msgctxt "Navigate back to the main screen"
-msgid "Back"
-msgstr "Voltar"
+msgid "Update UI"
+msgstr "Atualizar IU"
 
-#: src/ui/window.ui:217
+msgid "Update screenshots"
+msgstr "Atualizar capturas de tela"
+
+msgid "Upgrade Libportal to version 0.9.1"
+msgstr "Atualize o Libportal para a versão 0.9.1"
+
+msgid "Upgrade to GNOME runtime version 48"
+msgstr "Atualizar para a versão 48 do GNOME Runtime"
+
+msgid "View details"
+msgstr "Ver detalhes"
+
+msgid "XYZ"
+msgstr "XYZ"
+
 msgctxt "accessibility"
 msgid "Back to main screen"
 msgstr "Voltar para a tela principal"
 
-#: src/ui/window.ui:248
-msgid "Modify color"
-msgstr "Modificar cor"
+msgctxt "accessibility"
+msgid "Delete all saved colors"
+msgstr "Excluir todas as cores salvas"
 
-#: src/ui/window.ui:250
 msgctxt "accessibility"
 msgid "Modify color"
 msgstr "Modificar cor"
 
-#: src/ui/window.ui:255
-msgid "Modify color or select new one"
-msgstr "Modifique a cor ou selecione uma nova"
+msgctxt "accessibility"
+msgid "Pick color from screen"
+msgstr "Escolha a cor na tela"
 
-#: src/ui/window.ui:276
-msgid "Common color modes"
-msgstr "Modos de cores comuns"
+msgctxt "accessibility"
+msgid "Primary menu"
+msgstr "Menu principal"
 
-#: src/ui/window.ui:281
-msgid "Color Name"
-msgstr "Nome da cor"
-
-#: src/ui/window.ui:282
-msgid "The closest color name"
-msgstr "O nome da cor mais próximo"
-
-#: src/ui/window.ui:309
-msgid "Keyboard Shortcuts"
-msgstr "Atalhos de teclado"
-
-#: src/ui/window.ui:313
-msgid "About Bella"
-msgstr "Sobre Bella"
-
-#: src/utils/color-names.js:5
 msgid "aliceblue"
 msgstr "azul alice"
 
-#: src/utils/color-names.js:11
 msgid "antiquewhite"
 msgstr "branco antigo"
 
-#: src/utils/color-names.js:17
 msgid "aqua"
 msgstr "água"
 
-#: src/utils/color-names.js:23
 msgid "aquamarine"
 msgstr "água-marinha"
 
-#: src/utils/color-names.js:29
 msgid "azure"
 msgstr "azul celeste"
 
-#: src/utils/color-names.js:35
 msgid "beige"
 msgstr "bege"
 
-#: src/utils/color-names.js:41
 msgid "bisque"
 msgstr "biscoito"
 
-#: src/utils/color-names.js:47
 msgid "black"
 msgstr "preto"
 
-#: src/utils/color-names.js:53
 msgid "blanchedalmond"
 msgstr "amêndoa escaldada"
 
-#: src/utils/color-names.js:59
 msgid "blue"
 msgstr "azul"
 
-#: src/utils/color-names.js:65
 msgid "blueviolet"
 msgstr "azul-violeta"
 
-#: src/utils/color-names.js:71
 msgid "brown"
 msgstr "marrom"
 
-#: src/utils/color-names.js:77
 msgid "burlywood"
 msgstr "marrom claro"
 
-#: src/utils/color-names.js:83
 msgid "cadetblue"
 msgstr "azul cadete"
 
-#: src/utils/color-names.js:89
 msgid "chartreuse"
 msgstr "verde amarelado"
 
-#: src/utils/color-names.js:95
 msgid "chocolate"
 msgstr "chocolate"
 
-#: src/utils/color-names.js:101
 msgid "coral"
 msgstr "coral"
 
-#: src/utils/color-names.js:107
 msgid "cornflowerblue"
 msgstr "azul centáurea"
 
-#: src/utils/color-names.js:113
 msgid "cornsilk"
 msgstr "palha de milho"
 
-#: src/utils/color-names.js:119
 msgid "crimson"
 msgstr "carmesim"
 
-#: src/utils/color-names.js:125
 msgid "cyan"
 msgstr "ciano"
 
-#: src/utils/color-names.js:131
 msgid "darkblue"
 msgstr "azul escuro"
 
-#: src/utils/color-names.js:137
 msgid "darkcyan"
 msgstr "ciano escuro"
 
-#: src/utils/color-names.js:143
 msgid "darkgoldenrod"
 msgstr "verga-dourada-escura"
 
-#: src/utils/color-names.js:149
 msgid "darkgray"
 msgstr "cinza escuro"
 
-#: src/utils/color-names.js:155
 msgid "darkgreen"
 msgstr "verde escuro"
 
-#: src/utils/color-names.js:161
 msgid "darkgrey"
 msgstr "cinza escuro"
 
-#: src/utils/color-names.js:167
 msgid "darkkhaki"
 msgstr "cáqui escuro"
 
-#: src/utils/color-names.js:173
 msgid "darkmagenta"
 msgstr "magenta escuro"
 
-#: src/utils/color-names.js:179
 msgid "darkolivegreen"
 msgstr "verde-oliva escuro"
 
-#: src/utils/color-names.js:185
 msgid "darkorange"
 msgstr "laranja escuro"
 
-#: src/utils/color-names.js:191
 msgid "darkorchid"
 msgstr "orquídea escura"
 
-#: src/utils/color-names.js:197
 msgid "darkred"
 msgstr "vermelho escuro"
 
-#: src/utils/color-names.js:203
 msgid "darksalmon"
 msgstr "salmão escuro"
 
-#: src/utils/color-names.js:209
 msgid "darkseagreen"
 msgstr "verde-marinho escuro"
 
-#: src/utils/color-names.js:215
 msgid "darkslateblue"
 msgstr "azul-ardósia escuro"
 
-#: src/utils/color-names.js:221
 msgid "darkslategray"
 msgstr "cinza-ardósia escuro"
 
-#: src/utils/color-names.js:227
 msgid "darkslategrey"
 msgstr "cinza-ardósia escuro"
 
-#: src/utils/color-names.js:233
 msgid "darkturquoise"
 msgstr "turquesa escuro"
 
-#: src/utils/color-names.js:239
 msgid "darkviolet"
 msgstr "violeta escuro"
 
-#: src/utils/color-names.js:245
 msgid "deeppink"
 msgstr "rosa profundo"
 
-#: src/utils/color-names.js:251
 msgid "deepskyblue"
 msgstr "azul-céu profundo"
 
-#: src/utils/color-names.js:257
 msgid "dimgray"
 msgstr "escuro"
 
-#: src/utils/color-names.js:263
 msgid "dimgrey"
 msgstr "escuro"
 
-#: src/utils/color-names.js:269
 msgid "dodgerblue"
 msgstr "azul dodger"
 
-#: src/utils/color-names.js:275
 msgid "firebrick"
 msgstr "vermelho tijolo"
 
-#: src/utils/color-names.js:281
 msgid "floralwhite"
 msgstr "branco floral"
 
-#: src/utils/color-names.js:287
 msgid "forestgreen"
 msgstr "verde floresta"
 
-#: src/utils/color-names.js:293
 msgid "fuchsia"
 msgstr "fúcsia"
 
-#: src/utils/color-names.js:299
 msgid "gainsboro"
 msgstr "cinza gainsboro"
 
-#: src/utils/color-names.js:305
 msgid "ghostwhite"
 msgstr "branco fantasma"
 
-#: src/utils/color-names.js:311
 msgid "gold"
 msgstr "ouro"
 
-#: src/utils/color-names.js:317
 msgid "goldenrod"
 msgstr "amarelo mostarda intenso"
 
-#: src/utils/color-names.js:323
 msgid "gray"
 msgstr "cinza"
 
-#: src/utils/color-names.js:329
 msgid "green"
 msgstr "verde"
 
-#: src/utils/color-names.js:335
 msgid "greenyellow"
 msgstr "verde-amarelo"
 
-#: src/utils/color-names.js:341
 msgid "grey"
 msgstr "cinza"
 
-#: src/utils/color-names.js:347
 msgid "honeydew"
 msgstr "melão-de-inverno"
 
-#: src/utils/color-names.js:353
 msgid "hotpink"
 msgstr "rosa choque"
 
-#: src/utils/color-names.js:359
 msgid "indianred"
 msgstr "vermelho indiano"
 
-#: src/utils/color-names.js:365
 msgid "indigo"
 msgstr "anil"
 
-#: src/utils/color-names.js:371
 msgid "ivory"
 msgstr "marfim"
 
-#: src/utils/color-names.js:377
 msgid "khaki"
 msgstr "cáqui"
 
-#: src/utils/color-names.js:383
 msgid "lavender"
 msgstr "lavanda"
 
-#: src/utils/color-names.js:389
 msgid "lavenderblush"
 msgstr "rubor de lavanda"
 
-#: src/utils/color-names.js:395
 msgid "lawngreen"
 msgstr "verde gramado"
 
-#: src/utils/color-names.js:401
 msgid "lemonchiffon"
 msgstr "chiffon de limão"
 
-#: src/utils/color-names.js:407
 msgid "lightblue"
 msgstr "azul claro"
 
-#: src/utils/color-names.js:413
 msgid "lightcoral"
 msgstr "coral claro"
 
-#: src/utils/color-names.js:419
 msgid "lightcyan"
 msgstr "ciano claro"
 
-#: src/utils/color-names.js:425
 msgid "lightgoldenrodyellow"
 msgstr "amarelo dourado claro"
 
-#: src/utils/color-names.js:431
 msgid "lightgray"
 msgstr "cinza claro"
 
-#: src/utils/color-names.js:437
 msgid "lightgreen"
 msgstr "verde claro"
 
-#: src/utils/color-names.js:443
 msgid "lightgrey"
 msgstr "cinza claro"
 
-#: src/utils/color-names.js:449
 msgid "lightpink"
 msgstr "rosa claro"
 
-#: src/utils/color-names.js:455
 msgid "lightsalmon"
 msgstr "salmão claro"
 
-#: src/utils/color-names.js:461
 msgid "lightseagreen"
 msgstr "verde-água"
 
-#: src/utils/color-names.js:467
 msgid "lightskyblue"
 msgstr "azul céu claro"
 
-#: src/utils/color-names.js:473
 msgid "lightslategray"
 msgstr "cinza claro"
 
-#: src/utils/color-names.js:479
 msgid "lightslategrey"
 msgstr "cinza claro"
 
-#: src/utils/color-names.js:485
 msgid "lightsteelblue"
 msgstr "azul aço claro"
 
-#: src/utils/color-names.js:491
 msgid "lightyellow"
 msgstr "amarelo claro"
 
-#: src/utils/color-names.js:497
 msgid "lime"
 msgstr "limão"
 
-#: src/utils/color-names.js:503
 msgid "limegreen"
 msgstr "verde limão"
 
-#: src/utils/color-names.js:509
 msgid "linen"
 msgstr "linho"
 
-#: src/utils/color-names.js:515
 msgid "magenta"
 msgstr "magenta"
 
-#: src/utils/color-names.js:521
 msgid "maroon"
 msgstr "marrom"
 
-#: src/utils/color-names.js:527
 msgid "mediumaquamarine"
 msgstr "aquamarina médio"
 
-#: src/utils/color-names.js:533
 msgid "mediumblue"
 msgstr "azul médio"
 
-#: src/utils/color-names.js:539
 msgid "mediumorchid"
 msgstr "orquídea média"
 
-#: src/utils/color-names.js:545
 msgid "mediumpurple"
 msgstr "púrpura média"
 
-#: src/utils/color-names.js:551
 msgid "mediumseagreen"
 msgstr "verde marinho médio"
 
-#: src/utils/color-names.js:557
 msgid "mediumslateblue"
 msgstr "azul-petróleo médio"
 
-#: src/utils/color-names.js:563
 msgid "mediumspringgreen"
 msgstr "verde primavera média"
 
-#: src/utils/color-names.js:569
 msgid "mediumturquoise"
 msgstr "turquesa médio"
 
-#: src/utils/color-names.js:575
 msgid "mediumvioletred"
 msgstr "vermelho-médio-violeta"
 
-#: src/utils/color-names.js:581
 msgid "midnightblue"
 msgstr "azul meia-noite"
 
-#: src/utils/color-names.js:587
 msgid "mintcream"
 msgstr "creme de menta"
 
-#: src/utils/color-names.js:593
 msgid "mistyrose"
 msgstr "rosa enfumaçada"
 
-#: src/utils/color-names.js:599
 msgid "moccasin"
 msgstr "mocassim"
 
-#: src/utils/color-names.js:605
 msgid "navajowhite"
 msgstr "branco navajo"
 
-#: src/utils/color-names.js:611
 msgid "navy"
 msgstr "marinha"
 
-#: src/utils/color-names.js:617
 msgid "oldlace"
 msgstr "renda antiga"
 
-#: src/utils/color-names.js:623
 msgid "olive"
 msgstr "oliva"
 
-#: src/utils/color-names.js:629
 msgid "olivedrab"
 msgstr "verde oliva escuro"
 
-#: src/utils/color-names.js:635
 msgid "orange"
 msgstr "laranja"
 
-#: src/utils/color-names.js:641
 msgid "orangered"
 msgstr "laranja avermelhada"
 
-#: src/utils/color-names.js:647
 msgid "orchid"
 msgstr "orquídea"
 
-#: src/utils/color-names.js:653
 msgid "palegoldenrod"
 msgstr "dourado pálido"
 
-#: src/utils/color-names.js:659
 msgid "palegreen"
 msgstr "verde pálido"
 
-#: src/utils/color-names.js:665
 msgid "paleturquoise"
 msgstr "azul pálido"
 
-#: src/utils/color-names.js:671
 msgid "palevioletred"
 msgstr "vermelho pálido"
 
-#: src/utils/color-names.js:677
 msgid "papayawhip"
 msgstr "creme de mamão"
 
-#: src/utils/color-names.js:683
 msgid "peachpuff"
 msgstr "pêssego claro"
 
-#: src/utils/color-names.js:689
 msgid "peru"
 msgstr "marrom peruano"
 
-#: src/utils/color-names.js:695
 msgid "pink"
 msgstr "rosa"
 
-#: src/utils/color-names.js:701
 msgid "plum"
 msgstr "ameixa"
 
-#: src/utils/color-names.js:707
 msgid "powderblue"
 msgstr "azul claro"
 
-#: src/utils/color-names.js:713
 msgid "purple"
 msgstr "roxo"
 
-#: src/utils/color-names.js:719
 msgid "rebeccapurple"
 msgstr "roxo Rebecca"
 
-#: src/utils/color-names.js:725
 msgid "red"
 msgstr "vermelho"
 
-#: src/utils/color-names.js:731
 msgid "rosybrown"
 msgstr "marrom-rosado"
 
-#: src/utils/color-names.js:737
 msgid "royalblue"
 msgstr "azul royal"
 
-#: src/utils/color-names.js:743
 msgid "saddlebrown"
 msgstr "marrom sela"
 
-#: src/utils/color-names.js:749
 msgid "salmon"
 msgstr "salmão"
 
-#: src/utils/color-names.js:755
 msgid "sandybrown"
 msgstr "marrom areia"
 
-#: src/utils/color-names.js:761
 msgid "seagreen"
 msgstr "verde-mar"
 
-#: src/utils/color-names.js:767
 msgid "seashell"
 msgstr "concha do mar"
 
-#: src/utils/color-names.js:773
+msgctxt "shortcut window"
+msgid "Back"
+msgstr "Voltar"
+
+msgctxt "shortcut window"
+msgid "Eye Dropper"
+msgstr "Conta-gotas"
+
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Em geral"
+
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Navegação"
+
+msgctxt "shortcut window"
+msgid "Open Menu"
+msgstr "Abrir menu"
+
+msgctxt "shortcut window"
+msgid "Pick Color"
+msgstr "Escolha a cor"
+
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Desistir"
+
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Mostrar preferências"
+
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostrar atalhos"
+
+msgctxt "shortcut window"
+msgid "Switch to Eye Dropper"
+msgstr "Mudar para conta-gotas"
+
+msgctxt "shortcut window"
+msgid "Switch to Saved Colors"
+msgstr "Mudar para cores salvas"
+
 msgid "sienna"
 msgstr "siena"
 
-#: src/utils/color-names.js:779
 msgid "silver"
 msgstr "prata"
 
-#: src/utils/color-names.js:785
 msgid "skyblue"
 msgstr "azul céu"
 
-#: src/utils/color-names.js:791
 msgid "slateblue"
 msgstr "azul-ardósia"
 
-#: src/utils/color-names.js:797
 msgid "slategray"
 msgstr "cinza-ardósia"
 
-#: src/utils/color-names.js:803
 msgid "slategrey"
 msgstr "cinza-ardósia"
 
-#: src/utils/color-names.js:809
 msgid "snow"
 msgstr "neve"
 
-#: src/utils/color-names.js:815
 msgid "springgreen"
 msgstr "verde-primavera"
 
-#: src/utils/color-names.js:821
 msgid "steelblue"
 msgstr "azul-aço"
 
-#: src/utils/color-names.js:827
 msgid "tan"
 msgstr "bege claro"
 
-#: src/utils/color-names.js:833
 msgid "teal"
 msgstr "verde-petróleo"
 
-#: src/utils/color-names.js:839
 msgid "thistle"
 msgstr "cardo"
 
-#: src/utils/color-names.js:845
 msgid "tomato"
 msgstr "tomate"
 
-#: src/utils/color-names.js:851
 msgid "turquoise"
 msgstr "turquesa"
 
-#: src/utils/color-names.js:857
 msgid "violet"
 msgstr "violeta"
 
-#: src/utils/color-names.js:863
 msgid "wheat"
 msgstr "trigo"
 
-#: src/utils/color-names.js:869
 msgid "white"
 msgstr "branco"
 
-#: src/utils/color-names.js:875
 msgid "whitesmoke"
 msgstr "fumaça branca"
 
-#: src/utils/color-names.js:881
 msgid "yellow"
 msgstr "amarelo"
 
-#: src/utils/color-names.js:887
 msgid "yellowgreen"
 msgstr "verde-amarelo"
-
-#~ msgid "Deleted all saved colors"
-#~ msgstr "Apagou todas as cores salvas"
-
-#, javascript-format
-#~ msgid "Copied %s to clipboard"
-#~ msgstr "Copiou %s para a área de transferência"
-
-#~ msgid "Deleted saved color successfully"
-#~ msgstr "Cor salva excluída com sucesso"
-
-#, javascript-format
-#~ msgid "id: %s doesn't existent"
-#~ msgstr "id: %s não existe"
-
-#~ msgid "Failed to read saved data"
-#~ msgstr "Falha ao ler os dados salvos"
-
-#~ msgid "File doesn't exist yet"
-#~ msgstr "O arquivo ainda não existe"
-
-#~ msgid "Successfully saved picked colors to file"
-#~ msgstr "As cores selecionadas foram salvas com sucesso no arquivo"
-
-#~ msgid "Failed to save picked colors to file"
-#~ msgstr "Falha ao salvar as cores selecionadas no arquivo"
-
-#~ msgid "An error occurred while creating directory"
-#~ msgstr "Ocorreu um erro ao criar o diretório"
-
-#~ msgctxt "Hexadecimal color format"
-#~ msgid "Hex"
-#~ msgstr "Hex"
-
-#~ msgctxt "RGB color format"
-#~ msgid "RGB"
-#~ msgstr "RGB"
-
-#~ msgctxt "RGB Percent color format"
-#~ msgid "RGB Percent"
-#~ msgstr "Porcentagem RGB"
-
-#~ msgctxt "HSL color format"
-#~ msgid "HSL"
-#~ msgstr "HSL"
-
-#~ msgctxt "HSV color format"
-#~ msgid "HSV"
-#~ msgstr "HSV"
-
-#~ msgctxt "CMYK color format"
-#~ msgid "CMYK"
-#~ msgstr "CMYK"
-
-#~ msgctxt "HWB color format"
-#~ msgid "HWB"
-#~ msgstr "HWB"
-
-#~ msgctxt "XYZ color format"
-#~ msgid "XYZ"
-#~ msgstr "XYZ"
-
-#~ msgctxt "CIE-L*ab color format"
-#~ msgid "CIE-L*ab"
-#~ msgstr "CIE-L*ab"
-
-#~ msgctxt "CIE-Lch color format"
-#~ msgid "CIE-Lch"
-#~ msgstr "CIE-Lch"
-
-#~ msgctxt "Color name"
-#~ msgid "Name"
-#~ msgstr "Nome"
-
-#~ msgctxt "accessibility"
-#~ msgid "Copy color"
-#~ msgstr "Copiar cor"
-
-#~ msgctxt "accessibility"
-#~ msgid "Delete color"
-#~ msgstr "Excluir cor"
-
-#~ msgctxt "accessibility"
-#~ msgid "View details"
-#~ msgstr "Ver detalhes"
-
-#~ msgid "color"
-#~ msgstr "cor"
-
-#~ msgid "color picker"
-#~ msgstr "seletor de cores"
-
-#~ msgid "eye dropper"
-#~ msgstr "conta-gotas"
-
-#~ msgid "development"
-#~ msgstr "desenvolvimento"
