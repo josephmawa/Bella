@@ -27,3 +27,4 @@ src/ui/window.ui
 # src/columns/*.ui
 # src/ui/columns/actions.ui
 # src/ui/columns/color.ui
+src/utils/color-names.js
