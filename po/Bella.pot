@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-16 21:26-0300\n"
+"POT-Creation-Date: 2025-07-17 10:10-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -483,4 +483,596 @@ msgstr ""
 
 #: src/ui/window.ui:313
 msgid "About Bella"
+msgstr ""
+
+#: src/utils/color-names.js:5
+msgid "aliceblue"
+msgstr ""
+
+#: src/utils/color-names.js:11
+msgid "antiquewhite"
+msgstr ""
+
+#: src/utils/color-names.js:17
+msgid "aqua"
+msgstr ""
+
+#: src/utils/color-names.js:23
+msgid "aquamarine"
+msgstr ""
+
+#: src/utils/color-names.js:29
+msgid "azure"
+msgstr ""
+
+#: src/utils/color-names.js:35
+msgid "beige"
+msgstr ""
+
+#: src/utils/color-names.js:41
+msgid "bisque"
+msgstr ""
+
+#: src/utils/color-names.js:47
+msgid "black"
+msgstr ""
+
+#: src/utils/color-names.js:53
+msgid "blanchedalmond"
+msgstr ""
+
+#: src/utils/color-names.js:59
+msgid "blue"
+msgstr ""
+
+#: src/utils/color-names.js:65
+msgid "blueviolet"
+msgstr ""
+
+#: src/utils/color-names.js:71
+msgid "brown"
+msgstr ""
+
+#: src/utils/color-names.js:77
+msgid "burlywood"
+msgstr ""
+
+#: src/utils/color-names.js:83
+msgid "cadetblue"
+msgstr ""
+
+#: src/utils/color-names.js:89
+msgid "chartreuse"
+msgstr ""
+
+#: src/utils/color-names.js:95
+msgid "chocolate"
+msgstr ""
+
+#: src/utils/color-names.js:101
+msgid "coral"
+msgstr ""
+
+#: src/utils/color-names.js:107
+msgid "cornflowerblue"
+msgstr ""
+
+#: src/utils/color-names.js:113
+msgid "cornsilk"
+msgstr ""
+
+#: src/utils/color-names.js:119
+msgid "crimson"
+msgstr ""
+
+#: src/utils/color-names.js:125
+msgid "cyan"
+msgstr ""
+
+#: src/utils/color-names.js:131
+msgid "darkblue"
+msgstr ""
+
+#: src/utils/color-names.js:137
+msgid "darkcyan"
+msgstr ""
+
+#: src/utils/color-names.js:143
+msgid "darkgoldenrod"
+msgstr ""
+
+#: src/utils/color-names.js:149
+msgid "darkgray"
+msgstr ""
+
+#: src/utils/color-names.js:155
+msgid "darkgreen"
+msgstr ""
+
+#: src/utils/color-names.js:161
+msgid "darkgrey"
+msgstr ""
+
+#: src/utils/color-names.js:167
+msgid "darkkhaki"
+msgstr ""
+
+#: src/utils/color-names.js:173
+msgid "darkmagenta"
+msgstr ""
+
+#: src/utils/color-names.js:179
+msgid "darkolivegreen"
+msgstr ""
+
+#: src/utils/color-names.js:185
+msgid "darkorange"
+msgstr ""
+
+#: src/utils/color-names.js:191
+msgid "darkorchid"
+msgstr ""
+
+#: src/utils/color-names.js:197
+msgid "darkred"
+msgstr ""
+
+#: src/utils/color-names.js:203
+msgid "darksalmon"
+msgstr ""
+
+#: src/utils/color-names.js:209
+msgid "darkseagreen"
+msgstr ""
+
+#: src/utils/color-names.js:215
+msgid "darkslateblue"
+msgstr ""
+
+#: src/utils/color-names.js:221
+msgid "darkslategray"
+msgstr ""
+
+#: src/utils/color-names.js:227
+msgid "darkslategrey"
+msgstr ""
+
+#: src/utils/color-names.js:233
+msgid "darkturquoise"
+msgstr ""
+
+#: src/utils/color-names.js:239
+msgid "darkviolet"
+msgstr ""
+
+#: src/utils/color-names.js:245
+msgid "deeppink"
+msgstr ""
+
+#: src/utils/color-names.js:251
+msgid "deepskyblue"
+msgstr ""
+
+#: src/utils/color-names.js:257
+msgid "dimgray"
+msgstr ""
+
+#: src/utils/color-names.js:263
+msgid "dimgrey"
+msgstr ""
+
+#: src/utils/color-names.js:269
+msgid "dodgerblue"
+msgstr ""
+
+#: src/utils/color-names.js:275
+msgid "firebrick"
+msgstr ""
+
+#: src/utils/color-names.js:281
+msgid "floralwhite"
+msgstr ""
+
+#: src/utils/color-names.js:287
+msgid "forestgreen"
+msgstr ""
+
+#: src/utils/color-names.js:293
+msgid "fuchsia"
+msgstr ""
+
+#: src/utils/color-names.js:299
+msgid "gainsboro"
+msgstr ""
+
+#: src/utils/color-names.js:305
+msgid "ghostwhite"
+msgstr ""
+
+#: src/utils/color-names.js:311
+msgid "gold"
+msgstr ""
+
+#: src/utils/color-names.js:317
+msgid "goldenrod"
+msgstr ""
+
+#: src/utils/color-names.js:323
+msgid "gray"
+msgstr ""
+
+#: src/utils/color-names.js:329
+msgid "green"
+msgstr ""
+
+#: src/utils/color-names.js:335
+msgid "greenyellow"
+msgstr ""
+
+#: src/utils/color-names.js:341
+msgid "grey"
+msgstr ""
+
+#: src/utils/color-names.js:347
+msgid "honeydew"
+msgstr ""
+
+#: src/utils/color-names.js:353
+msgid "hotpink"
+msgstr ""
+
+#: src/utils/color-names.js:359
+msgid "indianred"
+msgstr ""
+
+#: src/utils/color-names.js:365
+msgid "indigo"
+msgstr ""
+
+#: src/utils/color-names.js:371
+msgid "ivory"
+msgstr ""
+
+#: src/utils/color-names.js:377
+msgid "khaki"
+msgstr ""
+
+#: src/utils/color-names.js:383
+msgid "lavender"
+msgstr ""
+
+#: src/utils/color-names.js:389
+msgid "lavenderblush"
+msgstr ""
+
+#: src/utils/color-names.js:395
+msgid "lawngreen"
+msgstr ""
+
+#: src/utils/color-names.js:401
+msgid "lemonchiffon"
+msgstr ""
+
+#: src/utils/color-names.js:407
+msgid "lightblue"
+msgstr ""
+
+#: src/utils/color-names.js:413
+msgid "lightcoral"
+msgstr ""
+
+#: src/utils/color-names.js:419
+msgid "lightcyan"
+msgstr ""
+
+#: src/utils/color-names.js:425
+msgid "lightgoldenrodyellow"
+msgstr ""
+
+#: src/utils/color-names.js:431
+msgid "lightgray"
+msgstr ""
+
+#: src/utils/color-names.js:437
+msgid "lightgreen"
+msgstr ""
+
+#: src/utils/color-names.js:443
+msgid "lightgrey"
+msgstr ""
+
+#: src/utils/color-names.js:449
+msgid "lightpink"
+msgstr ""
+
+#: src/utils/color-names.js:455
+msgid "lightsalmon"
+msgstr ""
+
+#: src/utils/color-names.js:461
+msgid "lightseagreen"
+msgstr ""
+
+#: src/utils/color-names.js:467
+msgid "lightskyblue"
+msgstr ""
+
+#: src/utils/color-names.js:473
+msgid "lightslategray"
+msgstr ""
+
+#: src/utils/color-names.js:479
+msgid "lightslategrey"
+msgstr ""
+
+#: src/utils/color-names.js:485
+msgid "lightsteelblue"
+msgstr ""
+
+#: src/utils/color-names.js:491
+msgid "lightyellow"
+msgstr ""
+
+#: src/utils/color-names.js:497
+msgid "lime"
+msgstr ""
+
+#: src/utils/color-names.js:503
+msgid "limegreen"
+msgstr ""
+
+#: src/utils/color-names.js:509
+msgid "linen"
+msgstr ""
+
+#: src/utils/color-names.js:515
+msgid "magenta"
+msgstr ""
+
+#: src/utils/color-names.js:521
+msgid "maroon"
+msgstr ""
+
+#: src/utils/color-names.js:527
+msgid "mediumaquamarine"
+msgstr ""
+
+#: src/utils/color-names.js:533
+msgid "mediumblue"
+msgstr ""
+
+#: src/utils/color-names.js:539
+msgid "mediumorchid"
+msgstr ""
+
+#: src/utils/color-names.js:545
+msgid "mediumpurple"
+msgstr ""
+
+#: src/utils/color-names.js:551
+msgid "mediumseagreen"
+msgstr ""
+
+#: src/utils/color-names.js:557
+msgid "mediumslateblue"
+msgstr ""
+
+#: src/utils/color-names.js:563
+msgid "mediumspringgreen"
+msgstr ""
+
+#: src/utils/color-names.js:569
+msgid "mediumturquoise"
+msgstr ""
+
+#: src/utils/color-names.js:575
+msgid "mediumvioletred"
+msgstr ""
+
+#: src/utils/color-names.js:581
+msgid "midnightblue"
+msgstr ""
+
+#: src/utils/color-names.js:587
+msgid "mintcream"
+msgstr ""
+
+#: src/utils/color-names.js:593
+msgid "mistyrose"
+msgstr ""
+
+#: src/utils/color-names.js:599
+msgid "moccasin"
+msgstr ""
+
+#: src/utils/color-names.js:605
+msgid "navajowhite"
+msgstr ""
+
+#: src/utils/color-names.js:611
+msgid "navy"
+msgstr ""
+
+#: src/utils/color-names.js:617
+msgid "oldlace"
+msgstr ""
+
+#: src/utils/color-names.js:623
+msgid "olive"
+msgstr ""
+
+#: src/utils/color-names.js:629
+msgid "olivedrab"
+msgstr ""
+
+#: src/utils/color-names.js:635
+msgid "orange"
+msgstr ""
+
+#: src/utils/color-names.js:641
+msgid "orangered"
+msgstr ""
+
+#: src/utils/color-names.js:647
+msgid "orchid"
+msgstr ""
+
+#: src/utils/color-names.js:653
+msgid "palegoldenrod"
+msgstr ""
+
+#: src/utils/color-names.js:659
+msgid "palegreen"
+msgstr ""
+
+#: src/utils/color-names.js:665
+msgid "paleturquoise"
+msgstr ""
+
+#: src/utils/color-names.js:671
+msgid "palevioletred"
+msgstr ""
+
+#: src/utils/color-names.js:677
+msgid "papayawhip"
+msgstr ""
+
+#: src/utils/color-names.js:683
+msgid "peachpuff"
+msgstr ""
+
+#: src/utils/color-names.js:689
+msgid "peru"
+msgstr ""
+
+#: src/utils/color-names.js:695
+msgid "pink"
+msgstr ""
+
+#: src/utils/color-names.js:701
+msgid "plum"
+msgstr ""
+
+#: src/utils/color-names.js:707
+msgid "powderblue"
+msgstr ""
+
+#: src/utils/color-names.js:713
+msgid "purple"
+msgstr ""
+
+#: src/utils/color-names.js:719
+msgid "rebeccapurple"
+msgstr ""
+
+#: src/utils/color-names.js:725
+msgid "red"
+msgstr ""
+
+#: src/utils/color-names.js:731
+msgid "rosybrown"
+msgstr ""
+
+#: src/utils/color-names.js:737
+msgid "royalblue"
+msgstr ""
+
+#: src/utils/color-names.js:743
+msgid "saddlebrown"
+msgstr ""
+
+#: src/utils/color-names.js:749
+msgid "salmon"
+msgstr ""
+
+#: src/utils/color-names.js:755
+msgid "sandybrown"
+msgstr ""
+
+#: src/utils/color-names.js:761
+msgid "seagreen"
+msgstr ""
+
+#: src/utils/color-names.js:767
+msgid "seashell"
+msgstr ""
+
+#: src/utils/color-names.js:773
+msgid "sienna"
+msgstr ""
+
+#: src/utils/color-names.js:779
+msgid "silver"
+msgstr ""
+
+#: src/utils/color-names.js:785
+msgid "skyblue"
+msgstr ""
+
+#: src/utils/color-names.js:791
+msgid "slateblue"
+msgstr ""
+
+#: src/utils/color-names.js:797
+msgid "slategray"
+msgstr ""
+
+#: src/utils/color-names.js:803
+msgid "slategrey"
+msgstr ""
+
+#: src/utils/color-names.js:809
+msgid "snow"
+msgstr ""
+
+#: src/utils/color-names.js:815
+msgid "springgreen"
+msgstr ""
+
+#: src/utils/color-names.js:821
+msgid "steelblue"
+msgstr ""
+
+#: src/utils/color-names.js:827
+msgid "tan"
+msgstr ""
+
+#: src/utils/color-names.js:833
+msgid "teal"
+msgstr ""
+
+#: src/utils/color-names.js:839
+msgid "thistle"
+msgstr ""
+
+#: src/utils/color-names.js:845
+msgid "tomato"
+msgstr ""
+
+#: src/utils/color-names.js:851
+msgid "turquoise"
+msgstr ""
+
+#: src/utils/color-names.js:857
+msgid "violet"
+msgstr ""
+
+#: src/utils/color-names.js:863
+msgid "wheat"
+msgstr ""
+
+#: src/utils/color-names.js:869
+msgid "white"
+msgstr ""
+
+#: src/utils/color-names.js:875
+msgid "whitesmoke"
+msgstr ""
+
+#: src/utils/color-names.js:881
+msgid "yellow"
+msgstr ""
+
+#: src/utils/color-names.js:887
+msgid "yellowgreen"
 msgstr ""
