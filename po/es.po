@@ -33,7 +33,7 @@ msgstr "Escoge un color en cualquier parte de tu pantalla"
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
 #: data/io.github.josephmawa.Bella.desktop.in:12
 msgid "Color;Dropper;Eye;Picker;Pick;"
-msgstr "Color;Gotero;Ojo;Selector;Seleccionar;Colores"
+msgstr "Color;Gotero;Ojo;Selector;Seleccionar;Colores;"
 
 #: data/io.github.josephmawa.Bella.metainfo.xml.in:9
 #: data/io.github.josephmawa.Bella.metainfo.xml.in:19
