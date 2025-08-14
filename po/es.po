@@ -1,0 +1,382 @@
+# Spanish translations for Bella package.
+# Copyright (C) 2025 THE Bella'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Bella package.
+# fuan <juandiazfdez1992@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Bella\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-02 13:58+0300\n"
+"PO-Revision-Date: 2025-07-26 15:44-0600\n"
+"Last-Translator: fuan <juandiazfdez1992@gmail.com>\n"
+"Language-Team: Spanish <es@tp.org.es>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.github.josephmawa.Bella.desktop.in:3
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:5
+msgid "Bella"
+msgstr "Bella"
+
+#: data/io.github.josephmawa.Bella.desktop.in:4 src/ui/window.ui:64
+msgid "Eye Dropper"
+msgstr "Gotero"
+
+#: data/io.github.josephmawa.Bella.desktop.in:5
+msgid "Pick color anywhere on your screen"
+msgstr "Escoge un color en cualquier parte de tu pantalla"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.josephmawa.Bella.desktop.in:12
+msgid "Color;Dropper;Eye;Picker;Pick;"
+msgstr "Color;Gotero;Ojo;Selector;Seleccionar;Colores;"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:9
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:19
+msgid "Pick color from the screen"
+msgstr "Seleccionar color de la pantalla"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:16
+msgid ""
+"Pick color from anywhere on your screen and save it in one of the common "
+"color formats."
+msgstr ""
+"Selecciona colores de cualquier lugar de tu pantalla y guardalos en uno de"
+"los formatos de color comunes."
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:17
+msgid "Below are the main features of Bella:"
+msgstr "A continuación se presentan las principales características de Bella:"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:20
+msgid "Save the picked color"
+msgstr "Guardar el color seleccionado"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:21
+msgid "Modify the picked color"
+msgstr "Modificar el color seleccionado"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:22
+msgid "Switch to dark, light or system mode"
+msgstr "Cambiar al modo oscuro, claro o el del sistema"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:36
+msgid "Eye dropper view in dark theme"
+msgstr "Vista del gotero en tema oscuro"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:40
+msgid "Eye dropper view in light theme"
+msgstr "Vista del gotero en tema claro"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:44
+msgid "Color list view in dark theme"
+msgstr "Ver la lista de colores en modo oscuro"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:48
+msgid "Color list view in light theme"
+msgstr "Ver la lista de colores en modo claro"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:55
+msgid "color"
+msgstr "color"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:56
+msgid "color picker"
+msgstr "selector de color"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:57
+msgid "eye dropper"
+msgstr "Gotero"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:58
+msgid "development"
+msgstr "desarrollo"
+
+#: src/window.js:239
+msgid "Deleted all saved colors"
+msgstr "Eliminar todos los colores guardados"
+
+#. Translators: Do NOT translate %s. It is a placeholder.
+#: src/window.js:252 src/window.js:568
+#, javascript-format
+msgid "Copied %s to clipboard"
+msgstr "Copiado %s al portapapeles"
+
+#: src/window.js:273
+msgid "Deleted saved color successfully"
+msgstr "Colores eliminados correctamente"
+
+#. Translators: Do NOT translate %s. It is a placeholder.
+#: src/window.js:286
+#, javascript-format
+msgid "id: %s doesn't existent"
+msgstr "id: %s no existe"
+
+#: src/window.js:359
+msgid "Failed to pick color"
+msgstr "Error al obtener el color"
+
+#: src/window.js:460
+msgid "Failed to read saved data"
+msgstr "No se pudieron leer los datos guardados"
+
+#: src/window.js:466
+msgid "File doesn't exist yet"
+msgstr "El archivo no existe aún"
+
+#: src/window.js:485
+msgid "Successfully saved picked colors to file"
+msgstr "Colores seleccionados guardados exitosamente en el archivo"
+
+#: src/window.js:487
+msgid "Failed to save picked colors to file"
+msgstr "No se pudieron guardar los colores seleccionados en el archivo"
+
+#: src/window.js:492
+msgid "An error occurred while creating directory"
+msgstr "Un error ocurrio al crear el directorio"
+
+#: src/ui/confirm-delete-all.ui:6
+msgid "Delete saved colors"
+msgstr "Borrar colores guardados"
+
+#: src/ui/confirm-delete-all.ui:7
+msgid ""
+"Are you sure you want to delete all the saved colors? This action is "
+"irreversible."
+msgstr ""
+"¿Estás seguro de borrar todos los colores guardados? Esta acción es "
+"irreversible."
+
+#: src/ui/confirm-delete-all.ui:11 src/ui/confirm-delete-one.ui:12
+msgid "Delete"
+msgstr "Eliminar"
+
+#: src/ui/confirm-delete-all.ui:12 src/ui/confirm-delete-one.ui:13
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/ui/confirm-delete-one.ui:6
+msgid "Delete saved color"
+msgstr "Eliminar color guardado"
+
+#: src/ui/confirm-delete-one.ui:7
+msgid ""
+"Are you sure you want to delete this color? This action is irreversible."
+msgstr ""
+"¿Estás seguro de borrar este color? Esta acción es irreversible."
+
+#: src/ui/copy-color-format-button.ui:8
+#: src/ui/saved-color-table-columns/actions.ui:23
+msgid "Copy color"
+msgstr "Copiar color"
+
+#: src/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: src/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Mostrar Atajos del Teclado"
+
+#: src/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Salir"
+
+#: src/ui/preferences.ui:8 src/ui/preferences.ui:13 src/ui/window.ui:417
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/ui/preferences.ui:16
+msgid "Color Theme Settings"
+msgstr "Configuración del tema de color"
+
+#: src/ui/preferences.ui:17
+msgid "Set color theme"
+msgstr "Establecer tema de color"
+
+#: src/ui/preferences.ui:23
+msgid "Color theme"
+msgstr "Tema de color"
+
+#: src/ui/preferences.ui:39
+msgctxt "System color theme"
+msgid "System"
+msgstr "Sistema"
+
+#: src/ui/preferences.ui:53
+msgctxt "Light color theme"
+msgid "Light"
+msgstr "Claro"
+
+#: src/ui/preferences.ui:67
+msgctxt "Dark color theme"
+msgid "Dark"
+msgstr "Oscuro"
+
+#: src/ui/preferences.ui:81
+msgid "Color Settings"
+msgstr "Configuración de Color"
+
+#: src/ui/preferences.ui:82
+msgid "Saved color settings"
+msgstr "Configuración de colores guardados"
+
+#: src/ui/preferences.ui:85
+msgid "Delete Colors"
+msgstr "Eliminar Colores"
+
+#: src/ui/preferences.ui:86 src/ui/preferences.ui:96
+msgid "Delete all saved colors"
+msgstr "Eliminar todos los colores guardados"
+
+#: src/ui/preferences.ui:98
+msgctxt "accessibility"
+msgid "Delete all saved colors"
+msgstr "Eliminar todos los colores guardados"
+
+#: src/ui/preferences.ui:111 src/ui/window.ui:273
+msgid "Color Format"
+msgstr "Formato del Color"
+
+#: src/ui/preferences.ui:112
+msgid "Select color format to display"
+msgstr "Seleccionar formato de color para mostrar"
+
+#: src/ui/window.ui:31
+msgid "Primary Menu"
+msgstr "Menú Primario"
+
+#: src/ui/window.ui:33
+msgctxt "accessibility"
+msgid "Primary menu"
+msgstr "Menú Primario"
+
+#: src/ui/window.ui:72
+msgid "Pick Color from screen"
+msgstr "Seleccionar Color de la pantalla"
+
+#: src/ui/window.ui:80
+msgctxt "accessibility"
+msgid "Pick color from screen"
+msgstr "Seleccionar color de la pantalla"
+
+#: src/ui/window.ui:91
+msgid "Saved Colors"
+msgstr "Colores Guardados"
+
+#: src/ui/window.ui:113
+msgctxt "Translators: Only translate the text 'No Saved Color'"
+msgid "<span font-size=\"xx-large\" font-weight=\"bold\">No Saved Color</span>"
+msgstr "<span font-size=\"xx-large\" font-weight=\"bold\">Sin colores guardados</span>"
+
+#: src/ui/window.ui:152
+msgid "Color"
+msgstr "Color"
+
+#: src/ui/window.ui:162
+msgid "Actions"
+msgstr "Acciones"
+
+#: src/ui/window.ui:207
+msgctxt "Navigate back to the main screen"
+msgid "Back"
+msgstr "Volver"
+
+#: src/ui/window.ui:209
+msgctxt "accessibility"
+msgid "Back to main screen"
+msgstr "Volver a la pantalla principal"
+
+#: src/ui/window.ui:241
+msgid "Modify color"
+msgstr "Modificar color"
+
+#: src/ui/window.ui:243
+msgctxt "accessibility"
+msgid "Modify color"
+msgstr "Modificar color"
+
+#: src/ui/window.ui:253
+msgid "Modify color or select new one"
+msgstr "Modificar color o seleccionar uno nuevo"
+
+#: src/ui/window.ui:274
+msgid "Common color modes"
+msgstr "Modos de color comunes"
+
+#: src/ui/window.ui:277
+msgctxt "Hexadecimal color format"
+msgid "Hex"
+msgstr "Hex"
+
+#: src/ui/window.ui:296
+msgctxt "RGB color format"
+msgid "RGB"
+msgstr "RGB"
+
+#: src/ui/window.ui:315
+msgctxt "RGB Percent color format"
+msgid "RGB Percent"
+msgstr "RGB Porcentaje"
+
+#: src/ui/window.ui:334
+msgctxt "HSL color format"
+msgid "HSL"
+msgstr "HSL"
+
+#: src/ui/window.ui:353
+msgctxt "HSV color format"
+msgid "HSV"
+msgstr "HSV"
+
+#: src/ui/window.ui:374
+msgid "Color Name"
+msgstr "Nombre del Color"
+
+#: src/ui/window.ui:375
+msgid "The closest color name"
+msgstr "El nombre de color las parecido"
+
+#: src/ui/window.ui:378
+msgctxt "Color name"
+msgid "Name"
+msgstr "Nombre"
+
+#: src/ui/window.ui:421
+msgid "Keyboard Shortcuts"
+msgstr "Atajos del Teclado"
+
+#: src/ui/window.ui:425
+msgid "About Bella"
+msgstr "Acerca de Bella"
+
+#: src/ui/saved-color-table-columns/actions.ui:25
+msgctxt "accessibility"
+msgid "Copy color"
+msgstr "Copiar color"
+
+#: src/ui/saved-color-table-columns/actions.ui:46
+msgid "Delete color"
+msgstr "Eliminar color"
+
+#: src/ui/saved-color-table-columns/actions.ui:48
+msgctxt "accessibility"
+msgid "Delete color"
+msgstr "Eliminar color"
+
+#: src/ui/saved-color-table-columns/actions.ui:65
+msgid "View details"
+msgstr "Ver detalles"
+
+#: src/ui/saved-color-table-columns/actions.ui:67
+msgctxt "accessibility"
+msgid "View details"
+msgstr "Ver detalles"
