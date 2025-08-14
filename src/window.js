@@ -36,7 +36,7 @@ const filePath = GLib.build_filenamev([
   "data.json",
 ]);
 const colorsFile = Gio.File.new_for_path(filePath);
-/** Tracking ColorDialogButton notify::rgba signal ID */
+// Tracking ColorDialogButton notify::rgba signal ID
 const signalId = { id: null };
 
 export const BellaWindow = GObject.registerClass(
@@ -294,7 +294,7 @@ export const BellaWindow = GObject.registerClass(
       const result = Color.copyProperties(color, this.visible_color);
       if (result) {
         this.setColorDialogButtonRgba(color.rgb);
-        /** Switch page after setting the ColorDialogButton RGB */
+        // Switch page after setting the ColorDialogButton RGB
         this._main_stack.visible_child_name = "color_format_page";
       }
     };
