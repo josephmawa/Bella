@@ -78,4 +78,4 @@ will always be free. It is released under the terms of the
 
 ## Copyright
 
-Copyright © 2024 [Joseph Mawa](https://github.com/josephmawa)
+© 2024 [Joseph Mawa](https://github.com/josephmawa)
