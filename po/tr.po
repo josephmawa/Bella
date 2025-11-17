@@ -1,15 +1,15 @@
 # Turkish translation of io.github.josephmawa.Bella.
-# Copyright (C) 2024 io.github.josephmawa.Bella's COPYRIGHT HOLDER
+# Copyright (C) 2024-2025 io.github.josephmawa.Bella's COPYRIGHT HOLDER
 # This file is distributed under the same license as the io.github.josephmawa.Bella package.
 #
-# Sabri Ünal <yakushabb@gmail.com>, 2024.
+# Sabri Ünal <yakushabb@gmail.com>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: io.github.josephmawa.Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-08 22:51+0300\n"
-"PO-Revision-Date: 2024-12-08 22:52+0300\n"
+"POT-Creation-Date: 2025-08-14 20:53+0300\n"
+"PO-Revision-Date: 2025-11-16 23:16+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -17,23 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/io.github.josephmawa.Bella.desktop.in:3
+#: data/io.github.josephmawa.Bella.desktop.in:2
 #: data/io.github.josephmawa.Bella.metainfo.xml.in:5
 msgid "Bella"
 msgstr "Bella"
 
-#: data/io.github.josephmawa.Bella.desktop.in:4 src/ui/window.ui:64
+#: data/io.github.josephmawa.Bella.desktop.in:3 src/ui/window.ui:88
 msgid "Eye Dropper"
 msgstr "Damlalık"
 
-#: data/io.github.josephmawa.Bella.desktop.in:5
+#: data/io.github.josephmawa.Bella.desktop.in:4
 msgid "Pick color anywhere on your screen"
 msgstr "Ekranınızın herhangi bir yerinden renk seçin"
 
 #. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
-#: data/io.github.josephmawa.Bella.desktop.in:12
+#: data/io.github.josephmawa.Bella.desktop.in:11
 msgid "Color;Dropper;Eye;Picker;Pick;"
 msgstr "Color;Dropper;Eye;Picker;Pick;renk:damlalık;seçici;renk seçici;"
 
@@ -90,55 +90,113 @@ msgstr "Koyu temada renk listesi görünümü"
 msgid "Color list view in light theme"
 msgstr "Açık temada renk listesi görünümü"
 
-#: src/window.js:239
-msgid "Deleted all saved colors"
-msgstr "Kayıtlı tüm renkler silindi"
+#: src/window.js:20 src/ui/copy-color-button.ui:8
+msgid "Copy color"
+msgstr "Rengi Kopyala"
 
-#. Translators: Do NOT translate %s. It is a placeholder.
-#: src/window.js:252 src/window.js:568
+#: src/window.js:24
+msgid "Delete color"
+msgstr "Rengi Sil"
+
+#: src/window.js:28
+msgid "View details"
+msgstr "Ayrıntıları Göster"
+
+#: src/window.js:114 src/window.js:144 src/window.js:263
 #, javascript-format
-msgid "Copied %s to clipboard"
-msgstr "%s panoya kopyalandı"
+msgid "Copied %s"
+msgstr "%s kopyalandı"
 
-#: src/window.js:273
-msgid "Deleted saved color successfully"
-msgstr "Kayıtlı renk silindi"
+#: src/window.js:247
+msgid "Color"
+msgstr "Renk"
 
-#. Translators: Do NOT translate %s. It is a placeholder.
-#: src/window.js:286
-#, javascript-format
-msgid "id: %s doesn't existent"
-msgstr "id: %s yok"
+#: src/window.js:249
+msgid "Actions"
+msgstr "Eylemler"
 
-#: src/window.js:359
+#: src/window.js:287
+msgid "Deleted color"
+msgstr "Renk silindi"
+
+#: src/window.js:418
+msgid "Deleted saved colors"
+msgstr "Kayıtlı renkler silindi"
+
+#: src/window.js:488
 msgid "Failed to pick color"
 msgstr "Renk seçilemedi"
 
-#: src/window.js:460
-msgid "Failed to read saved data"
-msgstr "Kayıtlı veriler okunamadı"
+#. Color name
+#: src/utils/color-formats.js:5
+msgid "Name"
+msgstr "Ad"
 
-#: src/window.js:466
-msgid "File doesn't exist yet"
-msgstr "Dosya henüz yok"
+#. Hexadecimal color format
+#: src/utils/color-formats.js:11
+msgid "Hex"
+msgstr "Onaltılık"
 
-#: src/window.js:485
-msgid "Successfully saved picked colors to file"
-msgstr "Seçilen renkler dosyaya kaydedildi"
+#. RGB color format
+#: src/utils/color-formats.js:17
+msgid "RGB"
+msgstr "RGB"
 
-#: src/window.js:487
-msgid "Failed to save picked colors to file"
-msgstr "Seçilen renkler dosyaya kaydedilemedi"
+#. RGB Percent color format
+#: src/utils/color-formats.js:23
+msgid "RGB Percent"
+msgstr "RGB Yüzde"
 
-#: src/window.js:492
-msgid "An error occurred while creating directory"
-msgstr "Dizin oluşturulurken hata oluştu"
+#. HSL color format
+#: src/utils/color-formats.js:29
+msgid "HSL"
+msgstr "HSL"
 
-#: src/ui/confirm-delete-all.ui:6
+#. HSV color format
+#: src/utils/color-formats.js:35
+msgid "HSV"
+msgstr "HSV"
+
+#. CMYK color format
+#: src/utils/color-formats.js:41
+msgid "CMYK"
+msgstr "CMYK"
+
+#. HWB color format
+#: src/utils/color-formats.js:47
+msgid "HWB"
+msgstr "HWB"
+
+#. XYZ color format
+#: src/utils/color-formats.js:53
+msgid "XYZ"
+msgstr "XYZ"
+
+#. CIE-L*ab color format
+#: src/utils/color-formats.js:59
+msgid "CIE-L*ab"
+msgstr "CIE-L*ab"
+
+#. CIE-Lch color format
+#: src/utils/color-formats.js:65
+msgid "CIE-Lch"
+msgstr "CIE-Lch"
+
+#. OKLAB color format
+#: src/utils/color-formats.js:71
+msgid "OKLAB"
+msgstr "OKLAB"
+
+#. OKLCH color format
+#: src/utils/color-formats.js:77
+msgid "OKLCH"
+msgstr "OKLCH"
+
+#: src/ui/delete-all.ui:6
 msgid "Delete saved colors"
 msgstr "Kayıtlı Renkleri Sil"
 
-#: src/ui/confirm-delete-all.ui:7
+#: src/ui/delete-all.ui:7
 msgid ""
 "Are you sure you want to delete all the saved colors? This action is "
 "irreversible."
@@ -146,259 +204,212 @@ msgstr ""
 "Kayıtlı tüm renkleri silmek istediğinizden emin misiniz? Bu işlem geri "
 "alınamaz."
 
-#: src/ui/confirm-delete-all.ui:12 src/ui/confirm-delete-one.ui:13
+#: src/ui/delete-all.ui:12 src/ui/delete-one.ui:13
 msgid "Delete"
 msgstr "Sil"
 
-#: src/ui/confirm-delete-all.ui:13 src/ui/confirm-delete-one.ui:14
+#: src/ui/delete-all.ui:13 src/ui/delete-one.ui:14
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/ui/confirm-delete-one.ui:6
+#: src/ui/delete-one.ui:6
 msgid "Delete saved color"
 msgstr "Kayıtlı Rengi Sil"
 
-#: src/ui/confirm-delete-one.ui:7
+#: src/ui/delete-one.ui:7
 msgid ""
 "Are you sure you want to delete this color? This action is irreversible."
 msgstr "Bu rengi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
 
-#: src/ui/copy-color-format-button.ui:8
-#: src/ui/saved-color-table-columns/actions.ui:23
-msgid "Copy color"
-msgstr "Rengi Kopyala"
-
-#: src/ui/help-overlay.ui:11
+#: src/ui/help.ui:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Genel"
 
-#: src/ui/help-overlay.ui:14
+#: src/ui/help.ui:14
+msgctxt "shortcut window"
+msgid "Open Menu"
+msgstr "Menüyü Aç"
+
+#: src/ui/help.ui:20
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Kısayolları Göster"
 
-#: src/ui/help-overlay.ui:20
+#: src/ui/help.ui:26
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Tercihleri Göster"
+
+#: src/ui/help.ui:32
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Çık"
 
-#: src/ui/preferences.ui:8 src/ui/preferences.ui:14 src/ui/window.ui:417
+#: src/ui/help.ui:40
+msgctxt "shortcut window"
+msgid "Navigation"
+msgstr "Gezinme"
+
+#: src/ui/help.ui:43
+msgctxt "shortcut window"
+msgid "Back"
+msgstr "Geri"
+
+#: src/ui/help.ui:49
+msgctxt "shortcut window"
+msgid "Switch to Eye Dropper"
+msgstr "Damlalığa Geç"
+
+#: src/ui/help.ui:55
+msgctxt "shortcut window"
+msgid "Switch to Saved Colors"
+msgstr "Kayıtlı Renklere Geç"
+
+#: src/ui/help.ui:63
+msgctxt "shortcut window"
+msgid "Eye Dropper"
+msgstr "Damlalık"
+
+#: src/ui/help.ui:66
+msgctxt "shortcut window"
+msgid "Pick Color"
+msgstr "Renk Seç"
+
+#: src/ui/prefs.ui:7 src/ui/prefs.ui:13 src/ui/window.ui:305
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: src/ui/preferences.ui:17
+#: src/ui/prefs.ui:16
 msgid "Color Theme Settings"
 msgstr "Renk Teması Ayarları"
 
-#: src/ui/preferences.ui:18
+#: src/ui/prefs.ui:17
 msgid "Set color theme"
 msgstr "Renk temasını ayarla"
 
-#: src/ui/preferences.ui:24
+#: src/ui/prefs.ui:23
 msgid "Color theme"
 msgstr "Renk teması"
 
-#: src/ui/preferences.ui:40
+#: src/ui/prefs.ui:39
 msgctxt "System color theme"
 msgid "System"
 msgstr "Sistem"
 
-#: src/ui/preferences.ui:54
+#: src/ui/prefs.ui:56
 msgctxt "Light color theme"
 msgid "Light"
 msgstr "Açık"
 
-#: src/ui/preferences.ui:68
+#: src/ui/prefs.ui:73
 msgctxt "Dark color theme"
 msgid "Dark"
 msgstr "Koyu"
 
-#: src/ui/preferences.ui:82
+#: src/ui/prefs.ui:90
 msgid "Color Settings"
 msgstr "Renk Ayarları"
 
-#: src/ui/preferences.ui:83
+#: src/ui/prefs.ui:91
 msgid "Saved color settings"
 msgstr "Kaydedilen renk ayarları"
 
-#: src/ui/preferences.ui:86
+#: src/ui/prefs.ui:94
 msgid "Delete Colors"
 msgstr "Renkleri Sil"
 
-#: src/ui/preferences.ui:87 src/ui/preferences.ui:97
+#: src/ui/prefs.ui:95 src/ui/prefs.ui:104
 msgid "Delete all saved colors"
 msgstr "Kayıtlı tüm renkleri sil"
 
-#: src/ui/preferences.ui:99
+#: src/ui/prefs.ui:106
 msgctxt "accessibility"
 msgid "Delete all saved colors"
 msgstr "Kayıtlı tüm renkleri sil"
 
-#: src/ui/preferences.ui:112 src/ui/window.ui:273
+#: src/ui/prefs.ui:116 src/ui/window.ui:275
 msgid "Color Format"
 msgstr "Renk Biçimi"
 
-#: src/ui/preferences.ui:113
+#: src/ui/prefs.ui:117
 msgid "Select color format to display"
 msgstr "Görüntülenecek renk biçimini seç"
 
-#: src/ui/preferences.ui:117
-msgid "Name"
-msgstr "Ad"
+#: src/ui/prefs.ui:122
+msgid "Precision"
+msgstr "Hassasiyet"
 
-#: src/ui/preferences.ui:118
-msgid "Hex"
-msgstr "Onaltılık"
+#: src/ui/prefs.ui:123
+msgid "Color precision"
+msgstr "Renk hassasiyeti"
 
-#: src/ui/preferences.ui:119
-msgid "RGB"
-msgstr "RGB"
-
-#: src/ui/preferences.ui:120
-msgid "RGB Percent"
-msgstr "RGB Yüzde"
-
-#: src/ui/preferences.ui:121
-#| msgctxt "HSL color format"
-#| msgid "HSL"
-msgid "HSL"
-msgstr "HSL"
-
-#: src/ui/preferences.ui:122
-#| msgctxt "HSV color format"
-#| msgid "HSV"
-msgid "HSV"
-msgstr "HSV"
-
-#: src/ui/window.ui:31
+#: src/ui/window.ui:34
 msgid "Primary Menu"
 msgstr "Ana Menü"
 
-#: src/ui/window.ui:33
+#: src/ui/window.ui:36
 msgctxt "accessibility"
 msgid "Primary menu"
 msgstr "Ana menü"
 
-#: src/ui/window.ui:72
+#: src/ui/window.ui:96
 msgid "Pick Color from screen"
 msgstr "Ekrandan Renk Seç"
 
-#: src/ui/window.ui:80
+#: src/ui/window.ui:105
 msgctxt "accessibility"
 msgid "Pick color from screen"
 msgstr "Ekrandan renk seç"
 
-#: src/ui/window.ui:91
+#: src/ui/window.ui:117
 msgid "Saved Colors"
 msgstr "Kayıtlı Renkler"
 
-#: src/ui/window.ui:113
+#: src/ui/window.ui:141
 msgctxt "Translators: Only translate the text 'No Saved Color'"
-msgid "<span font-size=\"xx-large\" font-weight=\"bold\">No Saved Color</span>"
-msgstr ""
-"<span font-size=\"xx-large\" font-weight=\"bold\">Kayıtlı Renk Yok</span>"
+msgid "<span font-size=\"xx-large\">No Saved Color</span>"
+msgstr "<span font-size=\"xx-large\">Kayıtlı Renk Yok</span>"
 
-#: src/ui/window.ui:152
-msgid "Color"
-msgstr "Renk"
-
-#: src/ui/window.ui:162
-msgid "Actions"
-msgstr "Eylemler"
-
-#: src/ui/window.ui:207
+#: src/ui/window.ui:214
 msgctxt "Navigate back to the main screen"
 msgid "Back"
 msgstr "Geri"
 
-#: src/ui/window.ui:209
+#: src/ui/window.ui:217
 msgctxt "accessibility"
 msgid "Back to main screen"
 msgstr "Ana ekrana geri dön"
 
-#: src/ui/window.ui:241
+#: src/ui/window.ui:248
 msgid "Modify color"
 msgstr "Rengi değiştir"
 
-#: src/ui/window.ui:243
+#: src/ui/window.ui:250
 msgctxt "accessibility"
 msgid "Modify color"
 msgstr "Rengi değiştir"
 
-#: src/ui/window.ui:253
+#: src/ui/window.ui:255
 msgid "Modify color or select new one"
 msgstr "Rengi değiştir ya da yeni bir renk seç"
 
-#: src/ui/window.ui:274
+#: src/ui/window.ui:276
 msgid "Common color modes"
 msgstr "Yaygın renk kipleri"
 
-#: src/ui/window.ui:277
-msgctxt "Hexadecimal color format"
-msgid "Hex"
-msgstr "Onaltılık"
-
-#: src/ui/window.ui:296
-msgctxt "RGB color format"
-msgid "RGB"
-msgstr "RGB"
-
-#: src/ui/window.ui:315
-msgctxt "RGB Percent color format"
-msgid "RGB Percent"
-msgstr "RGB Yüzde"
-
-#: src/ui/window.ui:334
-msgctxt "HSL color format"
-msgid "HSL"
-msgstr "HSL"
-
-#: src/ui/window.ui:353
-msgctxt "HSV color format"
-msgid "HSV"
-msgstr "HSV"
-
-#: src/ui/window.ui:374
+#: src/ui/window.ui:281
 msgid "Color Name"
 msgstr "Renk Adı"
 
-#: src/ui/window.ui:375
+#: src/ui/window.ui:282
 msgid "The closest color name"
 msgstr "En yakın renk adı"
 
-#: src/ui/window.ui:378
-msgctxt "Color name"
-msgid "Name"
-msgstr "Ad"
-
-#: src/ui/window.ui:421
+#: src/ui/window.ui:309
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: src/ui/window.ui:425
+#: src/ui/window.ui:313
 msgid "About Bella"
 msgstr "Bella Hakkında"
-
-#: src/ui/saved-color-table-columns/actions.ui:25
-msgctxt "accessibility"
-msgid "Copy color"
-msgstr "Rengi kopyala"
-
-#: src/ui/saved-color-table-columns/actions.ui:46
-msgid "Delete color"
-msgstr "Rengi Sil"
-
-#: src/ui/saved-color-table-columns/actions.ui:48
-msgctxt "accessibility"
-msgid "Delete color"
-msgstr "Rengi sil"
-
-#: src/ui/saved-color-table-columns/actions.ui:65
-msgid "View details"
-msgstr "Ayrıntıları Göster"
-
-#: src/ui/saved-color-table-columns/actions.ui:67
-msgctxt "accessibility"
-msgid "View details"
-msgstr "Ayrıntıları göster"
