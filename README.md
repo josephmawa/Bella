@@ -44,19 +44,19 @@ Bella is simple eye dropper and color picker. You can pick color from the screen
 - Pick color from the screen
 - Save the picked color
 - Modify the picked color
-- Switch to dark, light or system mode
+- Switch to dark, light, or system mode
 
 ## Contributing
 
-If you find this app useful, do consider contributing. If you are wondering how,
-you can contribute in the following ways.
+If you find this app useful, do consider contributing. You can contribute in
+the following ways:
 
 - Translate to your local language
-- Rate us on FlatHub or star the project repository on GitHub
+- Star the project repository on GitHub
 - Report bugs if you encounter some. There are probably a handful of them.
-- You can also contribute code. If it is a bug fix, do open a pull request(PR). However,
-if it is a new feature, first open an issue so that we discuss it before opening
-a PR.
+- You can also contribute code. If it is a bug fix, do open a pull request(PR).
+However, if it is a new feature, first open an issue so that we discuss it
+before you open a PR.
 
 ## Run project locally
  <!-- markdownlint-disable no-inline-html -->
