@@ -24,6 +24,7 @@
   </description>
   <url type="bugtracker">https://github.com/josephmawa/Bella/issues</url>
   <url type="homepage">https://github.com/josephmawa/Bella</url>
+  <url type="vcs-browser">https://github.com/josephmawa/Bella</url>
 
   <branding>
     <color type="primary" scheme_preference="light">#d1dee6</color>
