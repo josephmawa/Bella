@@ -60,6 +60,15 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+   <release version="0.1.8" date="2026-03-22">
+      <description translate="no">
+        <ul>
+          <li>Upgrade to GNOME runtime version 50</li>
+          <li>Fix appstream-missing-vcs-browser-url linter warning</li>
+          <li>Clean up build artifacts</li>
+        </ul>
+      </description>
+    </release>
    <release version="0.1.7" date="2025-11-21">
       <description translate="no">
         <ul>
