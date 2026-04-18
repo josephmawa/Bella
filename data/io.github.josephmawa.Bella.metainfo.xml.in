@@ -7,7 +7,7 @@
     <name translate="no">Joseph Mawa</name>
   </developer>
   <summary>Pick a color from the screen</summary>
-
+  <summary xml:lang="hr">Odaberi boju s ekrana</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <content_rating type="oars-1.1" />
@@ -20,6 +20,14 @@
       <li>Save the picked color</li>
       <li>Modify the picked color</li>
       <li>Switch to dark, light, or system mode</li>
+    </ul>
+    <p xml:lang="hr">Odaberi boju s bilo kojeg mjesta na ekranu i spremi je u jedan od uobičajenih formata boja.</p>
+    <p xml:lang="hr">Glavne funkcije aplikacije Bella su:</p>
+    <ul>
+      <li>Biranje boje s ekrana</li>
+      <li>Spremanje odabranih boja</li>
+      <li>Mijenjanje odabranih boja</li>
+      <li>Mijenjanje modusa na tamni, svijetli ili sustavski</li>
     </ul>
   </description>
   <url type="bugtracker">https://github.com/josephmawa/Bella/issues</url>
