@@ -1,0 +1,383 @@
+# Croatian translation for Bella.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Bella package.
+# Milo Ivir <mail@milotype.de>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Bella\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-02 13:58+0300\n"
+"PO-Revision-Date: 2026-04-18 14:26+0200\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/io.github.josephmawa.Bella.desktop.in:3
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:5
+msgid "Bella"
+msgstr "Bella"
+
+#: data/io.github.josephmawa.Bella.desktop.in:4 src/ui/window.ui:64
+msgid "Eye Dropper"
+msgstr "Kapaljka"
+
+#: data/io.github.josephmawa.Bella.desktop.in:5
+msgid "Pick color anywhere on your screen"
+msgstr "Odaberi boju bilo gdje na ekranu"
+
+#. Translators: These are search terms to find this application. Do NOT translate or localize the semicolons. The list MUST also end with a semicolon.
+#: data/io.github.josephmawa.Bella.desktop.in:12
+msgid "Color;Dropper;Eye;Picker;Pick;"
+msgstr "Boja;Dropper;Eye;Birač;Odaberi;"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:9
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:19
+msgid "Pick color from the screen"
+msgstr "Odaberi boju s ekrana"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:16
+msgid ""
+"Pick color from anywhere on your screen and save it in one of the common "
+"color formats."
+msgstr ""
+"Odaberi boju s bilo kojeg mjesta na ekranu i spremi je u jedan od "
+"uobičajenih formata boja."
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:17
+msgid "Below are the main features of Bella:"
+msgstr "Glavne funkcije aplikacije Bella su:"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:20
+msgid "Save the picked color"
+msgstr "Spremanje odabranih boja"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:21
+msgid "Modify the picked color"
+msgstr "Mijenjanje odabranih boja"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:22
+msgid "Switch to dark, light or system mode"
+msgstr "Mijenjanje modusa na tamni, svijetli ili sustavski"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:36
+msgid "Eye dropper view in dark theme"
+msgstr "Prikaz kapaljke u tamnoj temi"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:40
+msgid "Eye dropper view in light theme"
+msgstr "Prikaz kapaljke u svijetloj temi"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:44
+msgid "Color list view in dark theme"
+msgstr "Prikaz popisa boja u tamnoj temi"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:48
+msgid "Color list view in light theme"
+msgstr "Prikaz popisa boja u svijetloj temi"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:55
+msgid "color"
+msgstr "boja"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:56
+msgid "color picker"
+msgstr "birač boja"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:57
+msgid "eye dropper"
+msgstr "kapaljka"
+
+#: data/io.github.josephmawa.Bella.metainfo.xml.in:58
+msgid "development"
+msgstr "razvoj"
+
+#: src/window.js:239
+msgid "Deleted all saved colors"
+msgstr "Izbrisane su sve spremljene boje"
+
+#. Translators: Do NOT translate %s. It is a placeholder.
+#: src/window.js:252 src/window.js:568
+#, javascript-format
+msgid "Copied %s to clipboard"
+msgstr "„%s” je kopirano u međuspremnik"
+
+#: src/window.js:273
+msgid "Deleted saved color successfully"
+msgstr "Spremljena boja je uspješno izbrisana"
+
+#. Translators: Do NOT translate %s. It is a placeholder.
+#: src/window.js:286
+#, javascript-format
+msgid "id: %s doesn't existent"
+msgstr "ID: %s ne postoji"
+
+#: src/window.js:359
+msgid "Failed to pick color"
+msgstr "Neuspjelo biranje boje"
+
+#: src/window.js:460
+msgid "Failed to read saved data"
+msgstr "Neuspjelo čitanje spremljenih podataka"
+
+#: src/window.js:466
+msgid "File doesn't exist yet"
+msgstr "Datoteka još ne postoji"
+
+#: src/window.js:485
+msgid "Successfully saved picked colors to file"
+msgstr "Odabrane boje su uspješno spremljene u datoteku"
+
+#: src/window.js:487
+msgid "Failed to save picked colors to file"
+msgstr "Neuspjelo spremanje odabranih boja u datoteku"
+
+#: src/window.js:492
+msgid "An error occurred while creating directory"
+msgstr "Dogodila se greška prilikom stvaranja map"
+
+#: src/ui/confirm-delete-all.ui:6
+msgid "Delete saved colors"
+msgstr "Izbriši spremljene boje"
+
+#: src/ui/confirm-delete-all.ui:7
+msgid ""
+"Are you sure you want to delete all the saved colors? This action is "
+"irreversible."
+msgstr "Stvarno želiš izbrisati sve spremljene boje? Ova je nepovratna radnja."
+
+#: src/ui/confirm-delete-all.ui:11 src/ui/confirm-delete-one.ui:12
+msgid "Delete"
+msgstr "Izbriši"
+
+#: src/ui/confirm-delete-all.ui:12 src/ui/confirm-delete-one.ui:13
+msgid "Cancel"
+msgstr "Odustani"
+
+#: src/ui/confirm-delete-one.ui:6
+msgid "Delete saved color"
+msgstr "Izbriši spremljenu boju"
+
+#: src/ui/confirm-delete-one.ui:7
+msgid ""
+"Are you sure you want to delete this color? This action is irreversible."
+msgstr "Stvarno želiš izbrisati ovu boju? Ova je nepovratna radnja."
+
+#: src/ui/copy-color-format-button.ui:8
+#: src/ui/saved-color-table-columns/actions.ui:23
+msgid "Copy color"
+msgstr "Kopiraj boju"
+
+#: src/ui/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Opće"
+
+#: src/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Prikaži prečace"
+
+#: src/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Zatvori aplikaciju"
+
+#: src/ui/preferences.ui:8 src/ui/preferences.ui:13 src/ui/window.ui:417
+msgid "Preferences"
+msgstr "Postavke"
+
+#: src/ui/preferences.ui:16
+msgid "Color Theme Settings"
+msgstr "Postavke tema boja"
+
+#: src/ui/preferences.ui:17
+msgid "Set color theme"
+msgstr "Postavi temu boje"
+
+#: src/ui/preferences.ui:23
+msgid "Color theme"
+msgstr "Tema boje"
+
+#: src/ui/preferences.ui:39
+msgctxt "System color theme"
+msgid "System"
+msgstr "Sustav"
+
+#: src/ui/preferences.ui:53
+msgctxt "Light color theme"
+msgid "Light"
+msgstr "Svijetla"
+
+#: src/ui/preferences.ui:67
+msgctxt "Dark color theme"
+msgid "Dark"
+msgstr "Tamna"
+
+#: src/ui/preferences.ui:81
+msgid "Color Settings"
+msgstr "Postavke boja"
+
+#: src/ui/preferences.ui:82
+msgid "Saved color settings"
+msgstr "Spremljene postavke boja"
+
+#: src/ui/preferences.ui:85
+msgid "Delete Colors"
+msgstr "Izbriši boje"
+
+#: src/ui/preferences.ui:86 src/ui/preferences.ui:96
+msgid "Delete all saved colors"
+msgstr "Izbriši sve spremljene boje"
+
+#: src/ui/preferences.ui:98
+msgctxt "accessibility"
+msgid "Delete all saved colors"
+msgstr "Izbriši sve spremljene boje"
+
+#: src/ui/preferences.ui:111 src/ui/window.ui:273
+msgid "Color Format"
+msgstr "Format boja"
+
+#: src/ui/preferences.ui:112
+msgid "Select color format to display"
+msgstr "Odaberi format boje za prikaz"
+
+#: src/ui/window.ui:31
+msgid "Primary Menu"
+msgstr "Glavni izbornik"
+
+#: src/ui/window.ui:33
+msgctxt "accessibility"
+msgid "Primary menu"
+msgstr "Glavni izbornik"
+
+#: src/ui/window.ui:72
+msgid "Pick Color from screen"
+msgstr "Odaberi boju s ekrana"
+
+#: src/ui/window.ui:80
+msgctxt "accessibility"
+msgid "Pick color from screen"
+msgstr "Odaberi boju s ekrana"
+
+#: src/ui/window.ui:91
+msgid "Saved Colors"
+msgstr "Spremljene boje"
+
+#: src/ui/window.ui:113
+msgctxt "Translators: Only translate the text 'No Saved Color'"
+msgid "<span font-size=\"xx-large\" font-weight=\"bold\">No Saved Color</span>"
+msgstr ""
+"<span font-size=\"xx-large\" font-weight=\"bold\">Nema spremljenih boja</"
+"span>"
+
+#: src/ui/window.ui:152
+msgid "Color"
+msgstr "Boja"
+
+#: src/ui/window.ui:162
+msgid "Actions"
+msgstr "Radnje"
+
+#: src/ui/window.ui:207
+msgctxt "Navigate back to the main screen"
+msgid "Back"
+msgstr "Natrag"
+
+#: src/ui/window.ui:209
+msgctxt "accessibility"
+msgid "Back to main screen"
+msgstr "Natrag na glavni ekran"
+
+#: src/ui/window.ui:241
+msgid "Modify color"
+msgstr "Promijeni boju"
+
+#: src/ui/window.ui:243
+msgctxt "accessibility"
+msgid "Modify color"
+msgstr "Promijeni boju"
+
+#: src/ui/window.ui:253
+msgid "Modify color or select new one"
+msgstr "Promijeni boju ili odaberi jednu novu boju"
+
+#: src/ui/window.ui:274
+msgid "Common color modes"
+msgstr "Uobičajeni modusi boja"
+
+#: src/ui/window.ui:277
+msgctxt "Hexadecimal color format"
+msgid "Hex"
+msgstr "Heksadecimalni"
+
+#: src/ui/window.ui:296
+msgctxt "RGB color format"
+msgid "RGB"
+msgstr "RBG"
+
+#: src/ui/window.ui:315
+msgctxt "RGB Percent color format"
+msgid "RGB Percent"
+msgstr "RGB postotak"
+
+#: src/ui/window.ui:334
+msgctxt "HSL color format"
+msgid "HSL"
+msgstr "HSL"
+
+#: src/ui/window.ui:353
+msgctxt "HSV color format"
+msgid "HSV"
+msgstr "HSV"
+
+#: src/ui/window.ui:374
+msgid "Color Name"
+msgstr "Ime boje"
+
+#: src/ui/window.ui:375
+msgid "The closest color name"
+msgstr "Ime najbliže boje"
+
+#: src/ui/window.ui:378
+msgctxt "Color name"
+msgid "Name"
+msgstr "Ime"
+
+#: src/ui/window.ui:421
+msgid "Keyboard Shortcuts"
+msgstr "Tipkovni prečaci"
+
+#: src/ui/window.ui:425
+msgid "About Bella"
+msgstr "O aplikaciji Bella"
+
+#: src/ui/saved-color-table-columns/actions.ui:25
+msgctxt "accessibility"
+msgid "Copy color"
+msgstr "Kopiraj boju"
+
+#: src/ui/saved-color-table-columns/actions.ui:46
+msgid "Delete color"
+msgstr "Izbriši boju"
+
+#: src/ui/saved-color-table-columns/actions.ui:48
+msgctxt "accessibility"
+msgid "Delete color"
+msgstr "Izbriši boju"
+
+#: src/ui/saved-color-table-columns/actions.ui:65
+msgid "View details"
+msgstr "Pogledaj detalje"
+
+#: src/ui/saved-color-table-columns/actions.ui:67
+msgctxt "accessibility"
+msgid "View details"
+msgstr "Pogledaj detalje"
