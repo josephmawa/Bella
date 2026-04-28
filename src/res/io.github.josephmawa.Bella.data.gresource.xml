@@ -2,7 +2,7 @@
 <gresources>
   <gresource prefix="/io/github/josephmawa/Bella">
     <file compressed="true" preprocess="xml-stripblanks" alias="window.ui">ui/window.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/help.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="shortcuts-dialog.ui">ui/shortcuts-dialog.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="prefs.ui">ui/prefs.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="delete-all.ui">ui/delete-all.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="delete-one.ui">ui/delete-one.ui</file>
