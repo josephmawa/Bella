@@ -6,9 +6,9 @@ data/io.github.josephmawa.Bella.metainfo.xml.in
 # src/*.js
 src/about.js
 src/app.js
+src/copy-color-button.js
 src/delete-all.js
 src/delete-one.js
-src/copy-color-button.js
 src/main.js
 src/prefs.js
 src/window.js
@@ -17,9 +17,9 @@ src/window.js
 src/utils/color-formats.js
 
 # src/ui/*.ui
+src/ui/copy-color-button.ui
 src/ui/delete-all.ui
 src/ui/delete-one.ui
-src/ui/copy-color-button.ui
-src/ui/help.ui
 src/ui/prefs.ui
+src/ui/shortcuts-dialog.ui
 src/ui/window.ui
