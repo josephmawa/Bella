@@ -4,7 +4,7 @@
   "private": true,
   "description": "Color picker",
   "scripts": {
-    "build": "flatpak run org.flatpak.Builder --force-clean --sandbox --user --install --install-deps-from=flathub --ccache --mirror-screenshots-url=https://dl.flathub.org/media/ --repo=repo builddir io.github.josephmawa.Bella.json",
+    "build": "flatpak run org.flatpak.Builder --force-clean --sandbox --install-deps-from=flathub --ccache --mirror-screenshots-url=https://dl.flathub.org/media/ --repo=repo builddir io.github.josephmawa.Bella.json",
     "lint-manifest": "flatpak run --command=flatpak-builder-lint org.flatpak.Builder manifest io.github.josephmawa.Bella.json",
     "lint-appstream": "flatpak run --command=flatpak-builder-lint org.flatpak.Builder appstream data/io.github.josephmawa.Bella.metainfo.xml.in",
     "lint-builddir": "flatpak run --command=flatpak-builder-lint org.flatpak.Builder builddir builddir",
