@@ -32,11 +32,11 @@
   </branding>
 
   <screenshots>
-   <screenshot type="default">
+    <screenshot type="default">
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/details-view-dark.png</image>
       <caption>Details view in dark theme</caption>
     </screenshot>
-   <screenshot>
+    <screenshot>
       <image>https://raw.githubusercontent.com/josephmawa/Bella/main/screenshots/details-view-light.png</image>
       <caption>Details view in light theme</caption>
     </screenshot>
@@ -60,7 +60,15 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
-   <release version="0.1.8" date="2026-03-22">
+    <release version="0.1.9" date="2026-05-04">
+      <description translate="no">
+        <ul>
+          <li>Add Croatian translation</li>
+          <li>Update UI</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.1.8" date="2026-03-22">
       <description translate="no">
         <ul>
           <li>Upgrade to GNOME runtime version 50</li>
@@ -69,14 +77,14 @@
         </ul>
       </description>
     </release>
-   <release version="0.1.7" date="2025-11-21">
+    <release version="0.1.7" date="2025-11-21">
       <description translate="no">
         <ul>
           <li>Update Turkish translation</li>
         </ul>
       </description>
     </release>
-   <release version="0.1.6" date="2025-07-15">
+    <release version="0.1.6" date="2025-07-15">
       <description translate="no">
         <ul>
           <li>Add Oklab color format</li>
@@ -85,7 +93,7 @@
         </ul>
       </description>
     </release>
-   <release version="0.1.5" date="2025-05-15">
+    <release version="0.1.5" date="2025-05-15">
       <description translate="no">
         <ul>
           <li>Display Hex color in lowercase</li>
@@ -94,7 +102,7 @@
         </ul>
       </description>
     </release>
-   <release version="0.1.4" date="2025-01-14">
+    <release version="0.1.4" date="2025-01-14">
       <description translate="no">
         <ul>
           <li>Add keyboard shortcuts</li>
@@ -103,7 +111,7 @@
         </ul>
       </description>
     </release>
-   <release version="0.1.3" date="2024-12-22">
+    <release version="0.1.3" date="2024-12-22">
       <description translate="no">
         <ul>
           <li>Add Turkish translation</li>
