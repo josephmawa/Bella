@@ -10,3 +10,7 @@
 .pick-color-button {
   padding: 10px;
 }
+
+.saved-color-swatch {
+  border-radius: 4px;
+}
