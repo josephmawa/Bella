@@ -182,11 +182,61 @@ export const BellaWindow = GObject.registerClass(
 
       colorFactory.connect("setup", (factory, listItem) => {
         listItem.child = new Gtk.Box({
-          halign: Gtk.Align.START,
+          halign: Gtk.Align.FILL,
           valign: Gtk.Align.CENTER,
-          homogeneous: true,
+          hexpand: true,
+          spacing: 10,
         });
-        listItem.child.append(new Gtk.Entry({ editable: false }));
+
+        const colorText = new Gtk.Entry({
+          editable: false,
+          hexpand: true,
+          halign: Gtk.Align.FILL,
+        });
+
+        const swatch = new Gtk.DrawingArea({
+          content_width: 24,
+          content_height: 24,
+          halign: Gtk.Align.END,
+          valign: Gtk.Align.CENTER,
+          tooltip_text: "rgb(0, 0, 0)",
+          css_classes: ["saved-color-swatch"],
+        });
+
+        swatch.set_draw_func((area, cr, width, height) => {
+          const radius = Math.min(width, height) / 4;
+          const drawRoundedRect = (x, y, w, h, r) => {
+            cr.newSubPath();
+            cr.arc(x + w - r, y + r, r, -Math.PI / 2, 0);
+            cr.arc(x + w - r, y + h - r, r, 0, Math.PI / 2);
+            cr.arc(x + r, y + h - r, r, Math.PI / 2, Math.PI);
+            cr.arc(x + r, y + r, r, Math.PI, (3 * Math.PI) / 2);
+            cr.closePath();
+          };
+
+          const rgba = new Gdk.RGBA();
+          const parseFlag = rgba.parse(area.tooltip_text ?? "rgb(0, 0, 0)");
+          const red = parseFlag ? rgba.red : 0;
+          const green = parseFlag ? rgba.green : 0;
+          const blue = parseFlag ? rgba.blue : 0;
+
+          cr.setSourceRGBA(red, green, blue, 1);
+          drawRoundedRect(0.5, 0.5, width - 1, height - 1, radius);
+          cr.fill();
+
+          cr.setSourceRGBA(0, 0, 0, 0.26);
+          cr.setLineWidth(1);
+          drawRoundedRect(0.5, 0.5, width - 1, height - 1, radius);
+          cr.stroke();
+
+          cr.setSourceRGBA(1, 1, 1, 0.22);
+          cr.setLineWidth(1);
+          drawRoundedRect(1.5, 1.5, width - 3, height - 3, Math.max(1, radius - 1));
+          cr.stroke();
+        });
+
+        listItem.child.append(colorText);
+        listItem.child.append(swatch);
       });
 
       actionsFactory.connect("setup", (factory, listItem) => {
@@ -210,13 +260,27 @@ export const BellaWindow = GObject.registerClass(
       colorFactory.connect("bind", (factory, listItem) => {
         const hBox = listItem.child;
         const color = listItem.item;
+        const entry = hBox?.get_first_child();
+        const swatch = hBox?.get_last_child();
 
-        const buffer = hBox?.get_first_child()?.buffer;
+        const buffer = entry?.buffer;
         color.bind_property(
           "displayed_format",
           buffer,
           "text",
           GObject.BindingFlags.SYNC_CREATE
+        );
+
+        color.bind_property_full(
+          "rgb",
+          swatch,
+          "tooltip-text",
+          GObject.BindingFlags.SYNC_CREATE,
+          (binding, rgb) => {
+            swatch?.queue_draw();
+            return [true, rgb];
+          },
+          null
         );
       });
 
