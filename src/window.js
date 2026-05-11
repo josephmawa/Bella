@@ -178,6 +178,7 @@ export const BellaWindow = GObject.registerClass(
       }
 
       const colorFactory = new Gtk.SignalListItemFactory();
+      const previewFactory = new Gtk.SignalListItemFactory();
       const actionsFactory = new Gtk.SignalListItemFactory();
 
       colorFactory.connect("setup", (factory, listItem) => {
@@ -187,6 +188,20 @@ export const BellaWindow = GObject.registerClass(
           homogeneous: true,
         });
         listItem.child.append(new Gtk.Entry({ editable: false }));
+      });
+
+      previewFactory.connect("setup", (factory, listItem) => {
+        listItem.child = new Gtk.Box({
+          halign: Gtk.Align.CENTER,
+          valign: Gtk.Align.CENTER,
+          homogeneous: true,
+        });
+
+        const colorDialogBtn = new Gtk.ColorDialogButton({
+          sensitive: false,
+        });
+
+        listItem.child.append(colorDialogBtn);
       });
 
       actionsFactory.connect("setup", (factory, listItem) => {
@@ -220,6 +235,16 @@ export const BellaWindow = GObject.registerClass(
         );
       });
 
+      previewFactory.connect("bind", (factory, listItem) => {
+        const hBox = listItem.child;
+        const color = listItem.item;
+        const colorDialogBtn = hBox?.get_first_child();
+
+        const rgba = new Gdk.RGBA();
+        rgba.parse(color.rgb);
+        colorDialogBtn.set_rgba(rgba);
+      });
+
       actionsFactory.connect("bind", (factory, listItem) => {
         const hBox = listItem.child;
         const color = listItem.item;
@@ -245,12 +270,14 @@ export const BellaWindow = GObject.registerClass(
       });
 
       const colorColumn = Gtk.ColumnViewColumn.new(_("Color"), colorFactory);
+      const previewColumn = Gtk.ColumnViewColumn.new(_("Preview"), previewFactory);
       const actionsColumn = Gtk.ColumnViewColumn.new(
         _("Actions"),
         actionsFactory
       );
 
       this._column_view.append_column(colorColumn);
+      this._column_view.append_column(previewColumn);
       this._column_view.append_column(actionsColumn);
 
       /** Call this after creating ColumnView */
@@ -369,9 +396,11 @@ export const BellaWindow = GObject.registerClass(
         const colorColumnViewTitle = this._column_view
           ?.get_first_child()
           ?.get_first_child();
-        const actionsColumnViewTitle = colorColumnViewTitle?.get_next_sibling();
+        const previewColumnViewTitle = colorColumnViewTitle?.get_next_sibling();
+        const actionsColumnViewTitle = previewColumnViewTitle?.get_next_sibling();
 
         colorColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
+        previewColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
         actionsColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
       } catch (error) {
         console.error(error);
