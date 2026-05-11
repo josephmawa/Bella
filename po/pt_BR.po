@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 20:28+0300\n"
+"POT-Creation-Date: 2026-05-11 19:18+0300\n"
 "PO-Revision-Date: 2025-01-15 12:41-0300\n"
 "Last-Translator: johnpetersa <johnppetersa@gmail.com>\n"
 "Language-Team: johnpetersa <johnppetersa@gmail.com>\n"
@@ -93,6 +93,11 @@ msgstr "Visualização de lista de cores no tema escuro"
 msgid "Color list view in light theme"
 msgstr "Visualização de lista de cores no tema claro"
 
+#. Translators: Replace "translator-credits" with your name/username, and optionally an email or URL.
+#: src/about.js:15
+msgid "translator-credits"
+msgstr "John Peter Sa"
+
 #: src/window.js:20 src/ui/copy-color-button.ui:8
 msgid "Copy color"
 msgstr "Copiar cor"
@@ -105,30 +110,34 @@ msgstr "Excluir cor"
 msgid "View details"
 msgstr "Ver detalhes"
 
-#: src/window.js:114 src/window.js:144 src/window.js:263
+#: src/window.js:114 src/window.js:144 src/window.js:290
 #, javascript-format
 msgid "Copied %s"
 msgstr ""
 
-#: src/window.js:247
+#: src/window.js:272
 msgid "Color"
 msgstr "Cor"
 
-#: src/window.js:249
+#: src/window.js:273
+msgid "Preview"
+msgstr ""
+
+#: src/window.js:275
 msgid "Actions"
 msgstr "Ações"
 
-#: src/window.js:287
+#: src/window.js:314
 #, fuzzy
 msgid "Deleted color"
 msgstr "Excluir cor"
 
-#: src/window.js:418
+#: src/window.js:447
 #, fuzzy
 msgid "Deleted saved colors"
 msgstr "Excluir cores salvas"
 
-#: src/window.js:488
+#: src/window.js:517
 msgid "Failed to pick color"
 msgstr "Falha ao escolher a cor"
 
