@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 20:28+0300\n"
+"POT-Creation-Date: 2026-05-11 19:18+0300\n"
 "PO-Revision-Date: 2026-04-18 14:26+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
@@ -95,6 +95,11 @@ msgstr "Prikaz popisa boja u tamnoj temi"
 msgid "Color list view in light theme"
 msgstr "Prikaz popisa boja u svijetloj temi"
 
+#. Translators: Replace "translator-credits" with your name/username, and optionally an email or URL.
+#: src/about.js:15
+msgid "translator-credits"
+msgstr "Milo Ivir"
+
 #: src/window.js:20 src/ui/copy-color-button.ui:8
 msgid "Copy color"
 msgstr "Kopiraj boju"
@@ -107,30 +112,34 @@ msgstr "Izbriši boju"
 msgid "View details"
 msgstr "Pogledaj detalje"
 
-#: src/window.js:114 src/window.js:144 src/window.js:263
+#: src/window.js:114 src/window.js:144 src/window.js:290
 #, javascript-format
 msgid "Copied %s"
 msgstr ""
 
-#: src/window.js:247
+#: src/window.js:272
 msgid "Color"
 msgstr "Boja"
 
-#: src/window.js:249
+#: src/window.js:273
+msgid "Preview"
+msgstr ""
+
+#: src/window.js:275
 msgid "Actions"
 msgstr "Radnje"
 
-#: src/window.js:287
+#: src/window.js:314
 #, fuzzy
 msgid "Deleted color"
 msgstr "Izbriši boju"
 
-#: src/window.js:418
+#: src/window.js:447
 #, fuzzy
 msgid "Deleted saved colors"
 msgstr "Izbriši spremljene boje"
 
-#: src/window.js:488
+#: src/window.js:517
 msgid "Failed to pick color"
 msgstr "Neuspjelo biranje boje"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.josephmawa.Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 20:28+0300\n"
+"POT-Creation-Date: 2026-05-11 19:18+0300\n"
 "PO-Revision-Date: 2025-11-16 23:16+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
@@ -90,6 +90,11 @@ msgstr "Koyu temada renk listesi görünümü"
 msgid "Color list view in light theme"
 msgstr "Açık temada renk listesi görünümü"
 
+#. Translators: Replace "translator-credits" with your name/username, and optionally an email or URL.
+#: src/about.js:15
+msgid "translator-credits"
+msgstr "Sabri Ünal"
+
 #: src/window.js:20 src/ui/copy-color-button.ui:8
 msgid "Copy color"
 msgstr "Rengi Kopyala"
@@ -102,28 +107,32 @@ msgstr "Rengi Sil"
 msgid "View details"
 msgstr "Ayrıntıları Göster"
 
-#: src/window.js:114 src/window.js:144 src/window.js:263
+#: src/window.js:114 src/window.js:144 src/window.js:290
 #, javascript-format
 msgid "Copied %s"
 msgstr "%s kopyalandı"
 
-#: src/window.js:247
+#: src/window.js:272
 msgid "Color"
 msgstr "Renk"
 
-#: src/window.js:249
+#: src/window.js:273
+msgid "Preview"
+msgstr ""
+
+#: src/window.js:275
 msgid "Actions"
 msgstr "Eylemler"
 
-#: src/window.js:287
+#: src/window.js:314
 msgid "Deleted color"
 msgstr "Renk silindi"
 
-#: src/window.js:418
+#: src/window.js:447
 msgid "Deleted saved colors"
 msgstr "Kayıtlı renkler silindi"
 
-#: src/window.js:488
+#: src/window.js:517
 msgid "Failed to pick color"
 msgstr "Renk seçilemedi"
 
