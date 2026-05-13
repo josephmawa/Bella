@@ -276,7 +276,7 @@ export const BellaWindow = GObject.registerClass(
       this._column_view.append_column(previewColumn);
       this._column_view.append_column(actionsColumn);
 
-      /** Call this after creating ColumnView */
+      // Call this after creating ColumnView
       this.bindModel();
       this.centerColumnTitle();
     };
@@ -619,7 +619,7 @@ export const BellaWindow = GObject.registerClass(
         }
 
         const path = colorsFile.get_parent().get_path();
-        /* 0o777 is file permission, ugo+rwx, in numeric mode */
+        // 0o777 is file permission, ugo+rwx, in numeric mode
         const flag = GLib.mkdir_with_parents(path, 0o777);
         if (flag === -1) {
           throw new Error("Failed to save color");

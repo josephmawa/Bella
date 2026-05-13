@@ -2,7 +2,7 @@ import Gtk from "gi://Gtk";
 import GLib from "gi://GLib";
 import GObject from "gi://GObject";
 import { formats } from "./color-formats.js";
-/** Consider binding color-format to displayed_format here */
+// Consider binding color-format to displayed_format here
 import {
   D65,
   round,
@@ -74,7 +74,7 @@ export const Color = GObject.registerClass(
       settings.connect("changed::color-format", this.updateColorFormat);
     }
 
-    /** Consider debouncing this method */
+    // Consider debouncing this method
     calculateFormats = () => {
       this.calcHex();
       this.calcRGB();
@@ -84,7 +84,7 @@ export const Color = GObject.registerClass(
       this.calcXYZ();
       this.calcSRGB();
       this.calcCYMK();
-      /** This should be called last */
+      // This should be called last
       this.updateColorFormat();
     };
 
