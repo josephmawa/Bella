@@ -97,14 +97,10 @@ export const BellaWindow = GObject.registerClass(
 
     createColorPage = () => {
       this.visible_color = new Color();
+      const hiddenProps = ["id", "srgb", "name", "displayed_format"];
 
       const bindProps = colorProps.filter(({ key }) => {
-        return (
-          key !== "id" &&
-          key !== "srgb" &&
-          key !== "name" &&
-          key !== "displayed_format"
-        );
+        return !hiddenProps.includes(key);
       });
 
       for (const { key, description } of bindProps) {
