@@ -236,9 +236,18 @@ export const BellaWindow = GObject.registerClass(
         const color = listItem.item;
         const colorDialogBtn = hBox?.get_first_child();
 
-        const rgba = new Gdk.RGBA();
-        rgba.parse(color.rgb);
-        colorDialogBtn.set_rgba(rgba);
+        color.bind_property_full(
+          "rgb",
+          colorDialogBtn,
+          "rgba",
+          GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
+          (_, rgb) => {
+            const rgba = new Gdk.RGBA();
+            rgba.parse(rgb);
+            return [true, rgba]
+          },
+          null
+        )
       });
 
       actionsFactory.connect("bind", (factory, listItem) => {
