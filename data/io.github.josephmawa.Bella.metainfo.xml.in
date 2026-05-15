@@ -60,6 +60,13 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+    <release version="0.1.10" date="2026-05-15">
+      <description translate="no">
+        <ul>
+          <li>Add color preview column</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.9" date="2026-05-04">
       <description translate="no">
         <ul>
