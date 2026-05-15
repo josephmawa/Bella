@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.josephmawa.Bella\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 19:18+0300\n"
+"POT-Creation-Date: 2026-05-14 16:18+0300\n"
 "PO-Revision-Date: 2025-11-16 23:16+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
@@ -107,32 +107,32 @@ msgstr "Rengi Sil"
 msgid "View details"
 msgstr "Ayrıntıları Göster"
 
-#: src/window.js:114 src/window.js:144 src/window.js:290
+#: src/window.js:110 src/window.js:140 src/window.js:295
 #, javascript-format
 msgid "Copied %s"
 msgstr "%s kopyalandı"
 
-#: src/window.js:272
+#: src/window.js:277
 msgid "Color"
 msgstr "Renk"
 
-#: src/window.js:273
+#: src/window.js:278
 msgid "Preview"
 msgstr ""
 
-#: src/window.js:275
+#: src/window.js:280
 msgid "Actions"
 msgstr "Eylemler"
 
-#: src/window.js:314
+#: src/window.js:319
 msgid "Deleted color"
 msgstr "Renk silindi"
 
-#: src/window.js:447
+#: src/window.js:452
 msgid "Deleted saved colors"
 msgstr "Kayıtlı renkler silindi"
 
-#: src/window.js:517
+#: src/window.js:522
 msgid "Failed to pick color"
 msgstr "Renk seçilemedi"
 
