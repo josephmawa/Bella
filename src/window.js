@@ -59,14 +59,14 @@ export const BellaWindow = GObject.registerClass(
         "colorFormat",
         "Selected color format",
         GObject.ParamFlags.READWRITE,
-        ""
+        "",
       ),
       visible_color: GObject.ParamSpec.object(
         "visible_color",
         "visibleColor",
         "Color formats to display on picked color page",
         GObject.ParamFlags.READWRITE,
-        Color
+        Color,
       ),
     },
   },
@@ -91,7 +91,7 @@ export const BellaWindow = GObject.registerClass(
       Gtk.StyleContext.add_provider_for_display(
         this.display,
         cssProvider,
-        Gtk.STYLE_PROVIDER_PRIORITY_USER
+        Gtk.STYLE_PROVIDER_PRIORITY_USER,
       );
     };
 
@@ -123,7 +123,7 @@ export const BellaWindow = GObject.registerClass(
           key,
           actionRow,
           "subtitle",
-          GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE
+          GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
         );
 
         this._color_format_pref_group.add(actionRow);
@@ -153,7 +153,7 @@ export const BellaWindow = GObject.registerClass(
         nameProp.key,
         actionRow,
         "subtitle",
-        GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE
+        GObject.BindingFlags.DEFAULT | GObject.BindingFlags.SYNC_CREATE,
       );
 
       this._color_name_pref_group.add(actionRow);
@@ -227,7 +227,7 @@ export const BellaWindow = GObject.registerClass(
           "displayed_format",
           buffer,
           "text",
-          GObject.BindingFlags.SYNC_CREATE
+          GObject.BindingFlags.SYNC_CREATE,
         );
       });
 
@@ -244,10 +244,10 @@ export const BellaWindow = GObject.registerClass(
           (_, rgb) => {
             const rgba = new Gdk.RGBA();
             rgba.parse(rgb);
-            return [true, rgba]
+            return [true, rgba];
           },
-          null
-        )
+          null,
+        );
       });
 
       actionsFactory.connect("bind", (factory, listItem) => {
@@ -275,10 +275,13 @@ export const BellaWindow = GObject.registerClass(
       });
 
       const colorColumn = Gtk.ColumnViewColumn.new(_("Color"), colorFactory);
-      const previewColumn = Gtk.ColumnViewColumn.new(_("Preview"), previewFactory);
+      const previewColumn = Gtk.ColumnViewColumn.new(
+        _("Preview"),
+        previewFactory,
+      );
       const actionsColumn = Gtk.ColumnViewColumn.new(
         _("Actions"),
-        actionsFactory
+        actionsFactory,
       );
 
       this._column_view.append_column(colorColumn);
@@ -336,25 +339,25 @@ export const BellaWindow = GObject.registerClass(
         "window-width",
         this,
         "default-width",
-        Gio.SettingsBindFlags.DEFAULT
+        Gio.SettingsBindFlags.DEFAULT,
       );
       settings.bind(
         "window-height",
         this,
         "default-height",
-        Gio.SettingsBindFlags.DEFAULT
+        Gio.SettingsBindFlags.DEFAULT,
       );
       settings.bind(
         "window-maximized",
         this,
         "maximized",
-        Gio.SettingsBindFlags.DEFAULT
+        Gio.SettingsBindFlags.DEFAULT,
       );
       settings.bind(
         "color-format",
         this,
         "color_format",
-        Gio.SettingsBindFlags.GET
+        Gio.SettingsBindFlags.GET,
       );
 
       settings.connect("changed::color-scheme", this.setColorScheme);
@@ -367,7 +370,7 @@ export const BellaWindow = GObject.registerClass(
         if (visibleChildName === "color_format_page") {
           signalId.id = this._color_dialog_button.connect(
             "notify::rgba",
-            this.selectColorHandler
+            this.selectColorHandler,
           );
           return;
         }
@@ -392,7 +395,7 @@ export const BellaWindow = GObject.registerClass(
             : "no_saved_color_stack_page";
           return [true, visiblePage];
         },
-        null
+        null,
       );
     };
 
@@ -402,7 +405,8 @@ export const BellaWindow = GObject.registerClass(
           ?.get_first_child()
           ?.get_first_child();
         const previewColumnViewTitle = colorColumnViewTitle?.get_next_sibling();
-        const actionsColumnViewTitle = previewColumnViewTitle?.get_next_sibling();
+        const actionsColumnViewTitle =
+          previewColumnViewTitle?.get_next_sibling();
 
         colorColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
         previewColumnViewTitle?.get_first_child()?.set_halign(Gtk.Align.CENTER);
@@ -416,17 +420,17 @@ export const BellaWindow = GObject.registerClass(
       const showPrefsWin = Gio.SimpleAction.new("preferences", null);
       const deleteSavedColors = Gio.SimpleAction.new(
         "delete-saved-colors",
-        null
+        null,
       );
       const backToMainPage = Gio.SimpleAction.new("back", null);
       const pickColor = Gio.SimpleAction.new("pick-color", null);
       const setEyeDropperStackPage = Gio.SimpleAction.new(
         "set_eye_dropper_stack_page",
-        GLib.VariantType.new("s")
+        GLib.VariantType.new("s"),
       );
       const setSavedColorStackPage = Gio.SimpleAction.new(
         "set_saved_colors_stack_page",
-        GLib.VariantType.new("s")
+        GLib.VariantType.new("s"),
       );
 
       showPrefsWin.connect("activate", () => {
@@ -515,6 +519,8 @@ export const BellaWindow = GObject.registerClass(
           this.setColorDialogButtonRgba(color.rgb);
           // Switch page after setting the ColorDialogButton RGB
           this._main_stack.visible_child_name = "color_format_page";
+          this.copyToClipboard(this.visible_color.displayed_format);
+          this.displayToast(_("Copied %s").format(this.visible_color.displayed_format));
           this.saveData();
         } catch (err) {
           if (err instanceof GLib.Error) {
@@ -640,7 +646,7 @@ export const BellaWindow = GObject.registerClass(
             null,
             false,
             Gio.FileCreateFlags.REPLACE_DESTINATION,
-            null
+            null,
           );
 
           if (!success) {
@@ -667,5 +673,5 @@ export const BellaWindow = GObject.registerClass(
       const contentProvider = Gdk.ContentProvider.new_for_value(text);
       clipboard.set_content(contentProvider);
     };
-  }
+  },
 );
