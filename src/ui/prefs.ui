@@ -93,6 +93,12 @@
               </object>
             </child>
             <child>
+              <object class="AdwSwitchRow" id="copy_to_clipboard">
+                <property name="title" translatable="yes">Copy color</property>
+                <property name="subtitle" translatable="yes">Copy picked color to clipboard</property>
+              </object>
+            </child>
+            <child>
               <object class="AdwSpinRow" id="precision_spin_row">
                 <property name="title" translatable="yes">Precision</property>
                 <property name="subtitle" translatable="yes">Color precision</property>

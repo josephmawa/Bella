@@ -9,14 +9,18 @@ export const BellaPreferencesDialog = GObject.registerClass(
   {
     GTypeName: "BellaPreferencesDialog",
     Template: getResourceUri("prefs.ui"),
-    InternalChildren: ["color_format_settings", "precision_spin_row"],
+    InternalChildren: [
+      "copy_to_clipboard",
+      "precision_spin_row",
+      "color_format_settings",
+    ],
     Properties: {
       color_format: GObject.ParamSpec.string(
         "color_format",
         "color-format",
         "Color format",
         GObject.ParamFlags.READWRITE,
-        ""
+        "",
       ),
     },
   },
@@ -29,13 +33,19 @@ export const BellaPreferencesDialog = GObject.registerClass(
         "color-format",
         this,
         "color_format",
-        Gio.SettingsBindFlags.DEFAULT
+        Gio.SettingsBindFlags.DEFAULT,
       );
       settings.bind(
         "precision",
         this._precision_spin_row.adjustment,
         "value",
-        Gio.SettingsBindFlags.DEFAULT
+        Gio.SettingsBindFlags.DEFAULT,
+      );
+      settings.bind(
+        "copy-color",
+        this._copy_to_clipboard,
+        "active",
+        Gio.SettingsBindFlags.DEFAULT,
       );
 
       this.bind_property_full(
@@ -45,7 +55,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
         GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE,
         (_, colorFormat) => {
           const colorFormatObject = formats.find(
-            ({ key }) => key === colorFormat
+            ({ key }) => key === colorFormat,
           );
 
           if (!colorFormatObject) {
@@ -69,7 +79,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
 
           if (stringObject?.string) {
             const colorFormatObject = formats.find(
-              ({ description }) => description === stringObject?.string
+              ({ description }) => description === stringObject?.string,
             );
 
             if (!colorFormatObject) {
@@ -78,7 +88,7 @@ export const BellaPreferencesDialog = GObject.registerClass(
             return [true, colorFormatObject.key];
           }
           return [false, "rgb"];
-        }
+        },
       );
     }
 
@@ -89,9 +99,9 @@ export const BellaPreferencesDialog = GObject.registerClass(
       const expression = Gtk.PropertyExpression.new(
         Gtk.StringObject,
         null,
-        "string"
+        "string",
       );
       this._color_format_settings.expression = expression;
     };
-  }
+  },
 );
