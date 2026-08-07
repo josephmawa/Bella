@@ -519,11 +519,13 @@ export const BellaWindow = GObject.registerClass(
           this.setColorDialogButtonRgba(color.rgb);
           // Switch page after setting the ColorDialogButton RGB
           this._main_stack.visible_child_name = "color_format_page";
+
           if (settings.get_boolean("copy-color")) {
             const displayedFormat = this.visible_color.displayed_format;
             this.copyToClipboard(displayedFormat);
             this.displayToast(_("Copied %s").format(displayedFormat));
           }
+
           this.saveData();
         } catch (err) {
           if (err instanceof GLib.Error) {
