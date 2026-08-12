@@ -94,7 +94,7 @@
             </child>
             <child>
               <object class="AdwSwitchRow" id="copy_to_clipboard">
-                <property name="title" translatable="yes">Copy color</property>
+                <property name="title" translatable="yes">Automatically copy color</property>
                 <property name="subtitle" translatable="yes">Copy picked color to clipboard</property>
               </object>
             </child>
