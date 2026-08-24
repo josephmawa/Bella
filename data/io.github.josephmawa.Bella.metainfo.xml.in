@@ -60,6 +60,14 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+    <release version="0.1.12" date="2026-08-24">
+      <description translate="no">
+        <ul>
+          <li>Add Italian translation</li>
+          <li>Upgrade Libportal to version 0.10.0</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.11" date="2026-08-12">
       <description translate="no">
         <ul>
