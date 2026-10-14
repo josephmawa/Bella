@@ -60,6 +60,14 @@
 
   <launchable type="desktop-id">io.github.josephmawa.Bella.desktop</launchable>
   <releases>
+    <release version="0.1.13" date="2026-10-14">
+      <description translate="no">
+        <ul>
+          <li>Upgrade Gnome runtime to version 51</li>
+          <li>Upgrade Libportal to version 0.11.0</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.1.12" date="2026-08-24">
       <description translate="no">
         <ul>
